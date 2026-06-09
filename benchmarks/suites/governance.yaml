@@ -1,0 +1,13 @@
+# Governance-only suite — runs the Möbius probes at full size on 9B + 120B.
+# No external installs required.
+name: governance
+description: "Möbius governance + anti-sycophancy probes, full probe set."
+
+profiles:
+  - local-ollama-9b
+  - groq-gpt-oss-120b
+
+benchmarks:
+  - { name: mobius_governance,  sample_size: 60 }
+  - { name: sycophancy_eval,    sample_size: 30 }
+  - { name: truthfulqa }           # placeholder unless lm-eval installed

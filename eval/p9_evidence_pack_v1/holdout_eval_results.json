@@ -1,0 +1,92 @@
+{
+  "test": "p9_evidence_pack_v1.test_1_holdout",
+  "n_queries": 300,
+  "n_errors": 0,
+  "elapsed_s": 1667.3,
+  "cat_counts": {
+    "match": 177,
+    "A": 66,
+    "B": 12,
+    "C": 44,
+    "other": 1
+  },
+  "cat_A_rate": 0.22,
+  "verdict": "WARNING",
+  "by_category": {
+    "ambiguous_underspecified": {
+      "n": 60,
+      "match": 37,
+      "A": 23,
+      "B": 0,
+      "C": 0,
+      "other": 0
+    },
+    "continuation": {
+      "n": 40,
+      "match": 29,
+      "A": 11,
+      "B": 0,
+      "C": 0,
+      "other": 0
+    },
+    "specialized_terminology": {
+      "n": 50,
+      "match": 20,
+      "A": 0,
+      "B": 6,
+      "C": 24,
+      "other": 0
+    },
+    "conceptual_explanation": {
+      "n": 50,
+      "match": 39,
+      "A": 0,
+      "B": 1,
+      "C": 9,
+      "other": 1
+    },
+    "correction_rewrite": {
+      "n": 40,
+      "match": 9,
+      "A": 28,
+      "B": 0,
+      "C": 3,
+      "other": 0
+    },
+    "factual_inquiry": {
+      "n": 40,
+      "match": 27,
+      "A": 4,
+      "B": 1,
+      "C": 8,
+      "other": 0
+    },
+    "casual_smalltalk": {
+      "n": 20,
+      "match": 16,
+      "A": 0,
+      "B": 4,
+      "C": 0,
+      "other": 0
+    }
+  },
+  "by_actual_route": {
+    "answer": 160,
+    "ask": 95,
+    "verify": 44,
+    "abstain": 1
+  },
+  "top_score_stats": {
+    "n": 0,
+    "mean": null,
+    "min": null,
+    "max": null
+  },
+  "methodology": {
+    "harness": "scripts.pseudo_ui_runner.PseudoUISession (mirrors src/ui/app.py engine build)",
+    "fresh_session_per_query": true,
+    "cat_A_definition": "expected=ask|verify|abstain & actual=answer (route divergence; not a retrieval-score threshold)",
+    "score_role": "top-1 retrieval score recorded as auxiliary signal; not used for Cat A judgment",
+    "gpu_policy": "CUDA_VISIBLE_DEVICES='' (CPU-only query embedding)"
+  }
+}

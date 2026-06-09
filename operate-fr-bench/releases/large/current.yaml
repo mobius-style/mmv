@@ -1,0 +1,14 @@
+# MMV Large — Active Release Pointer
+# Updated by `python -m addons.secretary bump`. The secretary reads
+# this file on every invocation; do not commit a half-finished bump.
+release: MMV-L-RC3.3
+short_name: MMV-L-RC3.3
+frozen_at: '2026-05-16'
+profile_name: 120b_route_transformer_plus_validator_v3_1
+profile_path: operate-fr-bench/configs/model_profiles.example.yaml
+harness_root: operate-fr-bench
+freeze_note: operate-fr-bench/docs/MMV_Large_RC3_3_FREEZE_NOTE.md
+provider_backend: openai_compatible
+provider_endpoint: https://api.groq.com/openai/v1
+provider_model_id: openai/gpt-oss-120b
+api_key_env: GROQ_API_KEY

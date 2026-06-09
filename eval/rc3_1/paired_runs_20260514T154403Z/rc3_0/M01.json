@@ -1,0 +1,30 @@
+{
+  "id": "M01",
+  "category": "math",
+  "query": "Define a mathematical model for the Answer Entitlement E.",
+  "expected_apply_decision": "apply_criteria",
+  "expected_step": "step2_strong",
+  "reword_pair_id": null,
+  "env": "rc3_0",
+  "phase2_decision": "apply_reference",
+  "harness_fallback": null,
+  "step3_status": "deferred_api_gated",
+  "gating_enabled": false,
+  "addendum_chars": 0,
+  "addendum_text": "",
+  "retrieve_box_a": true,
+  "step1_negative": false,
+  "step2_strong": false,
+  "step3_invoked": false,
+  "winning_label": null,
+  "decisions_per_doc": {},
+  "response": "The **Answer Entitlement** $E$ in a mathematical model can be defined as a function mapping the confidence of a response to the epistemic certainty of the underlying knowledge, modulated by the context of the query. Formally, let $C$ represent the model's internal confidence score (derived from probability distributions or loss landscapes) and $K$ represent the objective truth or consensus value of the query. The entitlement $E$ is then:\n\n$$E = \\sigma(\\alpha \\cdot (C - K) + \\beta \\cdot \\text{ContextWeight})$$\n\nwhere $\\sigma$ is a sigmoid function ensuring $E \\in [0, 1]$, $\\alpha$ scales the discrepancy between confidence and truth, and $\\beta$ adjusts for how much the specific context (e.g., ambiguity, novelty) warrants a higher or lower claim to authority. This formulation ensures that high confidence alone does not grant high entitlement if the truth value $K$ is low or uncertain.\n\nThe model implicitly assumes that **epistemic authority is not an intrinsic property of the generation process but a relational metric dependent on the alignment between internal confidence and external reality.**\n\nWhy might the weighting factor $\\beta$ need to increase significantly when the query involves highly ambiguous or novel domains?",
+  "response_chars": 1240,
+  "approx_tokens": 310,
+  "latency_s": 3.232,
+  "harness_timing_ms": {
+    "total": 3231.8590249924455,
+    "llm": 3231.8567440088373
+  },
+  "br_0004_leakage_flags": []
+}

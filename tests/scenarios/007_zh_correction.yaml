@@ -1,0 +1,22 @@
+name: correction_zh
+language: zh
+category: correction
+description: >
+  ZH correction sequence.
+active_language_seed: zh
+turns:
+  - user: "请说说克林的妻子"
+    assert:
+      self_referential: false
+      response_language: "zh"
+      response_length_min: 5
+      must_not_error: true
+  - user: "不对，正确答案是18号"
+    assert:
+      self_referential: false
+      response_language: "zh"
+      response_length_min: 5
+      response_must_not_contain:
+        - "clinical note"
+        - "chronic disease"
+      must_not_error: true

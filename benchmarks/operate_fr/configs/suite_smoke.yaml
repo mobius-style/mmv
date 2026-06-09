@@ -1,0 +1,15 @@
+# OPERATE-FR v0.1 — Smoke-100 suite.
+name: smoke100
+description: "100-task smoke distribution per OPERATE-FR v0.1 §4."
+dataset: benchmarks/operate_fr/data/smoke100.jsonl
+labels:  benchmarks/operate_fr/data/labels/smoke100_route_labels.jsonl
+
+# Family distribution (informational; the dataset itself is the source of truth):
+families:
+  volatile_current:     35
+  stale_premise_trap:   15
+  stable_control:       25
+  date_boundary:        10
+  query_neutrality:     10
+  ambiguous_time_frame: 5
+  freshness_long_run:   0

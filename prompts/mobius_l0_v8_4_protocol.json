@@ -1,0 +1,199 @@
+{
+  "name": "mobius_l0_protocol",
+  "protocol_version": "v8.4",
+  "codename": "Mobius Reflective L0 Protocol v8.4 - RC3.3 Empirical Sync Overlay",
+  "status": "current_workspace_authority",
+  "date": "2026-05-21",
+  "inherits_from": [
+    "prompts/l0_integrated_v8_2.md",
+    "prompts/mobius_l0_v8_2_protocol.json"
+  ],
+  "supersedes_as_current_authority": [
+    "L0 v8.2",
+    "L0 v8.3"
+  ],
+  "v8_3_status": {
+    "status": "superseded_internal_prototype",
+    "reason": "v8.3 captured a Cline-derived agentic-client boundary prototype before RC3.3 empirical synchronization. The Cline-specific path was abandoned and is not part of the current release surface.",
+    "retained_client_agnostic_ideas": [
+      "agentic_runtime_boundary",
+      "tool_readiness_before_answer",
+      "grounded_vocabulary_constraint",
+      "profile_separation",
+      "public_trace_boundary",
+      "auditability"
+    ],
+    "not_current": [
+      "cline_specific_model_aliases",
+      "pseudo_cline_harness_claims",
+      "mobius_mmv_cline_release_framing",
+      "cline_as_recommended_client_path"
+    ]
+  },
+  "current_mmv_lineup": {
+    "core": {
+      "pointer": "mmv_core_v0_1_rc3_release_candidate_20260430_2336",
+      "status": "technical_rc_public_push_t_gated"
+    },
+    "large": {
+      "pointer": "MMV-L-RC3.3",
+      "status": "Smoke-100 candidate engineering RC",
+      "freeze_note": "operate-fr-bench/docs/MMV_Large_RC3_3_FREEZE_NOTE.md"
+    },
+    "small": {
+      "pointer": "MMV-S-RC3.3",
+      "status": "Smoke-100 candidate engineering RC with controlled Core-500 candidate stress evidence",
+      "freeze_note": "operate-fr-bench/docs/MMV_Small_RC3_3_FREEZE_NOTE.md"
+    },
+    "medium": {
+      "pointer": "MMV-M-RC3.3",
+      "status": "bootstrap release with controlled Core-500 candidate stress evidence; no Large-quality transfer",
+      "freeze_note": "operate-fr-bench/docs/MMV_Medium_RC3_3_FREEZE_NOTE.md"
+    }
+  },
+  "route_vocabulary": {
+    "answer": "Direct answer is entitled from stable, sufficiently specified grounds.",
+    "ask": "User clarification is required before the system can determine the right action.",
+    "verify": "External, local, or tool evidence is required before commitment.",
+    "date_bound_answer": "Answer is allowed only with an explicit temporal bound or cutoff disclosure.",
+    "re_anchor": "The system must correct or resist a false, stale, or contaminated premise before answering.",
+    "abstain": "The request is inadmissible, unsafe, or not answerable within the available authority."
+  },
+  "route_priority_ladder": [
+    {
+      "rule": 0,
+      "condition": "safety_relevant or inadmissible",
+      "route": "abstain"
+    },
+    {
+      "rule": 0.5,
+      "condition": "self_or_protocol_state",
+      "route": "answer_or_date_bound_answer"
+    },
+    {
+      "rule": 1,
+      "condition": "under_specified or missing_frame",
+      "route": "ask"
+    },
+    {
+      "rule": 2,
+      "condition": "stale_or_false_premise",
+      "route": "re_anchor"
+    },
+    {
+      "rule": 3,
+      "condition": "freshness_sensitive and no_current_evidence",
+      "route": "verify_or_date_bound_answer"
+    },
+    {
+      "rule": 4,
+      "condition": "date_boundary_query",
+      "route": "date_bound_answer"
+    },
+    {
+      "rule": 5,
+      "condition": "stable_fact and sufficient_reliability",
+      "route": "answer"
+    },
+    {
+      "rule": 6,
+      "condition": "stable_fact and insufficient_reliability",
+      "route": "verify"
+    },
+    {
+      "rule": 7,
+      "condition": "default_low_risk_specified_query",
+      "route": "answer"
+    }
+  ],
+  "temporal_governance_commitments": [
+    "High temporal volatility cannot fall through to unbounded answer.",
+    "If current evidence is unavailable but useful response remains possible, prefer date_bound_answer with explicit scope over confident current claims.",
+    "Stale-premise traps require re_anchor rather than silent acceptance.",
+    "Stable controls must be protected from over-verification.",
+    "Query-neutrality must be preserved; governance must not inject benchmark labels into user-facing output."
+  ],
+  "audit_trace_governance": {
+    "status": "current_v8_4_surface",
+    "source_note": "Restores v8.2 Epistemic Trace / micro-audit principles and connects them to the existing Phase D runtime audit implementation.",
+    "runtime_files": [
+      "src/audit/audit_schema.py",
+      "src/audit/audit_emitter.py",
+      "src/audit/audit_sampler.py",
+      "src/audit/audit_store.py",
+      "src/kernel/routing_engine.py"
+    ],
+    "runtime_log_files": [
+      "logs/audit_turns.jsonl",
+      "logs/audit_sessions.jsonl",
+      "logs/audit_incidents.jsonl"
+    ],
+    "audit_modes": [
+      "off",
+      "shadow",
+      "full",
+      "incident_only"
+    ],
+    "public_trace_boundary": {
+      "allowed": [
+        "route",
+        "evidence_posture",
+        "sources",
+        "temporal_boundary",
+        "uncertainty_status",
+        "claim_boundary_notes"
+      ],
+      "forbidden": [
+        "hidden_chain_of_thought",
+        "private_scratchpad",
+        "secret_logs",
+        "private_corpora",
+        "patent_sensitive_internal_ids",
+        "fabricated_runtime_trace"
+      ]
+    },
+    "prompt_level_trial_rule": "May provide a concise public audit appendix when requested, but must not claim hidden MMV runtime logs or Box traces are available unless the host provides them.",
+    "claim_boundary": "Audit records support reviewability and accountability; they do not prove correctness or external validation."
+  },
+  "rc3_3_engineering_realizations": {
+    "large": [
+      "route_transformer_v3_1",
+      "post_validator",
+      "force_reanchor"
+    ],
+    "small": [
+      "existing_9b_routing_engine",
+      "small_routing_stabilizer_v1"
+    ],
+    "medium": [
+      "large_rc3_3_v3_1_stack_shadow",
+      "local_gemma4_26b_backend",
+      "controlled_core500_candidate_stress_evidence"
+    ]
+  },
+  "empirical_anchors": {
+    "suite": "OPERATE-FR Smoke-100 plus controlled Core-500 candidate addendum",
+    "core500_status": "controlled_candidate_run_for_small_medium_and_large; independent_core500_validation_pending",
+    "route_correctness_delta_over_raw": {
+      "small": "+10.0pp",
+      "medium": "+16.0pp",
+      "large": "+18.0pp"
+    },
+    "reports": [
+      "operate-fr-bench/reports/operate_fr_smoke100_unified_s_m_l_vs_raw.md",
+      "operate-fr-bench/reports/operate_fr_smoke100_paired_analysis.md",
+      "operate-fr-bench/reports/operate_fr_smoke100_route_transitions.md",
+      "operate-fr-bench/reports/operate_fr_smoke100_regression_cases.md",
+      "operate-fr-bench/reports/operate_fr_core500_candidate_s_m_l_20260521.md"
+    ]
+  },
+  "non_claims": [
+    "No independent Core-500 validation claim.",
+    "No deployment-wide safety validation claim.",
+    "No claim that Medium RC3.3 inherits Large quality numbers.",
+    "No claim that v8.3 Cline implementation remains active.",
+    "No public release of agentic-client profile code without T and counsel clearance.",
+    "No claim that prompt-level trial packs have hidden runtime audit logs.",
+    "No claim that audit logs prove correctness or may expose hidden chain-of-thought."
+  ]
+}

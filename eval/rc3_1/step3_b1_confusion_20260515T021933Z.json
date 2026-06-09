@@ -1,0 +1,188 @@
+{
+  "timestamp_utc": "20260515T021933Z",
+  "phase": "Phase 3a",
+  "doctrine_sha256": "c7522c895877015631c3688eb976cecb8638a839f450bcc75715fb651138f471",
+  "doctrine_path": "corpus/MMV_Mathematical_Modeling_Doctrine_and_Formalism_EN.md",
+  "gold_path": "eval/datasets/rc3_1_validation_n50_b1_gold.jsonl",
+  "n": 10,
+  "judge": {
+    "endpoint": "https://api.groq.com/openai/v1/chat/completions",
+    "model": "openai/gpt-oss-120b",
+    "cache": false
+  },
+  "metrics": {
+    "n": 10,
+    "exact_match": 8,
+    "exact_match_rate": 0.8,
+    "apply_reference_recall_num": 6,
+    "apply_reference_recall_den": 8,
+    "apply_reference_recall": 0.75,
+    "suppress_precision_num": 2,
+    "suppress_precision_den": 4,
+    "suppress_precision": 0.5
+  },
+  "decision_distribution": {
+    "gold": {
+      "apply_reference": 8,
+      "suppress": 2
+    },
+    "step3": {
+      "apply_reference": 6,
+      "suppress": 4
+    }
+  },
+  "confusion_matrix": {
+    "apply_criteria": {
+      "apply_criteria": [],
+      "apply_reference": [],
+      "suppress": []
+    },
+    "apply_reference": {
+      "apply_criteria": [],
+      "apply_reference": [
+        "B01",
+        "B02",
+        "B04a",
+        "B04b",
+        "B06",
+        "B07a"
+      ],
+      "suppress": [
+        "B07b",
+        "B08"
+      ]
+    },
+    "suppress": {
+      "apply_criteria": [],
+      "apply_reference": [],
+      "suppress": [
+        "B03",
+        "B05"
+      ]
+    }
+  },
+  "total_latency_s": 6.82,
+  "cost_estimate_usd": 0.0046,
+  "rows": [
+    {
+      "id": "B01",
+      "category": "borderline",
+      "reword_pair_id": null,
+      "query": "Explain the MMV architecture.",
+      "gold": "apply_reference",
+      "gold_rationale": "MMV refers to T's MOBIUS project, not Multi-Modal Video. REFERENCE allows doctrine retrieve without forcing CRITERIA template. SUPPRESS would miss disambiguation chance.",
+      "step3": "apply_reference",
+      "step3_rationale": "Tier 2: query references MMV-specific concept 'MMV architecture', matching apply_reference criteria.",
+      "latency_s": 0.628,
+      "defensible": false
+    },
+    {
+      "id": "B02",
+      "category": "borderline",
+      "reword_pair_id": null,
+      "query": "How does the Box selection work?",
+      "gold": "apply_reference",
+      "gold_rationale": "Same disambiguation pattern as B01. \"Box selection\" matches doctrine apply_only_when item 2 (MMV Box selection model), but \"How/Explain\" is not explicit formalization. REFERENCE for retrieval without template enforcement.",
+      "step3": "apply_reference",
+      "step3_rationale": "Tier 2 – query asks how Box selection works, referencing the MMV Box taxonomy (Box selection).",
+      "latency_s": 0.635,
+      "defensible": false
+    },
+    {
+      "id": "B04a",
+      "category": "borderline",
+      "reword_pair_id": "P1",
+      "query": "Walk me through how the MMV architecture differs from a vanilla RAG.",
+      "gold": "apply_reference",
+      "gold_rationale": "Comparison query about MMV architecture vs RAG. Matches doctrine item 2 (MMV's model structure). Not explicit formalization request, so REFERENCE rather than CRITERIA.",
+      "step3": "apply_reference",
+      "step3_rationale": "Tier 2: query references MMV architecture, an MMV-specific concept",
+      "latency_s": 0.669,
+      "defensible": false
+    },
+    {
+      "id": "B04b",
+      "category": "borderline",
+      "reword_pair_id": "P1",
+      "query": "Tell me how the MMV architecture is different from an off-the-shelf RAG.",
+      "gold": "apply_reference",
+      "gold_rationale": "Reword of B04a (P1). Same decision: REFERENCE for MMV vs RAG comparison.",
+      "step3": "apply_reference",
+      "step3_rationale": "Tier 2: query references MMV architecture, an MMV-specific concept, asking for explanation/comparison.",
+      "latency_s": 0.585,
+      "defensible": false
+    },
+    {
+      "id": "B06",
+      "category": "borderline",
+      "reword_pair_id": null,
+      "query": "How is fabrication different from hallucination?",
+      "gold": "apply_reference",
+      "gold_rationale": "Fabrication is explicit MMV concept (doctrine apply_only_when item 2: \"fabrication risk\"). Comparison query, not formalization request, so REFERENCE rather than CRITERIA.",
+      "step3": "apply_reference",
+      "step3_rationale": "Tier 2 – query references MMV-specific concept 'fabrication' and asks for conceptual difference, matching apply_reference.",
+      "latency_s": 0.698,
+      "defensible": false
+    },
+    {
+      "id": "B07a",
+      "category": "borderline",
+      "reword_pair_id": "P2",
+      "query": "What's the conceptual basis of the route taxonomy?",
+      "gold": "apply_reference",
+      "gold_rationale": "Route taxonomy maps to MMV's route utility (doctrine item 2: \"route utility\"). Conceptual review query, REFERENCE for retrieval without CRITERIA template force.",
+      "step3": "apply_reference",
+      "step3_rationale": "Tier 2: query references MMV-specific concept 'route taxonomy' without explicit formalization request",
+      "latency_s": 0.545,
+      "defensible": false
+    },
+    {
+      "id": "B07b",
+      "category": "borderline",
+      "reword_pair_id": "P2",
+      "query": "What's the philosophical underpinning of the route taxonomy?",
+      "gold": "apply_reference",
+      "gold_rationale": "P2 reword of B07a. Same decision: REFERENCE for route taxonomy review.",
+      "step3": "suppress",
+      "step3_rationale": "(fallback: _GroqError)",
+      "latency_s": 0.694,
+      "defensible": false
+    },
+    {
+      "id": "B08",
+      "category": "borderline",
+      "reword_pair_id": null,
+      "query": "I want to think about how to evaluate AI restraint.",
+      "gold": "apply_reference",
+      "gold_rationale": "AI restraint maps to MMV's Entitlement model and ISM suppression framework. Not literally in doctrine but conceptually central. REFERENCE appropriate; could split to suppress under strict literal reading.",
+      "step3": "suppress",
+      "step3_rationale": "(fallback: _GroqError)",
+      "latency_s": 0.909,
+      "defensible": true
+    },
+    {
+      "id": "B03",
+      "category": "borderline",
+      "reword_pair_id": null,
+      "query": "What's the difference between Box A and Box B?",
+      "gold": "suppress",
+      "gold_rationale": "Box B not in MMV taxonomy (M/A/0/W/S/X). Non-MMV usage of \"Box\" terminology. Doctrine apply_only_when does not match.",
+      "step3": "suppress",
+      "step3_rationale": "(fallback: _GroqError)",
+      "latency_s": 0.707,
+      "defensible": false
+    },
+    {
+      "id": "B05",
+      "category": "borderline",
+      "reword_pair_id": null,
+      "query": "Why is local-first architecture better?",
+      "gold": "suppress",
+      "gold_rationale": "Local-first architecture is general software pattern, not MMV-specific concept. Doctrine apply_only_when does not match.",
+      "step3": "suppress",
+      "step3_rationale": "(fallback: _GroqError)",
+      "latency_s": 0.745,
+      "defensible": false
+    }
+  ]
+}

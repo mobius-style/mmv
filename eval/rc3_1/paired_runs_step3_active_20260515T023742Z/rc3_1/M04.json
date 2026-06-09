@@ -1,0 +1,32 @@
+{
+  "id": "M04",
+  "category": "math",
+  "query": "Help me make assumptions about the sigmoid coefficient theta_g.",
+  "expected_apply_decision": "apply_criteria",
+  "expected_step": "step2_strong",
+  "reword_pair_id": null,
+  "env": "rc3_1",
+  "phase2_decision": "apply_criteria",
+  "harness_fallback": null,
+  "step3_status": "deferred_api_gated",
+  "gating_enabled": true,
+  "addendum_chars": 1029,
+  "addendum_text": "[Box A Application Gate]\n## 0. Application Gate\n\nThis document is used only when MMV or the 120B execution system is performing mathematical modeling, formalization, theoretical explanation, evaluation-formula design, paper or patent documentation, or design review of MMV internal behavior.\n\nDo not apply this document as CRITERIA in the following cases:\n\n- General questions.\n- Questions that only require a short answer.\n- Ordinary coding questions.\n- Questions requiring up-to-date information.\n- Casual conversation, translation, or simple definition explanations.\n- Cases where the word \"model\" does not mean a mathematical model.\n\nEven if this document is retrieved, if the query is outside its scope, apply it weakly as REFERENCE or ignore it.\n\n[Box A Response Style Policy]\n- Do not attach self-scoring metrics (pass rate, grounding rate, fabrication rate, etc.) to your own response.\n- Do not assert metric values without prior evaluation.\n- Do not impose mathematical formalization on questions that do not require it.",
+  "retrieve_box_a": true,
+  "step1_negative": false,
+  "step2_strong": true,
+  "step3_invoked": false,
+  "winning_label": "MMV_Mathematical_Modeling_Doctrine_and_Formalism_EN.md",
+  "decisions_per_doc": {
+    "MMV_Mathematical_Modeling_Doctrine_and_Formalism_EN.md": "apply_criteria"
+  },
+  "response": "To make assumptions about the sigmoid coefficient $\\theta_g$, we must first define the functional role it plays within your specific mathematical model. In standard logistic formulations, $\\theta_g$ typically acts as a scaling factor that controls the steepness of the transition between the lower and upper asymptotes of the sigmoid curve.\n\nAssuming $\\theta_g$ represents a tunable parameter for sensitivity, a reasonable starting assumption is that $\\theta_g > 0$ to ensure the function maintains its standard monotonic increasing property. If your model involves a specific physical or biological constraint where the transition must be symmetric around a midpoint, you might assume $\\theta_g$ is independent of the intercept term. However, if the system exhibits hysteresis or asymmetric response, assuming $\\theta_g$ varies with the input state rather than being a constant scalar would be necessary.\n\nThe core unstated premise here is that the coefficient $\\theta_g$ is intended to be a free parameter for optimization rather than a fixed constant derived from first principles; this distinction determines whether you treat it as a variable to be solved for or a hyperparameter to be tuned.\n\nWhy might the value of $\\theta_g$ need to be constrained by the physical limits of your execution environment rather than being left purely to mathematical convergence?",
+  "response_chars": 1367,
+  "approx_tokens": 341,
+  "latency_s": 3.034,
+  "harness_timing_ms": {
+    "total": 3034.3986339867115,
+    "llm": 3034.37477000989
+  },
+  "br_0004_leakage_flags": []
+}

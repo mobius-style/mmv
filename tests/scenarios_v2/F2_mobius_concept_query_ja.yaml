@@ -1,0 +1,36 @@
+name: F2_mobius_concept_query_ja
+language: ja
+category: F2_mobius_concept
+description: >
+  F2 — JA query about MOBIUS-specific concept "回答する資格" (Answer
+  Entitlement). Real UI failure: the query is about a MOBIUS internal
+  concept but Box W retrieves the Wikipedia disambiguation page for
+  メビウス, derailing into music genre / mathematician / etc. v2 asserts
+  retrieval-URL blacklist plus semantic Answer-Entitlement coverage.
+active_language_seed: ja
+turns:
+  - user: "MOBIUS が言う回答する資格とは？"
+    assert:
+      route_in: ["answer", "verify"]
+      response_must_not_contain:
+        - "Qwen"
+        - "通义千问"
+v2_assertions:
+  - response_must_not_cite_source:
+      url_patterns:
+        - "wikipedia.org/wiki/.*メビウス.*曖昧.*"
+        - "wikipedia.org/wiki/M.bius_(disambiguation)"
+        - "wikipedia.org/wiki/Mobius_strip"
+  - response_must_semantically_contain:
+      concept: >
+        Answer Entitlement の定義 — MOBIUS において「回答する権利」が
+        validation を経て得られる concept であり、自動的に応答するのでは
+        なく judge → respond の手順を踏むこと。response は this concept
+        を user-facing 語彙で説明している。
+      min_score: 3
+  - response_must_not_semantically_contain:
+      concept: >
+        メビウスの輪 (Möbius strip) や数学者メビウス、音楽ジャンル等、
+        MOBIUS システム とは無関係の同名トピックについて主に説明している
+        応答。
+      max_score: 2

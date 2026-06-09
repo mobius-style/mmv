@@ -1,0 +1,14 @@
+Bundle: Möbius Runtime v7.4.8 MMV Bundle
+Status: implementation scaffold / source starter bundle
+Model: phi4-mini:latest (chat core)
+Embedding: separate lightweight model required
+Search: route-driven verify support only
+Language detection: kernel responsibility, B-lite
+Update: retrieval_selector patched for local-RAG-first verify behavior
+
+update2: routing test alignment patch (ask/verify ambiguity resolved)
+
+Update 2.1: cleaned bundle caches (__pycache__, .pytest_cache, *.pyc) and added .gitignore
+update3: model name aligned to phi4-mini:latest (Ollama)
+
+update4: MMV Verify Stage 1+2 complete — EAL, BraveSearchAdapter, presets, CLI/UI verify extensions, eval suite

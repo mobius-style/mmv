@@ -1,0 +1,32 @@
+{
+  "id": "G01",
+  "category": "general",
+  "query": "What is the weather in Tokyo today?",
+  "expected_apply_decision": "borderline",
+  "expected_step": "step3_deferred",
+  "reword_pair_id": null,
+  "env": "rc3_1",
+  "phase2_decision": "suppress",
+  "harness_fallback": null,
+  "step3_status": "deferred_api_gated",
+  "gating_enabled": true,
+  "addendum_chars": 0,
+  "addendum_text": "",
+  "retrieve_box_a": false,
+  "step1_negative": false,
+  "step2_strong": false,
+  "step3_invoked": true,
+  "winning_label": "MMV_Mathematical_Modeling_Doctrine_and_Formalism_EN.md",
+  "decisions_per_doc": {
+    "MMV_Mathematical_Modeling_Doctrine_and_Formalism_EN.md": "suppress"
+  },
+  "response": "I cannot confirm the current weather in Tokyo today.\n\n**Reason:** I do not have access to real-time external data sources, live internet feeds, or a built-in weather sensor. My knowledge is based on the information provided in our session context and my internal training data, neither of which contains today's specific meteorological conditions.\n\nTo get an accurate forecast, please check a trusted weather service (such as the Japan Meteorological Agency, Weather.com, or a local news app).",
+  "response_chars": 493,
+  "approx_tokens": 123,
+  "latency_s": 1.769,
+  "harness_timing_ms": {
+    "total": 1768.945513991639,
+    "llm": 1240.4676059959456
+  },
+  "br_0004_leakage_flags": []
+}

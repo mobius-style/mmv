@@ -1,0 +1,32 @@
+# OPERATE-FR v0.1 — minimal packaging for the benchmark artifact.
+# This is a tracked subproject; runtime deps inherit from the parent
+# MOBIUS MMV repo. Only listed here are deps the harness itself needs.
+
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "operate-fr-bench"
+version = "0.1.0"
+description = "OPERATE-FR v0.1 — candidate operational benchmark track for freshness routing"
+readme = "README.md"
+license = { text = "AGPL-3.0-or-later" }
+requires-python = ">=3.10"
+authors = [
+    { name = "Taiko Toeda / MOBIUS LLC", email = "info@mobius.style" },
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: GNU Affero General Public License v3 or later (AGPLv3+)",
+    "Programming Language :: Python :: 3",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = [
+    "PyYAML>=6.0",
+    "requests>=2.31",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0"]

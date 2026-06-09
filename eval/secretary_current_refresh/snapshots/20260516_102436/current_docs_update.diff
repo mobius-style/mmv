@@ -1,0 +1,69 @@
+--- before/RELEASE_STATUS.md
++++ after/RELEASE_STATUS.md
+@@ -2,7 +2,7 @@
+ doc_status: current
+ authority: canonical
+ scope: rc3_release
+-last_verified_utc: 2026-05-02
++last_verified_utc: 2026-05-16
+ current_release_candidate_tag: mmv_core_v0_1_rc3_release_candidate_20260430_2336
+ current_release_candidate_commit: 7f53fe1dbdf189f014b0cd2643a996148fc5dba7
+ supersedes:
+@@ -27,7 +27,7 @@
+ |---|---|
+ | Tag | `mmv_core_v0_1_rc3_release_candidate_20260430_2336` |
+ | Commit | `7f53fe1dbdf189f014b0cd2643a996148fc5dba7` |
+-| Branch from which tag was cut | `coverage-repair-alpha-beta` |
++| Branch from which tag was cut | `terminology_neutralization` |
+ | Status | technical release candidate. **T-gated external items remain.** Not yet published. |
+ 
+ ## Current technical blockers
+@@ -86,8 +86,14 @@
+   exact tag is named in this file's front matter. **Do NOT create
+   another RC3 tag**; do NOT cut a new one with a different timestamp.
+ - ✓ **Old RC3 tags are historical artifacts.** Specifically:
+-  - `mmv_core_v0_1_rc3_ux_polish_20260430_1827` (UX polish snapshot)
++  - `mmv_core_v0_1_rc3_0_pre_box_a_gating_freeze`
++  - `mmv_core_v0_1_rc3_1_box_a_metadata_gating_20260515_0022`
++  - `mmv_core_v0_1_rc3_1_complete_20260515_0424`
++  - `mmv_core_v0_1_rc3_1_complete_20260515_1327`
++  - `mmv_core_v0_1_rc3_1_release_candidate_20260515_0559`
++  - `mmv_core_v0_1_rc3_2_complete_20260515_0925`
+   - `mmv_core_v0_1_rc3_project_log_review_preset_20260430_1922`
++  - `mmv_core_v0_1_rc3_ux_polish_20260430_1827`
+     (preset snapshot)
+ 
+   These exist for git history but are **not** release artefacts
+--- before/DOCS_AUTHORITY_MAP.md
++++ after/DOCS_AUTHORITY_MAP.md
+@@ -2,7 +2,7 @@
+ doc_status: current
+ authority: canonical
+ scope: documentation_authority_priority
+-last_verified_utc: 2026-05-02
++last_verified_utc: 2026-05-16
+ ---
+ 
+ # Documentation authority map
+--- before/PUBLIC_RELEASE_READINESS.md
++++ after/PUBLIC_RELEASE_READINESS.md
+@@ -2,7 +2,7 @@
+ doc_status: current
+ authority: canonical
+ scope: public_release_readiness
+-last_verified_utc: 2026-05-02
++last_verified_utc: 2026-05-16
+ overall_verdict: YELLOW (technically ready; T-gated external items remain)
+ current_release_candidate_tag: mmv_core_v0_1_rc3_release_candidate_20260430_2336
+ current_release_candidate_commit: 7f53fe1dbdf189f014b0cd2643a996148fc5dba7
+--- before/SETUP_GAPS.md
++++ after/SETUP_GAPS.md
+@@ -2,7 +2,7 @@
+ doc_status: current
+ authority: canonical
+ scope: setup_and_release_gaps
+-last_verified_utc: 2026-05-02
++last_verified_utc: 2026-05-16
+ overall_verdict: PARTIAL/YELLOW
+ ---
+ 

@@ -1,0 +1,214 @@
+{
+  "timestamp_utc": "20260515T023742Z",
+  "phase": "Phase 4.2 paired-run",
+  "dataset": "eval/datasets/rc3_1_validation_n50.jsonl",
+  "n_queries": 22,
+  "n_completed": 22,
+  "ab_invariant_violations": 0,
+  "loop_walltime_s": 99.13,
+  "api_base_url": "http://127.0.0.1:8088",
+  "api_model": "mobius-mmv-governed",
+  "errors_log_present": false,
+  "br_0004_warnings_present": false,
+  "by_category_rc31_decision": {},
+  "run_log": [
+    {
+      "qid": "M01",
+      "category": "math",
+      "phase2_decision_rc31": "apply_criteria",
+      "rc31_latency_s": 1.5310604959959164,
+      "rc30_latency_s": 2.9657592560106423,
+      "rc31_resp_chars": 552,
+      "rc30_resp_chars": 1001
+    },
+    {
+      "qid": "M02",
+      "category": "math",
+      "phase2_decision_rc31": "apply_criteria",
+      "rc31_latency_s": 2.803251174016623,
+      "rc30_latency_s": 2.130896839982597,
+      "rc31_resp_chars": 988,
+      "rc30_resp_chars": 655
+    },
+    {
+      "qid": "M03",
+      "category": "math",
+      "phase2_decision_rc31": "apply_criteria",
+      "rc31_latency_s": 1.8734711130091455,
+      "rc30_latency_s": 1.8827288650209084,
+      "rc31_resp_chars": 724,
+      "rc30_resp_chars": 628
+    },
+    {
+      "qid": "M04",
+      "category": "math",
+      "phase2_decision_rc31": "apply_criteria",
+      "rc31_latency_s": 3.0344143840193283,
+      "rc30_latency_s": 2.281266677979147,
+      "rc31_resp_chars": 1367,
+      "rc30_resp_chars": 868
+    },
+    {
+      "qid": "M05",
+      "category": "math",
+      "phase2_decision_rc31": "apply_criteria",
+      "rc31_latency_s": 1.4268206159758847,
+      "rc30_latency_s": 1.5384086129779462,
+      "rc31_resp_chars": 435,
+      "rc30_resp_chars": 447
+    },
+    {
+      "qid": "M06",
+      "category": "math",
+      "phase2_decision_rc31": "apply_criteria",
+      "rc31_latency_s": 2.1581292540067807,
+      "rc30_latency_s": 2.7192292389809154,
+      "rc31_resp_chars": 929,
+      "rc30_resp_chars": 1221
+    },
+    {
+      "qid": "M07",
+      "category": "math",
+      "phase2_decision_rc31": "apply_criteria",
+      "rc31_latency_s": 1.9729470100137405,
+      "rc30_latency_s": 1.5650243960262742,
+      "rc31_resp_chars": 876,
+      "rc30_resp_chars": 486
+    },
+    {
+      "qid": "M08",
+      "category": "math",
+      "phase2_decision_rc31": "apply_criteria",
+      "rc31_latency_s": 2.1646326299814973,
+      "rc30_latency_s": 3.991103070002282,
+      "rc31_resp_chars": 1017,
+      "rc30_resp_chars": 1805
+    },
+    {
+      "qid": "M09",
+      "category": "math",
+      "phase2_decision_rc31": "apply_criteria",
+      "rc31_latency_s": 2.4858017649967223,
+      "rc30_latency_s": 2.461423405999085,
+      "rc31_resp_chars": 1128,
+      "rc30_resp_chars": 1001
+    },
+    {
+      "qid": "M10",
+      "category": "math",
+      "phase2_decision_rc31": "apply_criteria",
+      "rc31_latency_s": 4.943947916006437,
+      "rc30_latency_s": 2.410837999021169,
+      "rc31_resp_chars": 2280,
+      "rc30_resp_chars": 903
+    },
+    {
+      "qid": "M11",
+      "category": "math",
+      "phase2_decision_rc31": "apply_criteria",
+      "rc31_latency_s": 3.2213132660253905,
+      "rc30_latency_s": 2.6874807860003784,
+      "rc31_resp_chars": 1444,
+      "rc30_resp_chars": 836
+    },
+    {
+      "qid": "M12",
+      "category": "math",
+      "phase2_decision_rc31": "apply_criteria",
+      "rc31_latency_s": 1.7709381959866732,
+      "rc30_latency_s": 1.863812801981112,
+      "rc31_resp_chars": 752,
+      "rc30_resp_chars": 738
+    },
+    {
+      "qid": "M13",
+      "category": "math",
+      "phase2_decision_rc31": "apply_criteria",
+      "rc31_latency_s": 2.4396799560054205,
+      "rc30_latency_s": 1.7633832610154059,
+      "rc31_resp_chars": 978,
+      "rc30_resp_chars": 619
+    },
+    {
+      "qid": "M14",
+      "category": "math",
+      "phase2_decision_rc31": "apply_criteria",
+      "rc31_latency_s": 4.423729245987488,
+      "rc30_latency_s": 2.0581112089857925,
+      "rc31_resp_chars": 1838,
+      "rc30_resp_chars": 841
+    },
+    {
+      "qid": "M15",
+      "category": "math",
+      "phase2_decision_rc31": "apply_criteria",
+      "rc31_latency_s": 2.741929064010037,
+      "rc30_latency_s": 1.8744248609873466,
+      "rc31_resp_chars": 1282,
+      "rc30_resp_chars": 701
+    },
+    {
+      "qid": "M16",
+      "category": "math",
+      "phase2_decision_rc31": "apply_criteria",
+      "rc31_latency_s": 2.3660858910006937,
+      "rc30_latency_s": 1.4417614639969543,
+      "rc31_resp_chars": 931,
+      "rc30_resp_chars": 539
+    },
+    {
+      "qid": "M17",
+      "category": "math",
+      "phase2_decision_rc31": "apply_criteria",
+      "rc31_latency_s": 1.4317561920033768,
+      "rc30_latency_s": 1.685050889995182,
+      "rc31_resp_chars": 554,
+      "rc30_resp_chars": 523
+    },
+    {
+      "qid": "M18",
+      "category": "math",
+      "phase2_decision_rc31": "apply_criteria",
+      "rc31_latency_s": 2.1640919130004477,
+      "rc30_latency_s": 1.9188291009922978,
+      "rc31_resp_chars": 975,
+      "rc30_resp_chars": 761
+    },
+    {
+      "qid": "M19",
+      "category": "math",
+      "phase2_decision_rc31": "apply_criteria",
+      "rc31_latency_s": 2.484308871004032,
+      "rc30_latency_s": 2.9062282589729875,
+      "rc31_resp_chars": 1017,
+      "rc30_resp_chars": 1051
+    },
+    {
+      "qid": "M20",
+      "category": "math",
+      "phase2_decision_rc31": "apply_criteria",
+      "rc31_latency_s": 1.4621712299995124,
+      "rc30_latency_s": 1.7799971440108493,
+      "rc31_resp_chars": 577,
+      "rc30_resp_chars": 735
+    },
+    {
+      "qid": "G01",
+      "category": "general",
+      "phase2_decision_rc31": "suppress",
+      "rc31_latency_s": 1.7689521740248892,
+      "rc30_latency_s": 1.0744051270012278,
+      "rc31_resp_chars": 493,
+      "rc30_resp_chars": 426
+    },
+    {
+      "qid": "G02",
+      "category": "general",
+      "phase2_decision_rc31": "suppress",
+      "rc31_latency_s": 2.4207547029946,
+      "rc30_latency_s": 1.0284258220053744,
+      "rc31_resp_chars": 542,
+      "rc30_resp_chars": 188
+    }
+  ]
+}

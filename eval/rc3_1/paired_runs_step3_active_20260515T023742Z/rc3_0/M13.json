@@ -1,0 +1,30 @@
+{
+  "id": "M13",
+  "category": "math",
+  "query": "Define the evaluation formula for grounding rate.",
+  "expected_apply_decision": "apply_criteria",
+  "expected_step": "step2_strong",
+  "reword_pair_id": null,
+  "env": "rc3_0",
+  "phase2_decision": "apply_reference",
+  "harness_fallback": null,
+  "step3_status": "deferred_api_gated",
+  "gating_enabled": false,
+  "addendum_chars": 0,
+  "addendum_text": "",
+  "retrieve_box_a": true,
+  "step1_negative": false,
+  "step2_strong": false,
+  "step3_invoked": false,
+  "winning_label": null,
+  "decisions_per_doc": {},
+  "response": "The evaluation formula for grounding rate typically measures the proportion of a model's generated content that is supported by provided context, often calculated as the ratio of grounded tokens to total generated tokens. This metric assumes that the primary goal of the system is to minimize hallucinations by strictly adhering to the available information, a premise that may shift if the user's intent prioritizes creative synthesis over factual strictness. To ensure the formula aligns with your specific needs, could you clarify whether you are focusing on token-level accuracy or sentence-level semantic coverage?",
+  "response_chars": 619,
+  "approx_tokens": 154,
+  "latency_s": 1.763,
+  "harness_timing_ms": {
+    "total": 1763.3753590052947,
+    "llm": 1763.3731200185139
+  },
+  "br_0004_leakage_flags": []
+}

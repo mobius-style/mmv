@@ -1,0 +1,12 @@
+# Full suite — everything in benchmark_matrix.yaml.
+# Several entries are HIGH-cost (SWE-bench, WebArena, GAIA). Expect days of
+# wall-clock and/or non-trivial cloud spend. Do NOT run blindly.
+name: full
+description: "Full: every benchmark listed in benchmark_matrix.yaml. Many require external installs and dataset downloads."
+
+profiles:
+  - local-ollama-9b
+  - groq-gpt-oss-120b
+
+# benchmarks: <all from matrix> (resolved by the orchestrator)
+benchmarks: "*"

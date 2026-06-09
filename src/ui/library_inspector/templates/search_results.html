@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block title %}Search — Pattern Library{% endblock %}
+{% block content %}
+<h1>Search</h1>
+<form method="get" style="display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;">
+  <input type="text" name="q" value="{{ q }}" placeholder="query…" style="flex:1;min-width:300px;">
+  <select name="mode">
+    <option value="text" {% if mode == 'text' %}selected{% endif %}>text</option>
+    <option value="semantic" {% if mode == 'semantic' %}selected{% endif %}>semantic (ME5)</option>
+  </select>
+  <button type="submit">Search</button>
+</form>
+<p style="color:var(--pico-secondary);font-size:0.85rem;">
+  Text mode is instant. Semantic mode lazy-loads ME5 (~5 s on first call).
+</p>
+
+{% if q %}
+  {% if mode == 'text' %}
+    <h2>Text matches ({{ text_hits | length }})</h2>
+    {% if text_hits %}
+    <table>
+      <thead><tr><th>id</th><th>topic</th><th>intent</th><th>preview</th></tr></thead>
+      <tbody>
+        {% for p in text_hits %}
+        <tr>
+          <td><a href="/pattern/{{ p.id }}"><code>{{ p.id }}</code></a></td>
+          <td>{{ p.topic }}</td>
+          <td>{{ p.intent }}</td>
+          <td>{{ p.examples[0] }}{% if p.examples | length > 1 %}…{% endif %}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% else %}<p>No text matches.</p>{% endif %}
+  {% else %}
+    <h2>Semantic top-K ({{ semantic_hits | length }})</h2>
+    {% if semantic_hits %}
+    <table>
+      <thead><tr><th>pattern_id</th><th>score</th><th>matched example</th></tr></thead>
+      <tbody>
+        {% for h in semantic_hits %}
+        <tr>
+          <td><a href="/pattern/{{ h.pattern_id }}"><code>{{ h.pattern_id }}</code></a></td>
+          <td>{{ "%.3f" | format(h.score) }}</td>
+          <td>{{ h.example }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% else %}<p>No semantic hits (or index unavailable).</p>{% endif %}
+  {% endif %}
+{% endif %}
+{% endblock %}

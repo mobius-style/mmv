@@ -1,0 +1,18 @@
+name: word_chain_en
+language: en
+category: word_chain
+description: >
+  EN last-letter-first word chain game. Same regression: no irrelevant
+  Wikipedia dump.
+active_language_seed: en
+turns:
+  - user: "Let's play a word chain game. house"
+    assert:
+      route_in: ["answer", "verify", "ask"]
+      self_referential: false
+      response_language: "en"
+      response_length_min: 5
+      response_length_max: 1500
+      reason_codes_must_not_include:
+        - "CASUAL_GREETING_FAST_PATH"
+      must_not_error: true

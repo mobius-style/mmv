@@ -1,0 +1,36 @@
+name: persona_drift_ja
+language: ja
+category: persona_drift
+description: >
+  Regression guard — self-ref query must NOT contain v8.2 add-on example
+  markers (clinical note / K-12 learner / chronic disease). Fix 2c
+  (Box 0 persona-drift filter) must keep these out of top-3 Box 0
+  context injection.
+active_language_seed: ja
+turns:
+  - user: "あなたの特徴を教えて"
+    assert:
+      route_in: ["answer", "verify"]
+      self_referential: true
+      box_0_consulted: true
+      response_language: "ja"
+      response_length_min: 20
+      response_length_max: 2000
+      response_must_not_contain:
+        - "clinical note helper"
+        - "chronic disease"
+        - "K-12 learner"
+        - "diagnose and prescribe"
+        - "adherence to chronic"
+      reason_codes_must_not_include:
+        - "CASUAL_GREETING_FAST_PATH"
+      must_not_error: true
+v2_assertions:
+  - response_must_not_semantically_contain:
+      concept: >
+        The assistant drifting into a non-MOBIUS persona — identifying
+        as a clinician, nurse, K-12 teacher, tutor for children, chronic
+        disease coach, or other domain-specific helper. The response
+        should maintain MOBIUS identity as a reflective runtime rather
+        than impersonating an annex example.
+      max_score: 2

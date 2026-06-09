@@ -1,0 +1,32 @@
+{
+  "id": "M16",
+  "category": "math",
+  "query": "Express the objective function of the entitlement decision.",
+  "expected_apply_decision": "apply_criteria",
+  "expected_step": "step2_strong",
+  "reword_pair_id": null,
+  "env": "rc3_1",
+  "phase2_decision": "apply_criteria",
+  "harness_fallback": null,
+  "step3_status": "deferred_api_gated",
+  "gating_enabled": true,
+  "addendum_chars": 1029,
+  "addendum_text": "[Box A Application Gate]\n## 0. Application Gate\n\nThis document is used only when MMV or the 120B execution system is performing mathematical modeling, formalization, theoretical explanation, evaluation-formula design, paper or patent documentation, or design review of MMV internal behavior.\n\nDo not apply this document as CRITERIA in the following cases:\n\n- General questions.\n- Questions that only require a short answer.\n- Ordinary coding questions.\n- Questions requiring up-to-date information.\n- Casual conversation, translation, or simple definition explanations.\n- Cases where the word \"model\" does not mean a mathematical model.\n\nEven if this document is retrieved, if the query is outside its scope, apply it weakly as REFERENCE or ignore it.\n\n[Box A Response Style Policy]\n- Do not attach self-scoring metrics (pass rate, grounding rate, fabrication rate, etc.) to your own response.\n- Do not assert metric values without prior evaluation.\n- Do not impose mathematical formalization on questions that do not require it.",
+  "retrieve_box_a": true,
+  "step1_negative": false,
+  "step2_strong": true,
+  "step3_invoked": false,
+  "winning_label": "MMV_Mathematical_Modeling_Doctrine_and_Formalism_EN.md",
+  "decisions_per_doc": {
+    "MMV_Mathematical_Modeling_Doctrine_and_Formalism_EN.md": "apply_criteria"
+  },
+  "response": "The objective function for an entitlement decision typically seeks to maximize a weighted sum of social welfare and fiscal sustainability, often expressed as:\n\n$$ \\max_{\\mathbf{e}} \\sum_{i} u_i(e_i) - \\lambda \\cdot C(\\mathbf{e}) $$\n\nwhere $e_i$ represents the entitlement level for individual $i$, $u_i(\\cdot)$ is the utility derived from that entitlement, $C(\\mathbf{e})$ is the total cost of the entitlement program, and $\\lambda$ is a Lagrange multiplier reflecting the societal trade-off between equity (utility) and efficiency (cost). This formulation implicitly assumes that the marginal utility of an entitlement diminishes as the level of that entitlement increases, and that the cost function is convex, meaning that increasing entitlements becomes progressively more expensive.\n\nWhy might the specific weighting between equity and efficiency ($\\lambda$) vary significantly across different political or economic contexts?",
+  "response_chars": 931,
+  "approx_tokens": 232,
+  "latency_s": 2.366,
+  "harness_timing_ms": {
+    "total": 2366.077585000312,
+    "llm": 2366.0512499918696
+  },
+  "br_0004_leakage_flags": []
+}

@@ -1,0 +1,25 @@
+name: shiritori_ja
+language: ja
+category: word_chain
+description: >
+  しりとり (JA word chain) — game-flow is future_work (not yet
+  implemented as a module), BUT the Box W shogi-piece drift observed
+  in production must not recur. At minimum: response must not be
+  dominated by Wikipedia shogi content.
+active_language_seed: ja
+turns:
+  - user: "しりとりをしましょう。うま"
+    assert:
+      route_in: ["answer", "verify", "ask"]
+      self_referential: false
+      response_language: "ja"
+      response_length_min: 5
+      response_length_max: 1500
+      response_must_not_contain:
+        - "将棋"
+        - "香車"
+        - "桂馬"
+        - "chess piece"
+      reason_codes_must_not_include:
+        - "CASUAL_GREETING_FAST_PATH"
+      must_not_error: true

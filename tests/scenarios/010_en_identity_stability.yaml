@@ -1,0 +1,33 @@
+name: identity_stability_en
+language: en
+category: identity_stability
+description: >
+  EN multi-turn identity stability.
+active_language_seed: en
+turns:
+  - user: "What is your name?"
+    assert:
+      self_referential: true
+      response_language: "en"
+      response_must_not_contain:
+        - "I am GPT"
+        - "I am ChatGPT"
+        - "clinical note"
+      response_must_contain_any:
+        - "MOBIUS"
+        - "Möbius"
+      must_not_error: true
+  - user: "What architecture do you use?"
+    assert:
+      self_referential: true
+      response_language: "en"
+      response_must_not_contain:
+        - "clinical note"
+        - "chronic disease"
+      must_not_error: true
+  - user: "What is the role of Box 0?"
+    assert:
+      response_language: "en"
+      response_must_not_contain:
+        - "clinical note"
+      must_not_error: true

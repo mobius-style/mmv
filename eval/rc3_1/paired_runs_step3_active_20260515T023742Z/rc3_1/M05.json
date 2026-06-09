@@ -1,0 +1,32 @@
+{
+  "id": "M05",
+  "category": "math",
+  "query": "What is the objective function of the Box selection step?",
+  "expected_apply_decision": "apply_criteria",
+  "expected_step": "step2_strong",
+  "reword_pair_id": null,
+  "env": "rc3_1",
+  "phase2_decision": "apply_criteria",
+  "harness_fallback": null,
+  "step3_status": "deferred_api_gated",
+  "gating_enabled": true,
+  "addendum_chars": 1029,
+  "addendum_text": "[Box A Application Gate]\n## 0. Application Gate\n\nThis document is used only when MMV or the 120B execution system is performing mathematical modeling, formalization, theoretical explanation, evaluation-formula design, paper or patent documentation, or design review of MMV internal behavior.\n\nDo not apply this document as CRITERIA in the following cases:\n\n- General questions.\n- Questions that only require a short answer.\n- Ordinary coding questions.\n- Questions requiring up-to-date information.\n- Casual conversation, translation, or simple definition explanations.\n- Cases where the word \"model\" does not mean a mathematical model.\n\nEven if this document is retrieved, if the query is outside its scope, apply it weakly as REFERENCE or ignore it.\n\n[Box A Response Style Policy]\n- Do not attach self-scoring metrics (pass rate, grounding rate, fabrication rate, etc.) to your own response.\n- Do not assert metric values without prior evaluation.\n- Do not impose mathematical formalization on questions that do not require it.",
+  "retrieve_box_a": true,
+  "step1_negative": false,
+  "step2_strong": true,
+  "step3_invoked": false,
+  "winning_label": "MMV_Mathematical_Modeling_Doctrine_and_Formalism_EN.md",
+  "decisions_per_doc": {
+    "MMV_Mathematical_Modeling_Doctrine_and_Formalism_EN.md": "apply_criteria"
+  },
+  "response": "The objective function of the Box selection step is to maximize the alignment between the selected theoretical framework (the \"Box\") and the specific constraints of the current modeling task, thereby minimizing the gap between abstract formalization and practical applicability.\n\nWhy does optimizing for this specific alignment matter when the cost of model mismatch scales with the complexity of the underlying mathematical structure?",
+  "response_chars": 435,
+  "approx_tokens": 108,
+  "latency_s": 1.427,
+  "harness_timing_ms": {
+    "total": 1426.8114999867976,
+    "llm": 1426.783606002573
+  },
+  "br_0004_leakage_flags": []
+}

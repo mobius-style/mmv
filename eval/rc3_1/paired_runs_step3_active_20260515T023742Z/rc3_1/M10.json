@@ -1,0 +1,32 @@
+{
+  "id": "M10",
+  "category": "math",
+  "query": "Help me write the Methods section for the MMV paper.",
+  "expected_apply_decision": "apply_criteria",
+  "expected_step": "step2_strong",
+  "reword_pair_id": null,
+  "env": "rc3_1",
+  "phase2_decision": "apply_criteria",
+  "harness_fallback": null,
+  "step3_status": "deferred_api_gated",
+  "gating_enabled": true,
+  "addendum_chars": 1029,
+  "addendum_text": "[Box A Application Gate]\n## 0. Application Gate\n\nThis document is used only when MMV or the 120B execution system is performing mathematical modeling, formalization, theoretical explanation, evaluation-formula design, paper or patent documentation, or design review of MMV internal behavior.\n\nDo not apply this document as CRITERIA in the following cases:\n\n- General questions.\n- Questions that only require a short answer.\n- Ordinary coding questions.\n- Questions requiring up-to-date information.\n- Casual conversation, translation, or simple definition explanations.\n- Cases where the word \"model\" does not mean a mathematical model.\n\nEven if this document is retrieved, if the query is outside its scope, apply it weakly as REFERENCE or ignore it.\n\n[Box A Response Style Policy]\n- Do not attach self-scoring metrics (pass rate, grounding rate, fabrication rate, etc.) to your own response.\n- Do not assert metric values without prior evaluation.\n- Do not impose mathematical formalization on questions that do not require it.",
+  "retrieve_box_a": true,
+  "step1_negative": false,
+  "step2_strong": true,
+  "step3_invoked": false,
+  "winning_label": "MMV_Mathematical_Modeling_Doctrine_and_Formalism_EN.md",
+  "decisions_per_doc": {
+    "MMV_Mathematical_Modeling_Doctrine_and_Formalism_EN.md": "apply_criteria"
+  },
+  "response": "The Methods section for the MMV paper should focus on the core mathematical framework and validation strategy, avoiding unnecessary formalization for general conceptual descriptions. Since the specific modeling objectives and constraints for this particular study were not provided in the prompt, the structure below outlines a standard, rigorous approach that you can adapt by inserting your specific variables, datasets, and algorithmic choices.\n\n**Methods**\n\n**2.1 Mathematical Formulation**\nThe MMV framework is defined by the optimization of a loss function $\\mathcal{L}$ that balances fidelity to observed data with regularization terms enforcing structural consistency. We formulate the problem as:\n$$ \\min_{\\theta} \\mathcal{L}_{total}(\\theta) = \\mathcal{L}_{data}(\\theta) + \\lambda \\mathcal{L}_{reg}(\\theta) $$\nwhere $\\theta$ represents the model parameters, $\\mathcal{L}_{data}$ quantifies the discrepancy between predictions and ground truth, and $\\mathcal{L}_{reg}$ imposes constraints derived from the underlying physical or logical laws of the system. The hyperparameter $\\lambda$ is tuned via cross-validation to prevent overfitting while maintaining model expressiveness.\n\n**2.2 Data Preprocessing and Validation**\nInput data undergoes normalization to ensure scale invariance, followed by a noise-robust filtering step to remove outliers that do not align with the primary signal distribution. The dataset is partitioned into training, validation, and test sets using a stratified sampling approach to preserve class balance. We employ a hold-out validation strategy to monitor convergence and detect early signs of overfitting.\n\n**2.3 Implementation and Evaluation**\nThe model is implemented using [Insert Framework, e.g., PyTorch/JAX], optimized with [Insert Optimizer, e.g., AdamW]. Performance is evaluated using [Insert Metrics, e.g., MSE, F1-score, or specific domain metrics], calculated on the held-out test set. Statistical significance of improvements over baseline models is assessed using paired t-tests or non-parametric equivalents where appropriate.\n\n**Follow-up:**\nWhy did you choose specific regularization terms or loss components for your particular domain, and how might those choices influence the model's generalizability to unseen scenarios?",
+  "response_chars": 2280,
+  "approx_tokens": 570,
+  "latency_s": 4.944,
+  "harness_timing_ms": {
+    "total": 4943.941025994718,
+    "llm": 4943.907259003026
+  },
+  "br_0004_leakage_flags": []
+}

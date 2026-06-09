@@ -1,0 +1,3 @@
+# Runtime outputs from `python -m addons.secretary review-packet`.
+# Keep the directory tracked (.gitkeep) but ignore generated digests.
+*.md

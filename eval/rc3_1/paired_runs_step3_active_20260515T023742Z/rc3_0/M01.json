@@ -1,0 +1,30 @@
+{
+  "id": "M01",
+  "category": "math",
+  "query": "Define a mathematical model for the Answer Entitlement E.",
+  "expected_apply_decision": "apply_criteria",
+  "expected_step": "step2_strong",
+  "reword_pair_id": null,
+  "env": "rc3_0",
+  "phase2_decision": "apply_reference",
+  "harness_fallback": null,
+  "step3_status": "deferred_api_gated",
+  "gating_enabled": false,
+  "addendum_chars": 0,
+  "addendum_text": "",
+  "retrieve_box_a": true,
+  "step1_negative": false,
+  "step2_strong": false,
+  "step3_invoked": false,
+  "winning_label": null,
+  "decisions_per_doc": {},
+  "response": "The **Answer Entitlement E** can be modeled as a scalar function $E(\\mathcal{K}, \\mathcal{C})$ dependent on the knowledge state $\\mathcal{K}$ and the conversational context $\\mathcal{C}$. In this framework, $E$ represents the justified degree to which an agent claims a specific proposition $p$ as true, bounded by the intersection of available evidence and the agent's epistemic responsibility. The model posits that entitlement is not an intrinsic property of a statement but a dynamic allocation of epistemic authority, where $E \\in [0, 1]$, with $E=1$ reserved for tautologies or direct observations and $E=0$ for unfounded assertions. This structure implicitly assumes that **epistemic authority is a finite resource that must be rationed against the cost of error**, rather than an infinite attribute of the speaker.\n\nWhy does the cost of error vary across different domains, and how does that variation reshape the boundary between $E=0$ and $E=1$ in high-stakes versus low-stakes environments?",
+  "response_chars": 1001,
+  "approx_tokens": 250,
+  "latency_s": 2.966,
+  "harness_timing_ms": {
+    "total": 2965.7512189878616,
+    "llm": 2965.7488520024344
+  },
+  "br_0004_leakage_flags": []
+}

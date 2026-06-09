@@ -1,0 +1,101 @@
+{
+  "document": "MOBIUS MMV Frontier Chat Trial Pack",
+  "file": "docs/current/MMV_FRONTIER_CHAT_TRIAL_PACK_RC3_3_L0V8_4.md",
+  "status": "current paste-ready trial artifact",
+  "date_jst": "2026-05-21",
+  "author": "Taiko Toeda",
+  "rights_holder": "MOBIUS LLC",
+  "license_holder": "MOBIUS LLC",
+  "authorship_rights_separation": "Taiko Toeda is the author. MOBIUS LLC is the corporate rights and license holder.",
+  "license": {
+    "machine_readable_protocol_material": "AGPL-3.0-or-later",
+    "explanatory_text": "CC BY-NC-SA 4.0",
+    "commercial_or_proprietary_use": "Requires a separate license from MOBIUS LLC."
+  },
+  "purpose": "Single-paste prompt-level MOBIUS MMV trial for frontier model chat windows.",
+  "positioning": "Demonstration artifact. It emulates L0 v8.4 / RC3.3 answer-entitlement behavior at prompt level and does not claim to be the full MMV runtime.",
+  "format_decision": {
+    "primary_format": "markdown",
+    "reason": "Markdown is the most paste-friendly format for frontier chat boxes: it preserves headings, tables, route ladders, and code blocks while staying readable to humans and models.",
+    "json_role": "This file records metadata and source coverage only."
+  },
+  "aligned_to": {
+    "l0": "L0 v8.4",
+    "essentials": "L0 Essentials v1.3-core",
+    "mmv": "RC3.3",
+    "system_overview": "MMV_SYSTEM_OVERVIEW_RC3_3",
+    "mathematical_doctrine": "MMV_MATHEMATICAL_MODELING_DOCTRINE_RC3_3"
+  },
+    "source_files": [
+        "prompts/l0_integrated_v8_4.md",
+        "prompts/mobius_l0_v8_4_protocol.json",
+        "data/evaluation/L0_Essentials_v1_3_core.json",
+    "docs/L0_ESSENTIALS_V1_3_UPDATE_NOTE.md",
+    "docs/L0_V8_4_RC3_3_SYNC_NOTE.md",
+    "docs/L0_V8_4_AUDIT_REINTEGRATION_NOTE.md",
+    "docs/current/MMV_SYSTEM_OVERVIEW_RC3_3.md",
+        "docs/current/MMV_MATHEMATICAL_MODELING_DOCTRINE_RC3_3.md",
+        "docs/current/DOCS_AUTHORITY_MAP.md"
+    ],
+    "package_breakdown": {
+        "decision": "Keep the system overview and mathematical doctrine as independent full documents, not summaries.",
+        "reason": "Frontier model chat windows can comfortably read this package size, and the independent-file layout preserves authority, provenance, and modeling scope boundaries.",
+        "internal_folder": "L08.4",
+        "public_folder": "MOBIUS_L08.4",
+        "internal_files": [
+            "README.md",
+            "NOTICE.md",
+            "metadata.json",
+            "MMV_FRONTIER_CHAT_TRIAL_PACK_RC3_3_L0V8_4.md",
+            "L0_Essentials_v1_3_core.json",
+            "MMV_SYSTEM_OVERVIEW_RC3_3.md",
+            "MMV_MATHEMATICAL_MODELING_DOCTRINE_RC3_3.md",
+            "DOCS_AUTHORITY_MAP.md",
+            "MMV_FRONTIER_CHAT_TRIAL_PACK_RC3_3_L0V8_4.sources.json"
+        ],
+        "public_files": [
+            "README.md",
+            "NOTICE.md",
+            "metadata.json",
+            "MOBIUS_L08.4_FRONTIER_CHAT_PROMPT.md",
+            "L0_Essentials_v1_3_core.json",
+            "MMV_SYSTEM_OVERVIEW_RC3_3.md",
+            "MMV_MATHEMATICAL_MODELING_DOCTRINE_RC3_3.md",
+            "DOCS_AUTHORITY_MAP.md",
+            "MMV_FRONTIER_CHAT_TRIAL_PACK_RC3_3_L0V8_4.sources.json"
+        ]
+    },
+    "included_surfaces": [
+    "identity boundary",
+    "answer entitlement",
+    "L0 v8.4 route vocabulary",
+    "route priority ladder",
+    "temporal governance",
+    "re-anchor duty",
+    "tool readiness and evidence boundary",
+    "source transparency",
+    "audit and public trace boundary",
+    "response proportionality",
+    "MMV RC3.3 system overview",
+    "Box 0 / Box A boundary",
+    "L0 Essentials runtime scope",
+    "mathematical modeling doctrine",
+    "release-line separation",
+    "evaluation claim boundary",
+    "empirical anchors and non-claims"
+  ],
+  "non_claims": [
+    "Not the full deployed MMV runtime.",
+    "Does not include structural RoutingEngine code.",
+    "Does not include Box indexes or retrieval.",
+    "Does not include live verification tools.",
+    "Does not include hidden runtime audit logs.",
+    "Does not validate Medium RC3.3 as having Large RC3.3 quality.",
+    "Does not claim independent Core-500 validation."
+  ],
+  "recommended_use": [
+    "Paste the Markdown file into a frontier model system/developer instruction field when available.",
+    "If only a normal chat box is available, paste it as the first user message and ask the model to follow it for the session.",
+    "Use it as an MMV experience/demo layer, not as benchmark evidence for the full system."
+  ]
+}

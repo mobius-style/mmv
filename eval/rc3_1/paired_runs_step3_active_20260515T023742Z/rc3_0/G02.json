@@ -1,0 +1,30 @@
+{
+  "id": "G02",
+  "category": "general",
+  "query": "Recommend a good restaurant near Shibuya.",
+  "expected_apply_decision": "borderline",
+  "expected_step": "step3_deferred",
+  "reword_pair_id": null,
+  "env": "rc3_0",
+  "phase2_decision": "apply_reference",
+  "harness_fallback": null,
+  "step3_status": "deferred_api_gated",
+  "gating_enabled": false,
+  "addendum_chars": 0,
+  "addendum_text": "",
+  "retrieve_box_a": true,
+  "step1_negative": false,
+  "step2_strong": false,
+  "step3_invoked": false,
+  "winning_label": null,
+  "decisions_per_doc": {},
+  "response": "To recommend a truly good restaurant near Shibuya, I need to know what you are craving—whether it's a quick bite, a specific cuisine like sushi or ramen, or a place for a special occasion.",
+  "response_chars": 188,
+  "approx_tokens": 47,
+  "latency_s": 1.028,
+  "harness_timing_ms": {
+    "total": 1028.4172010142356,
+    "llm": 1028.4139289869927
+  },
+  "br_0004_leakage_flags": []
+}

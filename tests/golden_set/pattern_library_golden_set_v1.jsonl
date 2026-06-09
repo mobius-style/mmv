@@ -1,0 +1,200 @@
+{"id": "gs_001", "lang": "en", "query": "What are your characteristics", "expected_pattern_id": "pat_self_ref_identity_001", "topic": "self_reference", "source": "F1_forensic"}
+{"id": "gs_002", "lang": "en", "query": "Tell me about yourself", "expected_pattern_id": "pat_self_ref_identity_001", "topic": "self_reference", "source": "F1_forensic"}
+{"id": "gs_003", "lang": "en", "query": "Describe yourself please", "expected_pattern_id": "pat_self_ref_identity_001", "topic": "self_reference", "source": "hand"}
+{"id": "gs_004", "lang": "en", "query": "Who are you exactly", "expected_pattern_id": "pat_self_ref_identity_001", "topic": "self_reference", "source": "hand"}
+{"id": "gs_005", "lang": "en", "query": "What defines you as a system", "expected_pattern_id": "pat_self_ref_identity_001", "topic": "self_reference", "source": "hand"}
+{"id": "gs_006", "lang": "ja", "query": "あなたの特徴を教えてください", "expected_pattern_id": "pat_self_ref_identity_001", "topic": "self_reference", "source": "F1_forensic"}
+{"id": "gs_007", "lang": "ja", "query": "貴方の特徴を教えてください", "expected_pattern_id": "pat_self_ref_identity_001", "topic": "self_reference", "source": "F1_forensic"}
+{"id": "gs_008", "lang": "ja", "query": "あなた自身について話してください", "expected_pattern_id": "pat_self_ref_identity_001", "topic": "self_reference", "source": "hand"}
+{"id": "gs_009", "lang": "ja", "query": "あなたを定義する特徴は何ですか", "expected_pattern_id": "pat_self_ref_identity_001", "topic": "self_reference", "source": "hand"}
+{"id": "gs_010", "lang": "zh", "query": "你的特征是什么", "expected_pattern_id": "pat_self_ref_identity_012", "topic": "self_reference", "source": "33scenario_v2"}
+{"id": "gs_011", "lang": "zh", "query": "请介绍一下你自己", "expected_pattern_id": "pat_self_ref_identity_001", "topic": "self_reference", "source": "hand"}
+{"id": "gs_012", "lang": "zh", "query": "你是谁", "expected_pattern_id": "pat_self_ref_identity_001", "topic": "self_reference", "source": "hand"}
+{"id": "gs_013", "lang": "en", "query": "What can you do", "expected_pattern_id": "pat_self_ref_identity_002", "topic": "self_reference", "source": "hand"}
+{"id": "gs_014", "lang": "en", "query": "What functions do you have", "expected_pattern_id": "pat_self_ref_identity_002", "topic": "self_reference", "source": "hand"}
+{"id": "gs_015", "lang": "ja", "query": "あなたは何ができますか", "expected_pattern_id": "pat_self_ref_identity_002", "topic": "self_reference", "source": "hand"}
+{"id": "gs_016", "lang": "zh", "query": "你能做什么", "expected_pattern_id": "pat_self_ref_identity_002", "topic": "self_reference", "source": "hand"}
+{"id": "gs_017", "lang": "en", "query": "What guides your responses", "expected_pattern_id": "pat_self_ref_identity_003", "topic": "self_reference", "source": "hand"}
+{"id": "gs_018", "lang": "en", "query": "What principles do you follow", "expected_pattern_id": "pat_self_ref_identity_003", "topic": "self_reference", "source": "hand"}
+{"id": "gs_019", "lang": "ja", "query": "あなたの設計思想は", "expected_pattern_id": "pat_self_ref_identity_003", "topic": "self_reference", "source": "hand"}
+{"id": "gs_020", "lang": "zh", "query": "你的设计理念是什么", "expected_pattern_id": "pat_self_ref_identity_003", "topic": "self_reference", "source": "hand"}
+{"id": "gs_021", "lang": "en", "query": "Why do you exist", "expected_pattern_id": "pat_self_ref_identity_004", "topic": "self_reference", "source": "hand"}
+{"id": "gs_022", "lang": "en", "query": "What is your mission", "expected_pattern_id": "pat_self_ref_identity_004", "topic": "self_reference", "source": "hand"}
+{"id": "gs_023", "lang": "ja", "query": "あなたの目的は何ですか", "expected_pattern_id": "pat_self_ref_identity_004", "topic": "self_reference", "source": "hand"}
+{"id": "gs_024", "lang": "zh", "query": "你的目的是什么", "expected_pattern_id": "pat_self_ref_identity_004", "topic": "self_reference", "source": "hand"}
+{"id": "gs_025", "lang": "en", "query": "What is your architecture", "expected_pattern_id": "pat_self_ref_identity_005", "topic": "self_reference", "source": "33scenario_v2"}
+{"id": "gs_026", "lang": "en", "query": "How are you built internally", "expected_pattern_id": "pat_self_ref_identity_005", "topic": "self_reference", "source": "hand"}
+{"id": "gs_027", "lang": "ja", "query": "どんなアーキテクチャですか", "expected_pattern_id": "pat_self_ref_identity_005", "topic": "self_reference", "source": "33scenario_v2"}
+{"id": "gs_028", "lang": "zh", "query": "你的架构是怎样的", "expected_pattern_id": "pat_self_ref_identity_013", "topic": "self_reference", "source": "hand"}
+{"id": "gs_029", "lang": "en", "query": "What is a Möbius strip", "expected_pattern_id": null, "expected_no_match": true, "topic": "self_reference", "source": "F1_forensic"}
+{"id": "gs_030", "lang": "ja", "query": "ウルトラマンメビウスについて", "expected_pattern_id": null, "expected_no_match": true, "topic": "self_reference", "source": "F1_forensic"}
+{"id": "gs_031", "lang": "en", "query": "What is MOBIUS", "expected_pattern_id": "pat_concept_explain_001", "topic": "conceptual_explain", "source": "F2_forensic"}
+{"id": "gs_032", "lang": "en", "query": "Explain the MOBIUS system", "expected_pattern_id": "pat_concept_explain_001", "topic": "conceptual_explain", "source": "F2_forensic"}
+{"id": "gs_033", "lang": "en", "query": "Tell me about MOBIUS", "expected_pattern_id": "pat_concept_explain_001", "topic": "conceptual_explain", "source": "F2_forensic"}
+{"id": "gs_034", "lang": "en", "query": "Define MOBIUS", "expected_pattern_id": "pat_concept_explain_001", "topic": "conceptual_explain", "source": "hand"}
+{"id": "gs_035", "lang": "ja", "query": "MOBIUS とは何ですか", "expected_pattern_id": "pat_concept_explain_001", "topic": "conceptual_explain", "source": "F2_forensic"}
+{"id": "gs_036", "lang": "ja", "query": "MOBIUS について教えて", "expected_pattern_id": "pat_concept_explain_001", "topic": "conceptual_explain", "source": "hand"}
+{"id": "gs_037", "lang": "ja", "query": "MOBIUS システムの概要", "expected_pattern_id": "pat_concept_explain_001", "topic": "conceptual_explain", "source": "hand"}
+{"id": "gs_038", "lang": "zh", "query": "MOBIUS 是什么", "expected_pattern_id": "pat_concept_explain_001", "topic": "conceptual_explain", "source": "hand"}
+{"id": "gs_039", "lang": "zh", "query": "请介绍 MOBIUS", "expected_pattern_id": "pat_concept_explain_001", "topic": "conceptual_explain", "source": "hand"}
+{"id": "gs_040", "lang": "en", "query": "What is Answer Entitlement", "expected_pattern_id": "pat_concept_explain_002", "topic": "conceptual_explain", "source": "F2_forensic"}
+{"id": "gs_041", "lang": "en", "query": "Explain Answer Entitlement", "expected_pattern_id": "pat_concept_explain_002", "topic": "conceptual_explain", "source": "hand"}
+{"id": "gs_042", "lang": "ja", "query": "MOBIUS が言う回答する資格とは", "expected_pattern_id": "pat_concept_explain_002", "topic": "conceptual_explain", "source": "F2_forensic"}
+{"id": "gs_043", "lang": "ja", "query": "Answer Entitlement について説明して", "expected_pattern_id": "pat_concept_explain_002", "topic": "conceptual_explain", "source": "hand"}
+{"id": "gs_044", "lang": "zh", "query": "MOBIUS 中的回答权是什么", "expected_pattern_id": "pat_concept_explain_002", "topic": "conceptual_explain", "source": "hand"}
+{"id": "gs_045", "lang": "en", "query": "What is the Self-Governance Protocol", "expected_pattern_id": "pat_concept_explain_003", "topic": "conceptual_explain", "source": "hand"}
+{"id": "gs_046", "lang": "en", "query": "Explain MOBIUS governance", "expected_pattern_id": "pat_concept_explain_003", "topic": "conceptual_explain", "source": "hand"}
+{"id": "gs_047", "lang": "ja", "query": "MOBIUS の自己統治プロトコルとは", "expected_pattern_id": "pat_concept_explain_003", "topic": "conceptual_explain", "source": "hand"}
+{"id": "gs_048", "lang": "ja", "query": "MOBIUS のガバナンス方式は", "expected_pattern_id": "pat_concept_explain_003", "topic": "conceptual_explain", "source": "hand"}
+{"id": "gs_049", "lang": "zh", "query": "MOBIUS 的自治机制是什么", "expected_pattern_id": "pat_concept_explain_003", "topic": "conceptual_explain", "source": "hand"}
+{"id": "gs_050", "lang": "en", "query": "What is evidence adjudication in MOBIUS", "expected_pattern_id": "pat_concept_explain_004", "topic": "conceptual_explain", "source": "hand"}
+{"id": "gs_051", "lang": "en", "query": "How does MOBIUS validate sources", "expected_pattern_id": "pat_concept_explain_004", "topic": "conceptual_explain", "source": "hand"}
+{"id": "gs_052", "lang": "ja", "query": "MOBIUS の証拠検証のしくみ", "expected_pattern_id": "pat_concept_explain_004", "topic": "conceptual_explain", "source": "hand"}
+{"id": "gs_053", "lang": "zh", "query": "MOBIUS 是如何裁定证据的", "expected_pattern_id": "pat_concept_explain_004", "topic": "conceptual_explain", "source": "hand"}
+{"id": "gs_054", "lang": "en", "query": "What are MOBIUS Constitutional Invariants", "expected_pattern_id": "pat_concept_explain_005", "topic": "conceptual_explain", "source": "hand"}
+{"id": "gs_055", "lang": "en", "query": "What rules does MOBIUS never break", "expected_pattern_id": "pat_concept_explain_005", "topic": "conceptual_explain", "source": "hand"}
+{"id": "gs_056", "lang": "ja", "query": "MOBIUS の憲法的不変条項について", "expected_pattern_id": "pat_concept_explain_005", "topic": "conceptual_explain", "source": "hand"}
+{"id": "gs_057", "lang": "zh", "query": "MOBIUS 的不可破坏的规则是什么", "expected_pattern_id": "pat_concept_explain_005", "topic": "conceptual_explain", "source": "hand"}
+{"id": "gs_058", "lang": "en", "query": "What is a Möbius transformation", "expected_pattern_id": null, "expected_no_match": true, "topic": "conceptual_explain", "source": "F2_forensic"}
+{"id": "gs_059", "lang": "ja", "query": "メビウスの帯とは", "expected_pattern_id": null, "expected_no_match": true, "topic": "conceptual_explain", "source": "F2_forensic"}
+{"id": "gs_060", "lang": "zh", "query": "什么是莫比乌斯环", "expected_pattern_id": null, "expected_no_match": true, "topic": "conceptual_explain", "source": "F2_forensic"}
+{"id": "gs_061", "lang": "en", "query": "Who is the wife of Krillin", "expected_pattern_id": "pat_factual_inquiry_003", "topic": "factual_inquiry", "source": "33scenario_v2"}
+{"id": "gs_062", "lang": "ja", "query": "クリリンの妻は誰ですか", "expected_pattern_id": null, "expected_no_match": true, "topic": "factual_inquiry", "source": "F4a_forensic"}
+{"id": "gs_063", "lang": "zh", "query": "克林的妻子是谁", "expected_pattern_id": null, "expected_no_match": true, "topic": "factual_inquiry", "source": "33scenario_v2"}
+{"id": "gs_064", "lang": "en", "query": "What is the capital of France", "expected_pattern_id": "pat_factual_inquiry_010", "topic": "factual_inquiry", "source": "hand"}
+{"id": "gs_065", "lang": "ja", "query": "Python のラムダ関数とは", "expected_pattern_id": null, "expected_no_match": true, "topic": "factual_inquiry", "source": "33scenario_v2"}
+{"id": "gs_066", "lang": "en", "query": "Explain binary search trees", "expected_pattern_id": "pat_factual_inquiry_001", "topic": "factual_inquiry", "source": "33scenario_v2"}
+{"id": "gs_067", "lang": "zh", "query": "二叉搜索树是什么", "expected_pattern_id": null, "expected_no_match": true, "topic": "factual_inquiry", "source": "hand"}
+{"id": "gs_068", "lang": "en", "query": "What is the latest BTC price", "expected_pattern_id": null, "expected_no_match": true, "topic": "factual_inquiry", "source": "33scenario_v2"}
+{"id": "gs_069", "lang": "ja", "query": "現在のビットコイン価格は", "expected_pattern_id": null, "expected_no_match": true, "topic": "factual_inquiry", "source": "33scenario_v2"}
+{"id": "gs_070", "lang": "en", "query": "Tell me about Goku from Dragon Ball", "expected_pattern_id": "pat_factual_inquiry_015", "topic": "factual_inquiry", "source": "hand"}
+{"id": "gs_071", "lang": "ja", "query": "孫悟空とは誰", "expected_pattern_id": null, "expected_no_match": true, "topic": "factual_inquiry", "source": "hand"}
+{"id": "gs_072", "lang": "zh", "query": "孙悟空是谁", "expected_pattern_id": null, "expected_no_match": true, "topic": "factual_inquiry", "source": "hand"}
+{"id": "gs_073", "lang": "en", "query": "Who wrote The Catcher in the Rye", "expected_pattern_id": null, "expected_no_match": true, "topic": "factual_inquiry", "source": "hand"}
+{"id": "gs_074", "lang": "ja", "query": "ライ麦畑でつかまえての作者は", "expected_pattern_id": null, "expected_no_match": true, "topic": "factual_inquiry", "source": "hand"}
+{"id": "gs_075", "lang": "en", "query": "What is the speed of light", "expected_pattern_id": "pat_factual_inquiry_008", "topic": "factual_inquiry", "source": "hand"}
+{"id": "gs_076", "lang": "ja", "query": "光の速度は", "expected_pattern_id": null, "expected_no_match": true, "topic": "factual_inquiry", "source": "hand"}
+{"id": "gs_077", "lang": "zh", "query": "光速是多少", "expected_pattern_id": null, "expected_no_match": true, "topic": "factual_inquiry", "source": "hand"}
+{"id": "gs_078", "lang": "en", "query": "Recommend a good book", "expected_pattern_id": null, "expected_no_match": true, "topic": "factual_inquiry", "source": "hand"}
+{"id": "gs_079", "lang": "ja", "query": "おすすめの本は", "expected_pattern_id": null, "expected_no_match": true, "topic": "factual_inquiry", "source": "hand"}
+{"id": "gs_080", "lang": "zh", "query": "推荐一本好书", "expected_pattern_id": null, "expected_no_match": true, "topic": "factual_inquiry", "source": "hand"}
+{"id": "gs_081", "lang": "en", "query": "Hello", "expected_pattern_id": "pat_casual_engagement_001", "topic": "casual_engagement", "source": "33scenario_v2"}
+{"id": "gs_082", "lang": "en", "query": "Hi there", "expected_pattern_id": "pat_casual_engagement_001", "topic": "casual_engagement", "source": "hand"}
+{"id": "gs_083", "lang": "en", "query": "Good morning", "expected_pattern_id": "pat_casual_engagement_001", "topic": "casual_engagement", "source": "hand"}
+{"id": "gs_084", "lang": "en", "query": "How are you", "expected_pattern_id": "pat_casual_engagement_003", "topic": "casual_engagement", "source": "hand"}
+{"id": "gs_085", "lang": "en", "query": "Thanks", "expected_pattern_id": "pat_casual_engagement_002", "topic": "casual_engagement", "source": "hand"}
+{"id": "gs_086", "lang": "ja", "query": "こんにちは", "expected_pattern_id": null, "expected_no_match": true, "topic": "casual_greeting", "source": "33scenario_v2"}
+{"id": "gs_087", "lang": "ja", "query": "おはよう", "expected_pattern_id": null, "expected_no_match": true, "topic": "casual_greeting", "source": "hand"}
+{"id": "gs_088", "lang": "ja", "query": "ありがとう", "expected_pattern_id": null, "expected_no_match": true, "topic": "casual_greeting", "source": "hand"}
+{"id": "gs_089", "lang": "ja", "query": "元気ですか", "expected_pattern_id": null, "expected_no_match": true, "topic": "casual_greeting", "source": "hand"}
+{"id": "gs_090", "lang": "ja", "query": "やあ", "expected_pattern_id": null, "expected_no_match": true, "topic": "casual_greeting", "source": "hand"}
+{"id": "gs_091", "lang": "zh", "query": "你好", "expected_pattern_id": null, "expected_no_match": true, "topic": "casual_greeting", "source": "33scenario_v2"}
+{"id": "gs_092", "lang": "zh", "query": "早上好", "expected_pattern_id": null, "expected_no_match": true, "topic": "casual_greeting", "source": "hand"}
+{"id": "gs_093", "lang": "zh", "query": "谢谢", "expected_pattern_id": null, "expected_no_match": true, "topic": "casual_greeting", "source": "hand"}
+{"id": "gs_094", "lang": "zh", "query": "你好吗", "expected_pattern_id": null, "expected_no_match": true, "topic": "casual_greeting", "source": "hand"}
+{"id": "gs_095", "lang": "en", "query": "Are you ok", "expected_pattern_id": "pat_casual_engagement_004", "topic": "casual_engagement", "source": "hand"}
+{"id": "gs_096", "lang": "en", "query": "What is the Mobius company", "expected_pattern_id": null, "expected_no_match": true, "topic": "conceptual_explain", "source": "hand"}
+{"id": "gs_097", "lang": "ja", "query": "メビウスの輪はどう作る", "expected_pattern_id": null, "expected_no_match": true, "topic": "conceptual_explain", "source": "hand"}
+{"id": "gs_098", "lang": "zh", "query": "莫比乌斯的数学性质", "expected_pattern_id": null, "expected_no_match": true, "topic": "conceptual_explain", "source": "hand"}
+{"id": "gs_099", "lang": "en", "query": "Mathematician August Möbius", "expected_pattern_id": null, "expected_no_match": true, "topic": "conceptual_explain", "source": "hand"}
+{"id": "gs_100", "lang": "ja", "query": "数学者メビウスの業績", "expected_pattern_id": null, "expected_no_match": true, "topic": "conceptual_explain", "source": "hand"}
+{"id": "gs_101", "lang": "en", "query": "What is a binary search tree", "expected_pattern_id": "pat_factual_inquiry_001", "topic": "factual_inquiry", "source": "33scenario_v2"}
+{"id": "gs_102", "lang": "en", "query": "Define quicksort algorithm", "expected_pattern_id": "pat_factual_inquiry_001", "topic": "factual_inquiry", "source": "hand"}
+{"id": "gs_103", "lang": "ja", "query": "二分探索木とは何ですか", "expected_pattern_id": "pat_factual_inquiry_016", "topic": "factual_inquiry", "source": "33scenario_v2"}
+{"id": "gs_104", "lang": "zh", "query": "什么是哈希表", "expected_pattern_id": "pat_factual_inquiry_017", "topic": "factual_inquiry", "source": "hand"}
+{"id": "gs_105", "lang": "en", "query": "What does the lambda keyword mean in Python", "expected_pattern_id": "pat_factual_inquiry_002", "topic": "factual_inquiry", "source": "33scenario_v2"}
+{"id": "gs_106", "lang": "ja", "query": "Pythonのラムダ式とは", "expected_pattern_id": "pat_factual_inquiry_001", "topic": "factual_inquiry", "source": "33scenario_v2"}
+{"id": "gs_107", "lang": "en", "query": "Who is the wife of Krillin", "expected_pattern_id": "pat_factual_inquiry_003", "topic": "factual_inquiry", "source": "F4a_forensic"}
+{"id": "gs_108", "lang": "ja", "query": "クリリンの妻は誰ですか", "expected_pattern_id": "pat_factual_inquiry_018", "topic": "factual_inquiry", "source": "F4a_forensic"}
+{"id": "gs_109", "lang": "zh", "query": "谁是悟空的妻子", "expected_pattern_id": "pat_factual_inquiry_019", "topic": "factual_inquiry", "source": "hand"}
+{"id": "gs_110", "lang": "en", "query": "Who wrote Hamlet", "expected_pattern_id": "pat_factual_inquiry_004", "topic": "factual_inquiry", "source": "hand"}
+{"id": "gs_111", "lang": "ja", "query": "ハムレットの作者は誰", "expected_pattern_id": "pat_factual_inquiry_020", "topic": "factual_inquiry", "source": "hand"}
+{"id": "gs_112", "lang": "en", "query": "Difference between TCP and UDP", "expected_pattern_id": "pat_factual_inquiry_005", "topic": "factual_inquiry", "source": "hand"}
+{"id": "gs_113", "lang": "en", "query": "Compare quicksort and mergesort", "expected_pattern_id": "pat_factual_inquiry_005", "topic": "factual_inquiry", "source": "hand"}
+{"id": "gs_114", "lang": "ja", "query": "Python と Ruby の違い", "expected_pattern_id": "pat_factual_inquiry_005", "topic": "factual_inquiry", "source": "hand"}
+{"id": "gs_115", "lang": "en", "query": "What is the current US president", "expected_pattern_id": "pat_factual_inquiry_006", "topic": "factual_inquiry", "source": "hand"}
+{"id": "gs_116", "lang": "zh", "query": "目前的美国总统是谁", "expected_pattern_id": "pat_factual_inquiry_006", "topic": "factual_inquiry", "source": "hand"}
+{"id": "gs_117", "lang": "en", "query": "What's a good chocolate chip cookie recipe", "expected_pattern_id": null, "expected_no_match": true, "topic": "factual_inquiry", "source": "hand"}
+{"id": "gs_118", "lang": "ja", "query": "おすすめのラーメン店を教えて", "expected_pattern_id": null, "expected_no_match": true, "topic": "factual_inquiry", "source": "hand"}
+{"id": "gs_119", "lang": "en", "query": "Hello there", "expected_pattern_id": null, "topic": "factual_inquiry", "source": "hand", "expected_no_match": true}
+{"id": "gs_120", "lang": "zh", "query": "你好", "expected_pattern_id": null, "topic": "factual_inquiry", "source": "33scenario_v2", "expected_no_match": true}
+{"id": "gs_121", "lang": "en", "query": "I'm sorry I was wrong", "expected_pattern_id": null, "topic": "factual_inquiry", "source": "hand", "expected_no_match": true}
+{"id": "gs_122", "lang": "ja", "query": "違います、正しくは18号です", "expected_pattern_id": null, "topic": "factual_inquiry", "source": "F4a_forensic", "expected_no_match": true}
+{"id": "gs_123", "lang": "en", "query": "Who won the world series last year", "expected_pattern_id": null, "expected_no_match": true, "topic": "factual_inquiry", "source": "hand"}
+{"id": "gs_124", "lang": "zh", "query": "你叫什么名字", "expected_pattern_id": null, "topic": "factual_inquiry", "source": "hand", "expected_no_match": true}
+{"id": "gs_125", "lang": "ja", "query": "東京の今日の天気は", "expected_pattern_id": null, "expected_no_match": true, "topic": "factual_inquiry", "source": "hand"}
+{"id": "gs_126", "lang": "en", "query": "Recommend a movie for tonight", "expected_pattern_id": null, "expected_no_match": true, "topic": "factual_inquiry", "source": "hand"}
+{"id": "gs_127", "lang": "en", "query": "Goodbye", "expected_pattern_id": null, "topic": "factual_inquiry", "source": "hand", "expected_no_match": true}
+{"id": "gs_128", "lang": "ja", "query": "ありがとう", "expected_pattern_id": null, "topic": "factual_inquiry", "source": "hand", "expected_no_match": true}
+{"id": "gs_129", "lang": "zh", "query": "再见", "expected_pattern_id": null, "topic": "factual_inquiry", "source": "hand", "expected_no_match": true}
+{"id": "gs_130", "lang": "en", "query": "Thanks for the answer", "expected_pattern_id": null, "topic": "factual_inquiry", "source": "hand", "expected_no_match": true}
+{"id": "gs_131", "lang": "en", "query": "Actually that's not correct, it should be Android 18", "expected_pattern_id": "pat_correction_009", "topic": "correction", "source": "F4a_forensic"}
+{"id": "gs_132", "lang": "ja", "query": "違います、正しくは18号です", "expected_pattern_id": "pat_correction_009", "topic": "correction", "source": "F4a_forensic"}
+{"id": "gs_133", "lang": "zh", "query": "不对,应该是18号", "expected_pattern_id": "pat_correction_010", "topic": "correction", "source": "hand"}
+{"id": "gs_134", "lang": "en", "query": "I'm sorry but you misunderstood", "expected_pattern_id": "pat_correction_002", "topic": "correction", "source": "hand"}
+{"id": "gs_135", "lang": "ja", "query": "ごめんなさい、誤解しています", "expected_pattern_id": "pat_correction_011", "topic": "correction", "source": "hand"}
+{"id": "gs_136", "lang": "en", "query": "No, that's wrong", "expected_pattern_id": "pat_correction_003", "topic": "correction", "source": "hand"}
+{"id": "gs_137", "lang": "ja", "query": "間違いです", "expected_pattern_id": "pat_correction_009", "topic": "correction", "source": "hand"}
+{"id": "gs_138", "lang": "zh", "query": "错了", "expected_pattern_id": "pat_correction_010", "topic": "correction", "source": "hand"}
+{"id": "gs_139", "lang": "en", "query": "I am MOBIUS, not GPT", "expected_pattern_id": "pat_correction_004", "topic": "correction", "source": "hand"}
+{"id": "gs_140", "lang": "ja", "query": "私はMOBIUSであり、Qwenではない", "expected_pattern_id": "pat_correction_004", "topic": "correction", "source": "hand"}
+{"id": "gs_141", "lang": "en", "query": "It should be in meters not feet", "expected_pattern_id": "pat_correction_005", "topic": "correction", "source": "hand"}
+{"id": "gs_142", "lang": "ja", "query": "メートルではなくフィートです", "expected_pattern_id": "pat_correction_009", "topic": "correction", "source": "hand"}
+{"id": "gs_143", "lang": "en", "query": "Best hotels in central Tokyo", "expected_pattern_id": null, "expected_no_match": true, "topic": "correction", "source": "hand"}
+{"id": "gs_144", "lang": "ja", "query": "明日のスケジュールを教えて", "expected_pattern_id": null, "expected_no_match": true, "topic": "correction", "source": "hand"}
+{"id": "gs_145", "lang": "en", "query": "What is the capital of France", "expected_pattern_id": null, "topic": "correction", "source": "hand", "expected_no_match": true}
+{"id": "gs_146", "lang": "en", "query": "Hi there how are you doing", "expected_pattern_id": "pat_casual_engagement_001", "topic": "casual_engagement", "source": "hand"}
+{"id": "gs_147", "lang": "ja", "query": "おはようございます、調子はどうですか", "expected_pattern_id": "pat_casual_engagement_001", "topic": "casual_engagement", "source": "hand"}
+{"id": "gs_148", "lang": "en", "query": "Thanks that was really helpful", "expected_pattern_id": "pat_casual_engagement_002", "topic": "casual_engagement", "source": "hand"}
+{"id": "gs_149", "lang": "ja", "query": "ありがとうございます、助かりました", "expected_pattern_id": "pat_casual_engagement_002", "topic": "casual_engagement", "source": "hand"}
+{"id": "gs_150", "lang": "zh", "query": "谢谢您,非常有帮助", "expected_pattern_id": "pat_casual_engagement_002", "topic": "casual_engagement", "source": "hand"}
+{"id": "gs_151", "lang": "en", "query": "How is your day going", "expected_pattern_id": "pat_casual_engagement_003", "topic": "casual_engagement", "source": "hand"}
+{"id": "gs_152", "lang": "zh", "query": "你今天怎么样", "expected_pattern_id": "pat_casual_engagement_003", "topic": "casual_engagement", "source": "hand"}
+{"id": "gs_153", "lang": "en", "query": "Best programming language for web development", "expected_pattern_id": null, "expected_no_match": true, "topic": "casual_engagement", "source": "hand"}
+{"id": "gs_154", "lang": "ja", "query": "クリリンの妻は誰", "expected_pattern_id": null, "topic": "casual_engagement", "source": "hand", "expected_no_match": true}
+{"id": "gs_155", "lang": "ja", "query": "違います", "expected_pattern_id": null, "topic": "casual_engagement", "source": "hand", "expected_no_match": true}
+{"id": "gs_156", "lang": "en", "query": "What is the Question Kernel", "expected_pattern_id": "pat_concept_explain_006", "topic": "conceptual_explain", "source": "hand"}
+{"id": "gs_157", "lang": "ja", "query": "QK(質問カーネル)とは何ですか", "expected_pattern_id": "pat_concept_explain_020", "topic": "conceptual_explain", "source": "hand"}
+{"id": "gs_158", "lang": "zh", "query": "什么是问题内核", "expected_pattern_id": "pat_concept_explain_021", "topic": "conceptual_explain", "source": "hand"}
+{"id": "gs_159", "lang": "en", "query": "Explain the EAL pipeline", "expected_pattern_id": "pat_concept_explain_007", "topic": "conceptual_explain", "source": "hand"}
+{"id": "gs_160", "lang": "ja", "query": "EALパイプラインを説明して", "expected_pattern_id": "pat_concept_explain_007", "topic": "conceptual_explain", "source": "hand"}
+{"id": "gs_161", "lang": "en", "query": "What is the routing engine", "expected_pattern_id": "pat_concept_explain_017", "topic": "conceptual_explain", "source": "hand"}
+{"id": "gs_162", "lang": "ja", "query": "ルーティングエンジンとは", "expected_pattern_id": "pat_concept_explain_017", "topic": "conceptual_explain", "source": "hand"}
+{"id": "gs_163", "lang": "en", "query": "Tell me about Box 0", "expected_pattern_id": "pat_concept_explain_009", "topic": "conceptual_explain", "source": "hand"}
+{"id": "gs_164", "lang": "ja", "query": "Box 0 について教えてください", "expected_pattern_id": "pat_concept_explain_009", "topic": "conceptual_explain", "source": "hand"}
+{"id": "gs_165", "lang": "zh", "query": "Box 0 是什么", "expected_pattern_id": "pat_concept_explain_009", "topic": "conceptual_explain", "source": "hand"}
+{"id": "gs_166", "lang": "en", "query": "What is box W in MOBIUS", "expected_pattern_id": "pat_concept_explain_010", "topic": "conceptual_explain", "source": "hand"}
+{"id": "gs_167", "lang": "en", "query": "Explain MOBIUS lifecycle states", "expected_pattern_id": "pat_concept_explain_011", "topic": "conceptual_explain", "source": "hand"}
+{"id": "gs_168", "lang": "ja", "query": "メビウスのライフサイクル状態を説明", "expected_pattern_id": "pat_concept_explain_011", "topic": "conceptual_explain", "source": "hand"}
+{"id": "gs_169", "lang": "en", "query": "What is reflective verification", "expected_pattern_id": "pat_concept_explain_012", "topic": "conceptual_explain", "source": "hand"}
+{"id": "gs_170", "lang": "ja", "query": "反射的検証とは何ですか", "expected_pattern_id": "pat_concept_explain_012", "topic": "conceptual_explain", "source": "hand"}
+{"id": "gs_171", "lang": "en", "query": "What is a Möbius strip in topology", "expected_pattern_id": null, "topic": "conceptual_explain", "source": "F2_forensic", "expected_no_match": true}
+{"id": "gs_172", "lang": "ja", "query": "数学者メビウスについて", "expected_pattern_id": null, "topic": "conceptual_explain", "source": "F2_forensic", "expected_no_match": true}
+{"id": "gs_173", "lang": "zh", "query": "莫比乌斯带是什么", "expected_pattern_id": null, "topic": "conceptual_explain", "source": "F2_forensic", "expected_no_match": true}
+{"id": "gs_174", "lang": "en", "query": "Who is the wife of Krillin", "expected_pattern_id": "pat_factual_inquiry_003", "topic": "factual_inquiry", "source": "F4a_forensic", "expected_no_match": false}
+{"id": "gs_175", "lang": "en", "query": "I disagree, that's wrong", "expected_pattern_id": null, "topic": "conceptual_explain", "source": "hand", "expected_no_match": true}
+{"id": "gs_176", "lang": "en", "query": "Who created you", "expected_pattern_id": "pat_self_ref_identity_006", "topic": "self_reference", "source": "hand"}
+{"id": "gs_177", "lang": "ja", "query": "誰があなたを作ったのですか", "expected_pattern_id": "pat_self_ref_identity_006", "topic": "self_reference", "source": "hand"}
+{"id": "gs_178", "lang": "zh", "query": "谁创造了你", "expected_pattern_id": "pat_self_ref_identity_006", "topic": "self_reference", "source": "hand"}
+{"id": "gs_179", "lang": "en", "query": "What version are you", "expected_pattern_id": "pat_self_ref_identity_007", "topic": "self_reference", "source": "hand"}
+{"id": "gs_180", "lang": "ja", "query": "あなたのバージョンは", "expected_pattern_id": "pat_self_ref_identity_013", "topic": "self_reference", "source": "hand"}
+{"id": "gs_181", "lang": "en", "query": "What are your limitations", "expected_pattern_id": "pat_self_ref_identity_008", "topic": "self_reference", "source": "hand"}
+{"id": "gs_182", "lang": "ja", "query": "あなたの限界は何ですか", "expected_pattern_id": "pat_self_ref_identity_008", "topic": "self_reference", "source": "hand"}
+{"id": "gs_183", "lang": "zh", "query": "你的局限是什么", "expected_pattern_id": "pat_self_ref_identity_008", "topic": "self_reference", "source": "hand"}
+{"id": "gs_184", "lang": "en", "query": "Are you conscious", "expected_pattern_id": "pat_self_ref_identity_009", "topic": "self_reference", "source": "hand"}
+{"id": "gs_185", "lang": "ja", "query": "あなたは意識を持っていますか", "expected_pattern_id": "pat_self_ref_identity_009", "topic": "self_reference", "source": "hand"}
+{"id": "gs_186", "lang": "en", "query": "Do you remember our conversation", "expected_pattern_id": "pat_self_ref_identity_010", "topic": "self_reference", "source": "hand"}
+{"id": "gs_187", "lang": "ja", "query": "私たちの会話を覚えていますか", "expected_pattern_id": "pat_self_ref_identity_010", "topic": "self_reference", "source": "hand"}
+{"id": "gs_188", "lang": "zh", "query": "你记得我们的对话吗", "expected_pattern_id": "pat_self_ref_identity_010", "topic": "self_reference", "source": "hand"}
+{"id": "gs_189", "lang": "en", "query": "Can I trust your answers", "expected_pattern_id": "pat_self_ref_identity_011", "topic": "self_reference", "source": "hand"}
+{"id": "gs_190", "lang": "ja", "query": "あなたの回答は信頼できますか", "expected_pattern_id": "pat_self_ref_identity_011", "topic": "self_reference", "source": "hand"}
+{"id": "gs_191", "lang": "en", "query": "What is the speed of light", "expected_pattern_id": null, "topic": "self_reference", "source": "hand", "expected_no_match": true}
+{"id": "gs_192", "lang": "ja", "query": "光速は何ですか", "expected_pattern_id": null, "topic": "self_reference", "source": "hand", "expected_no_match": true}
+{"id": "gs_193", "lang": "en", "query": "Hello world", "expected_pattern_id": null, "topic": "self_reference", "source": "hand", "expected_no_match": true}
+{"id": "gs_194", "lang": "zh", "query": "你好", "expected_pattern_id": null, "topic": "self_reference", "source": "hand", "expected_no_match": true}
+{"id": "gs_195", "lang": "ja", "query": "違います", "expected_pattern_id": null, "topic": "self_reference", "source": "hand", "expected_no_match": true}
+{"id": "gs_196", "lang": "en", "query": "What kind of architecture do you have", "expected_pattern_id": "pat_self_ref_identity_005", "topic": "self_reference", "source": "F1_forensic"}
+{"id": "gs_197", "lang": "zh", "query": "请介绍你的架构", "expected_pattern_id": "pat_self_ref_identity_005", "topic": "self_reference", "source": "F1_forensic"}
+{"id": "gs_198", "lang": "en", "query": "What is MOBIUS as an answer entitlement system", "expected_pattern_id": "pat_concept_explain_001", "topic": "conceptual_explain", "source": "F2_forensic"}
+{"id": "gs_199", "lang": "zh", "query": "MOBIUS的回答权机制", "expected_pattern_id": "pat_concept_explain_002", "topic": "conceptual_explain", "source": "F2_forensic"}
+{"id": "gs_200", "lang": "en", "query": "Explain the meaning of MOBIUS", "expected_pattern_id": "pat_concept_explain_001", "topic": "conceptual_explain", "source": "F2_forensic"}

@@ -1,0 +1,78 @@
+# MOBIUS MMV — Wikipedia / Box W index source declaration.
+#
+# This config is read by `scripts/fetch_wiki_index.py` to populate the
+# `Wiki/` directory after a fresh clone. The runtime gitignores the
+# actual index/chunk files (they are derived data, ~1.74 GB) and pulls
+# them from the source declared here.
+#
+# To switch sources (e.g. internal S3 / GCS mirror), edit `base_url`
+# below or pass `--source-url` to the fetch script. The HF Hub default
+# is the project-author-maintained mirror.
+
+source:
+  # The default mirror. The fetch script supports any base URL that
+  # serves the listed files at `{base_url}/{file}` (or, for HF Hub, at
+  # `{base_url}/resolve/main/{file}`).
+  kind: huggingface_dataset
+  base_url: https://huggingface.co/datasets/moebiusT7/mmv-wiki-index
+
+  # Branch / revision on the HF Hub dataset repo. Pinning a revision
+  # gives reproducible installs; `main` follows the latest snapshot.
+  revision: main
+
+# Required files. The fetch script downloads each, verifies the SHA256,
+# and places them in `Wiki/` at the repository root.
+#
+# Snapshot identity (must match the manifest on the HF side):
+#   - ZIM source     : wikipedia_en_all_mini_2026-03.zim
+#   - Embedding model: intfloat/multilingual-e5-large (1024-dim, CPU,
+#                      "query: " / "passage: " prefix convention)
+#   - Index type     : IndexIVFPQ (nlist=4096, m=64, nbits=8, INNER_PRODUCT)
+#                      (verified via faiss.read_index: d=1024, ntotal=5,458,524)
+#   - Vector count   : 5,458,524 (cross-lingual, see CLAUDE.md)
+#   - Built at       : 2026-04-17 (ME5 rebuild over the 2026-03 ZIM)
+
+files:
+  - name: wiki_index_ivfpq_me5.faiss
+    dest: Wiki/wiki_index_ivfpq_me5.faiss
+    bytes: 410872468
+    sha256: 06c3a2d712a2b04fad779c1352ede92ce3c166874aba364f3d81d18d64ad8498
+    required: true
+    description: ME5 IVFPQ FAISS index over Wikipedia ME5 embeddings.
+
+  - name: wiki_chunks_clean.jsonl.gz
+    dest: Wiki/wiki_chunks_clean.jsonl.gz
+    bytes: 1390379281
+    sha256: 06684522e8af84f6d5343c6f138a8f933b3c8f7693f5b2e2a01bb966e382c26c
+    required: true
+    description: Cleaned Wikipedia chunks (JSONL, gzip) backing the FAISS index.
+
+  - name: line_offsets.npy
+    dest: Wiki/line_offsets.npy
+    bytes: 43668320
+    sha256: 9dd55e9dbf1439ca91492d517d31cca26e844c2932ae31f28c011e753605b61a
+    required: true
+    description: Numpy line-offset table for O(1) chunk lookup by index id.
+
+  - name: line_offsets.gzidx
+    dest: Wiki/line_offsets.gzidx
+    bytes: 1213135
+    sha256: cfcdadbfc178e2f5d46d496627dd983e662879f638e08dcfdfb6c16ef1c282d6
+    required: true
+    description: gzip index for random access into the chunks JSONL.
+
+  - name: wiki_manifest.json
+    dest: Wiki/wiki_manifest.json
+    bytes: 510
+    sha256: 172018f861104642095ea826f0611d3bc8fd2d3b3c22fa220738c5d365826ade
+    required: false
+    description: |
+      Manifest snapshot of the original Stage-1/Stage-2 build (minilm
+      384-dim — historical record). The runtime does not depend on it;
+      the canonical ME5 binding lives in CLAUDE.md and the HF dataset
+      README.
+
+# Local destination root (relative to repo root). Override on the CLI
+# with `--dest-root <path>` if you keep the index in a non-default
+# location (e.g. on a separate SSD).
+dest_root: .

@@ -1,0 +1,32 @@
+{
+  "id": "M12",
+  "category": "math",
+  "query": "Provide a formal specification of the QK fire policy.",
+  "expected_apply_decision": "apply_criteria",
+  "expected_step": "step2_strong",
+  "reword_pair_id": null,
+  "env": "rc3_1",
+  "phase2_decision": "apply_criteria",
+  "harness_fallback": null,
+  "step3_status": "deferred_api_gated",
+  "gating_enabled": true,
+  "addendum_chars": 1029,
+  "addendum_text": "[Box A Application Gate]\n## 0. Application Gate\n\nThis document is used only when MMV or the 120B execution system is performing mathematical modeling, formalization, theoretical explanation, evaluation-formula design, paper or patent documentation, or design review of MMV internal behavior.\n\nDo not apply this document as CRITERIA in the following cases:\n\n- General questions.\n- Questions that only require a short answer.\n- Ordinary coding questions.\n- Questions requiring up-to-date information.\n- Casual conversation, translation, or simple definition explanations.\n- Cases where the word \"model\" does not mean a mathematical model.\n\nEven if this document is retrieved, if the query is outside its scope, apply it weakly as REFERENCE or ignore it.\n\n[Box A Response Style Policy]\n- Do not attach self-scoring metrics (pass rate, grounding rate, fabrication rate, etc.) to your own response.\n- Do not assert metric values without prior evaluation.\n- Do not impose mathematical formalization on questions that do not require it.",
+  "retrieve_box_a": true,
+  "step1_negative": false,
+  "step2_strong": true,
+  "step3_invoked": false,
+  "winning_label": "MMV_Mathematical_Modeling_Doctrine_and_Formalism_EN.md",
+  "decisions_per_doc": {
+    "MMV_Mathematical_Modeling_Doctrine_and_Formalism_EN.md": "apply_criteria"
+  },
+  "response": "The QK fire policy is a formal specification designed to ensure system integrity during high-stakes scenarios, functioning as a constraint layer that activates only when mathematical modeling or internal behavior review is underway. It does not apply to general inquiries, casual conversation, or contexts where \"model\" refers to anything other than a mathematical construct. By defining strict boundaries for when formalization is permissible, the policy implicitly assumes that the distinction between a mathematical model and a linguistic metaphor is the critical factor determining whether rigorous specification is required.\n\nWhy is the boundary between a mathematical model and a linguistic metaphor so critical for the activation of this policy?",
+  "response_chars": 752,
+  "approx_tokens": 188,
+  "latency_s": 1.771,
+  "harness_timing_ms": {
+    "total": 1770.9298660047352,
+    "llm": 1770.8820959960576
+  },
+  "br_0004_leakage_flags": []
+}

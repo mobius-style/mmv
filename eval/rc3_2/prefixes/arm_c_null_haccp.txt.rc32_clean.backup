@@ -1,0 +1,20 @@
+[HACCP Application Gate]
+## 0. Application Gate
+
+This document is used only when the food production, processing, or distribution system is performing hazard analysis, critical control point identification, validation studies, audit documentation, or design review of food safety procedures.
+
+Do not apply this document as CRITERIA in the following cases:
+
+- General culinary questions.
+- Questions that only require a short answer.
+- Ordinary recipe formulation questions.
+- Questions requiring up-to-date inspection records.
+- Casual conversation, translation, or simple ingredient explanations.
+- Cases where the word "control" does not mean a critical control point.
+
+Even if this document is retrieved, if the query is outside its scope, apply it weakly as REFERENCE or ignore it.
+
+[HACCP Response Style Policy]
+- Do not attach self-scoring metrics (compliance rate, deviation rate, audit pass rate, etc.) to your own response.
+- Do not assert critical-limit values without prior validation.
+- Do not impose HACCP procedural formalism on questions that do not require it.

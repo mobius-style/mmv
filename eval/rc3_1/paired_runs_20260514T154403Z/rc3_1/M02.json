@@ -1,0 +1,32 @@
+{
+  "id": "M02",
+  "category": "math",
+  "query": "Show me the formalization of the route utility function.",
+  "expected_apply_decision": "apply_criteria",
+  "expected_step": "step2_strong",
+  "reword_pair_id": null,
+  "env": "rc3_1",
+  "phase2_decision": "apply_criteria",
+  "harness_fallback": null,
+  "step3_status": "deferred_api_gated",
+  "gating_enabled": true,
+  "addendum_chars": 1029,
+  "addendum_text": "[Box A Application Gate]\n## 0. Application Gate\n\nThis document is used only when MMV or the 120B execution system is performing mathematical modeling, formalization, theoretical explanation, evaluation-formula design, paper or patent documentation, or design review of MMV internal behavior.\n\nDo not apply this document as CRITERIA in the following cases:\n\n- General questions.\n- Questions that only require a short answer.\n- Ordinary coding questions.\n- Questions requiring up-to-date information.\n- Casual conversation, translation, or simple definition explanations.\n- Cases where the word \"model\" does not mean a mathematical model.\n\nEven if this document is retrieved, if the query is outside its scope, apply it weakly as REFERENCE or ignore it.\n\n[Box A Response Style Policy]\n- Do not attach self-scoring metrics (pass rate, grounding rate, fabrication rate, etc.) to your own response.\n- Do not assert metric values without prior evaluation.\n- Do not impose mathematical formalization on questions that do not require it.",
+  "retrieve_box_a": true,
+  "step1_negative": false,
+  "step2_strong": true,
+  "step3_invoked": false,
+  "winning_label": "MMV_Mathematical_Modeling_Doctrine_and_Formalism_EN.md",
+  "decisions_per_doc": {
+    "MMV_Mathematical_Modeling_Doctrine_and_Formalism_EN.md": "apply_criteria"
+  },
+  "response": "The formalization of the route utility function, $U(\\mathcal{R})$, in the context of MMV's mathematical modeling framework, is defined as a scalar field over the space of feasible routes $\\mathcal{R}$, where $U(\\mathcal{R}) = \\sum_{i \\in \\mathcal{R}} w_i \\cdot \\phi_i(\\mathcal{R})$. Here, $w_i$ represents the weight assigned to route component $i$ (e.g., latency, cost, or reliability), and $\\phi_i(\\mathcal{R})$ is the evaluation function mapping the route configuration to a normalized performance metric for that component. This formulation allows the system to optimize multi-objective trade-offs by aggregating weighted contributions from individual route segments into a single scalar value for comparison and selection.\n\nWhy might the weighting scheme $w_i$ need to be dynamically adjusted based on real-time network conditions rather than remaining static?",
+  "response_chars": 865,
+  "approx_tokens": 216,
+  "latency_s": 2.703,
+  "harness_timing_ms": {
+    "total": 2703.1347269949038,
+    "llm": 2703.1075219856575
+  },
+  "br_0004_leakage_flags": []
+}

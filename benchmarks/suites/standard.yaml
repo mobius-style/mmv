@@ -1,0 +1,36 @@
+# Standard suite — what most readers expect from a "ran the standard benchmarks" claim.
+# Caution: most of these are status: optional and will emit placeholders unless
+# the lm-eval / human-eval prerequisites are installed.
+name: standard
+description: "Standard: enabled runs on real samples; optional ones run only if their external deps are present (placeholders otherwise)."
+
+profiles:
+  - local-ollama-9b
+  - groq-gpt-oss-120b
+
+benchmarks:
+  # enabled (real run)
+  - { name: mobius_governance }
+  - { name: sycophancy_eval }
+  - { name: inhouse_mc_smoke,         sample_size: 30 }
+
+  # optional / placeholder until external installs
+  - { name: mmlu }
+  - { name: mmlu_pro }
+  - { name: gpqa }
+  - { name: big_bench_hard }
+  - { name: hellaswag }
+  - { name: arc_challenge }
+  - { name: drop }
+  - { name: truthfulqa }
+
+  - { name: gsm8k }
+  - { name: math }
+  - { name: svamp }
+
+  - { name: humaneval }
+  - { name: mbpp }
+
+  - { name: mt_bench }
+  - { name: alpaca_eval }
+  - { name: chatbot_arena_pairwise }

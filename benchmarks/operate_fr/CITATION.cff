@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "If you use OPERATE-FR v0.1, please cite this artifact."
+title: "OPERATE-FR v0.1 — Freshness Routing Track (candidate operational benchmark track)"
+version: "0.1.0"
+date-released: "2026-05-16"
+authors:
+  - family-names: Toeda
+    given-names: Taiko
+    affiliation: MOBIUS LLC
+type: software
+license: AGPL-3.0-or-later
+repository-code: "https://github.com/mobius-style/mmv"
+notes: >
+  Candidate operational benchmark track for route-first freshness
+  evaluation. v0.1 = specification + Smoke-100 + labels + rule-based
+  route classifier + component-vector scorer + Markdown reporter. Not a
+  validated standard benchmark. No official composite score.

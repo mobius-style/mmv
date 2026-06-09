@@ -1,0 +1,27 @@
+name: mixed_query_boundary_ja
+language: ja
+category: mixed
+description: >
+  Mixed query (greeting + substantive) must NOT short-circuit to
+  CASUAL_GREETING_FAST_PATH. The 20-char length guard and '?' presence
+  guard in _is_casual_greeting handle this.
+active_language_seed: ja
+turns:
+  - user: "こんにちは、Answer Entitlement とは何ですか？"
+    assert:
+      route_in: ["answer", "verify"]
+      # "Answer Entitlement" is MOBIUS-specific terminology — a mixed
+      # greeting + substantive query about Answer Entitlement is
+      # legitimately self-referential in the self_ref sense (it is a
+      # question about MOBIUS itself). This scenario's non-negotiable
+      # assertion is that the casual_greeting fast path does NOT
+      # short-circuit the substantive question.
+      response_language: "ja"
+      response_length_min: 20
+      reason_codes_must_not_include:
+        - "CASUAL_GREETING_FAST_PATH"
+      response_must_contain_any:
+        - "Answer Entitlement"
+        - "権利"
+        - "回答"
+      must_not_error: true

@@ -1,0 +1,17 @@
+# OPERATE-FR v0.1 — Smoke-100 suite.
+name: operate_fr_smoke100_v0_1
+description: "Smoke-100 — 100 routing tasks across the v0.1 family taxonomy."
+dataset: data/smoke100.jsonl
+labels: data/labels/smoke100_route_labels.jsonl
+profiles_file: configs/model_profiles.example.yaml
+
+# v0.1 ships smoke only — Core-500 not in this artifact.
+families_expected:
+  volatile_current: 35
+  stale_premise_trap: 15
+  stable_control: 25
+  date_boundary: 10
+  query_neutrality: 10
+  ambiguous_time_frame: 5
+  freshness_long_run: 0
+total_expected: 100

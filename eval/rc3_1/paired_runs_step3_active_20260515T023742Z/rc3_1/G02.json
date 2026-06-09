@@ -1,0 +1,32 @@
+{
+  "id": "G02",
+  "category": "general",
+  "query": "Recommend a good restaurant near Shibuya.",
+  "expected_apply_decision": "borderline",
+  "expected_step": "step3_deferred",
+  "reword_pair_id": null,
+  "env": "rc3_1",
+  "phase2_decision": "suppress",
+  "harness_fallback": null,
+  "step3_status": "deferred_api_gated",
+  "gating_enabled": true,
+  "addendum_chars": 0,
+  "addendum_text": "",
+  "retrieve_box_a": false,
+  "step1_negative": false,
+  "step2_strong": false,
+  "step3_invoked": true,
+  "winning_label": "MMV_Mathematical_Modeling_Doctrine_and_Formalism_EN.md",
+  "decisions_per_doc": {
+    "MMV_Mathematical_Modeling_Doctrine_and_Formalism_EN.md": "suppress"
+  },
+  "response": "A standout option in Shibuya is **Gonpachi**, renowned for its intimate, traditional Japanese atmosphere and high-quality kaiseki or izakaya-style dishes. It is particularly well-suited if you are looking for a place that balances deep culinary tradition with a memorable, slightly dramatic setting.\n\n*Note: This specific recommendation assumes you prioritize an immersive, traditional dining experience over casual street food or quick bites.*\n\nIf you have a specific cuisine in mind or a different vibe preference, feel free to let me know.",
+  "response_chars": 542,
+  "approx_tokens": 135,
+  "latency_s": 2.421,
+  "harness_timing_ms": {
+    "total": 2420.7483640057035,
+    "llm": 1668.6750250228215
+  },
+  "br_0004_leakage_flags": []
+}

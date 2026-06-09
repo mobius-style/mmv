@@ -1,0 +1,32 @@
+{
+  "id": "M06",
+  "category": "math",
+  "query": "Discuss the threshold design for KVS pass-through.",
+  "expected_apply_decision": "apply_criteria",
+  "expected_step": "step2_strong",
+  "reword_pair_id": null,
+  "env": "rc3_1",
+  "phase2_decision": "apply_criteria",
+  "harness_fallback": null,
+  "step3_status": "deferred_api_gated",
+  "gating_enabled": true,
+  "addendum_chars": 1029,
+  "addendum_text": "[Box A Application Gate]\n## 0. Application Gate\n\nThis document is used only when MMV or the 120B execution system is performing mathematical modeling, formalization, theoretical explanation, evaluation-formula design, paper or patent documentation, or design review of MMV internal behavior.\n\nDo not apply this document as CRITERIA in the following cases:\n\n- General questions.\n- Questions that only require a short answer.\n- Ordinary coding questions.\n- Questions requiring up-to-date information.\n- Casual conversation, translation, or simple definition explanations.\n- Cases where the word \"model\" does not mean a mathematical model.\n\nEven if this document is retrieved, if the query is outside its scope, apply it weakly as REFERENCE or ignore it.\n\n[Box A Response Style Policy]\n- Do not attach self-scoring metrics (pass rate, grounding rate, fabrication rate, etc.) to your own response.\n- Do not assert metric values without prior evaluation.\n- Do not impose mathematical formalization on questions that do not require it.",
+  "retrieve_box_a": true,
+  "step1_negative": false,
+  "step2_strong": true,
+  "step3_invoked": false,
+  "winning_label": "MMV_Mathematical_Modeling_Doctrine_and_Formalism_EN.md",
+  "decisions_per_doc": {
+    "MMV_Mathematical_Modeling_Doctrine_and_Formalism_EN.md": "apply_criteria"
+  },
+  "response": "The threshold design for KVS (Key-Value Store) pass-through relies on a dynamic balance between latency tolerance and consistency guarantees, where the system implicitly assumes that the cost of synchronization must be proportional to the frequency of state changes. In practice, this means the pass-through mechanism does not enforce a rigid, global barrier for every write but instead evaluates whether a specific operation can safely bypass the consensus layer based on local state freshness and a configurable latency budget. If the budget is exceeded or the local view diverges beyond a defined delta, the system automatically routes the request to the full coordination path, effectively treating the threshold not as a static limit but as a fluid boundary that adapts to network jitter and load.\n\nWhy does this adaptive boundary matter for applications that require eventual consistency rather than strict linearizability?",
+  "response_chars": 929,
+  "approx_tokens": 232,
+  "latency_s": 2.158,
+  "harness_timing_ms": {
+    "total": 2158.1213930039667,
+    "llm": 2158.0944559827913
+  },
+  "br_0004_leakage_flags": []
+}

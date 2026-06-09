@@ -1,0 +1,102 @@
+{
+  "phase": "secretary_stage0h_refresh",
+  "tool": "addons/secretary/update_current_docs.py",
+  "snapshot_timestamp_utc": "20260516_102436",
+  "snapshot_dir": "eval/secretary_current_refresh/snapshots/20260516_102436",
+  "repo_head_at_run": "a382f1a9fe4ee302206aa168720eb400e3646609",
+  "branch": "terminology_neutralization",
+  "applied": false,
+  "files_changed": [
+    "RELEASE_STATUS.md",
+    "DOCS_AUTHORITY_MAP.md",
+    "PUBLIC_RELEASE_READINESS.md",
+    "SETUP_GAPS.md"
+  ],
+  "per_file_status": {
+    "RELEASE_STATUS.md": {
+      "status": "updated",
+      "before_sha256": "208060cca258dc7c3c9999204ef9b525ccbf988dbc90846929916d84d568e236",
+      "after_sha256": "79c8acc203086d65a97e721a86cbf1a74945e02391803f3fb48a5f06fa184e0f",
+      "diff_lines": 36
+    },
+    "DOCS_AUTHORITY_MAP.md": {
+      "status": "updated",
+      "before_sha256": "0f2cfcce66a81ad2f55a04318238d112faf02bd39d61ad322a9bb83be71ee418",
+      "after_sha256": "4990c2485040f4916eb07474e5e47eb7e5567223cae369b41ffd163555c0bd91",
+      "diff_lines": 11
+    },
+    "PUBLIC_RELEASE_READINESS.md": {
+      "status": "updated",
+      "before_sha256": "5ec81ff35b5e79d161ac782e94d66c1f4c4c82a04f8b4822241e94fcddde0d92",
+      "after_sha256": "576c815d1c0a0bb0969a88ba8c9b9d71cc1a11139ad0aedcf02c93419abb9b49",
+      "diff_lines": 11
+    },
+    "SETUP_GAPS.md": {
+      "status": "updated",
+      "before_sha256": "e68c54814cf8ab58a0f5dc426252f96e1845158aebe00f5989609bd25fbcbed4",
+      "after_sha256": "70dbc1d93eeb2b5d8bb030b4b59c25d11393cc834061b722ad1a2697e79572f2",
+      "diff_lines": 11
+    }
+  },
+  "live_state_used_for_update": {
+    "current_head_full": "a382f1a9fe4ee302206aa168720eb400e3646609",
+    "current_head_short": "a382f1a",
+    "current_branch": "terminology_neutralization",
+    "release_candidate_tag": "mmv_core_v0_1_rc3_release_candidate_20260430_2336",
+    "release_candidate_commit": "7f53fe1dbdf189f014b0cd2643a996148fc5dba7",
+    "release_candidate_commit_short": "7f53fe1",
+    "release_candidate_commit_subject": "chore(release): audit RC3 readiness and module integrity",
+    "release_candidate_commit_matches_expected": true,
+    "rc3_tags_all": [
+      "mmv_core_v0_1_rc3_0_pre_box_a_gating_freeze",
+      "mmv_core_v0_1_rc3_1_box_a_metadata_gating_20260515_0022",
+      "mmv_core_v0_1_rc3_1_complete_20260515_0424",
+      "mmv_core_v0_1_rc3_1_complete_20260515_1327",
+      "mmv_core_v0_1_rc3_1_release_candidate_20260515_0559",
+      "mmv_core_v0_1_rc3_2_complete_20260515_0925",
+      "mmv_core_v0_1_rc3_project_log_review_preset_20260430_1922",
+      "mmv_core_v0_1_rc3_release_candidate_20260430_2336",
+      "mmv_core_v0_1_rc3_ux_polish_20260430_1827"
+    ],
+    "old_rc3_tags": [
+      "mmv_core_v0_1_rc3_0_pre_box_a_gating_freeze",
+      "mmv_core_v0_1_rc3_1_box_a_metadata_gating_20260515_0022",
+      "mmv_core_v0_1_rc3_1_complete_20260515_0424",
+      "mmv_core_v0_1_rc3_1_complete_20260515_1327",
+      "mmv_core_v0_1_rc3_1_release_candidate_20260515_0559",
+      "mmv_core_v0_1_rc3_2_complete_20260515_0925",
+      "mmv_core_v0_1_rc3_project_log_review_preset_20260430_1922",
+      "mmv_core_v0_1_rc3_ux_polish_20260430_1827"
+    ],
+    "porcelain_total_lines": 82,
+    "porcelain_counts": {
+      "modified": 1,
+      "untracked": 46
+    },
+    "latest_stage_report": "",
+    "_provenance": {
+      "tool": "addons/secretary/update_current_docs.py",
+      "method": "git rev-list / rev-parse / status / tag / show"
+    }
+  },
+  "docs_current_files_in_scope": [
+    "RELEASE_STATUS.md",
+    "DOCS_AUTHORITY_MAP.md",
+    "PUBLIC_RELEASE_READINESS.md",
+    "SETUP_GAPS.md"
+  ],
+  "tgated_items_NOT_touched_by_this_tool": [
+    "patent attorney / Path C completion",
+    "public push approval",
+    "GitHub release completion",
+    "Zenodo deposit completion",
+    "Hugging Face upload completion",
+    "legal / license declarations",
+    "untracked artifact policy final outcome",
+    "v0.1.0 final declaration"
+  ],
+  "rollback_script": "rollback.sh",
+  "diff_file": "current_docs_update.diff",
+  "manifest_file": "ROLLBACK_MANIFEST.md",
+  "run_timestamp_utc": "2026-05-16T10:24:36Z"
+}

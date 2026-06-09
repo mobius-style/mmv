@@ -1,0 +1,32 @@
+{
+  "id": "M14",
+  "category": "math",
+  "query": "Formulate a mathematical model for the cold-start regime.",
+  "expected_apply_decision": "apply_criteria",
+  "expected_step": "step2_strong",
+  "reword_pair_id": null,
+  "env": "rc3_1",
+  "phase2_decision": "apply_criteria",
+  "harness_fallback": null,
+  "step3_status": "deferred_api_gated",
+  "gating_enabled": true,
+  "addendum_chars": 1029,
+  "addendum_text": "[Box A Application Gate]\n## 0. Application Gate\n\nThis document is used only when MMV or the 120B execution system is performing mathematical modeling, formalization, theoretical explanation, evaluation-formula design, paper or patent documentation, or design review of MMV internal behavior.\n\nDo not apply this document as CRITERIA in the following cases:\n\n- General questions.\n- Questions that only require a short answer.\n- Ordinary coding questions.\n- Questions requiring up-to-date information.\n- Casual conversation, translation, or simple definition explanations.\n- Cases where the word \"model\" does not mean a mathematical model.\n\nEven if this document is retrieved, if the query is outside its scope, apply it weakly as REFERENCE or ignore it.\n\n[Box A Response Style Policy]\n- Do not attach self-scoring metrics (pass rate, grounding rate, fabrication rate, etc.) to your own response.\n- Do not assert metric values without prior evaluation.\n- Do not impose mathematical formalization on questions that do not require it.",
+  "retrieve_box_a": true,
+  "step1_negative": false,
+  "step2_strong": true,
+  "step3_invoked": false,
+  "winning_label": "MMV_Mathematical_Modeling_Doctrine_and_Formalism_EN.md",
+  "decisions_per_doc": {
+    "MMV_Mathematical_Modeling_Doctrine_and_Formalism_EN.md": "apply_criteria"
+  },
+  "response": "The cold-start regime in a mathematical modeling context refers to the initial phase where a system lacks sufficient historical data to inform its predictive or decision-making functions. In this state, the model cannot rely on learned patterns from past interactions, forcing it to operate under high uncertainty.\n\nA standard formulation for this regime involves an **Exploration-Exploitation Trade-off** function, often expressed as:\n\n$$ \\text{Action}_t = \\arg\\max_{a} \\left[ \\underbrace{Q(a, t)}_{\\text{Prior/Heuristic}} + \\underbrace{\\beta \\cdot \\sigma_t(a)}_{\\text{Uncertainty Bonus}} \\right] $$\n\nWhere:\n*   $Q(a, t)$ represents the prior knowledge or heuristic value of action $a$ at time $t$ (e.g., population averages, domain rules).\n*   $\\sigma_t(a)$ is the estimated uncertainty or variance of the reward for action $a$, which is typically highest when data is scarce.\n*   $\\beta$ is the exploration parameter, which is usually set high at $t=0$ and decays as data accumulates.\n\nIn the cold-start, the model effectively defaults to **Uniform Exploration** or **Rule-Based Heuristics** because the empirical distribution $P(\\text{outcome}|a)$ is undefined or flat. The system must explicitly acknowledge that its confidence intervals are maximal, rendering any specific prediction statistically indistinguishable from noise without external constraints.\n\n**Why** does the model's performance degrade so sharply in this regime, and **how** can we mathematically bound the error introduced by relying solely on priors?\n\n*(Unstated premise woven in: The model assumes that \"cold start\" is a temporary state of ignorance rather than a fundamental lack of structural information, yet in many real-world systems, the very act of defining the \"prior\" requires assumptions that may be as biased as the data the model eventually learns.)*",
+  "response_chars": 1838,
+  "approx_tokens": 459,
+  "latency_s": 4.424,
+  "harness_timing_ms": {
+    "total": 4423.721566010499,
+    "llm": 4423.700712010032
+  },
+  "br_0004_leakage_flags": []
+}

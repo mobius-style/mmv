@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+{% block title %}Browse — MOBIUS Pattern Library{% endblock %}
+{% block content %}
+<h1>Library</h1>
+<div class="stats">
+  <div>Total: <strong>{{ stats.total }}</strong></div>
+  <div>Active: <strong>{{ stats.active }}</strong></div>
+  <div>Deprecated: <strong>{{ stats.deprecated }}</strong></div>
+  <div>Pending proposals: <strong>{{ stats.deletion_proposals }}</strong></div>
+</div>
+
+<form method="get" style="margin-top:1rem;display:flex;gap:0.75rem;flex-wrap:wrap;">
+  <select name="sort">
+    <option value="id" {% if sort == "id" %}selected{% endif %}>Sort: id</option>
+    <option value="hit_count" {% if sort == "hit_count" %}selected{% endif %}>Sort: hit_count</option>
+    <option value="last_hit" {% if sort == "last_hit" %}selected{% endif %}>Sort: last_hit</option>
+    <option value="audit_status" {% if sort == "audit_status" %}selected{% endif %}>Sort: audit_status</option>
+  </select>
+  <select name="audit_status">
+    <option value="">audit_status: all</option>
+    <option value="active" {% if audit_status == "active" %}selected{% endif %}>active</option>
+    <option value="deprecation_candidate" {% if audit_status == "deprecation_candidate" %}selected{% endif %}>deprecation_candidate</option>
+    <option value="user_deletion_proposed" {% if audit_status == "user_deletion_proposed" %}selected{% endif %}>user_deletion_proposed</option>
+    <option value="under_review" {% if audit_status == "under_review" %}selected{% endif %}>under_review</option>
+    <option value="deprecated" {% if audit_status == "deprecated" %}selected{% endif %}>deprecated</option>
+  </select>
+  <select name="origin_type">
+    <option value="">origin: all</option>
+    <option value="forensic" {% if origin_type == "forensic" %}selected{% endif %}>forensic</option>
+    <option value="manual" {% if origin_type == "manual" %}selected{% endif %}>manual</option>
+    <option value="autogen" {% if origin_type == "autogen" %}selected{% endif %}>autogen</option>
+    <option value="secretary" {% if origin_type == "secretary" %}selected{% endif %}>secretary</option>
+  </select>
+  <select name="heat">
+    <option value="">heat: all</option>
+    <option value="hot" {% if heat == "hot" %}selected{% endif %}>hot (≥ median hits)</option>
+    <option value="cold" {% if heat == "cold" %}selected{% endif %}>cold (0 hits)</option>
+  </select>
+  <button type="submit">Apply</button>
+</form>
+
+{% if tracker_total > 0 %}
+<div class="tracker-snapshot" style="margin-top:0.75rem;padding:0.5rem 0.75rem;background:#fffce8;border:1px solid #ddd;font-size:0.9em;">
+  Live in-memory tracker: <strong>{{ tracker_total }}</strong> hits across {{ tracker_snapshot | length }} pattern(s) since process start.
+  {% if tracker_snapshot %}
+  Top: {% for pid, n in (tracker_snapshot.items() | sort(attribute=1, reverse=True))[:5] %}<code>{{ pid }}</code>:{{ n }}{% if not loop.last %} · {% endif %}{% endfor %}
+  {% endif %}
+</div>
+{% endif %}
+
+{% for topic, patterns in patterns_by_topic.items() %}
+  {% if patterns %}
+  <section class="topic-section">
+    <h2>{{ topic }} ({{ patterns | length }})</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>id</th>
+          <th>intent</th>
+          <th>hit_count</th>
+          <th>last_hit</th>
+          <th>audit_status</th>
+          <th>origin</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for p in patterns %}
+        <tr class="{% if p.deprecated %}deprecated{% endif %}">
+          <td><a href="/pattern/{{ p.id }}"><code>{{ p.id }}</code></a></td>
+          <td>{{ p.intent }}</td>
+          <td>{{ p.lifecycle.hit_count }}</td>
+          <td>{% if p.lifecycle.last_hit_date %}{{ p.lifecycle.last_hit_date.strftime("%Y-%m-%d") }}{% else %}—{% endif %}</td>
+          <td>
+            {% set s = p.lifecycle.audit_status %}
+            <span class="badge {% if s == 'active' %}active{% elif s == 'deprecated' %}deprecated{% elif s == 'user_deletion_proposed' %}proposed{% endif %}">
+              {{ s }}
+            </span>
+          </td>
+          <td>{{ p.origin.type }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </section>
+  {% endif %}
+{% endfor %}
+{% endblock %}

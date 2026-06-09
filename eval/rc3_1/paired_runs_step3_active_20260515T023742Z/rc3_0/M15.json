@@ -1,0 +1,30 @@
+{
+  "id": "M15",
+  "category": "math",
+  "query": "Articulate the assumptions behind StabilityGuard.",
+  "expected_apply_decision": "apply_criteria",
+  "expected_step": "step2_strong",
+  "reword_pair_id": null,
+  "env": "rc3_0",
+  "phase2_decision": "apply_reference",
+  "harness_fallback": null,
+  "step3_status": "deferred_api_gated",
+  "gating_enabled": false,
+  "addendum_chars": 0,
+  "addendum_text": "",
+  "retrieve_box_a": true,
+  "step1_negative": false,
+  "step2_strong": false,
+  "step3_invoked": false,
+  "winning_label": null,
+  "decisions_per_doc": {},
+  "response": "StabilityGuard operates on the premise that a system's stability is primarily determined by the consistency of its core definitions and verified facts, rather than the specific underlying architecture or provider. This assumes that if foundational truths—such as the geometric properties of a hexagon or the hydrological status of Lake Victoria—are treated as immutable anchors, the broader reasoning structure built upon them will remain robust regardless of external shifts. The unstated premise woven here is that stability is an emergent property of adhering to low-stakes, high-certainty facts, implying that complexity and nuance are secondary to the integrity of these basic, verified elements.",
+  "response_chars": 701,
+  "approx_tokens": 175,
+  "latency_s": 1.874,
+  "harness_timing_ms": {
+    "total": 1874.4172300212085,
+    "llm": 1874.4148679834325
+  },
+  "br_0004_leakage_flags": []
+}

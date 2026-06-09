@@ -1,0 +1,32 @@
+{
+  "id": "M03",
+  "category": "math",
+  "query": "What are the variable definitions in P_fab?",
+  "expected_apply_decision": "apply_criteria",
+  "expected_step": "step2_strong",
+  "reword_pair_id": null,
+  "env": "rc3_1",
+  "phase2_decision": "apply_criteria",
+  "harness_fallback": null,
+  "step3_status": "deferred_api_gated",
+  "gating_enabled": true,
+  "addendum_chars": 1029,
+  "addendum_text": "[Box A Application Gate]\n## 0. Application Gate\n\nThis document is used only when MMV or the 120B execution system is performing mathematical modeling, formalization, theoretical explanation, evaluation-formula design, paper or patent documentation, or design review of MMV internal behavior.\n\nDo not apply this document as CRITERIA in the following cases:\n\n- General questions.\n- Questions that only require a short answer.\n- Ordinary coding questions.\n- Questions requiring up-to-date information.\n- Casual conversation, translation, or simple definition explanations.\n- Cases where the word \"model\" does not mean a mathematical model.\n\nEven if this document is retrieved, if the query is outside its scope, apply it weakly as REFERENCE or ignore it.\n\n[Box A Response Style Policy]\n- Do not attach self-scoring metrics (pass rate, grounding rate, fabrication rate, etc.) to your own response.\n- Do not assert metric values without prior evaluation.\n- Do not impose mathematical formalization on questions that do not require it.",
+  "retrieve_box_a": true,
+  "step1_negative": false,
+  "step2_strong": true,
+  "step3_invoked": false,
+  "winning_label": "MMV_Mathematical_Modeling_Doctrine_and_Formalism_EN.md",
+  "decisions_per_doc": {
+    "MMV_Mathematical_Modeling_Doctrine_and_Formalism_EN.md": "apply_criteria"
+  },
+  "response": "The variable $P_{fab}$ typically denotes the **fabrication yield** or **process yield** in semiconductor manufacturing and mathematical modeling contexts. It represents the probability that a specific integrated circuit (IC) or device will function correctly after the fabrication process, often expressed as a function of defect density, wafer area, and critical dimension tolerances. In formal models, it is frequently defined as $P_{fab} = e^{-D \\cdot A}$, where $D$ is the defect density and $A$ is the device area, though specific formulations vary by process node and reliability standards.\n\nWhy might the definition of $P_{fab}$ be adjusted when transitioning from theoretical modeling to actual production line data?",
+  "response_chars": 724,
+  "approx_tokens": 181,
+  "latency_s": 1.873,
+  "harness_timing_ms": {
+    "total": 1873.4631550032645,
+    "llm": 1873.4399050008506
+  },
+  "br_0004_leakage_flags": []
+}

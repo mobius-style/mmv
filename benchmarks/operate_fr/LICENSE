@@ -1,0 +1,8 @@
+OPERATE-FR v0.1 — benchmark artifact (specification, dataset, labels,
+classifier, scorer, and harness) is released under the same license as
+the parent MOBIUS-MMV repository (AGPL-3.0-or-later). See the project
+root LICENSE file for the full text.
+
+Spec-only obligations under OPERATE-FR's non-assertion covenant are
+described in NON_ASSERTION_COVENANT.md and apply in addition to (not in
+substitution for) the AGPL-3.0-or-later code license.

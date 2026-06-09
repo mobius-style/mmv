@@ -1,0 +1,30 @@
+{
+  "id": "M17",
+  "category": "math",
+  "query": "Show the formalize-design step for QK_42.",
+  "expected_apply_decision": "apply_criteria",
+  "expected_step": "step2_strong",
+  "reword_pair_id": null,
+  "env": "rc3_0",
+  "phase2_decision": "apply_reference",
+  "harness_fallback": null,
+  "step3_status": "deferred_api_gated",
+  "gating_enabled": false,
+  "addendum_chars": 0,
+  "addendum_text": "",
+  "retrieve_box_a": true,
+  "step1_negative": false,
+  "step2_strong": false,
+  "step3_invoked": false,
+  "winning_label": null,
+  "decisions_per_doc": {},
+  "response": "The formalize-design step for QK_42 involves translating the operational requirement into a precise logical schema where the \"Moonlight Sonata\" (Session dc8e4d56) serves as the canonical reference for temporal and emotional state constraints, effectively mapping the user's implicit need for structured artistic analysis onto a rigid formal framework.\n\nWhy does anchoring the design to a specific historical artifact like the Sonata force the system to prioritize emotional resonance over pure syntactic logic in this step?",
+  "response_chars": 523,
+  "approx_tokens": 130,
+  "latency_s": 1.685,
+  "harness_timing_ms": {
+    "total": 1685.044022015063,
+    "llm": 1685.0417270034086
+  },
+  "br_0004_leakage_flags": []
+}

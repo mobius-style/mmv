@@ -1,0 +1,113 @@
+# Pattern Library threshold calibration.
+#
+# Calibrated against tests/golden_set/pattern_library_golden_set_v1.jsonl
+# (200 entries, 6 topics) using scripts/golden_set_eval.py with
+# extended sweep grid [0.50, 0.60, ..., 0.90].
+#
+# Spec reference:
+#   docs/PATTERN_LIBRARY_SPEC_v1_4.md Section 3.2 (per-topic threshold)
+#   docs/PATTERN_LIBRARY_SPEC_v1_4.md Section 5.4.2 (Phase 3 plan)
+#
+# Phase 3 Commit 31 calibration (2026-04-27, full per-topic sweep):
+#   self_reference     optimal=0.84  acc=0.942 (49/52)
+#   conceptual_explain optimal=0.84  acc=0.845 (49/58)
+#   factual_inquiry    optimal=0.85  acc=0.840 (42/50)
+#   casual_engagement  optimal=0.85  acc=0.938 (15/16)
+#   casual_greeting    optimal=0.85  acc=1.000 (9/9)
+#   correction         optimal=0.82  acc=0.933 (14/15)
+#
+# Phase 3 Stabilization Commit 45 refinement (2026-04-27, post library
+# expansion to 80 patterns + 21 golden relabels). Fine-grained sweep
+# 0.80-0.88 step 0.01 against the updated golden set 200:
+#   self_reference     0.84→0.85  acc 0.885→0.904 (+1.9pp)
+#   conceptual_explain 0.84→0.86  acc 0.860→0.912 (+5.2pp)
+#   factual_inquiry    0.85       acc 0.863  (unchanged — already optimal)
+#   correction         0.82       acc 0.933  (unchanged — already optimal)
+#   casual_engagement  0.85       acc 0.875  (unchanged — already optimal)
+#   casual_greeting    0.85       acc 1.000  (unchanged — already optimal)
+# Overall: 176/200 (88.0%) → 182/200 (91.0%) at refined thresholds.
+#
+# Per-topic tuning lifts overall accuracy from 85.0% (uniform 0.85)
+# to 89.0% (per-topic optimum). Two topics (conceptual_explain 84.5%,
+# factual_inquiry 84.0%) remain just below the spec ≥85% gate at this
+# granularity; Commit 32 library expansion targets these for closure.
+#
+# Med thresholds set 0.15-0.20 below high; reserved for future
+# medium-confidence routing decisions (not used in current advisory
+# hook, where only confidence="high" stamps state primary metadata).
+#
+# Phase 4 v2 Commit 4 (2026-04-27): per-sub-topic initial thresholds.
+# Initial values inherit the parent topic value (Phase 3 stab refined).
+# Per-sub-topic empirical recalibration happens during Phase 4 PL
+# milestones (sweep on sub_topic-stratified golden set entries when
+# golden set ≥ 1,000 with per-sub-topic samples ≥ 30 each).
+# The sub_topics: section is read by PatternLibrary.from_disk()
+# alongside the topic-level keys (Phase 4 v2 Commit 3 wiring).
+
+self_reference:
+  high: 0.85
+  med: 0.65
+conceptual_explain:
+  high: 0.86
+  med: 0.65
+factual_inquiry:
+  high: 0.85
+  med: 0.70
+correction:
+  high: 0.82
+  med: 0.65
+casual_engagement:
+  high: 0.85
+  med: 0.70
+casual_greeting:
+  high: 0.85
+  med: 0.70
+
+# ─── Phase 4 per-sub-topic thresholds ─────────────────────────────
+# 32 sub-topics (Phase 4 v2 Commit 1 _taxonomy.yaml). Initial values
+# inherit parent topic. Empirical recalibration: per-sub-topic sweep
+# at PL milestone 1k/3k/5k/10k when sub_topic-stratified golden set
+# samples reach ≥ 30 per sub_topic.
+
+sub_topics:
+  # ── self_reference (parent high=0.85, med=0.65) ──
+  sr_identity:        {high: 0.85, med: 0.65}
+  sr_capabilities:    {high: 0.85, med: 0.65}
+  sr_limitations:     {high: 0.85, med: 0.65}
+  sr_architecture:    {high: 0.85, med: 0.65}
+  sr_lifecycle:       {high: 0.85, med: 0.65}
+  sr_meta_dialogue:   {high: 0.85, med: 0.65}
+
+  # ── conceptual_explain (parent high=0.86, med=0.65) ──
+  ce_mobius_core:        {high: 0.86, med: 0.65}
+  ce_mobius_components:  {high: 0.86, med: 0.65}
+  ce_mobius_methodology: {high: 0.86, med: 0.65}
+  ce_programming:        {high: 0.86, med: 0.65}
+  ce_science:            {high: 0.86, med: 0.65}
+  ce_humanities:         {high: 0.86, med: 0.65}
+  ce_meta_concept:       {high: 0.86, med: 0.65}
+
+  # ── factual_inquiry (parent high=0.85, med=0.70) ──
+  fi_definition:     {high: 0.85, med: 0.70}
+  fi_authorship:     {high: 0.85, med: 0.70}
+  fi_relationship:   {high: 0.85, med: 0.70}
+  fi_classification: {high: 0.85, med: 0.70}
+  fi_quantitative:   {high: 0.85, med: 0.70}
+  fi_temporal:       {high: 0.85, med: 0.70}
+  fi_geographic:     {high: 0.85, med: 0.70}
+  fi_specialized:    {high: 0.85, med: 0.70}
+
+  # ── correction (parent high=0.82, med=0.65) ──
+  co_factual:  {high: 0.82, med: 0.65}
+  co_identity: {high: 0.82, med: 0.65}
+  co_unit:     {high: 0.82, med: 0.65}
+  co_polite:   {high: 0.82, med: 0.65}
+  co_frame:    {high: 0.82, med: 0.65}
+
+  # ── casual_engagement (parent high=0.85, med=0.70) ──
+  cg_greeting:   {high: 0.85, med: 0.70}
+  cg_farewell:   {high: 0.85, med: 0.70}
+  cg_thanks:     {high: 0.85, med: 0.70}
+  cg_small_talk: {high: 0.85, med: 0.70}
+  cg_emotional:  {high: 0.85, med: 0.70}
+  cg_agreement:  {high: 0.85, med: 0.70}

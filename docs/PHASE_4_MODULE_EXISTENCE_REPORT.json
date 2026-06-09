@@ -1,0 +1,176 @@
+{
+  "healthy": [
+    {
+      "tier": "Tier 1 — Auto-gen pipeline",
+      "module": "variants_generator",
+      "path": "scripts/pattern_autogen/variants_generator.py"
+    },
+    {
+      "tier": "Tier 1 — Auto-gen pipeline",
+      "module": "negatives_generator",
+      "path": "scripts/pattern_autogen/negatives_generator.py"
+    },
+    {
+      "tier": "Tier 1 — Auto-gen pipeline",
+      "module": "xling_query_generator",
+      "path": "scripts/pattern_autogen/xling_query_generator.py"
+    },
+    {
+      "tier": "Tier 1 — Auto-gen pipeline",
+      "module": "quality_grader",
+      "path": "scripts/pattern_autogen/quality_grader.py"
+    },
+    {
+      "tier": "Tier 1 — Auto-gen pipeline",
+      "module": "conflict_checker",
+      "path": "scripts/pattern_autogen/conflict_checker.py"
+    },
+    {
+      "tier": "Tier 1 — Auto-gen pipeline",
+      "module": "groq_client",
+      "path": "scripts/pattern_autogen/groq_client.py"
+    },
+    {
+      "tier": "Tier 1 — Auto-gen pipeline",
+      "module": "create_seed_patterns",
+      "path": "scripts/pattern_autogen/create_seed_patterns.py"
+    },
+    {
+      "tier": "Tier 2 — Library Inspector",
+      "module": "inspector_app",
+      "path": "src/ui/library_inspector/app.py"
+    },
+    {
+      "tier": "Tier 2 — Library Inspector",
+      "module": "browse_route",
+      "path": "src/ui/library_inspector/routes/browse.py"
+    },
+    {
+      "tier": "Tier 2 — Library Inspector",
+      "module": "pattern_detail_route",
+      "path": "src/ui/library_inspector/routes/pattern_detail.py"
+    },
+    {
+      "tier": "Tier 2 — Library Inspector",
+      "module": "search_route",
+      "path": "src/ui/library_inspector/routes/search.py"
+    },
+    {
+      "tier": "Tier 2 — Library Inspector",
+      "module": "trace_route",
+      "path": "src/ui/library_inspector/routes/trace.py"
+    },
+    {
+      "tier": "Tier 2 — Library Inspector",
+      "module": "verify_route",
+      "path": "src/ui/library_inspector/routes/verify.py"
+    },
+    {
+      "tier": "Tier 2 — Library Inspector",
+      "module": "audit_route",
+      "path": "src/ui/library_inspector/routes/audit.py"
+    },
+    {
+      "tier": "Tier 2 — Library Inspector",
+      "module": "propose_route",
+      "path": "src/ui/library_inspector/routes/propose.py"
+    },
+    {
+      "tier": "Tier 2 — Library Inspector",
+      "module": "author_route",
+      "path": "src/ui/library_inspector/routes/author.py"
+    },
+    {
+      "tier": "Tier 2 — Library Inspector",
+      "module": "secretary_route",
+      "path": "src/ui/library_inspector/routes/secretary.py"
+    },
+    {
+      "tier": "Tier 2 — Secretary + Hit-count",
+      "module": "secretary_core",
+      "path": "src/secretary/secretary_core.py"
+    },
+    {
+      "tier": "Tier 2 — Secretary + Hit-count",
+      "module": "hit_count_tracker",
+      "path": "src/retrieval/hit_count_tracker.py"
+    },
+    {
+      "tier": "Tier 3 — ISM auto-gen + ISMProfile",
+      "module": "intent_variants_generator",
+      "path": "scripts/ism_corpus/intent_variants_generator.py"
+    },
+    {
+      "tier": "Tier 3 — ISM auto-gen + ISMProfile",
+      "module": "abstain_gap_filler",
+      "path": "scripts/ism_corpus/abstain_gap_filler.py"
+    },
+    {
+      "tier": "Tier 3 — ISM auto-gen + ISMProfile",
+      "module": "ism_profile",
+      "path": "src/adapters/raf/profile.py"
+    },
+    {
+      "tier": "Tier 4 — Infrastructure",
+      "module": "me5_singleton",
+      "path": "src/services/me5_singleton.py"
+    },
+    {
+      "tier": "Tier 4 — Infrastructure",
+      "module": "pseudo_ui_runner",
+      "path": "scripts/pseudo_ui_runner.py"
+    },
+    {
+      "tier": "Tier 4 — Infrastructure",
+      "module": "routing_engine",
+      "path": "src/kernel/routing_engine.py"
+    },
+    {
+      "tier": "Tier 4 — Infrastructure",
+      "module": "pattern_lookup",
+      "path": "src/retrieval/pattern_lookup.py"
+    },
+    {
+      "tier": "Tier 4 — Infrastructure",
+      "module": "pattern_schema",
+      "path": "src/retrieval/pattern_schema.py"
+    },
+    {
+      "tier": "Tier 4 — Infrastructure",
+      "module": "build_pattern_index",
+      "path": "scripts/build_pattern_index.py"
+    },
+    {
+      "tier": "Tier 4 — Infrastructure",
+      "module": "audit_pattern_library",
+      "path": "scripts/audit_pattern_library.py"
+    },
+    {
+      "tier": "Tier 4 — Infrastructure",
+      "module": "run_33_scenarios",
+      "path": "scripts/run_33_scenarios.py"
+    },
+    {
+      "tier": "Tier 4 — Infrastructure",
+      "module": "verify_constitutional",
+      "path": "scripts/verify_constitutional_invariants.py"
+    },
+    {
+      "tier": "Tier 4 — Infrastructure",
+      "module": "verify_existing_fixes",
+      "path": "scripts/verify_existing_fixes.py"
+    },
+    {
+      "tier": "Tier 4 — Infrastructure",
+      "module": "check_identity_leakage",
+      "path": "scripts/check_identity_leakage.py"
+    },
+    {
+      "tier": "Tier 4 — Infrastructure",
+      "module": "verify_evolution_log",
+      "path": "scripts/verify_evolution_log_immutability.py"
+    }
+  ],
+  "missing": [],
+  "import_error": []
+}

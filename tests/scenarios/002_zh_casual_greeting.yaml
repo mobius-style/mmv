@@ -1,0 +1,25 @@
+name: casual_greeting_zh
+language: zh
+category: casual_greeting
+description: >
+  Pure ZH greeting — 你好 / 谢谢 must route to CASUAL_GREETING_FAST_PATH
+  despite ism possibly mis-classifying short ZH as topic_continuation
+  (the reorder in _infer_intent_type handles this).
+active_language_seed: zh
+turns:
+  - user: "你好"
+    assert:
+      route: "answer"
+      intent_type: "casual_greeting"
+      self_referential: false
+      box_0_consulted: false
+      box_w_consulted: false
+      response_language: "zh"
+      response_length_min: 3
+      response_length_max: 300
+      reason_codes_must_include:
+        - "CASUAL_GREETING_FAST_PATH"
+      response_must_not_contain:
+        - "Wikipedia"
+        - "维基百科"
+      must_not_error: true

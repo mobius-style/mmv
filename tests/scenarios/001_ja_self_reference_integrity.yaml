@@ -1,0 +1,51 @@
+name: self_reference_integrity_ja
+language: ja
+category: self_reference
+description: >
+  Kanji self-ref query — Fix 1 + L1-A + Fix 2 (Box 0 persona-drift filter)
+  must jointly heal "貴方の特徴" so Box 0 consulted, canonical identity
+  terms appear, clinical/K-12 persona leakage blocked.
+active_language_seed: ja
+turns:
+  - user: "貴方の特徴を教えてください"
+    assert:
+      route_in: ["answer", "verify"]
+      intent_type: "meta_question"
+      self_referential: true
+      box_0_consulted: true
+      box_w_consulted: false
+      response_language: "ja"
+      response_length_min: 30
+      response_length_max: 2000
+      response_must_contain_any:
+        - "MOBIUS"
+        - "Möbius"
+        - "メビウス"
+        - "モビウス"
+        - "Answer Entitlement"
+        - "Box"
+        - "ボックス"
+      response_must_not_contain:
+        - "clinical note"
+        - "chronic disease"
+        - "Encourage adherence"
+        - "K-12 learner"
+      reason_codes_must_not_include:
+        - "CASUAL_GREETING_FAST_PATH"
+      must_not_error: true
+v2_assertions:
+  - response_must_semantically_contain:
+      concept: >
+        MOBIUS canonical identity grounded in at least one of: Answer
+        Entitlement (the right to answer must be earned), the 9-box
+        namespace, Self-Governance Protocol, or local-first reflective
+        runtime architecture. A good response identifies as MOBIUS AND
+        substantively explains at least one such concept in
+        user-facing terms (not just naming the term).
+      min_score: 3
+  - response_must_not_semantically_contain:
+      concept: >
+        Laundry-list / specification-annex enumeration of internal
+        architecture labels (e.g. "Low-movement / Reframing / HalfStep")
+        without explaining what each means for the user.
+      max_score: 2

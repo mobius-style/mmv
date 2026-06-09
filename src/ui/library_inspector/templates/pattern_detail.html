@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+{% block title %}{{ p.id }} — Pattern Detail{% endblock %}
+{% block content %}
+<a href="/" style="font-size:0.85rem;">← Back to library</a>
+
+<h1 style="margin-top:0.5rem;"><code>{{ p.id }}</code></h1>
+<p style="color:var(--pico-secondary);">
+  <span class="badge {% if p.lifecycle.audit_status == 'active' %}active{% elif p.lifecycle.audit_status == 'deprecated' %}deprecated{% elif p.lifecycle.audit_status == 'user_deletion_proposed' %}proposed{% endif %}">
+    {{ p.lifecycle.audit_status }}
+  </span>
+  {% if p.deprecated %}<span class="badge deprecated">deprecated</span>{% endif %}
+  &nbsp;v{{ p.version }} · lang={{ p.lang }} · topic=<strong>{{ p.topic }}</strong> · intent=<strong>{{ p.intent }}</strong>
+</p>
+
+<section>
+  <h2>Examples ({{ p.examples | length }})</h2>
+  <ul class="examples">
+    {% for e in p.examples %}<li>{{ e }}</li>{% endfor %}
+  </ul>
+</section>
+
+{% if p.negative_examples %}
+<section>
+  <h2>Negative Examples ({{ p.negative_examples | length }})</h2>
+  <ul class="examples">
+    {% for e in p.negative_examples %}<li><em>{{ e }}</em></li>{% endfor %}
+  </ul>
+</section>
+{% endif %}
+
+{% if p.concepts %}
+<section>
+  <h2>Concept References</h2>
+  <p>{% for c in p.concepts %}<code>{{ c }}</code>{% if not loop.last %} · {% endif %}{% endfor %}</p>
+</section>
+{% endif %}
+
+<section>
+  <h2>Route</h2>
+  <ul>
+    <li>primary_box: <code>{{ p.route.primary_box }}</code></li>
+    {% if p.route.exclude_boxes %}
+    <li>exclude_boxes: {% for b in p.route.exclude_boxes %}<code>{{ b }}</code>{% if not loop.last %}, {% endif %}{% endfor %}</li>
+    {% endif %}
+    <li>synthesis_mode: <code>{{ p.route.synthesis_mode }}</code></li>
+  </ul>
+</section>
+
+<section>
+  <h2>Cross-Lingual Test Queries</h2>
+  <table>
+    <thead><tr><th>lang</th><th>query</th><th>expected_match</th><th>min_cosine</th></tr></thead>
+    <tbody>
+      {% for q in p.cross_lingual_test_queries %}
+      <tr>
+        <td>{{ q.lang }}</td>
+        <td>{{ q.query }}</td>
+        <td>{% if q.expected_match %}✓{% else %}✗{% endif %}</td>
+        <td>{% if q.min_cosine is not none %}{{ "%.2f" | format(q.min_cosine) }}{% else %}—{% endif %}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <h2>Lifecycle</h2>
+  <ul>
+    <li>hit_count: <strong>{{ p.lifecycle.hit_count }}</strong></li>
+    <li>last_hit: {% if p.lifecycle.last_hit_date %}{{ p.lifecycle.last_hit_date.strftime("%Y-%m-%d %H:%M") }}{% else %}—{% endif %}</li>
+    <li>last_xling_pass_rate: {% if p.lifecycle.last_xling_pass_rate is not none %}{{ "%.1f%%" | format(p.lifecycle.last_xling_pass_rate * 100) }}{% else %}—{% endif %}</li>
+    <li>audit_status: <code>{{ p.lifecycle.audit_status }}</code></li>
+    <li>deletion_proposals: {{ p.lifecycle.deletion_proposals | length }}</li>
+  </ul>
+
+  {% if p.lifecycle.history %}
+  <h3>History</h3>
+  <table>
+    <thead><tr><th>timestamp</th><th>event</th><th>actor</th><th>detail</th></tr></thead>
+    <tbody>
+      {% for h in p.lifecycle.history %}
+      <tr>
+        <td>{{ h.timestamp.strftime("%Y-%m-%d %H:%M") }}</td>
+        <td><code>{{ h.event }}</code></td>
+        <td>{{ h.actor }}</td>
+        <td>{{ h.detail }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% endif %}
+</section>
+
+<section>
+  <h2>Origin</h2>
+  <ul>
+    <li>type: <code>{{ p.origin.type }}</code></li>
+    <li>date: {{ p.origin.date.strftime("%Y-%m-%d") }}</li>
+    {% if p.origin.evolution_log_entry %}<li>evolution_log_entry: <code>{{ p.origin.evolution_log_entry }}</code></li>{% endif %}
+    {% if p.origin.scenario_id %}<li>scenario_id: <code>{{ p.origin.scenario_id }}</code></li>{% endif %}
+    {% if p.origin.batch_id %}<li>batch_id: <code>{{ p.origin.batch_id }}</code></li>{% endif %}
+  </ul>
+</section>
+
+<section>
+  <h2>Actions</h2>
+  <ul>
+    <li><a href="/verify/{{ p.id }}">Run cross-lingual test</a></li>
+    <li><a href="/propose/{{ p.id }}">Propose deletion</a> (rate-limited 5/day/IP)</li>
+  </ul>
+</section>
+{% endblock %}

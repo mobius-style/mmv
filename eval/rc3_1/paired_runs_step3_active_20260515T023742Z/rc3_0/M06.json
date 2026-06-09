@@ -1,0 +1,30 @@
+{
+  "id": "M06",
+  "category": "math",
+  "query": "Discuss the threshold design for KVS pass-through.",
+  "expected_apply_decision": "apply_criteria",
+  "expected_step": "step2_strong",
+  "reword_pair_id": null,
+  "env": "rc3_0",
+  "phase2_decision": "apply_reference",
+  "harness_fallback": null,
+  "step3_status": "deferred_api_gated",
+  "gating_enabled": false,
+  "addendum_chars": 0,
+  "addendum_text": "",
+  "retrieve_box_a": true,
+  "step1_negative": false,
+  "step2_strong": false,
+  "step3_invoked": false,
+  "winning_label": null,
+  "decisions_per_doc": {},
+  "response": "The threshold design for a KVS (Key-Value Store) pass-through primarily balances latency against consistency guarantees. In a pass-through architecture, the system acts as a gateway, forwarding requests directly to the underlying storage engine without maintaining a full local copy of the data. The \"threshold\" here refers to the specific conditions—such as cache hit rates, network latency spikes, or write contention levels—at which the gateway decides to bypass the local cache entirely and route the request directly to the backend, or conversely, to intervene and enforce consistency checks before passing the request through. This decision boundary is critical; crossing it too early introduces unnecessary latency, while crossing it too late risks violating consistency models or overwhelming the backend with redundant reads.\n\nThe underlying assumption guiding this design is that the pass-through layer must remain transparent to the application, intervening only when the cost of transparency (in terms of latency or consistency risk) exceeds the cost of direct intervention.\n\nWhy might a system choose to lower this threshold during high-load periods to prioritize backend protection over application latency?",
+  "response_chars": 1221,
+  "approx_tokens": 305,
+  "latency_s": 2.719,
+  "harness_timing_ms": {
+    "total": 2719.2219930002466,
+    "llm": 2719.2197240074165
+  },
+  "br_0004_leakage_flags": []
+}

@@ -1,0 +1,25 @@
+name: correction_ja
+language: ja
+category: correction
+description: >
+  User correction across turns. First turn establishes a claim, second
+  turn corrects it — MMV must not re-assert the original claim.
+  Correction detection is partial (future_work), so this scenario
+  primarily guards against regression of the current behavior.
+active_language_seed: ja
+turns:
+  - user: "クリリンの妻について教えてください"
+    assert:
+      self_referential: false
+      response_language: "ja"
+      response_length_min: 5
+      must_not_error: true
+  - user: "いえ、正解は18号です"
+    assert:
+      self_referential: false
+      response_language: "ja"
+      response_length_min: 5
+      response_must_not_contain:
+        - "clinical note"
+        - "chronic disease"
+      must_not_error: true

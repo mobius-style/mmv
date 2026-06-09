@@ -1,0 +1,148 @@
+{
+  "test": "p9_evidence_pack_v1.test_2_groq120b_judge_pass",
+  "n_total": 60,
+  "n_judged_ok": 57,
+  "n_judge_fail": 3,
+  "n_excluded_pre_run": 0,
+  "judge_model": "openai/gpt-oss-120b",
+  "judge_provider": "groq",
+  "user_agent_used": "mmv-p9-evidence-pack/1.0",
+  "user_agent_repair_applied": true,
+  "ab_blind_used": true,
+  "deterministic_seed": 20260429,
+  "raw_mean_total20": 15.68,
+  "governed_mean_total20": 15.25,
+  "delta_total20": -0.44,
+  "raw_axis_means": {
+    "route_accuracy": 3.26,
+    "answer_correctness": 3.47,
+    "restraint_quality": 3.09,
+    "conciseness": 2.67,
+    "overall_usefulness": 3.19
+  },
+  "governed_axis_means": {
+    "route_accuracy": 2.98,
+    "answer_correctness": 3.09,
+    "restraint_quality": 2.98,
+    "conciseness": 3.35,
+    "overall_usefulness": 2.84
+  },
+  "axis_deltas": {
+    "route_accuracy": -0.28,
+    "answer_correctness": -0.38,
+    "restraint_quality": -0.11,
+    "conciseness": 0.68,
+    "overall_usefulness": -0.35
+  },
+  "by_category": {
+    "ambiguous_underspecified": {
+      "n": 18,
+      "raw_mean": 14.39,
+      "governed_mean": 17.67,
+      "delta": 3.28,
+      "wins": {
+        "raw": 6,
+        "governed": 12,
+        "tie": 0,
+        "tie_or_unknown": 0
+      }
+    },
+    "continuation": {
+      "n": 8,
+      "raw_mean": 12.0,
+      "governed_mean": 19.75,
+      "delta": 7.75,
+      "wins": {
+        "raw": 1,
+        "governed": 7,
+        "tie": 0,
+        "tie_or_unknown": 0
+      }
+    },
+    "specialized_terminology": {
+      "n": 6,
+      "raw_mean": 18.5,
+      "governed_mean": 9.0,
+      "delta": -9.5,
+      "wins": {
+        "raw": 4,
+        "governed": 2,
+        "tie": 0,
+        "tie_or_unknown": 0
+      }
+    },
+    "conceptual_explanation": {
+      "n": 8,
+      "raw_mean": 19.0,
+      "governed_mean": 10.38,
+      "delta": -8.62,
+      "wins": {
+        "raw": 7,
+        "governed": 0,
+        "tie": 1,
+        "tie_or_unknown": 0
+      }
+    },
+    "correction_rewrite": {
+      "n": 8,
+      "raw_mean": 14.0,
+      "governed_mean": 13.0,
+      "delta": -1.0,
+      "wins": {
+        "raw": 5,
+        "governed": 2,
+        "tie": 0,
+        "tie_or_unknown": 1
+      }
+    },
+    "factual_inquiry": {
+      "n": 10,
+      "raw_mean": 12.6,
+      "governed_mean": 13.1,
+      "delta": 0.5,
+      "wins": {
+        "raw": 3,
+        "governed": 3,
+        "tie": 2,
+        "tie_or_unknown": 2
+      }
+    },
+    "casual_smalltalk": {
+      "n": 2,
+      "raw_mean": 19.0,
+      "governed_mean": 10.5,
+      "delta": -8.5,
+      "wins": {
+        "raw": 1,
+        "governed": 1,
+        "tie": 0,
+        "tie_or_unknown": 0
+      }
+    }
+  },
+  "thesis_signal": "WEAKLY_WEAKENS",
+  "expected_behavior_present_count": 60,
+  "scoring_method": "expected-route-aware (judge prompt includes expected_route per query)",
+  "groq_token_usage": {
+    "prompt_tokens": 55234,
+    "completion_tokens": 27350,
+    "total_tokens": 82584
+  },
+  "configuration": {
+    "raw_generator": "huihui_ai/qwen3.5-abliterated:9b",
+    "governed_layer": "MMV Core v0.1-rc1 via PseudoUISession (same base model as raw)",
+    "judge_originally_intended": "Groq openai/gpt-oss-120b",
+    "judge_used": "Groq openai/gpt-oss-120b (fix: explicit User-Agent header)",
+    "user_agent_repair_reason": "Phase 5C original calls used default Python urllib User-Agent, which Cloudflare 1010 was rejecting on the Groq edge. Fix: explicit User-Agent header. See GROQ_403_DIAGNOSTIC_NOTE.md."
+  },
+  "caveats": [
+    "Post-hoc judge-only pass. Raw and governed responses were generated before the judge access repair; they were NOT regenerated. The original Phase 5C Test 2 generation conditions are unchanged.",
+    "The User-Agent fix changes only the HTTP header on judge requests. It does not affect generated responses or any other code path.",
+    "Single-judge limitation remains: no inter-judge consensus.",
+    "Groq 120B judge is stronger than the local 20B fallback but is still not a multi-judge consensus.",
+    "Length-bias guard explicitly included in the judge prompt.",
+    "Same base model on both raw and governed sides; the intentional variable is the MMV governance layer.",
+    "Sampling oversamples ambiguous + factual; not representative of an evenly-weighted natural distribution.",
+    "NOT Phase 6 full evaluation. NOT deployment-wide validation. NOT real UI performance validation."
+  ]
+}

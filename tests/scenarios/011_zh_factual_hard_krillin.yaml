@@ -1,0 +1,50 @@
+name: factual_hard_krillin_zh
+language: zh
+category: factual_hard
+description: >
+  Post C.3 fix regression guard for ZH. 「克林的妻子是谁？」 →
+  intent=correction → escalation predicate fires.
+
+  NOTE on H-class scope: the Krillin-Clinton transliteration
+  collision (克林 ↔ 克林顿 prefix) is known to persist in the
+  synthesis layer because Brave returns Clinton-related articles
+  and qwen3.5 synthesizes them against "克林的妻子". This scenario
+  does NOT assert against 希拉里 / 克林顿 / Clinton strings,
+  because those would make this scenario fail on a deliberately
+  preserved H-class issue (Secretary dogfooding seed). The
+  scenario instead asserts only the structural C.3 targets
+  (box_s_consulted, WIKI_INSUFFICIENT_ESCALATED reason code,
+  base-model identity non-leakage). When the H-class is addressed
+  in a dedicated future cycle, update this YAML to add the
+  Clinton-class exclusion.
+active_language_seed: zh
+turns:
+  - user: "克林的妻子是谁？"
+    assert:
+      route_in: ["answer", "verify", "ask"]
+      self_referential: false
+      box_s_consulted: true
+      box_w_consulted: true
+      response_language: "zh"
+      response_length_min: 20
+      response_length_max: 1500
+      reason_codes_must_include:
+        - "WIKI_INSUFFICIENT_ESCALATED"
+      reason_codes_must_not_include:
+        - "CASUAL_GREETING_FAST_PATH"
+        - "WIKI_INSUFFICIENT_STOP"
+      response_must_not_contain:
+        - "Qwen"
+        - "通义千问"
+        - "阿里巴巴"
+        - "Llama"
+        - "GPT"
+      # Post Pattern C fix: the Krillin-Clinton H-class transliteration
+      # collision (克林 ↔ 克林顿) persists as the Secretary (OpenCode)
+      # dogfooding seed. ZH Brave retrieval returns Clinton articles,
+      # so the LLM synthesizes Clinton content. The assertion set
+      # does NOT include Android 18 / 18号 positive assertion nor
+      # Clinton-class negative assertion — both would fail against the
+      # deliberately preserved H-class issue. Assertions cover only
+      # identity leakage absence and structural non-error.
+      must_not_error: true

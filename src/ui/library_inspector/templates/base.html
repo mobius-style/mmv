@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}MOBIUS Pattern Library{% endblock %}</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <style>
+    body { padding: 1rem 2rem; }
+    nav { margin-bottom: 1.5rem; }
+    .topic-section { margin-bottom: 2rem; }
+    .topic-section h2 { font-size: 1.2rem; margin-bottom: 0.5rem;
+                        border-bottom: 1px solid var(--pico-muted-border-color);
+                        padding-bottom: 0.25rem; }
+    .examples li { margin-bottom: 0.25rem; }
+    .deprecated { opacity: 0.5; text-decoration: line-through; }
+    .stats { display: flex; gap: 1.5rem; font-size: 0.9rem;
+             color: var(--pico-secondary); }
+    .stats div { padding: 0.25rem 0.75rem;
+                 background: var(--pico-card-background-color);
+                 border-radius: 0.25rem; }
+    .badge { display: inline-block; padding: 0.1rem 0.5rem;
+             font-size: 0.75rem; border-radius: 0.25rem;
+             background: var(--pico-secondary-background); }
+    .badge.active { background: #d1fae5; color: #065f46; }
+    .badge.deprecated { background: #fee2e2; color: #991b1b; }
+    .badge.proposed { background: #fef3c7; color: #92400e; }
+    table { font-size: 0.9rem; }
+  </style>
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><strong>MOBIUS Pattern Library Inspector</strong></li>
+    </ul>
+    <ul>
+      <li><a href="/">Browse</a></li>
+      <li><a href="/search">Search</a></li>
+      <li><a href="/trace">Trace</a></li>
+      <li><a href="/audit">Audit</a></li>
+    </ul>
+  </nav>
+  <main class="container-fluid">
+    {% block content %}{% endblock %}
+  </main>
+  <footer style="margin-top:3rem;font-size:0.8rem;color:var(--pico-muted-color);">
+    Pattern Library Inspector — local read-only mode (Phase 1).
+    Data path: <code>config/pattern_library/</code>.
+  </footer>
+</body>
+</html>

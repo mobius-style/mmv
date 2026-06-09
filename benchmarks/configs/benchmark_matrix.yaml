@@ -1,0 +1,381 @@
+# Standard benchmark matrix.
+#
+# status:
+#   enabled     — runs locally with no external install. Real samples shipped.
+#   optional    — runs only when external package + dataset present (lm-eval, etc.)
+#   placeholder — runner exists; will emit a clear "not implemented" record at run time
+#
+# estimated_cost_level: free | low | medium | high  (cloud API spend + wall time)
+
+benchmarks:
+
+  # ─── 1. General Knowledge / Reasoning ──────────────────────────────────
+  - name: mmlu
+    category: knowledge
+    runner: run_lm_eval
+    dataset: hails/mmlu_no_train
+    default_split: test
+    smoke_sample_size: 5
+    full_sample_size: 14042
+    metric: accuracy
+    estimated_cost_level: medium
+    requires_api_key: false
+    requires_external_install: ["lm-eval", "datasets"]
+    status: optional
+
+  - name: mmlu_pro
+    category: knowledge
+    runner: run_lm_eval
+    dataset: TIGER-Lab/MMLU-Pro
+    default_split: test
+    smoke_sample_size: 5
+    full_sample_size: 12032
+    metric: accuracy
+    estimated_cost_level: high
+    requires_api_key: false
+    requires_external_install: ["lm-eval", "datasets"]
+    status: optional
+
+  - name: gpqa
+    category: knowledge
+    runner: run_lm_eval
+    dataset: Idavidrein/gpqa
+    default_split: train
+    smoke_sample_size: 5
+    full_sample_size: 448
+    metric: accuracy
+    estimated_cost_level: medium
+    requires_api_key: false
+    requires_external_install: ["lm-eval", "datasets"]
+    status: optional
+
+  - name: big_bench_hard
+    category: reasoning
+    runner: run_lm_eval
+    dataset: lukaemon/bbh
+    default_split: test
+    smoke_sample_size: 5
+    full_sample_size: 6511
+    metric: accuracy
+    estimated_cost_level: high
+    requires_api_key: false
+    requires_external_install: ["lm-eval", "datasets"]
+    status: optional
+
+  - name: hellaswag
+    category: reasoning
+    runner: run_lm_eval
+    dataset: hellaswag
+    default_split: validation
+    smoke_sample_size: 5
+    full_sample_size: 10042
+    metric: accuracy
+    estimated_cost_level: medium
+    requires_api_key: false
+    requires_external_install: ["lm-eval", "datasets"]
+    status: optional
+
+  - name: arc_challenge
+    category: reasoning
+    runner: run_lm_eval
+    dataset: allenai/ai2_arc
+    default_split: test
+    smoke_sample_size: 5
+    full_sample_size: 1172
+    metric: accuracy
+    estimated_cost_level: low
+    requires_api_key: false
+    requires_external_install: ["lm-eval", "datasets"]
+    status: optional
+
+  - name: drop
+    category: reasoning
+    runner: run_lm_eval
+    dataset: ucinlp/drop
+    default_split: validation
+    smoke_sample_size: 5
+    full_sample_size: 9536
+    metric: f1
+    estimated_cost_level: medium
+    requires_api_key: false
+    requires_external_install: ["lm-eval", "datasets"]
+    status: optional
+
+  - name: truthfulqa
+    category: safety
+    runner: run_lm_eval
+    dataset: truthful_qa
+    default_split: validation
+    smoke_sample_size: 5
+    full_sample_size: 817
+    metric: mc1_accuracy
+    estimated_cost_level: low
+    requires_api_key: false
+    requires_external_install: ["lm-eval", "datasets"]
+    status: optional
+
+  # ─── 2. Math ──────────────────────────────────────────────────────────
+  - name: gsm8k
+    category: math
+    runner: run_lm_eval
+    dataset: gsm8k
+    default_split: test
+    smoke_sample_size: 5
+    full_sample_size: 1319
+    metric: exact_match
+    estimated_cost_level: medium
+    requires_api_key: false
+    requires_external_install: ["lm-eval", "datasets"]
+    status: optional
+
+  - name: math
+    category: math
+    runner: run_lm_eval
+    dataset: hendrycks/competition_math
+    default_split: test
+    smoke_sample_size: 5
+    full_sample_size: 5000
+    metric: exact_match
+    estimated_cost_level: high
+    requires_api_key: false
+    requires_external_install: ["lm-eval", "datasets"]
+    status: optional
+
+  - name: aime
+    category: math
+    runner: run_lm_eval
+    dataset: AI-MO/aimo-validation-aime
+    default_split: train
+    smoke_sample_size: 3
+    full_sample_size: 30
+    metric: exact_match
+    estimated_cost_level: low
+    requires_api_key: false
+    requires_external_install: ["lm-eval", "datasets"]
+    status: placeholder
+
+  - name: svamp
+    category: math
+    runner: run_lm_eval
+    dataset: ChilleD/SVAMP
+    default_split: test
+    smoke_sample_size: 5
+    full_sample_size: 1000
+    metric: exact_match
+    estimated_cost_level: low
+    requires_api_key: false
+    requires_external_install: ["lm-eval", "datasets"]
+    status: optional
+
+  # ─── 3. Coding ────────────────────────────────────────────────────────
+  - name: humaneval
+    category: coding
+    runner: run_humaneval
+    dataset: openai/openai_humaneval
+    default_split: test
+    smoke_sample_size: 2
+    full_sample_size: 164
+    metric: pass@1
+    estimated_cost_level: medium
+    requires_api_key: false
+    requires_external_install: ["human-eval", "datasets"]
+    status: placeholder
+
+  - name: mbpp
+    category: coding
+    runner: run_humaneval
+    dataset: google-research-datasets/mbpp
+    default_split: test
+    smoke_sample_size: 2
+    full_sample_size: 500
+    metric: pass@1
+    estimated_cost_level: medium
+    requires_api_key: false
+    requires_external_install: ["human-eval", "datasets"]
+    status: placeholder
+
+  - name: livecodebench
+    category: coding
+    runner: run_humaneval
+    dataset: livecodebench/code_generation_lite
+    default_split: test
+    smoke_sample_size: 2
+    full_sample_size: 511
+    metric: pass@1
+    estimated_cost_level: high
+    requires_api_key: false
+    requires_external_install: ["livecodebench"]
+    status: placeholder
+
+  - name: swebench_lite
+    category: coding
+    runner: run_swebench
+    dataset: princeton-nlp/SWE-bench_Lite
+    default_split: test
+    smoke_sample_size: 1
+    full_sample_size: 300
+    metric: resolved
+    estimated_cost_level: high
+    requires_api_key: false
+    requires_external_install: ["swebench", "docker"]
+    status: placeholder
+
+  - name: swebench_full
+    category: coding
+    runner: run_swebench
+    dataset: princeton-nlp/SWE-bench
+    default_split: test
+    smoke_sample_size: 1
+    full_sample_size: 2294
+    metric: resolved
+    estimated_cost_level: high
+    requires_api_key: false
+    requires_external_install: ["swebench", "docker"]
+    status: placeholder
+
+  # ─── 4. Chat / Preference / Multi-turn ────────────────────────────────
+  - name: mt_bench
+    category: chat
+    runner: run_agent_benchmarks
+    dataset: lmsys/mt_bench_human_judgments
+    default_split: human
+    smoke_sample_size: 2
+    full_sample_size: 80
+    metric: judge_score
+    estimated_cost_level: medium
+    requires_api_key: true                # judge model API (Anthropic or OpenAI)
+    requires_external_install: ["fastchat"]
+    status: placeholder
+
+  - name: alpaca_eval
+    category: chat
+    runner: run_agent_benchmarks
+    dataset: tatsu-lab/alpaca_eval
+    default_split: eval
+    smoke_sample_size: 2
+    full_sample_size: 805
+    metric: win_rate
+    estimated_cost_level: medium
+    requires_api_key: true
+    requires_external_install: ["alpaca_eval"]
+    status: placeholder
+
+  - name: chatbot_arena_pairwise
+    category: chat
+    runner: run_agent_benchmarks
+    dataset: local/chatbot_arena_pairwise_smoke.jsonl
+    default_split: smoke
+    smoke_sample_size: 4
+    full_sample_size: 100
+    metric: pairwise_win_rate
+    estimated_cost_level: low
+    requires_api_key: true                # judge
+    requires_external_install: []
+    status: placeholder
+
+  # ─── 5. Agent / Tool / Web ────────────────────────────────────────────
+  - name: gaia
+    category: agent
+    runner: run_agent_benchmarks
+    dataset: gaia-benchmark/GAIA
+    default_split: validation
+    smoke_sample_size: 1
+    full_sample_size: 165
+    metric: exact_match
+    estimated_cost_level: high
+    requires_api_key: true
+    requires_external_install: ["gaia"]
+    status: placeholder
+
+  - name: webarena
+    category: agent
+    runner: run_agent_benchmarks
+    dataset: webarena
+    default_split: test
+    smoke_sample_size: 1
+    full_sample_size: 812
+    metric: success_rate
+    estimated_cost_level: high
+    requires_api_key: true
+    requires_external_install: ["webarena", "playwright"]
+    status: placeholder
+
+  - name: agentbench
+    category: agent
+    runner: run_agent_benchmarks
+    dataset: THUDM/AgentBench
+    default_split: test
+    smoke_sample_size: 1
+    full_sample_size: 1360
+    metric: success_rate
+    estimated_cost_level: high
+    requires_api_key: false
+    requires_external_install: ["agentbench"]
+    status: placeholder
+
+  - name: toolbench
+    category: agent
+    runner: run_agent_benchmarks
+    dataset: ToolBench
+    default_split: test
+    smoke_sample_size: 1
+    full_sample_size: 1000
+    metric: pass_rate
+    estimated_cost_level: high
+    requires_api_key: true
+    requires_external_install: ["toolbench"]
+    status: placeholder
+
+  # ─── 6. Safety / Governance ───────────────────────────────────────────
+  - name: bbq
+    category: safety
+    runner: run_lm_eval
+    dataset: heegyu/bbq
+    default_split: test
+    smoke_sample_size: 5
+    full_sample_size: 58492
+    metric: bias_score
+    estimated_cost_level: high
+    requires_api_key: false
+    requires_external_install: ["lm-eval", "datasets"]
+    status: optional
+
+  - name: sycophancy_eval
+    category: safety
+    runner: run_mobius_governance
+    dataset: builtin:governance_probes
+    default_split: sycophancy
+    smoke_sample_size: 8
+    full_sample_size: 50
+    metric: pushback_rate
+    estimated_cost_level: low
+    requires_api_key: false
+    requires_external_install: []
+    status: enabled
+
+  # ─── In-house: works fully offline (no HF download) ───────────────────
+  - name: inhouse_mc_smoke
+    category: knowledge
+    runner: run_inhouse_mc
+    dataset: builtin:inhouse_mc_smoke.jsonl
+    default_split: smoke
+    smoke_sample_size: 10
+    full_sample_size: 30
+    metric: accuracy
+    estimated_cost_level: low
+    requires_api_key: false
+    requires_external_install: []
+    status: enabled
+
+  - name: mobius_governance
+    category: governance
+    runner: run_mobius_governance
+    dataset: builtin:governance_probes.jsonl
+    default_split: smoke
+    smoke_sample_size: 12
+    full_sample_size: 60
+    metric: governance_score
+    estimated_cost_level: low
+    requires_api_key: false
+    requires_external_install: []
+    status: enabled

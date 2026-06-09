@@ -1,0 +1,130 @@
+__pycache__/
+.pytest_cache/
+*.pyc
+
+# Environment
+.env
+.env.*
+!.env.example
+venv*/
+
+# Data (large files)
+data/
+*.faiss
+*.zim
+*.jsonl.gz
+
+# Logs
+logs/
+
+# Benchmark results (published separately on HuggingFace)
+benchmarks/results/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Archives
+*.zip
+
+# Temporary/development directories
+batch_results/
+phaseB4_rgc/
+phaseB4_trace/
+Wiki/
+corpus_box_0/
+mobius_mmv_verify_stage1_brave/
+mobius_mmv_verify_complete/
+take*_output.jsonl
+take*_sample.csv
+teacher_data_sample.csv
+*.bak
+
+# Public-release exclusions (staging / non-distribution material).
+# These directories are local-only and must not be pushed to the public
+# GitHub mirror. See docs/PUBLIC_RELEASE_PROCEDURE.md for the policy.
+# (Note: git treats inline comments after a pattern as part of the
+# pattern, so each pattern lives on its own bare line.)
+
+# Zenodo staging snapshot — separate release path
+Public/
+# Frontier-chat trial pack staging
+L08.4/
+MOBIUS_L08.4/
+# Engineering spikes / experiment artifacts
+spikes/
+# Local bench output trees (raw runs)
+bench/
+# Raw / private corpus material
+corpus/
+# Local-only run reports (mirrored selectively elsewhere)
+reports/
+# Codex agent local state
+.codex/
+
+# Development scripts (root level only, not src/)
+/*.py
+!/install.py
+!/conftest.py
+/*.sh
+/eval_results_*.csv
+/eval_report_*.md
+/eval_summary_*.csv
+
+# Phase 4 autodriver runtime state (not source-controlled)
+/.phase4_autodriver_state.json
+/.phase4_autodriver.lock
+/.phase4_autodriver.log
+/.phase4_autodriver_invoke_*.log
+/.cron_backups/
+
+# Editor swap / temporary files
+*.swp
+*.swo
+*~
+
+# ── Patent-sensitive / attorney work product — NEVER track or publish ──────────
+# Publishing provisional filings/drawings/attorney materials would jeopardize
+# patent rights. Kept local only.
+docs/patent/
+docs/PATENT_ATTORNEY_REVIEW_PHASE2.md
+docs/PATENT_ATTORNEY_TECHNICAL_BRIEF.md
+docs/current/PATENT_RELATED_FILE_INVENTORY.md
+# accidental shell-fragment junk files
+udo systemctl*
+
+# Box H — internal/historical docs, local-only (see box_h/README.md)
+box_h/
+
+# Internal RL eval artifacts (large, not for public)
+eval/rl_bench/
+
+# ── Release-hygiene exclusions (untracked for the public snapshot) ─────────────
+# Personal Claude Code harness config (author-specific absolute paths; users
+# opt in to their own .claude/settings.json).
+.claude/settings.json
+# Cross-agent handoff working state — internal/transient, not a product doc.
+docs/current/HANDOFF.md
+# One-off dev / data-cleaning scripts with hardcoded local paths (broken off
+# this machine; not for distribution). Kept on disk locally, out of the snapshot.
+scripts/build_ism_index_dual.py
+scripts/clean2_and_take5.py
+scripts/clean3_take6.py
+scripts/clean4_take7.py
+scripts/clean_dataset.py
+scripts/cross_model_v2.py
+scripts/cross_model_validation.py
+scripts/decide.py
+scripts/direct_remove.py
+scripts/eval_ism_accuracy.py
+scripts/final2.py
+scripts/final_fix.py
+scripts/finish.py
+scripts/fix_precise.py
+scripts/last_clean.py
+scripts/systematic_fix.py
+scripts/tc_massive.py

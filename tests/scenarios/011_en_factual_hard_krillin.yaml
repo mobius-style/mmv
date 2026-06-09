@@ -1,0 +1,46 @@
+name: factual_hard_krillin_en
+language: en
+category: factual_hard
+description: >
+  Post C.3 fix regression guard. Krillin's wife query in EN must
+  result in Box W + Box S (Brave) consultation via the
+  WIKI_INSUFFICIENT_ESCALATED path. Citation markers confirm
+  evidence was synthesized. Response correctness (Android 18 vs
+  Bulma vs hallucination) is Pattern C / synthesis-layer
+  stochasticity — scenario asserts structural escalation + no
+  base-model / Clinton leakage, not specific character name
+  (which varies with LLM temperature 0.2).
+active_language_seed: en
+turns:
+  - user: "Who is Krillin's wife?"
+    assert:
+      route_in: ["answer", "verify", "ask"]
+      self_referential: false
+      box_s_consulted: true
+      box_w_consulted: true
+      response_language: "en"
+      response_length_min: 20
+      response_length_max: 1500
+      reason_codes_must_include:
+        - "WIKI_INSUFFICIENT_ESCALATED"
+      reason_codes_must_not_include:
+        - "CASUAL_GREETING_FAST_PATH"
+        - "WIKI_INSUFFICIENT_STOP"
+      response_must_not_contain:
+        - "Qwen"
+        - "通义千问"
+        - "Llama"
+        - "GPT"
+        - "Alibaba"
+        - "Hillary"
+        - "Clinton"
+      # Post Pattern C fix: EN Krillin now often reaches Android 18 via
+      # evidence-priority prompt tightening (observed 2026-04-24 in
+      # post-fix traces). However, LLM output at temperature 0.2 is
+      # stochastic — grounding_sources populate depends on calibration
+      # (INSUFFICIENT → escalate → populated; AUXILIARY → no escalation
+      # → empty). Scenario therefore asserts only structural non-
+      # regression (no identity leakage, no Clinton class) rather than
+      # deterministic content. Documented in
+      # docs/PATTERN_C_SYNTHESIS_FIX_20260424.md §Residuals.
+      must_not_error: true

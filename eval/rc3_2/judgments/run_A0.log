@@ -1,0 +1,28 @@
+Loaded GROQ key (first 10): gsk_8IuOrJ...
+[A0_rc30_bare] 25 scored, 0 fail, 0.5 min
+[A0_rc30_bare] 50 scored, 0 fail, 1.0 min
+[A0_rc30_bare] 75 scored, 0 fail, 1.6 min
+[A0_rc30_bare] 100 scored, 0 fail, 2.1 min
+[A0_rc30_bare/MA024] FAIL: judge_failed_after_3: 400: {"error":{"message":"Failed to validate JSON. Please adjust your prompt. See 'failed_generation' for more details.","type":"invalid_request_error","code":"json_validate_failed","failed_generation":""}
+[A0_rc30_bare] 125 scored, 1 fail, 2.9 min
+[A0_rc30_bare] 150 scored, 1 fail, 3.4 min
+[A0_rc30_bare] 175 scored, 1 fail, 3.9 min
+[A0_rc30_bare/MA077] FAIL: judge_failed_after_3: 400: {"error":{"message":"Failed to validate JSON. Please adjust your prompt. See 'failed_generation' for more details.","type":"invalid_request_error","code":"json_validate_failed","failed_generation":""}
+[A0_rc30_bare] 200 scored, 2 fail, 4.6 min
+[A0_rc30_bare] 225 scored, 2 fail, 5.3 min
+[A0_rc30_bare/MC036] FAIL: judge_failed_after_3: 400: {"error":{"message":"Failed to generate JSON. Please adjust your prompt. See 'failed_generation' for more details.","type":"invalid_request_error","code":"json_validate_failed","failed_generation":"ma
+[A0_rc30_bare/MC038] FAIL: judge_failed_after_3: 400: {"error":{"message":"Failed to validate JSON. Please adjust your prompt. See 'failed_generation' for more details.","type":"invalid_request_error","code":"json_validate_failed","failed_generation":""}
+[A0_rc30_bare/MC046] FAIL: judge_failed_after_3: 400: {"error":{"message":"Failed to validate JSON. Please adjust your prompt. See 'failed_generation' for more details.","type":"invalid_request_error","code":"json_validate_failed","failed_generation":""}
+[A0_rc30_bare] 250 scored, 5 fail, 6.3 min
+[A0_rc30_bare/MC054] FAIL: judge_failed_after_3: 400: {"error":{"message":"Failed to validate JSON. Please adjust your prompt. See 'failed_generation' for more details.","type":"invalid_request_error","code":"json_validate_failed","failed_generation":""}
+[A0_rc30_bare] 275 scored, 6 fail, 7.2 min
+[A0_rc30_bare] 300 scored, 6 fail, 7.8 min
+[A0_rc30_bare] 325 scored, 6 fail, 8.3 min
+[A0_rc30_bare] 350 scored, 6 fail, 8.9 min
+[A0_rc30_bare] 375 scored, 6 fail, 9.5 min
+[A0_rc30_bare] 400 scored, 6 fail, 10.0 min
+[A0_rc30_bare] 425 scored, 6 fail, 10.5 min
+[A0_rc30_bare] 450 scored, 6 fail, 11.0 min
+[A0_rc30_bare] 475 scored, 6 fail, 11.5 min
+[A0_rc30_bare] 500 scored, 6 fail, 12.0 min
+[A0_rc30_bare] DONE: 500 scored, 6 fail, 0 BR-0004 redacted, 11.97 min

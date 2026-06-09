@@ -1,0 +1,9 @@
+RC3.2 prefix structural parity record
+Generated: 2026-05-15
+
+Arm B (doctrine): eval/rc3_2/prefixes/arm_b_doctrine.txt
+  chars=1029  H2=1  brackets=2  bullets=9  lines=19
+
+Arm C (null_haccp): eval/rc3_2/prefixes/arm_c_null_haccp.txt
+  chars=1077  H2=1  brackets=2  bullets=9  lines=20
+

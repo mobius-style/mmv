@@ -1,0 +1,44 @@
+--- before/RELEASE_STATUS.md
++++ after/RELEASE_STATUS.md
+@@ -2,7 +2,7 @@
+ doc_status: current
+ authority: canonical
+ scope: rc3_release
+-last_verified_utc: 2026-05-02
++last_verified_utc: 2026-05-03
+ current_release_candidate_tag: mmv_core_v0_1_rc3_release_candidate_20260430_2336
+ current_release_candidate_commit: 7f53fe1dbdf189f014b0cd2643a996148fc5dba7
+ supersedes:
+--- before/DOCS_AUTHORITY_MAP.md
++++ after/DOCS_AUTHORITY_MAP.md
+@@ -2,7 +2,7 @@
+ doc_status: current
+ authority: canonical
+ scope: documentation_authority_priority
+-last_verified_utc: 2026-05-02
++last_verified_utc: 2026-05-03
+ ---
+ 
+ # Documentation authority map
+--- before/PUBLIC_RELEASE_READINESS.md
++++ after/PUBLIC_RELEASE_READINESS.md
+@@ -2,7 +2,7 @@
+ doc_status: current
+ authority: canonical
+ scope: public_release_readiness
+-last_verified_utc: 2026-05-02
++last_verified_utc: 2026-05-03
+ overall_verdict: YELLOW (technically ready; T-gated external items remain)
+ current_release_candidate_tag: mmv_core_v0_1_rc3_release_candidate_20260430_2336
+ current_release_candidate_commit: 7f53fe1dbdf189f014b0cd2643a996148fc5dba7
+--- before/SETUP_GAPS.md
++++ after/SETUP_GAPS.md
+@@ -2,7 +2,7 @@
+ doc_status: current
+ authority: canonical
+ scope: setup_and_release_gaps
+-last_verified_utc: 2026-05-02
++last_verified_utc: 2026-05-03
+ overall_verdict: PARTIAL/YELLOW
+ ---
+ 

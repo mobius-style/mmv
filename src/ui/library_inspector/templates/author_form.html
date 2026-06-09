@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+{% block title %}New Pattern — Library Inspector{% endblock %}
+{% block content %}
+<h1>Author New Pattern</h1>
+<p style="font-size:0.85rem;color:var(--pico-secondary);">
+  T-only authoring form. Submission appends to
+  <code>config/pattern_library/&lt;topic&gt;.jsonl</code> atomically.
+  Schema is validated server-side; invalid submissions return 422.
+</p>
+
+{% if error %}
+<article style="background:#fee2e2;color:#991b1b;padding:0.75rem 1rem;">
+  <strong>Schema rejected:</strong> {{ error }}
+</article>
+{% endif %}
+
+<form method="post" style="max-width:720px;">
+  <fieldset>
+    <legend>Identity</legend>
+    <label>id (must match <code>pat_[a-z_]+_NNN</code>)
+      <input type="text" name="id" required pattern="pat_[a-z_]+_\d{3}"
+             value="{{ form.get('id', '') }}"
+             placeholder="pat_factual_inquiry_016">
+    </label>
+    <label>topic
+      <select name="topic" required>
+        {% for t in topics %}
+        <option value="{{ t }}" {% if form.get('topic') == t %}selected{% endif %}>{{ t }}</option>
+        {% endfor %}
+      </select>
+    </label>
+    <label>intent
+      <input type="text" name="intent" required
+             value="{{ form.get('intent', '') }}"
+             placeholder="ask_definition">
+    </label>
+  </fieldset>
+
+  <fieldset>
+    <legend>Examples (one per line, ≥ 5)</legend>
+    <textarea name="examples" rows="8" required>{{ form.get('examples', '') }}</textarea>
+  </fieldset>
+
+  <fieldset>
+    <legend>Negative examples (one per line)</legend>
+    <textarea name="negative_examples" rows="6">{{ form.get('negative_examples', '') }}</textarea>
+  </fieldset>
+
+  <fieldset>
+    <legend>Route</legend>
+    <label>primary_box
+      <select name="primary_box" required>
+        {% for b in boxes %}
+        <option value="{{ b }}" {% if form.get('primary_box') == b %}selected{% endif %}>{{ b }}</option>
+        {% endfor %}
+      </select>
+    </label>
+    <label>synthesis_mode
+      <input type="text" name="synthesis_mode"
+             value="{{ form.get('synthesis_mode', 'factual_synthesis') }}">
+    </label>
+  </fieldset>
+
+  <fieldset>
+    <legend>Cross-lingual test queries (≥ 2 ja + ≥ 2 zh required)</legend>
+    <p style="font-size:0.8rem;color:var(--pico-secondary);">
+      Add at least 4 entries. Each row: language, query text, expected
+      match (true → cosine should exceed min_cosine; false → should
+      not match this pattern), min_cosine (only used if expected_match
+      is true; default 0.62).
+    </p>
+    {% for i in range(6) %}
+    <div style="display:grid;grid-template-columns:80px 1fr 100px 80px;gap:0.5rem;align-items:center;margin-bottom:0.25rem;">
+      <select name="xl_lang">
+        <option value="ja">ja</option>
+        <option value="zh">zh</option>
+        <option value="en">en</option>
+        <option value="ko">ko</option>
+        <option value="es">es</option>
+        <option value="fr">fr</option>
+      </select>
+      <input type="text" name="xl_query" placeholder="query…">
+      <select name="xl_match">
+        <option value="true">match</option>
+        <option value="false">no-match</option>
+      </select>
+      <input type="text" name="xl_min_cos" placeholder="0.62">
+    </div>
+    {% endfor %}
+  </fieldset>
+
+  <button type="submit">Submit pattern</button>
+</form>
+{% endblock %}

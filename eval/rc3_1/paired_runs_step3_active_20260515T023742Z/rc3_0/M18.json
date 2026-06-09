@@ -1,0 +1,30 @@
+{
+  "id": "M18",
+  "category": "math",
+  "query": "Define the falsifiability boundary for fabrication risk.",
+  "expected_apply_decision": "apply_criteria",
+  "expected_step": "step2_strong",
+  "reword_pair_id": null,
+  "env": "rc3_0",
+  "phase2_decision": "apply_reference",
+  "harness_fallback": null,
+  "step3_status": "deferred_api_gated",
+  "gating_enabled": false,
+  "addendum_chars": 0,
+  "addendum_text": "",
+  "retrieve_box_a": true,
+  "step1_negative": false,
+  "step2_strong": false,
+  "step3_invoked": false,
+  "winning_label": null,
+  "decisions_per_doc": {},
+  "response": "The falsifiability boundary for fabrication risk is the point where a claim transitions from being testable against observable reality to becoming a self-sealing narrative that cannot be disproven without collapsing the entire framework. This boundary is not a fixed line but a dynamic threshold determined by the availability of independent verification methods and the willingness of the claimant to accept contradictory evidence.\n\nAn unstated premise often driving this dynamic is that the observer's capacity to verify is assumed to be equal to the claimant's capacity to fabricate, which may not hold true in asymmetric information environments. When this assumption fails, the boundary shifts, allowing fabrication to persist even in the face of scrutiny.",
+  "response_chars": 761,
+  "approx_tokens": 190,
+  "latency_s": 1.919,
+  "harness_timing_ms": {
+    "total": 1918.8224440149497,
+    "llm": 1918.8204510137439
+  },
+  "br_0004_leakage_flags": []
+}

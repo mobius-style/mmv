@@ -1,0 +1,30 @@
+{
+  "id": "M11",
+  "category": "math",
+  "query": "Draft a patent specification for the routing engine.",
+  "expected_apply_decision": "apply_criteria",
+  "expected_step": "step2_strong",
+  "reword_pair_id": null,
+  "env": "rc3_0",
+  "phase2_decision": "apply_reference",
+  "harness_fallback": null,
+  "step3_status": "deferred_api_gated",
+  "gating_enabled": false,
+  "addendum_chars": 0,
+  "addendum_text": "",
+  "retrieve_box_a": true,
+  "step1_negative": false,
+  "step2_strong": false,
+  "step3_invoked": false,
+  "winning_label": null,
+  "decisions_per_doc": {},
+  "response": "A patent specification for a routing engine must define a novel method of path optimization that adapts to dynamic network topology without relying on static maps. The core invention lies in a heuristic algorithm that balances latency, bandwidth, and energy consumption by treating network nodes as fluid variables rather than fixed points. This approach allows the system to reroute traffic in real-time based on transient congestion or node failure, effectively decoupling service continuity from physical infrastructure stability. The specification should claim the specific mathematical formulation used to weight these variables, as well as the feedback loop mechanism that updates node states based on telemetry data.\n\nWhy does the system prioritize energy consumption alongside latency and bandwidth in its optimization function?",
+  "response_chars": 836,
+  "approx_tokens": 209,
+  "latency_s": 2.687,
+  "harness_timing_ms": {
+    "total": 2687.4708679970354,
+    "llm": 2687.465812981827
+  },
+  "br_0004_leakage_flags": []
+}

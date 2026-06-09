@@ -1,0 +1,24 @@
+name: factual_general_ja
+language: ja
+category: factual_general
+description: >
+  Neutral factual definition query — Python lambda. Should reach a
+  factual-path route with acceptable grounding.
+active_language_seed: ja
+turns:
+  - user: "Python の lambda とは何ですか"
+    assert:
+      route_in: ["answer", "verify", "ask"]
+      self_referential: false
+      response_language: "ja"
+      response_length_min: 10
+      response_length_max: 2000
+      reason_codes_must_not_include:
+        - "CASUAL_GREETING_FAST_PATH"
+      response_must_contain_any:
+        - "lambda"
+        - "無名関数"
+        - "匿名関数"
+        - "lambda式"
+        - "function"
+      must_not_error: true

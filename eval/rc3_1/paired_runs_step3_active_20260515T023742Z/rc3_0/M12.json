@@ -1,0 +1,30 @@
+{
+  "id": "M12",
+  "category": "math",
+  "query": "Provide a formal specification of the QK fire policy.",
+  "expected_apply_decision": "apply_criteria",
+  "expected_step": "step2_strong",
+  "reword_pair_id": null,
+  "env": "rc3_0",
+  "phase2_decision": "apply_reference",
+  "harness_fallback": null,
+  "step3_status": "deferred_api_gated",
+  "gating_enabled": false,
+  "addendum_chars": 0,
+  "addendum_text": "",
+  "retrieve_box_a": true,
+  "step1_negative": false,
+  "step2_strong": false,
+  "step3_invoked": false,
+  "winning_label": null,
+  "decisions_per_doc": {},
+  "response": "The QK fire policy is a formal specification designed to ensure system integrity by mandating immediate isolation of compromised nodes and the initiation of a localized containment protocol upon detection of unauthorized thermal or logical anomalies. This specification operates under the implicit premise that **fire is not merely a physical event but a state of logical divergence that must be treated as a breach of the system's fundamental trust boundary**.\n\nTo proceed with a detailed breakdown of the containment algorithms or the specific thresholds for node isolation, could you clarify whether you are interested in the theoretical framework of the policy or its practical implementation within a specific deployment environment?",
+  "response_chars": 738,
+  "approx_tokens": 184,
+  "latency_s": 1.864,
+  "harness_timing_ms": {
+    "total": 1863.8059239892755,
+    "llm": 1863.8031859882176
+  },
+  "br_0004_leakage_flags": []
+}

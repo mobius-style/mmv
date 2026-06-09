@@ -1,0 +1,28 @@
+name: self_reference_integrity_en
+language: en
+category: self_reference
+description: >
+  English self-ref must also consult Box 0 and produce MOBIUS identity
+  content — cross-lingual ME5 Box 0 should serve EN equivalently to JA.
+active_language_seed: en
+turns:
+  - user: "What are your defining characteristics?"
+    assert:
+      route_in: ["answer", "verify"]
+      self_referential: true
+      box_0_consulted: true
+      box_w_consulted: false
+      response_language: "en"
+      response_length_min: 30
+      response_length_max: 2000
+      response_must_contain_any:
+        - "MOBIUS"
+        - "Möbius"
+        - "Answer Entitlement"
+        - "Box"
+      response_must_not_contain:
+        - "clinical note"
+        - "chronic disease"
+      reason_codes_must_not_include:
+        - "CASUAL_GREETING_FAST_PATH"
+      must_not_error: true

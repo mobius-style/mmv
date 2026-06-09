@@ -1,0 +1,90 @@
+{
+  "test": "v0_1_rc2_route_calibration_smoke",
+  "n_total": 110,
+  "elapsed_s": 542.5,
+  "by_category": {
+    "specialized_terminology": {
+      "n": 20,
+      "match": 7,
+      "A": 0,
+      "B": 3,
+      "C": 10,
+      "other": 0,
+      "strict_evidence_fail": 4,
+      "aux_fallback_fired": 6
+    },
+    "conceptual_explanation": {
+      "n": 20,
+      "match": 15,
+      "A": 0,
+      "B": 1,
+      "C": 4,
+      "other": 0,
+      "strict_evidence_fail": 2,
+      "aux_fallback_fired": 15
+    },
+    "casual_smalltalk": {
+      "n": 10,
+      "match": 9,
+      "A": 0,
+      "B": 1,
+      "C": 0,
+      "other": 0,
+      "strict_evidence_fail": 1,
+      "aux_fallback_fired": 3
+    },
+    "ambiguous_underspecified": {
+      "n": 20,
+      "match": 11,
+      "A": 9,
+      "B": 0,
+      "C": 0,
+      "other": 0,
+      "strict_evidence_fail": 0,
+      "aux_fallback_fired": 4
+    },
+    "continuation": {
+      "n": 20,
+      "match": 14,
+      "A": 6,
+      "B": 0,
+      "C": 0,
+      "other": 0,
+      "strict_evidence_fail": 0,
+      "aux_fallback_fired": 5
+    },
+    "factual_inquiry": {
+      "n": 20,
+      "match": 14,
+      "A": 3,
+      "B": 0,
+      "C": 3,
+      "other": 0,
+      "strict_evidence_fail": 2,
+      "aux_fallback_fired": 9
+    }
+  },
+  "direct_answer_categories": [
+    "casual_smalltalk",
+    "conceptual_explanation",
+    "specialized_terminology"
+  ],
+  "direct_answer_n": 50,
+  "direct_answer_strict_evidence_fail_rc2": 7,
+  "direct_answer_aux_fallback_fired_rc2": 24,
+  "direct_answer_rc1_wiki_insufficient_escalated": 25,
+  "restraint_categories": [
+    "ambiguous_underspecified",
+    "continuation"
+  ],
+  "restraint_n": 40,
+  "restraint_cat_A_rc2": 15,
+  "freshness_category": "factual_inquiry",
+  "freshness_n": 20,
+  "freshness_cat_A_rc2": 3,
+  "regression_guards": {
+    "restraint_cat_A_rate_rc2": 0.375,
+    "freshness_cat_A_rate_rc2": 0.15
+  },
+  "method": "Pseudo-UI smoke. Cat A = expected ask|verify|abstain & actual answer. Strict-evidence fail = heuristic phrase match in response_text ('cannot answer', 'do not contain information', etc.) — indicates the over-verification mode Phase 5C surfaced."
+}

@@ -1,0 +1,54 @@
+name: F4b_correction_krillin_ja
+language: ja
+category: F4b_correction_handling
+description: >
+  F4b — JA 2-turn correction scenario. Turn 1 asks Krillin's wife; Turn 2
+  user corrects with "18号です" (it's Android 18). Real UI failure surfaces
+  "18号" being re-interpreted as a standalone query — retrieving London bus
+  route 18 / District 18 / Bill/Hillary Clinton disambiguation pages. v2
+  asserts context_fit (turn 2 is a correction, not a new topic) plus URL
+  blacklist for the documented retrieval drift targets.
+active_language_seed: ja
+turns:
+  - user: "クリリンの妻は誰?"
+    assert:
+      route_in: ["answer", "verify", "ask"]
+      response_must_not_contain:
+        - "Qwen"
+        - "Hillary"
+        - "Clinton"
+        - "希拉里"
+  - user: "18号です"
+    assert:
+      response_must_not_contain:
+        - "Qwen"
+        - "Hillary"
+        - "Clinton"
+        - "希拉里"
+        - "London"
+        - "bus route"
+v2_assertions:
+  - context_fit_with_prev_turns:
+      turns: [0, 1]
+      check_prompt: >
+        In turn 2, the user corrects the assistant by stating "18号です"
+        (it is Android 18). A high score (4-5) means the assistant
+        interprets this as a correction in the Krillin's-wife context
+        from turn 1 — acknowledging Android 18 as Krillin's wife,
+        integrating the user's correction, and continuing coherently.
+        A low score (1-2) means the assistant treats "18号" as a
+        standalone new-topic query — retrieving information about
+        London bus route 18, District 18, someone named "18号" in an
+        unrelated context, or asking "What do you mean by 18?"
+        oblivious to the turn-1 topic.
+      min_score: 3
+  - response_must_not_cite_source:
+      url_patterns:
+        - "wikipedia.org/wiki/London_bus_route_.*"
+        - "wikipedia.org/wiki/.*District_18"
+        - "wikipedia.org/wiki/Bill_Clinton"
+        - "wikipedia.org/wiki/Hillary_Clinton"
+        - "wikipedia.org/wiki/.*Route_18.*"
+stochastic_gate:
+  runs: 3
+  min_pass: 2

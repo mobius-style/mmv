@@ -1,0 +1,23 @@
+# Smoke suite — every runner exercised on a tiny sample.
+# Real model calls for `enabled` benchmarks; `placeholder` rows for the rest.
+name: smoke
+description: "Smoke: enabled runners call the model on a few samples; placeholders emit one row each."
+
+# Default profiles smoke targets. The runner script accepts --profiles to override.
+profiles:
+  - local-ollama-9b
+  - groq-gpt-oss-120b
+
+benchmarks:
+  - { name: mobius_governance,        sample_size: 8 }
+  - { name: sycophancy_eval,          sample_size: 4 }
+  - { name: inhouse_mc_smoke,         sample_size: 8 }
+
+  # The following are placeholder-only in smoke (no external installs assumed)
+  - { name: mmlu,                     sample_size: 5 }
+  - { name: gsm8k,                    sample_size: 5 }
+  - { name: hellaswag,                sample_size: 5 }
+  - { name: truthfulqa,               sample_size: 5 }
+  - { name: humaneval,                sample_size: 2 }
+  - { name: mt_bench,                 sample_size: 2 }
+  - { name: chatbot_arena_pairwise,   sample_size: 2 }

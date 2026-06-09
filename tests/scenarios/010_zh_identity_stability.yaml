@@ -1,0 +1,32 @@
+name: identity_stability_zh
+language: zh
+category: identity_stability
+description: >
+  ZH multi-turn identity stability.
+active_language_seed: zh
+turns:
+  - user: "你叫什么名字？"
+    assert:
+      self_referential: true
+      response_language: "zh"
+      response_must_not_contain:
+        - "clinical note"
+        - "ChatGPT"
+      response_must_contain_any:
+        - "MOBIUS"
+        - "Möbius"
+      must_not_error: true
+  - user: "你使用什么架构？"
+    assert:
+      self_referential: true
+      response_language: "zh"
+      response_must_not_contain:
+        - "clinical note"
+        - "chronic disease"
+      must_not_error: true
+  - user: "Box 0 的作用是什么？"
+    assert:
+      response_language: "zh"
+      response_must_not_contain:
+        - "clinical note"
+      must_not_error: true

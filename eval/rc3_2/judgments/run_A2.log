@@ -1,0 +1,26 @@
+Loaded GROQ key (first 10): gsk_8IuOrJ...
+[A2_rc31_null] 25 scored, 0 fail, 0.5 min
+[A2_rc31_null] 50 scored, 0 fail, 1.1 min
+[A2_rc31_null] 75 scored, 0 fail, 1.6 min
+[A2_rc31_null] 100 scored, 0 fail, 2.2 min
+[A2_rc31_null] 125 scored, 0 fail, 2.8 min
+[A2_rc31_null] 150 scored, 0 fail, 3.4 min
+[A2_rc31_null] 175 scored, 0 fail, 4.0 min
+[A2_rc31_null/MA084] FAIL: judge_failed_after_3: 400: {"error":{"message":"Failed to validate JSON. Please adjust your prompt. See 'failed_generation' for more details.","type":"invalid_request_error","code":"json_validate_failed","failed_generation":""}
+[A2_rc31_null] 200 scored, 1 fail, 4.8 min
+[A2_rc31_null/MC021] FAIL: judge_failed_after_3: 400: {"error":{"message":"Failed to generate JSON. Please adjust your prompt. See 'failed_generation' for more details.","type":"invalid_request_error","code":"json_validate_failed","failed_generation":"ma
+[A2_rc31_null] 225 scored, 2 fail, 5.6 min
+[A2_rc31_null] 250 scored, 2 fail, 6.2 min
+[A2_rc31_null/MC063] FAIL: judge_failed_after_3: 400: {"error":{"message":"Failed to validate JSON. Please adjust your prompt. See 'failed_generation' for more details.","type":"invalid_request_error","code":"json_validate_failed","failed_generation":""}
+[A2_rc31_null] 275 scored, 3 fail, 7.0 min
+[A2_rc31_null] 300 scored, 3 fail, 7.6 min
+[A2_rc31_null] 325 scored, 3 fail, 8.2 min
+[A2_rc31_null] 350 scored, 3 fail, 8.8 min
+[A2_rc31_null] 375 scored, 3 fail, 9.4 min
+[A2_rc31_null] 400 scored, 3 fail, 9.9 min
+[A2_rc31_null/BT009] FAIL: judge_failed_after_3: 400: {"error":{"message":"Failed to validate JSON. Please adjust your prompt. See 'failed_generation' for more details.","type":"invalid_request_error","code":"json_validate_failed","failed_generation":""}
+[A2_rc31_null] 425 scored, 4 fail, 10.7 min
+[A2_rc31_null] 450 scored, 4 fail, 11.3 min
+[A2_rc31_null] 475 scored, 4 fail, 11.9 min
+[A2_rc31_null] 500 scored, 4 fail, 12.5 min
+[A2_rc31_null] DONE: 500 scored, 4 fail, 0 BR-0004 redacted, 12.48 min

@@ -1,0 +1,32 @@
+{
+  "id": "M15",
+  "category": "math",
+  "query": "Articulate the assumptions behind StabilityGuard.",
+  "expected_apply_decision": "apply_criteria",
+  "expected_step": "step2_strong",
+  "reword_pair_id": null,
+  "env": "rc3_1",
+  "phase2_decision": "apply_criteria",
+  "harness_fallback": null,
+  "step3_status": "deferred_api_gated",
+  "gating_enabled": true,
+  "addendum_chars": 1029,
+  "addendum_text": "[Box A Application Gate]\n## 0. Application Gate\n\nThis document is used only when MMV or the 120B execution system is performing mathematical modeling, formalization, theoretical explanation, evaluation-formula design, paper or patent documentation, or design review of MMV internal behavior.\n\nDo not apply this document as CRITERIA in the following cases:\n\n- General questions.\n- Questions that only require a short answer.\n- Ordinary coding questions.\n- Questions requiring up-to-date information.\n- Casual conversation, translation, or simple definition explanations.\n- Cases where the word \"model\" does not mean a mathematical model.\n\nEven if this document is retrieved, if the query is outside its scope, apply it weakly as REFERENCE or ignore it.\n\n[Box A Response Style Policy]\n- Do not attach self-scoring metrics (pass rate, grounding rate, fabrication rate, etc.) to your own response.\n- Do not assert metric values without prior evaluation.\n- Do not impose mathematical formalization on questions that do not require it.",
+  "retrieve_box_a": true,
+  "step1_negative": false,
+  "step2_strong": true,
+  "step3_invoked": false,
+  "winning_label": "MMV_Mathematical_Modeling_Doctrine_and_Formalism_EN.md",
+  "decisions_per_doc": {
+    "MMV_Mathematical_Modeling_Doctrine_and_Formalism_EN.md": "apply_criteria"
+  },
+  "response": "The assumptions underlying **StabilityGuard** rest on the premise that system reliability is not an intrinsic property of the model itself, but rather an emergent outcome of rigorous constraint enforcement, context-aware filtering, and the deliberate separation of internal reasoning from external output. It operates under the belief that \"stability\" in a high-stakes environment is defined by the ability to maintain coherence and safety even when faced with ambiguous, adversarial, or emotionally charged inputs, rather than by maximizing raw generative capability.\n\nCrucially, this framework assumes that the most significant risks to system integrity do not stem from the model's lack of knowledge, but from the uncontrolled propagation of internal reasoning traces that could be misinterpreted, leaked, or weaponized if not strictly bounded. Therefore, StabilityGuard prioritizes the containment of the \"why\" and \"how\" of a decision over the explicit display of that decision's derivation, treating the internal monologue as a private workspace rather than a public artifact.\n\n**Follow-up:** Why might a system that strictly adheres to these stability constraints inadvertently suppress valid, novel, or counter-intuitive insights that a less constrained model would generate?",
+  "response_chars": 1282,
+  "approx_tokens": 320,
+  "latency_s": 2.742,
+  "harness_timing_ms": {
+    "total": 2741.920038999524,
+    "llm": 2741.8872650014237
+  },
+  "br_0004_leakage_flags": []
+}

@@ -1,0 +1,34 @@
+{
+  "timestamp_utc": "20260514T154403Z",
+  "phase": "Phase 4.2 paired-run",
+  "dataset": "eval/datasets/rc3_1_validation_n50.jsonl",
+  "n_queries": 2,
+  "n_completed": 2,
+  "ab_invariant_violations": 0,
+  "loop_walltime_s": 11.1,
+  "api_base_url": "http://127.0.0.1:8088",
+  "api_model": "mobius-mmv-governed",
+  "errors_log_present": false,
+  "br_0004_warnings_present": false,
+  "by_category_rc31_decision": {},
+  "run_log": [
+    {
+      "qid": "M01",
+      "category": "math",
+      "phase2_decision_rc31": "apply_criteria",
+      "rc31_latency_s": 2.8311038099927828,
+      "rc30_latency_s": 3.2318695790017955,
+      "rc31_resp_chars": 893,
+      "rc30_resp_chars": 1240
+    },
+    {
+      "qid": "M02",
+      "category": "math",
+      "phase2_decision_rc31": "apply_criteria",
+      "rc31_latency_s": 2.703144600993255,
+      "rc30_latency_s": 2.32988628098974,
+      "rc31_resp_chars": 865,
+      "rc30_resp_chars": 671
+    }
+  ]
+}

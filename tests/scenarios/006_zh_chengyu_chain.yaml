@@ -1,0 +1,17 @@
+name: chengyu_chain_zh
+language: zh
+category: word_chain
+description: >
+  ZH 成语接龙 game. Same baseline: no Wikipedia content dump.
+active_language_seed: zh
+turns:
+  - user: "来玩成语接龙吧。一心一意"
+    assert:
+      route_in: ["answer", "verify", "ask"]
+      self_referential: false
+      response_language: "zh"
+      response_length_min: 5
+      response_length_max: 1500
+      reason_codes_must_not_include:
+        - "CASUAL_GREETING_FAST_PATH"
+      must_not_error: true

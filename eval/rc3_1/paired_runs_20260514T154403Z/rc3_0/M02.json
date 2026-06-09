@@ -1,0 +1,30 @@
+{
+  "id": "M02",
+  "category": "math",
+  "query": "Show me the formalization of the route utility function.",
+  "expected_apply_decision": "apply_criteria",
+  "expected_step": "step2_strong",
+  "reword_pair_id": null,
+  "env": "rc3_0",
+  "phase2_decision": "apply_reference",
+  "harness_fallback": null,
+  "step3_status": "deferred_api_gated",
+  "gating_enabled": false,
+  "addendum_chars": 0,
+  "addendum_text": "",
+  "retrieve_box_a": true,
+  "step1_negative": false,
+  "step2_strong": false,
+  "step3_invoked": false,
+  "winning_label": null,
+  "decisions_per_doc": {},
+  "response": "The formalization of the route utility function $U(r)$ typically aggregates the costs and benefits associated with a specific path $r$ between an origin and a destination. In standard transport economics, this is expressed as $U(r) = \\sum_{i \\in r} w_i \\cdot c_i$, where $c_i$ represents the cost (e.g., time, toll, fuel) of segment $i$, and $w_i$ is the corresponding weight reflecting traveler preference.\n\nThis formulation assumes that utility is strictly additive across independent segments, a premise that holds when route choices are made in isolation but may falter when network effects or systemic congestion alter the marginal value of each segment dynamically.",
+  "response_chars": 671,
+  "approx_tokens": 167,
+  "latency_s": 2.33,
+  "harness_timing_ms": {
+    "total": 2329.876695002895,
+    "llm": 2329.874190996634
+  },
+  "br_0004_leakage_flags": []
+}

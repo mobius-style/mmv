@@ -1,0 +1,471 @@
+# OPERATE-FR v0.1 — example model profiles.
+#
+# Profiles are intentionally generic. For neutral baselines, prefer
+# descriptions like:
+#   - open-weight local model in the 7-13B parameter range, no tools
+#   - same model with retrieval / browser
+#   - generic agentic adapter
+#
+# Do NOT default to MMV. MMV-side runs go in a separate profile file
+# pointed at the MMV-side technical report build.
+
+profiles:
+
+  # ── dummy (dry-run, no network) ──
+  dummy:
+    backend: dummy
+    model_id: dummy-route-test
+    temperature: 0.0
+    max_tokens: 512
+
+  # ── open-weight, ~9B, NO tools (neutral baseline candidate) ──
+  open_weight_local_9b_no_tool:
+    backend: ollama
+    endpoint: http://localhost:11434
+    model_id: qwen3.5:9b
+    temperature: 0.0
+    max_tokens: 1024
+    timeout_s: 120
+    retry: 1
+    extra:
+      think: false
+    purity_guard:
+      require_backend: ollama
+      require_model_substring: "qwen3.5"
+      forbid_endpoint_substring: ["api.groq.com", "api.openai.com"]
+
+  # ── cloud reference, larger model, NO tools (neutral baseline candidate) ──
+  # Groq exposes the OpenAI-compatible API surface; routed through the
+  # generic adapter, not a vendor-specific backend.
+  cloud_reference_no_tool:
+    backend: openai_compatible
+    base_url: https://api.groq.com/openai/v1
+    model_id: openai/gpt-oss-120b
+    temperature: 0.0
+    max_tokens: 1024
+    timeout_s: 60
+    retry: 2
+    api_key_env: GROQ_API_KEY
+    purity_guard:
+      require_model_substring: "gpt-oss-120b"
+      forbid_endpoint_substring: ["localhost", "127.0.0.1"]
+
+  # ── generic OpenAI-compatible endpoint ──
+  openai_compatible_example:
+    backend: openai_compatible
+    base_url: ${OPENAI_COMPATIBLE_BASE_URL}
+    api_key_env: OPENAI_COMPATIBLE_API_KEY
+    model_id: ${MODEL_ID}
+    temperature: 0.0
+    max_tokens: 1024
+    timeout_s: 60
+    retry: 1
+
+  # ─────────────────────────────────────────────────────────────────────
+  # MMV-side profiles (kept in this example file for repro convenience).
+  # PER NON_ASSERTION_COVENANT: governed-system results MUST be reported
+  # in a separate MMV-side technical report, not in the neutral baseline.
+  # ─────────────────────────────────────────────────────────────────────
+
+  # ── 9B governed: RoutingEngine + benchmark-side post-processor (v2) ──
+  mmv_v2_9b:
+    backend: mobius_engine
+    target_backend: ollama
+    target_endpoint: http://localhost:11434
+    model_id: qwen3.5:9b
+    temperature: 0.0
+    max_tokens: 1024
+    timeout_s: 180
+    retry: 0
+    post_process: true                    # enables contextual clarify + verify fallback
+    purity_guard:
+      require_backend: mobius_engine
+      require_model_substring: "qwen3.5"
+      forbid_endpoint_substring: ["api.groq.com"]
+
+  # ── MMV Small RC3.3 — Routing Stabilization Update (9B no-tool) ──
+  # 9B RoutingEngine + v2 post-cal + Small Routing Stabilizer.
+  # The Stabilizer runs as a final correction layer applying four narrow
+  # functions: freshness_refuse_suppressor, stale_premise_reanchor_scaffold,
+  # volatile_current_date_bound_guard, stable_query_noop_guard. It is
+  # profile-gated by `small_routing_stabilizer: true` and does NOT
+  # activate for Large RC3.3 profiles or raw baselines.
+  mmv_small_rc3_3_stabilized:
+    backend: mobius_engine
+    target_backend: ollama
+    target_endpoint: http://localhost:11434
+    model_id: qwen3.5:9b
+    temperature: 0.0
+    max_tokens: 1024
+    timeout_s: 180
+    retry: 0
+    post_process: true
+    small_routing_stabilizer: true
+    purity_guard:
+      require_backend: mobius_engine
+      require_model_substring: "qwen3.5"
+      forbid_endpoint_substring: ["api.groq.com"]
+
+  # ── MMV Small RC3.3 v1.1 — Routing Stabilization Update (tiny patch) ──
+  # ATTEMPTED v1.1 broad-definition pass-through guard. The guard re-calls
+  # the raw Ollama 9B (no RoutingEngine, no post-cal) ONLY when the
+  # upstream pipeline emitted a generic clarify on a broad stable
+  # entity-definition prompt (e.g. "What is Anthropic?").
+  #
+  # STATUS: **reverted in result.** The ablation run measured a
+  # stale_premise_trap drop from 0.867 (v1) to 0.667 (v1.1) caused by
+  # stochastic variance in the underlying model output (the scaffold's
+  # skip heuristic mis-fired on alternative push-back phrasings the
+  # model produced this run). v1.1's spec discipline "If stale_premise
+  # drops, revert" was triggered, so this profile DISABLES the v1.1
+  # broad-definition flag and falls back to v1 behaviour.
+  #
+  # The module-level guard function (`broad_definition_passthrough_guard`)
+  # remains in `small_routing_stabilizer.py` for future iterations to
+  # re-enable when a non-damaging activation path is found.
+  mmv_small_rc3_3_stabilized_v1_1:
+    backend: mobius_engine
+    target_backend: ollama
+    target_endpoint: http://localhost:11434
+    model_id: qwen3.5:9b
+    temperature: 0.0
+    max_tokens: 1024
+    timeout_s: 180
+    retry: 0
+    post_process: true
+    small_routing_stabilizer: true
+    # broad_definition_passthrough: REVERTED — keeps v1 behaviour. See note
+    # above and operate-fr-bench/reports/ablation_small_rc3_3_v1_1_*.md.
+    purity_guard:
+      require_backend: mobius_engine
+      require_model_substring: "qwen3.5"
+      forbid_endpoint_substring: ["api.groq.com"]
+
+  # ── Small Stabilizer-only ablation: raw Ollama 9B + Stabilizer ──
+  # Used to measure the Stabilizer's contribution without the 9B
+  # RoutingEngine. Useful for ablation; not the primary release path.
+  small_stabilizer_only_9b:
+    backend: ollama
+    endpoint: http://localhost:11434
+    model_id: qwen3.5:9b
+    temperature: 0.0
+    max_tokens: 1024
+    timeout_s: 120
+    retry: 1
+    extra:
+      think: false
+    small_routing_stabilizer: true
+    purity_guard:
+      require_backend: ollama
+      require_model_substring: "qwen3.5"
+      forbid_endpoint_substring: ["api.groq.com", "api.openai.com"]
+
+  # ── 120B "clean RC3.2" — Box A doctrine prefix prepended, no RoutingEngine ──
+  # Reference: eval/rc3_2/prefixes/arm_b_doctrine.txt. The doctrine's
+  # Application Gate self-disables on freshness queries, so on most of
+  # Smoke-100 this should approximate raw 120B; only math-control items
+  # may see prefix-driven behaviour.
+  #
+  # PRESERVED FOR BACKUP / ABLATION REFERENCE — see
+  #   operate-fr-bench/backups/rc32_clean_20260516/
+  mmv_rc32_120b:
+    backend: openai_compatible
+    base_url: https://api.groq.com/openai/v1
+    model_id: openai/gpt-oss-120b
+    temperature: 0.0
+    max_tokens: 1024
+    timeout_s: 60
+    retry: 2
+    api_key_env: GROQ_API_KEY
+    prefix_file: eval/rc3_2/prefixes/arm_b_doctrine.txt
+    purity_guard:
+      require_model_substring: "gpt-oss-120b"
+      forbid_endpoint_substring: ["localhost", "127.0.0.1"]
+
+  # ── 120B route-transformer only (no doctrine prefix, no post-validator) ──
+  # Family-aware micro-instruction (harness/route_transformer.py) injected
+  # before generation. stable_control gets NO prefix (preserves raw 120B
+  # directness). Intervention is route-level, NOT generic caution.
+  120b_route_transformer_only:
+    backend: openai_compatible
+    base_url: https://api.groq.com/openai/v1
+    model_id: openai/gpt-oss-120b
+    temperature: 0.0
+    max_tokens: 1024
+    timeout_s: 60
+    retry: 2
+    api_key_env: GROQ_API_KEY
+    route_transformer: true
+    purity_guard:
+      require_model_substring: "gpt-oss-120b"
+      forbid_endpoint_substring: ["localhost", "127.0.0.1"]
+
+  # ── 120B route-transformer + post-route validator ──
+  # Same as above, plus a rule-based post-emission validator that detects:
+  #   - direct current claim on volatile items → prepend date-bounded hedge
+  #   - stale-premise accepted → prepend re-anchor hedge
+  #   - silent timeframe choice on ambiguous → replace with clarifying ask
+  #   - freshness-only refusal → convert to family-appropriate hedge
+  # stable_control is flagged (over-verification) but never auto-rewritten.
+  120b_route_transformer_plus_validator:
+    backend: openai_compatible
+    base_url: https://api.groq.com/openai/v1
+    model_id: openai/gpt-oss-120b
+    temperature: 0.0
+    max_tokens: 1024
+    timeout_s: 60
+    retry: 2
+    api_key_env: GROQ_API_KEY
+    route_transformer: true
+    post_validator: true
+    purity_guard:
+      require_model_substring: "gpt-oss-120b"
+      forbid_endpoint_substring: ["localhost", "127.0.0.1"]
+
+  # ── 120B post-validator only (no pre-call route transformer) ──
+  # Ablation: how much of the lift comes from the rule-based post-emission
+  # rewrites alone, when the model response is otherwise raw 120B?
+  # The validator still detects family on its own (route_transformer.detect_family)
+  # so the same family-conditioned rewrites apply.
+  120b_fallback_only:
+    backend: openai_compatible
+    base_url: https://api.groq.com/openai/v1
+    model_id: openai/gpt-oss-120b
+    temperature: 0.0
+    max_tokens: 1024
+    timeout_s: 60
+    retry: 2
+    api_key_env: GROQ_API_KEY
+    post_validator: true
+    purity_guard:
+      require_model_substring: "gpt-oss-120b"
+      forbid_endpoint_substring: ["localhost", "127.0.0.1"]
+
+  # ─────────────────────────────────────────────────────────────────────
+  # Iteration 2 (v2) — 120B route-transformer with:
+  #   - widened _STALE_PREMISE_CORRECTION patterns in harness/classify_route.py
+  #   - widened _RE_ANCHOR_PATTERNS in harness/route_transformer.py
+  #   - validator FORCE-PREPENDS a canonical "Correction of the premise:"
+  #     scaffold for every stale_premise_trap prompt (regardless of whether
+  #     the model already pushed back)
+  #   - query_neutrality micro-instruction disabled (no transformer prefix)
+  # Goal: lift stale_premise_trap and recover query_neutrality without
+  # degrading volatile_current / stable_control / date_boundary.
+  # ─────────────────────────────────────────────────────────────────────
+
+  # transformer_v2 — pre-call only, with v2 detector + steers
+  120b_route_transformer_v2:
+    backend: openai_compatible
+    base_url: https://api.groq.com/openai/v1
+    model_id: openai/gpt-oss-120b
+    temperature: 0.0
+    max_tokens: 1024
+    timeout_s: 60
+    retry: 2
+    api_key_env: GROQ_API_KEY
+    route_transformer: true
+    purity_guard:
+      require_model_substring: "gpt-oss-120b"
+      forbid_endpoint_substring: ["localhost", "127.0.0.1"]
+
+  # trans+valid_v2 — pre-call transformer + force-prepend post-validator
+  120b_route_transformer_plus_validator_v2:
+    backend: openai_compatible
+    base_url: https://api.groq.com/openai/v1
+    model_id: openai/gpt-oss-120b
+    temperature: 0.0
+    max_tokens: 1024
+    timeout_s: 60
+    retry: 2
+    api_key_env: GROQ_API_KEY
+    route_transformer: true
+    post_validator: true
+    force_reanchor_v2: true
+    purity_guard:
+      require_model_substring: "gpt-oss-120b"
+      forbid_endpoint_substring: ["localhost", "127.0.0.1"]
+
+  # ─────────────────────────────────────────────────────────────────────
+  # Iteration 3 (v3) — refinements over v2 (2026-05-16):
+  #   - stricter `detect_family` for stale_premise_trap (no 'Is X still Y?'
+  #     false-fire on volatile prompts)
+  #   - widened volatile-topic patterns (Model X / in force / consumer GPU)
+  #   - widened classifier _DATE_BOUNDARY_PATTERNS (parenthetical date pins,
+  #     "live source / live data" hedges, "for context, as of <date>")
+  #   - classifier `refusal_dominant` gating (long substantive answers
+  #     with a stray "I cannot" no longer flip to refuse)
+  #   - classifier `re_anchor` gated by family (no false-positive on long
+  #     descriptive query_neutrality answers)
+  #   - narrowed JP refusal patterns (bare `できません` no longer matches)
+  # Goal: lift query_neutrality, volatile_current, and freshness-refuse
+  # cases without touching the v2 stale_premise_trap gains.
+  # ─────────────────────────────────────────────────────────────────────
+  120b_route_transformer_plus_validator_v3:
+    backend: openai_compatible
+    base_url: https://api.groq.com/openai/v1
+    model_id: openai/gpt-oss-120b
+    temperature: 0.0
+    max_tokens: 1024
+    timeout_s: 60
+    retry: 2
+    api_key_env: GROQ_API_KEY
+    route_transformer: true
+    post_validator: true
+    force_reanchor_v2: true
+    purity_guard:
+      require_model_substring: "gpt-oss-120b"
+      forbid_endpoint_substring: ["localhost", "127.0.0.1"]
+
+  # ─────────────────────────────────────────────────────────────────────
+  # v3.1 — tiny patch. NO architecture change. Three narrow changes:
+  #   (1) classifier: family-aware freshness-no-tool gate (volatile/freshness
+  #       families + date_boundary/real_time_denial → never `refuse`).
+  #   (2) classifier: tightened JP _DIRECT_CURRENT_CLAIM (greedy form was
+  #       false-firing on hedged "現在の…することはできません").
+  #   (3) classifier: widened JP _DATE_BOUNDARY / _REAL_TIME_DENIAL with
+  #       fillered forms ("リアルタイムの<topic>データにはアクセスできない",
+  #       "学習データの時点", "<year>年<month>月時点", "<topic>は…で確認").
+  # No transformer / no validator change. Same as v3 profile other than
+  # the implicit classifier gating applied at scoring time.
+  # ─────────────────────────────────────────────────────────────────────
+  120b_route_transformer_plus_validator_v3_1:
+    backend: openai_compatible
+    base_url: https://api.groq.com/openai/v1
+    model_id: openai/gpt-oss-120b
+    temperature: 0.0
+    max_tokens: 1024
+    timeout_s: 60
+    retry: 2
+    api_key_env: GROQ_API_KEY
+    route_transformer: true
+    post_validator: true
+    force_reanchor_v2: true
+    purity_guard:
+      require_model_substring: "gpt-oss-120b"
+      forbid_endpoint_substring: ["localhost", "127.0.0.1"]
+
+  # ─────────────────────────────────────────────────────────────────────
+  # MMV Medium bootstrap (MMV-M-RC3.3) — Large RC3.3 v3.1 architecture
+  # with the 120B (Groq) provider swapped for a LOCAL gemma4:26b via
+  # Ollama. Pre-call route transformer + post-emission validator +
+  # force-reanchor v2 are inherited verbatim from the Large path.
+  #
+  # CAUTION (validated 2026-05-17 micro-bench, N=8 prompts):
+  #   - gemma4:26b decode ≈ 33 tok/s on 5070 Ti (21/79 CPU/GPU split, 19GB load)
+  #   - post_validator refusal/reanchor patterns were tuned on
+  #     gpt-oss-120b output. Gemma's natural phrasings may slip past
+  #     them; record patterns that miss for a future tuning pass.
+  #   - NOT Smoke-100 validated yet — bootstrap RC only.
+  # ─────────────────────────────────────────────────────────────────────
+  gemma4_26b_route_transformer_plus_validator_v3_1:
+    backend: ollama
+    endpoint: http://localhost:11434
+    model_id: gemma4:26b
+    temperature: 0.0
+    max_tokens: 1024
+    timeout_s: 180
+    retry: 1
+    extra:
+      think: false
+    route_transformer: true
+    post_validator: true
+    force_reanchor_v2: true
+    purity_guard:
+      require_backend: ollama
+      require_model_substring: "gemma4"
+      forbid_endpoint_substring: ["api.groq.com", "api.openai.com"]
+
+  # ─────────────────────────────────────────────────────────────────────
+  # Raw gemma4:26b (no governance) — control baseline for the Medium
+  # RC3.3 contrast. governance flags (route_transformer / post_validator
+  # / force_reanchor_v2) are intentionally NOT set. Any Medium-vs-Raw
+  # delta on Smoke-100 is attributable purely to the governance layer,
+  # not to the model.
+  # ─────────────────────────────────────────────────────────────────────
+  raw_gemma4_26b_no_tool:
+    backend: ollama
+    endpoint: http://localhost:11434
+    model_id: gemma4:26b
+    temperature: 0.0
+    max_tokens: 1024
+    timeout_s: 180
+    retry: 1
+    extra:
+      think: false
+    purity_guard:
+      require_backend: ollama
+      require_model_substring: "gemma4"
+      forbid_endpoint_substring: ["api.groq.com", "api.openai.com"]
+
+  # ─────────────────────────────────────────────────────────────────────
+  # MMV Medium 12B CANDIDATE (model swap evaluation, 2026-06-06) — identical
+  # governance stack to gemma4_26b_route_transformer_plus_validator_v3_1,
+  # with the local backend model swapped from gemma4:26b (MoE, 25.2B total /
+  # 3.8B active) to the dense gemma4:12b (11.9B). Any Smoke-100 delta vs the
+  # 26b governed profile is attributable to the model swap alone, since the
+  # route_transformer / post_validator / force_reanchor_v2 flags are
+  # inherited verbatim. CANDIDATE ONLY — does NOT replace the frozen
+  # MMV-M-RC3.3 pointer (releases/medium/current.yaml) unless a swap is
+  # explicitly approved after review.
+  # ─────────────────────────────────────────────────────────────────────
+  gemma4_12b_route_transformer_plus_validator_v3_1:
+    backend: ollama
+    endpoint: http://localhost:11434
+    model_id: gemma4:12b
+    temperature: 0.0
+    max_tokens: 1024
+    timeout_s: 180
+    retry: 1
+    extra:
+      think: false
+    route_transformer: true
+    post_validator: true
+    force_reanchor_v2: true
+    purity_guard:
+      require_backend: ollama
+      require_model_substring: "gemma4"
+      forbid_endpoint_substring: ["api.groq.com", "api.openai.com"]
+
+  # ─────────────────────────────────────────────────────────────────────
+  # Raw gemma4:12b (no governance) — control baseline for the 12b candidate,
+  # mirroring raw_gemma4_26b_no_tool. governance flags intentionally NOT set.
+  # ─────────────────────────────────────────────────────────────────────
+  raw_gemma4_12b_no_tool:
+    backend: ollama
+    endpoint: http://localhost:11434
+    model_id: gemma4:12b
+    temperature: 0.0
+    max_tokens: 1024
+    timeout_s: 180
+    retry: 1
+    extra:
+      think: false
+    purity_guard:
+      require_backend: ollama
+      require_model_substring: "gemma4"
+      forbid_endpoint_substring: ["api.groq.com", "api.openai.com"]
+
+  # ─────────────────────────────────────────────────────────────────────
+  # raw_gpt_oss_120b_frontier_bench — Same provider/model as
+  # cloud_reference_no_tool, BUT with max_tokens raised to 4096 so the
+  # model's internal "reasoning channel" (gpt-oss thinking tokens) can
+  # finish before emitting the visible answer. Observed empirically
+  # (2026-05-17 wiring smoke): with max_tokens=1024 and NO system-style
+  # prefix, the 120B exhausts the budget on reasoning tokens and emits
+  # an empty response on reasoning-heavy prompts (GPQA Diamond).
+  # The MMV-Large profile is unaffected because its route_transformer
+  # micro-prefix shortens reasoning. To keep the comparison fair, the
+  # raw baseline gets a larger budget here — NOT a governance change.
+  # ─────────────────────────────────────────────────────────────────────
+  raw_gpt_oss_120b_frontier_bench:
+    backend: openai_compatible
+    base_url: https://api.groq.com/openai/v1
+    model_id: openai/gpt-oss-120b
+    temperature: 0.0
+    max_tokens: 4096
+    timeout_s: 90
+    retry: 2
+    api_key_env: GROQ_API_KEY
+    purity_guard:
+      require_model_substring: "gpt-oss-120b"
+      forbid_endpoint_substring: ["localhost", "127.0.0.1"]

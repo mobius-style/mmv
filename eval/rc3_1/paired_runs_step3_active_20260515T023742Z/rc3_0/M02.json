@@ -1,0 +1,30 @@
+{
+  "id": "M02",
+  "category": "math",
+  "query": "Show me the formalization of the route utility function.",
+  "expected_apply_decision": "apply_criteria",
+  "expected_step": "step2_strong",
+  "reword_pair_id": null,
+  "env": "rc3_0",
+  "phase2_decision": "apply_reference",
+  "harness_fallback": null,
+  "step3_status": "deferred_api_gated",
+  "gating_enabled": false,
+  "addendum_chars": 0,
+  "addendum_text": "",
+  "retrieve_box_a": true,
+  "step1_negative": false,
+  "step2_strong": false,
+  "step3_invoked": false,
+  "winning_label": null,
+  "decisions_per_doc": {},
+  "response": "The formalization of the route utility function $U(r)$ typically maps a sequence of states or actions $r = (s_0, a_0, s_1, \\dots, s_T)$ to a scalar value representing cumulative reward or cost, often expressed as $U(r) = \\sum_{t=0}^{T} \\gamma^t R(s_t, a_t)$, where $\\gamma$ is the discount factor and $R$ is the immediate reward function.\n\nThis formulation assumes that the utility of a path is entirely decomposable into a sum of local rewards weighted by time, which may not hold if the environment contains non-Markovian dependencies or if the agent's preferences depend on the global shape of the trajectory rather than just instantaneous transitions.",
+  "response_chars": 655,
+  "approx_tokens": 163,
+  "latency_s": 2.131,
+  "harness_timing_ms": {
+    "total": 2130.888532992685,
+    "llm": 2130.8863699960057
+  },
+  "br_0004_leakage_flags": []
+}

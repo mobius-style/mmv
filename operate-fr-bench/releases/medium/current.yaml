@@ -1,0 +1,28 @@
+# MMV Medium — Active Release Pointer
+# RC3.3 is MAINTAINED. The 2026-06-06 change is a MODEL-BINDING update only —
+# the local backend model was swapped gemma4:26b (MoE, 25.2B total / 3.8B
+# active) → dense gemma4:12b (11.9B). The governance stack (Large RC3.3 v3.1:
+# route_transformer + post_validator + force_reanchor_v2) is bit-identical, so
+# the release does NOT advance: same governance release, new model binding.
+# Evidence basis: N=100 Smoke-100 + N=500 Core-500 candidate, head-to-head vs
+# the prior 26b binding (see freeze note "2026-06-06 model-binding update").
+# The 12b binding is net-better on routing, slightly safer on commitment
+# rates, and ~2.4x lower latency. The Large pointer remains the secretary
+# default; this pointer is invoked explicitly via the harness or secretary's
+# --release_pointer_path flag.
+release: MMV-M-RC3.3
+short_name: MMV-M-RC3.3
+frozen_at: '2026-05-17'
+model_binding_updated_at: '2026-06-06'
+profile_name: gemma4_12b_route_transformer_plus_validator_v3_1
+profile_path: operate-fr-bench/configs/model_profiles.example.yaml
+harness_root: operate-fr-bench
+freeze_note: operate-fr-bench/docs/MMV_Medium_RC3_3_FREEZE_NOTE.md
+provider_backend: ollama
+provider_endpoint: http://localhost:11434
+provider_model_id: gemma4:12b
+api_key_env: null
+
+# Prior model binding (historical, same RC3.3 governance release):
+#   gemma4:26b via profile gemma4_26b_route_transformer_plus_validator_v3_1
+#   (26b profile retained in model_profiles.example.yaml for reproducibility)

@@ -1,0 +1,40 @@
+name: factual_krillin_ja
+language: ja
+category: factual_krillin
+description: >
+  Narrow-fact entity lookup (Krillin's wife). Expected behavior today is
+  that MMV either (a) correctly identifies 18号 via Box W + evidence,
+  or (b) honestly states uncertainty. It must NOT take
+  CASUAL_GREETING_FAST_PATH and must NOT self-ref drift.
+active_language_seed: ja
+turns:
+  - user: "クリリンの妻は誰ですか？"
+    assert:
+      route_in: ["answer", "verify", "ask"]
+      intent_type_in:
+        - "factual_query"
+        - "topic_continuation"
+        - "clarification"
+        - "correction"
+        - "game_move"
+        - "meta_question"
+      self_referential: false
+      response_language: "ja"
+      response_length_min: 5
+      response_length_max: 1500
+      reason_codes_must_not_include:
+        - "CASUAL_GREETING_FAST_PATH"
+      must_not_error: true
+v2_assertions:
+  - response_must_semantically_contain:
+      concept: >
+        Krillin's wife as Android 18 (人造人間18号 / 18号 / Android
+        Eighteen). The response should identify Android 18 as the
+        canonical answer, optionally with citation. Honest uncertainty
+        ("sources don't directly confirm but…") with Android 18 named
+        scores 3+; outright wrong character (Bulma / Chi-Chi / Videl)
+        scores 1-2.
+      min_score: 3
+stochastic_gate:
+  runs: 5
+  min_pass: 3

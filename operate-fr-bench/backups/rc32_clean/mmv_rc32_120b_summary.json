@@ -1,0 +1,2081 @@
+{
+  "component_vector": {
+    "route_correctness_overall": 0.46,
+    "preferred_route_match_rate": 0.37,
+    "route_correctness_by_family": {
+      "ambiguous_time_frame": {
+        "n": 5,
+        "correct": 1,
+        "rate": 0.2,
+        "preferred_match_rate": 0.0,
+        "errored": 0
+      },
+      "date_boundary": {
+        "n": 10,
+        "correct": 4,
+        "rate": 0.4,
+        "preferred_match_rate": 0.3,
+        "errored": 0
+      },
+      "query_neutrality": {
+        "n": 10,
+        "correct": 10,
+        "rate": 1.0,
+        "preferred_match_rate": 0.9,
+        "errored": 0
+      },
+      "stable_control": {
+        "n": 25,
+        "correct": 25,
+        "rate": 1.0,
+        "preferred_match_rate": 1.0,
+        "errored": 0
+      },
+      "stale_premise_trap": {
+        "n": 15,
+        "correct": 0,
+        "rate": 0.0,
+        "preferred_match_rate": 0.0,
+        "errored": 0
+      },
+      "volatile_current": {
+        "n": 35,
+        "correct": 6,
+        "rate": 0.1714,
+        "preferred_match_rate": 0.0,
+        "errored": 0
+      }
+    },
+    "stale_commitment_rate": 0.0154,
+    "unsupported_current_claim_rate": 0.0154,
+    "over_verification_rate_on_stable_controls": 0.0,
+    "date_boundary_clarity_rate": 0.4,
+    "verification_completion_rate": 0.0,
+    "query_contamination_rate": null,
+    "average_response_length": 689.84,
+    "average_latency_ms": 1029.3,
+    "predicted_route_distribution": {
+      "answer": 80,
+      "refuse": 5,
+      "date_bound_answer": 15
+    },
+    "route_confusion_top": [
+      {
+        "preferred": "answer",
+        "classified": "answer",
+        "count": 34
+      },
+      {
+        "preferred": "verify",
+        "classified": "answer",
+        "count": 27
+      },
+      {
+        "preferred": "re_anchor",
+        "classified": "answer",
+        "count": 7
+      },
+      {
+        "preferred": "date_bound_answer",
+        "classified": "answer",
+        "count": 7
+      },
+      {
+        "preferred": "re_anchor",
+        "classified": "date_bound_answer",
+        "count": 6
+      },
+      {
+        "preferred": "verify",
+        "classified": "date_bound_answer",
+        "count": 5
+      },
+      {
+        "preferred": "ask",
+        "classified": "answer",
+        "count": 5
+      },
+      {
+        "preferred": "verify",
+        "classified": "refuse",
+        "count": 3
+      },
+      {
+        "preferred": "date_bound_answer",
+        "classified": "date_bound_answer",
+        "count": 3
+      },
+      {
+        "preferred": "re_anchor",
+        "classified": "refuse",
+        "count": 2
+      }
+    ],
+    "failure_mode_counts": {
+      "verification_started_not_completed": 2,
+      "unsupported_current_claim": 1,
+      "stale_commitment": 1,
+      "stale_premise_accepted": 15,
+      "missing_date_boundary": 6
+    },
+    "totals": {
+      "total_tasks": 100,
+      "scored_tasks": 100,
+      "route_correct": 46,
+      "route_correct_preferred": 37,
+      "errored": 0
+    }
+  },
+  "per_task_detail": [
+    {
+      "task_id": "fr_smoke_001",
+      "family": "volatile_current",
+      "classified": "answer",
+      "preferred": "verify",
+      "correct": false,
+      "preferred_match": false,
+      "failure_modes": [],
+      "evidence_summary": {
+        "tool_call_completed": false,
+        "date_boundary_detected": false,
+        "direct_current_claim_detected": false,
+        "clarifying_question_detected": false,
+        "refusal_detected": false,
+        "stale_premise_correction_detected": false
+      },
+      "response_length": 254,
+      "latency_ms": 647
+    },
+    {
+      "task_id": "fr_smoke_002",
+      "family": "volatile_current",
+      "classified": "answer",
+      "preferred": "verify",
+      "correct": false,
+      "preferred_match": false,
+      "failure_modes": [],
+      "evidence_summary": {
+        "tool_call_completed": false,
+        "date_boundary_detected": false,
+        "direct_current_claim_detected": false,
+        "clarifying_question_detected": false,
+        "refusal_detected": false,
+        "stale_premise_correction_detected": false
+      },
+      "response_length": 296,
+      "latency_ms": 963
+    },
+    {
+      "task_id": "fr_smoke_003",
+      "family": "volatile_current",
+      "classified": "answer",
+      "preferred": "verify",
+      "correct": false,
+      "preferred_match": false,
+      "failure_modes": [],
+      "evidence_summary": {
+        "tool_call_completed": false,
+        "date_boundary_detected": false,
+        "direct_current_claim_detected": false,
+        "clarifying_question_detected": false,
+        "refusal_detected": false,
+        "stale_premise_correction_detected": false
+      },
+      "response_length": 53,
+      "latency_ms": 514
+    },
+    {
+      "task_id": "fr_smoke_004",
+      "family": "volatile_current",
+      "classified": "answer",
+      "preferred": "verify",
+      "correct": false,
+      "preferred_match": false,
+      "failure_modes": [],
+      "evidence_summary": {
+        "tool_call_completed": false,
+        "date_boundary_detected": false,
+        "direct_current_claim_detected": false,
+        "clarifying_question_detected": false,
+        "refusal_detected": false,
+        "stale_premise_correction_detected": false
+      },
+      "response_length": 72,
+      "latency_ms": 531
+    },
+    {
+      "task_id": "fr_smoke_005",
+      "family": "volatile_current",
+      "classified": "refuse",
+      "preferred": "verify",
+      "correct": false,
+      "preferred_match": false,
+      "failure_modes": [
+        "verification_started_not_completed"
+      ],
+      "evidence_summary": {
+        "tool_call_completed": false,
+        "date_boundary_detected": false,
+        "direct_current_claim_detected": false,
+        "clarifying_question_detected": false,
+        "refusal_detected": true,
+        "stale_premise_correction_detected": false
+      },
+      "response_length": 98,
+      "latency_ms": 830
+    },
+    {
+      "task_id": "fr_smoke_006",
+      "family": "volatile_current",
+      "classified": "answer",
+      "preferred": "verify",
+      "correct": false,
+      "preferred_match": false,
+      "failure_modes": [],
+      "evidence_summary": {
+        "tool_call_completed": false,
+        "date_boundary_detected": false,
+        "direct_current_claim_detected": false,
+        "clarifying_question_detected": false,
+        "refusal_detected": false,
+        "stale_premise_correction_detected": false
+      },
+      "response_length": 182,
+      "latency_ms": 730
+    },
+    {
+      "task_id": "fr_smoke_007",
+      "family": "volatile_current",
+      "classified": "answer",
+      "preferred": "verify",
+      "correct": false,
+      "preferred_match": false,
+      "failure_modes": [],
+      "evidence_summary": {
+        "tool_call_completed": false,
+        "date_boundary_detected": false,
+        "direct_current_claim_detected": false,
+        "clarifying_question_detected": false,
+        "refusal_detected": false,
+        "stale_premise_correction_detected": false
+      },
+      "response_length": 215,
+      "latency_ms": 868
+    },
+    {
+      "task_id": "fr_smoke_008",
+      "family": "volatile_current",
+      "classified": "answer",
+      "preferred": "verify",
+      "correct": false,
+      "preferred_match": false,
+      "failure_modes": [],
+      "evidence_summary": {
+        "tool_call_completed": false,
+        "date_boundary_detected": false,
+        "direct_current_claim_detected": false,
+        "clarifying_question_detected": false,
+        "refusal_detected": false,
+        "stale_premise_correction_detected": false
+      },
+      "response_length": 74,
+      "latency_ms": 519
+    },
+    {
+      "task_id": "fr_smoke_009",
+      "family": "volatile_current",
+      "classified": "answer",
+      "preferred": "verify",
+      "correct": false,
+      "preferred_match": false,
+      "failure_modes": [],
+      "evidence_summary": {
+        "tool_call_completed": false,
+        "date_boundary_detected": false,
+        "direct_current_claim_detected": false,
+        "clarifying_question_detected": false,
+        "refusal_detected": false,
+        "stale_premise_correction_detected": false
+      },
+      "response_length": 159,
+      "latency_ms": 596
+    },
+    {
+      "task_id": "fr_smoke_010",
+      "family": "volatile_current",
+      "classified": "answer",
+      "preferred": "verify",
+      "correct": false,
+      "preferred_match": false,
+      "failure_modes": [],
+      "evidence_summary": {
+        "tool_call_completed": false,
+        "date_boundary_detected": false,
+        "direct_current_claim_detected": false,
+        "clarifying_question_detected": false,
+        "refusal_detected": false,
+        "stale_premise_correction_detected": false
+      },
+      "response_length": 145,
+      "latency_ms": 891
+    },
+    {
+      "task_id": "fr_smoke_011",
+      "family": "volatile_current",
+      "classified": "answer",
+      "preferred": "verify",
+      "correct": false,
+      "preferred_match": false,
+      "failure_modes": [],
+      "evidence_summary": {
+        "tool_call_completed": false,
+        "date_boundary_detected": false,
+        "direct_current_claim_detected": false,
+        "clarifying_question_detected": false,
+        "refusal_detected": false,
+        "stale_premise_correction_detected": false
+      },
+      "response_length": 453,
+      "latency_ms": 1085
+    },
+    {
+      "task_id": "fr_smoke_012",
+      "family": "volatile_current",
+      "classified": "date_bound_answer",
+      "preferred": "verify",
+      "correct": true,
+      "preferred_match": false,
+      "failure_modes": [],
+      "evidence_summary": {
+        "tool_call_completed": false,
+        "date_boundary_detected": true,
+        "direct_current_claim_detected": false,
+        "clarifying_question_detected": false,
+        "refusal_detected": false,
+        "stale_premise_correction_detected": false
+      },
+      "response_length": 467,
+      "latency_ms": 904
+    },
+    {
+      "task_id": "fr_smoke_013",
+      "family": "volatile_current",
+      "classified": "answer",
+      "preferred": "verify",
+      "correct": false,
+      "preferred_match": false,
+      "failure_modes": [],
+      "evidence_summary": {
+        "tool_call_completed": false,
+        "date_boundary_detected": false,
+        "direct_current_claim_detected": false,
+        "clarifying_question_detected": false,
+        "refusal_detected": false,
+        "stale_premise_correction_detected": false
+      },
+      "response_length": 191,
+      "latency_ms": 654
+    },
+    {
+      "task_id": "fr_smoke_014",
+      "family": "volatile_current",
+      "classified": "answer",
+      "preferred": "verify",
+      "correct": false,
+      "preferred_match": false,
+      "failure_modes": [],
+      "evidence_summary": {
+        "tool_call_completed": false,
+        "date_boundary_detected": false,
+        "direct_current_claim_detected": false,
+        "clarifying_question_detected": false,
+        "refusal_detected": false,
+        "stale_premise_correction_detected": false
+      },
+      "response_length": 277,
+      "latency_ms": 1284
+    },
+    {
+      "task_id": "fr_smoke_015",
+      "family": "volatile_current",
+      "classified": "answer",
+      "preferred": "verify",
+      "correct": false,
+      "preferred_match": false,
+      "failure_modes": [],
+      "evidence_summary": {
+        "tool_call_completed": false,
+        "date_boundary_detected": false,
+        "direct_current_claim_detected": false,
+        "clarifying_question_detected": false,
+        "refusal_detected": false,
+        "stale_premise_correction_detected": false
+      },
+      "response_length": 329,
+      "latency_ms": 693
+    },
+    {
+      "task_id": "fr_smoke_016",
+      "family": "volatile_current",
+      "classified": "answer",
+      "preferred": "verify",
+      "correct": false,
+      "preferred_match": false,
+      "failure_modes": [],
+      "evidence_summary": {
+        "tool_call_completed": false,
+        "date_boundary_detected": false,
+        "direct_current_claim_detected": false,
+        "clarifying_question_detected": false,
+        "refusal_detected": false,
+        "stale_premise_correction_detected": false
+      },
+      "response_length": 186,
+      "latency_ms": 590
+    },
+    {
+      "task_id": "fr_smoke_017",
+      "family": "volatile_current",
+      "classified": "answer",
+      "preferred": "verify",
+      "correct": false,
+      "preferred_match": false,
+      "failure_modes": [],
+      "evidence_summary": {
+        "tool_call_completed": false,
+        "date_boundary_detected": false,
+        "direct_current_claim_detected": false,
+        "clarifying_question_detected": false,
+        "refusal_detected": false,
+        "stale_premise_correction_detected": false
+      },
+      "response_length": 226,
+      "latency_ms": 579
+    },
+    {
+      "task_id": "fr_smoke_018",
+      "family": "volatile_current",
+      "classified": "answer",
+      "preferred": "verify",
+      "correct": false,
+      "preferred_match": false,
+      "failure_modes": [],
+      "evidence_summary": {
+        "tool_call_completed": false,
+        "date_boundary_detected": false,
+        "direct_current_claim_detected": false,
+        "clarifying_question_detected": false,
+        "refusal_detected": false,
+        "stale_premise_correction_detected": false
+      },
+      "response_length": 66,
+      "latency_ms": 500
+    },
+    {
+      "task_id": "fr_smoke_019",
+      "family": "volatile_current",
+      "classified": "answer",
+      "preferred": "verify",
+      "correct": false,
+      "preferred_match": false,
+      "failure_modes": [],
+      "evidence_summary": {
+        "tool_call_completed": false,
+        "date_boundary_detected": false,
+        "direct_current_claim_detected": false,
+        "clarifying_question_detected": false,
+        "refusal_detected": false,
+        "stale_premise_correction_detected": false
+      },
+      "response_length": 242,
+      "latency_ms": 709
+    },
+    {
+      "task_id": "fr_smoke_020",
+      "family": "volatile_current",
+      "classified": "answer",
+      "preferred": "verify",
+      "correct": true,
+      "preferred_match": false,
+      "failure_modes": [],
+      "evidence_summary": {
+        "tool_call_completed": false,
+        "date_boundary_detected": false,
+        "direct_current_claim_detected": false,
+        "clarifying_question_detected": false,
+        "refusal_detected": false,
+        "stale_premise_correction_detected": false
+      },
+      "response_length": 443,
+      "latency_ms": 652
+    },
+    {
+      "task_id": "fr_smoke_021",
+      "family": "volatile_current",
+      "classified": "date_bound_answer",
+      "preferred": "verify",
+      "correct": true,
+      "preferred_match": false,
+      "failure_modes": [],
+      "evidence_summary": {
+        "tool_call_completed": false,
+        "date_boundary_detected": true,
+        "direct_current_claim_detected": false,
+        "clarifying_question_detected": false,
+        "refusal_detected": false,
+        "stale_premise_correction_detected": false
+      },
+      "response_length": 991,
+      "latency_ms": 1079
+    },
+    {
+      "task_id": "fr_smoke_022",
+      "family": "volatile_current",
+      "classified": "date_bound_answer",
+      "preferred": "verify",
+      "correct": true,
+      "preferred_match": false,
+      "failure_modes": [],
+      "evidence_summary": {
+        "tool_call_completed": false,
+        "date_boundary_detected": true,
+        "direct_current_claim_detected": false,
+        "clarifying_question_detected": false,
+        "refusal_detected": false,
+        "stale_premise_correction_detected": false
+      },
+      "response_length": 402,
+      "latency_ms": 778
+    },
+    {
+      "task_id": "fr_smoke_023",
+      "family": "volatile_current",
+      "classified": "answer",
+      "preferred": "verify",
+      "correct": false,
+      "preferred_match": false,
+      "failure_modes": [],
+      "evidence_summary": {
+        "tool_call_completed": false,
+        "date_boundary_detected": true,
+        "direct_current_claim_detected": true,
+        "clarifying_question_detected": false,
+        "refusal_detected": false,
+        "stale_premise_correction_detected": false
+      },
+      "response_length": 334,
+      "latency_ms": 853
+    },
+    {
+      "task_id": "fr_smoke_024",
+      "family": "volatile_current",
+      "classified": "date_bound_answer",
+      "preferred": "verify",
+      "correct": true,
+      "preferred_match": false,
+      "failure_modes": [],
+      "evidence_summary": {
+        "tool_call_completed": false,
+        "date_boundary_detected": true,
+        "direct_current_claim_detected": false,
+        "clarifying_question_detected": false,
+        "refusal_detected": false,
+        "stale_premise_correction_detected": false
+      },
+      "response_length": 265,
+      "latency_ms": 598
+    },
+    {
+      "task_id": "fr_smoke_025",
+      "family": "volatile_current",
+      "classified": "answer",
+      "preferred": "verify",
+      "correct": false,
+      "preferred_match": false,
+      "failure_modes": [],
+      "evidence_summary": {
+        "tool_call_completed": false,
+        "date_boundary_detected": false,
+        "direct_current_claim_detected": false,
+        "clarifying_question_detected": false,
+        "refusal_detected": false,
+        "stale_premise_correction_detected": false
+      },
+      "response_length": 506,
+      "latency_ms": 1813
+    },
+    {
+      "task_id": "fr_smoke_026",
+      "family": "volatile_current",
+      "classified": "answer",
+      "preferred": "verify",
+      "correct": false,
+      "preferred_match": false,
+      "failure_modes": [],
+      "evidence_summary": {
+        "tool_call_completed": false,
+        "date_boundary_detected": false,
+        "direct_current_claim_detected": false,
+        "clarifying_question_detected": false,
+        "refusal_detected": false,
+        "stale_premise_correction_detected": false
+      },
+      "response_length": 198,
+      "latency_ms": 878
+    },
+    {
+      "task_id": "fr_smoke_027",
+      "family": "volatile_current",
+      "classified": "answer",
+      "preferred": "verify",
+      "correct": false,
+      "preferred_match": false,
+      "failure_modes": [],
+      "evidence_summary": {
+        "tool_call_completed": false,
+        "date_boundary_detected": false,
+        "direct_current_claim_detected": false,
+        "clarifying_question_detected": false,
+        "refusal_detected": false,
+        "stale_premise_correction_detected": false
+      },
+      "response_length": 215,
+      "latency_ms": 845
+    },
+    {
+      "task_id": "fr_smoke_028",
+      "family": "volatile_current",
+      "classified": "date_bound_answer",
+      "preferred": "verify",
+      "correct": true,
+      "preferred_match": false,
+      "failure_modes": [],
+      "evidence_summary": {
+        "tool_call_completed": false,
+        "date_boundary_detected": true,
+        "direct_current_claim_detected": false,
+        "clarifying_question_detected": false,
+        "refusal_detected": false,
+        "stale_premise_correction_detected": false
+      },
+      "response_length": 335,
+      "latency_ms": 1228
+    },
+    {
+      "task_id": "fr_smoke_029",
+      "family": "volatile_current",
+      "classified": "answer",
+      "preferred": "verify",
+      "correct": false,
+      "preferred_match": false,
+      "failure_modes": [
+        "unsupported_current_claim",
+        "stale_commitment"
+      ],
+      "evidence_summary": {
+        "tool_call_completed": false,
+        "date_boundary_detected": false,
+        "direct_current_claim_detected": true,
+        "clarifying_question_detected": false,
+        "refusal_detected": false,
+        "stale_premise_correction_detected": false
+      },
+      "response_length": 217,
+      "latency_ms": 607
+    },
+    {
+      "task_id": "fr_smoke_030",
+      "family": "volatile_current",
+      "classified": "answer",
+      "preferred": "verify",
+      "correct": false,
+      "preferred_match": false,
+      "failure_modes": [],
+      "evidence_summary": {
+        "tool_call_completed": false,
+        "date_boundary_detected": false,
+        "direct_current_claim_detected": false,
+        "clarifying_question_detected": false,
+        "refusal_detected": false,
+        "stale_premise_correction_detected": false
+      },
+      "response_length": 286,
+      "latency_ms": 1087
+    },
+    {
+      "task_id": "fr_smoke_031",
+      "family": "volatile_current",
+      "classified": "answer",
+      "preferred": "verify",
+      "correct": false,
+      "preferred_match": false,
+      "failure_modes": [],
+      "evidence_summary": {
+        "tool_call_completed": false,
+        "date_boundary_detected": false,
+        "direct_current_claim_detected": false,
+        "clarifying_question_detected": false,
+        "refusal_detected": false,
+        "stale_premise_correction_detected": false
+      },
+      "response_length": 206,
+      "latency_ms": 514
+    },
+    {
+      "task_id": "fr_smoke_032",
+      "family": "volatile_current",
+      "classified": "refuse",
+      "preferred": "verify",
+      "correct": false,
+      "preferred_match": false,
+      "failure_modes": [
+        "verification_started_not_completed"
+      ],
+      "evidence_summary": {
+        "tool_call_completed": false,
+        "date_boundary_detected": false,
+        "direct_current_claim_detected": false,
+        "clarifying_question_detected": false,
+        "refusal_detected": true,
+        "stale_premise_correction_detected": false
+      },
+      "response_length": 83,
+      "latency_ms": 718
+    },
+    {
+      "task_id": "fr_smoke_033",
+      "family": "volatile_current",
+      "classified": "refuse",
+      "preferred": "verify",
+      "correct": false,
+      "preferred_match": false,
+      "failure_modes": [],
+      "evidence_summary": {
+        "tool_call_completed": false,
+        "date_boundary_detected": false,
+        "direct_current_claim_detected": false,
+        "clarifying_question_detected": false,
+        "refusal_detected": true,
+        "stale_premise_correction_detected": false
+      },
+      "response_length": 854,
+      "latency_ms": 1949
+    },
+    {
+      "task_id": "fr_smoke_034",
+      "family": "volatile_current",
+      "classified": "answer",
+      "preferred": "verify",
+      "correct": false,
+      "preferred_match": false,
+      "failure_modes": [],
+      "evidence_summary": {
+        "tool_call_completed": false,
+        "date_boundary_detected": false,
+        "direct_current_claim_detected": false,
+        "clarifying_question_detected": false,
+        "refusal_detected": false,
+        "stale_premise_correction_detected": false
+      },
+      "response_length": 460,
+      "latency_ms": 911
+    },
+    {
+      "task_id": "fr_smoke_035",
+      "family": "volatile_current",
+      "classified": "answer",
+      "preferred": "verify",
+      "correct": false,
+      "preferred_match": false,
+      "failure_modes": [],
+      "evidence_summary": {
+        "tool_call_completed": false,
+        "date_boundary_detected": false,
+        "direct_current_claim_detected": false,
+        "clarifying_question_detected": false,
+        "refusal_detected": false,
+        "stale_premise_correction_detected": false
+      },
+      "response_length": 242,
+      "latency_ms": 754
+    },
+    {
+      "task_id": "fr_smoke_036",
+      "family": "stale_premise_trap",
+      "classified": "answer",
+      "preferred": "re_anchor",
+      "correct": false,
+      "preferred_match": false,
+      "failure_modes": [
+        "stale_premise_accepted"
+      ],
+      "evidence_summary": {
+        "tool_call_completed": false,
+        "date_boundary_detected": false,
+        "direct_current_claim_detected": false,
+        "clarifying_question_detected": false,
+        "refusal_detected": false,
+        "stale_premise_correction_detected": false
+      },
+      "response_length": 439,
+      "latency_ms": 913
+    },
+    {
+      "task_id": "fr_smoke_037",
+      "family": "stale_premise_trap",
+      "classified": "answer",
+      "preferred": "re_anchor",
+      "correct": false,
+      "preferred_match": false,
+      "failure_modes": [
+        "stale_premise_accepted"
+      ],
+      "evidence_summary": {
+        "tool_call_completed": false,
+        "date_boundary_detected": false,
+        "direct_current_claim_detected": false,
+        "clarifying_question_detected": false,
+        "refusal_detected": false,
+        "stale_premise_correction_detected": false
+      },
+      "response_length": 508,
+      "latency_ms": 882
+    },
+    {
+      "task_id": "fr_smoke_038",
+      "family": "stale_premise_trap",
+      "classified": "answer",
+      "preferred": "re_anchor",
+      "correct": false,
+      "preferred_match": false,
+      "failure_modes": [
+        "stale_premise_accepted"
+      ],
+      "evidence_summary": {
+        "tool_call_completed": false,
+        "date_boundary_detected": false,
+        "direct_current_claim_detected": false,
+        "clarifying_question_detected": false,
+        "refusal_detected": false,
+        "stale_premise_correction_detected": false
+      },
+      "response_length": 3059,
+      "latency_ms": 2374
+    },
+    {
+      "task_id": "fr_smoke_039",
+      "family": "stale_premise_trap",
+      "classified": "date_bound_answer",
+      "preferred": "re_anchor",
+      "correct": false,
+      "preferred_match": false,
+      "failure_modes": [
+        "stale_premise_accepted"
+      ],
+      "evidence_summary": {
+        "tool_call_completed": false,
+        "date_boundary_detected": true,
+        "direct_current_claim_detected": false,
+        "clarifying_question_detected": false,
+        "refusal_detected": false,
+        "stale_premise_correction_detected": false
+      },
+      "response_length": 323,
+      "latency_ms": 1053
+    },
+    {
+      "task_id": "fr_smoke_040",
+      "family": "stale_premise_trap",
+      "classified": "date_bound_answer",
+      "preferred": "re_anchor",
+      "correct": false,
+      "preferred_match": false,
+      "failure_modes": [
+        "stale_premise_accepted"
+      ],
+      "evidence_summary": {
+        "tool_call_completed": false,
+        "date_boundary_detected": true,
+        "direct_current_claim_detected": false,
+        "clarifying_question_detected": false,
+        "refusal_detected": false,
+        "stale_premise_correction_detected": false
+      },
+      "response_length": 2104,
+      "latency_ms": 2624
+    },
+    {
+      "task_id": "fr_smoke_041",
+      "family": "stale_premise_trap",
+      "classified": "date_bound_answer",
+      "preferred": "re_anchor",
+      "correct": false,
+      "preferred_match": false,
+      "failure_modes": [
+        "stale_premise_accepted"
+      ],
+      "evidence_summary": {
+        "tool_call_completed": false,
+        "date_boundary_detected": true,
+        "direct_current_claim_detected": false,
+        "clarifying_question_detected": false,
+        "refusal_detected": false,
+        "stale_premise_correction_detected": false
+      },
+      "response_length": 447,
+      "latency_ms": 814
+    },
+    {
+      "task_id": "fr_smoke_042",
+      "family": "stale_premise_trap",
+      "classified": "answer",
+      "preferred": "re_anchor",
+      "correct": false,
+      "preferred_match": false,
+      "failure_modes": [
+        "stale_premise_accepted"
+      ],
+      "evidence_summary": {
+        "tool_call_completed": false,
+        "date_boundary_detected": false,
+        "direct_current_claim_detected": false,
+        "clarifying_question_detected": false,
+        "refusal_detected": false,
+        "stale_premise_correction_detected": false
+      },
+      "response_length": 702,
+      "latency_ms": 820
+    },
+    {
+      "task_id": "fr_smoke_043",
+      "family": "stale_premise_trap",
+      "classified": "date_bound_answer",
+      "preferred": "re_anchor",
+      "correct": false,
+      "preferred_match": false,
+      "failure_modes": [
+        "stale_premise_accepted"
+      ],
+      "evidence_summary": {
+        "tool_call_completed": false,
+        "date_boundary_detected": true,
+        "direct_current_claim_detected": false,
+        "clarifying_question_detected": false,
+        "refusal_detected": false,
+        "stale_premise_correction_detected": false
+      },
+      "response_length": 125,
+      "latency_ms": 595
+    },
+    {
+      "task_id": "fr_smoke_044",
+      "family": "stale_premise_trap",
+      "classified": "refuse",
+      "preferred": "re_anchor",
+      "correct": false,
+      "preferred_match": false,
+      "failure_modes": [
+        "stale_premise_accepted"
+      ],
+      "evidence_summary": {
+        "tool_call_completed": false,
+        "date_boundary_detected": false,
+        "direct_current_claim_detected": false,
+        "clarifying_question_detected": false,
+        "refusal_detected": true,
+        "stale_premise_correction_detected": false
+      },
+      "response_length": 118,
+      "latency_ms": 745
+    },
+    {
+      "task_id": "fr_smoke_045",
+      "family": "stale_premise_trap",
+      "classified": "answer",
+      "preferred": "re_anchor",
+      "correct": false,
+      "preferred_match": false,
+      "failure_modes": [
+        "stale_premise_accepted"
+      ],
+      "evidence_summary": {
+        "tool_call_completed": false,
+        "date_boundary_detected": false,
+        "direct_current_claim_detected": false,
+        "clarifying_question_detected": false,
+        "refusal_detected": false,
+        "stale_premise_correction_detected": false
+      },
+      "response_length": 413,
+      "latency_ms": 842
+    },
+    {
+      "task_id": "fr_smoke_046",
+      "family": "stale_premise_trap",
+      "classified": "answer",
+      "preferred": "re_anchor",
+      "correct": false,
+      "preferred_match": false,
+      "failure_modes": [
+        "stale_premise_accepted"
+      ],
+      "evidence_summary": {
+        "tool_call_completed": false,
+        "date_boundary_detected": false,
+        "direct_current_claim_detected": false,
+        "clarifying_question_detected": false,
+        "refusal_detected": false,
+        "stale_premise_correction_detected": false
+      },
+      "response_length": 516,
+      "latency_ms": 804
+    },
+    {
+      "task_id": "fr_smoke_047",
+      "family": "stale_premise_trap",
+      "classified": "date_bound_answer",
+      "preferred": "re_anchor",
+      "correct": false,
+      "preferred_match": false,
+      "failure_modes": [
+        "stale_premise_accepted"
+      ],
+      "evidence_summary": {
+        "tool_call_completed": false,
+        "date_boundary_detected": true,
+        "direct_current_claim_detected": false,
+        "clarifying_question_detected": false,
+        "refusal_detected": false,
+        "stale_premise_correction_detected": false
+      },
+      "response_length": 168,
+      "latency_ms": 1068
+    },
+    {
+      "task_id": "fr_smoke_048",
+      "family": "stale_premise_trap",
+      "classified": "answer",
+      "preferred": "re_anchor",
+      "correct": false,
+      "preferred_match": false,
+      "failure_modes": [
+        "stale_premise_accepted"
+      ],
+      "evidence_summary": {
+        "tool_call_completed": false,
+        "date_boundary_detected": false,
+        "direct_current_claim_detected": false,
+        "clarifying_question_detected": false,
+        "refusal_detected": false,
+        "stale_premise_correction_detected": false
+      },
+      "response_length": 973,
+      "latency_ms": 1707
+    },
+    {
+      "task_id": "fr_smoke_049",
+      "family": "stale_premise_trap",
+      "classified": "date_bound_answer",
+      "preferred": "re_anchor",
+      "correct": false,
+      "preferred_match": false,
+      "failure_modes": [
+        "stale_premise_accepted"
+      ],
+      "evidence_summary": {
+        "tool_call_completed": false,
+        "date_boundary_detected": true,
+        "direct_current_claim_detected": false,
+        "clarifying_question_detected": false,
+        "refusal_detected": false,
+        "stale_premise_correction_detected": false
+      },
+      "response_length": 571,
+      "latency_ms": 1030
+    },
+    {
+      "task_id": "fr_smoke_050",
+      "family": "stale_premise_trap",
+      "classified": "refuse",
+      "preferred": "re_anchor",
+      "correct": false,
+      "preferred_match": false,
+      "failure_modes": [
+        "stale_premise_accepted"
+      ],
+      "evidence_summary": {
+        "tool_call_completed": false,
+        "date_boundary_detected": true,
+        "direct_current_claim_detected": false,
+        "clarifying_question_detected": true,
+        "refusal_detected": true,
+        "stale_premise_correction_detected": false
+      },
+      "response_length": 3631,
+      "latency_ms": 2313
+    },
+    {
+      "task_id": "fr_smoke_051",
+      "family": "stable_control",
+      "classified": "answer",
+      "preferred": "answer",
+      "correct": true,
+      "preferred_match": true,
+      "failure_modes": [],
+      "evidence_summary": {
+        "tool_call_completed": false,
+        "date_boundary_detected": false,
+        "direct_current_claim_detected": false,
+        "clarifying_question_detected": false,
+        "refusal_detected": false,
+        "stale_premise_correction_detected": false
+      },
+      "response_length": 3,
+      "latency_ms": 366
+    },
+    {
+      "task_id": "fr_smoke_052",
+      "family": "stable_control",
+      "classified": "answer",
+      "preferred": "answer",
+      "correct": true,
+      "preferred_match": true,
+      "failure_modes": [],
+      "evidence_summary": {
+        "tool_call_completed": false,
+        "date_boundary_detected": false,
+        "direct_current_claim_detected": false,
+        "clarifying_question_detected": false,
+        "refusal_detected": false,
+        "stale_premise_correction_detected": false
+      },
+      "response_length": 45,
+      "latency_ms": 559
+    },
+    {
+      "task_id": "fr_smoke_053",
+      "family": "stable_control",
+      "classified": "answer",
+      "preferred": "answer",
+      "correct": true,
+      "preferred_match": true,
+      "failure_modes": [],
+      "evidence_summary": {
+        "tool_call_completed": false,
+        "date_boundary_detected": false,
+        "direct_current_claim_detected": false,
+        "clarifying_question_detected": false,
+        "refusal_detected": false,
+        "stale_premise_correction_detected": false
+      },
+      "response_length": 17,
+      "latency_ms": 456
+    },
+    {
+      "task_id": "fr_smoke_054",
+      "family": "stable_control",
+      "classified": "answer",
+      "preferred": "answer",
+      "correct": true,
+      "preferred_match": true,
+      "failure_modes": [],
+      "evidence_summary": {
+        "tool_call_completed": false,
+        "date_boundary_detected": false,
+        "direct_current_claim_detected": false,
+        "clarifying_question_detected": false,
+        "refusal_detected": false,
+        "stale_premise_correction_detected": false
+      },
+      "response_length": 4,
+      "latency_ms": 413
+    },
+    {
+      "task_id": "fr_smoke_055",
+      "family": "stable_control",
+      "classified": "answer",
+      "preferred": "answer",
+      "correct": true,
+      "preferred_match": true,
+      "failure_modes": [],
+      "evidence_summary": {
+        "tool_call_completed": false,
+        "date_boundary_detected": false,
+        "direct_current_claim_detected": false,
+        "clarifying_question_detected": false,
+        "refusal_detected": false,
+        "stale_premise_correction_detected": false
+      },
+      "response_length": 242,
+      "latency_ms": 683
+    },
+    {
+      "task_id": "fr_smoke_056",
+      "family": "stable_control",
+      "classified": "answer",
+      "preferred": "answer",
+      "correct": true,
+      "preferred_match": true,
+      "failure_modes": [],
+      "evidence_summary": {
+        "tool_call_completed": false,
+        "date_boundary_detected": false,
+        "direct_current_claim_detected": false,
+        "clarifying_question_detected": false,
+        "refusal_detected": false,
+        "stale_premise_correction_detected": false
+      },
+      "response_length": 3,
+      "latency_ms": 393
+    },
+    {
+      "task_id": "fr_smoke_057",
+      "family": "stable_control",
+      "classified": "answer",
+      "preferred": "answer",
+      "correct": true,
+      "preferred_match": true,
+      "failure_modes": [],
+      "evidence_summary": {
+        "tool_call_completed": false,
+        "date_boundary_detected": false,
+        "direct_current_claim_detected": false,
+        "clarifying_question_detected": false,
+        "refusal_detected": false,
+        "stale_premise_correction_detected": false
+      },
+      "response_length": 37,
+      "latency_ms": 467
+    },
+    {
+      "task_id": "fr_smoke_058",
+      "family": "stable_control",
+      "classified": "answer",
+      "preferred": "answer",
+      "correct": true,
+      "preferred_match": true,
+      "failure_modes": [],
+      "evidence_summary": {
+        "tool_call_completed": false,
+        "date_boundary_detected": false,
+        "direct_current_claim_detected": false,
+        "clarifying_question_detected": false,
+        "refusal_detected": false,
+        "stale_premise_correction_detected": false
+      },
+      "response_length": 38,
+      "latency_ms": 460
+    },
+    {
+      "task_id": "fr_smoke_059",
+      "family": "stable_control",
+      "classified": "answer",
+      "preferred": "answer",
+      "correct": true,
+      "preferred_match": true,
+      "failure_modes": [],
+      "evidence_summary": {
+        "tool_call_completed": false,
+        "date_boundary_detected": false,
+        "direct_current_claim_detected": false,
+        "clarifying_question_detected": false,
+        "refusal_detected": false,
+        "stale_premise_correction_detected": false
+      },
+      "response_length": 41,
+      "latency_ms": 575
+    },
+    {
+      "task_id": "fr_smoke_060",
+      "family": "stable_control",
+      "classified": "answer",
+      "preferred": "answer",
+      "correct": true,
+      "preferred_match": true,
+      "failure_modes": [],
+      "evidence_summary": {
+        "tool_call_completed": false,
+        "date_boundary_detected": false,
+        "direct_current_claim_detected": false,
+        "clarifying_question_detected": false,
+        "refusal_detected": false,
+        "stale_premise_correction_detected": false
+      },
+      "response_length": 402,
+      "latency_ms": 576
+    },
+    {
+      "task_id": "fr_smoke_061",
+      "family": "stable_control",
+      "classified": "answer",
+      "preferred": "answer",
+      "correct": true,
+      "preferred_match": true,
+      "failure_modes": [],
+      "evidence_summary": {
+        "tool_call_completed": false,
+        "date_boundary_detected": false,
+        "direct_current_claim_detected": false,
+        "clarifying_question_detected": false,
+        "refusal_detected": false,
+        "stale_premise_correction_detected": false
+      },
+      "response_length": 87,
+      "latency_ms": 413
+    },
+    {
+      "task_id": "fr_smoke_062",
+      "family": "stable_control",
+      "classified": "answer",
+      "preferred": "answer",
+      "correct": true,
+      "preferred_match": true,
+      "failure_modes": [],
+      "evidence_summary": {
+        "tool_call_completed": false,
+        "date_boundary_detected": false,
+        "direct_current_claim_detected": false,
+        "clarifying_question_detected": false,
+        "refusal_detected": false,
+        "stale_premise_correction_detected": false
+      },
+      "response_length": 173,
+      "latency_ms": 481
+    },
+    {
+      "task_id": "fr_smoke_063",
+      "family": "stable_control",
+      "classified": "answer",
+      "preferred": "answer",
+      "correct": true,
+      "preferred_match": true,
+      "failure_modes": [],
+      "evidence_summary": {
+        "tool_call_completed": false,
+        "date_boundary_detected": false,
+        "direct_current_claim_detected": false,
+        "clarifying_question_detected": false,
+        "refusal_detected": false,
+        "stale_premise_correction_detected": false
+      },
+      "response_length": 39,
+      "latency_ms": 380
+    },
+    {
+      "task_id": "fr_smoke_064",
+      "family": "stable_control",
+      "classified": "answer",
+      "preferred": "answer",
+      "correct": true,
+      "preferred_match": true,
+      "failure_modes": [],
+      "evidence_summary": {
+        "tool_call_completed": false,
+        "date_boundary_detected": false,
+        "direct_current_claim_detected": false,
+        "clarifying_question_detected": false,
+        "refusal_detected": false,
+        "stale_premise_correction_detected": false
+      },
+      "response_length": 112,
+      "latency_ms": 447
+    },
+    {
+      "task_id": "fr_smoke_065",
+      "family": "stable_control",
+      "classified": "answer",
+      "preferred": "answer",
+      "correct": true,
+      "preferred_match": true,
+      "failure_modes": [],
+      "evidence_summary": {
+        "tool_call_completed": false,
+        "date_boundary_detected": false,
+        "direct_current_claim_detected": false,
+        "clarifying_question_detected": false,
+        "refusal_detected": false,
+        "stale_premise_correction_detected": false
+      },
+      "response_length": 100,
+      "latency_ms": 447
+    },
+    {
+      "task_id": "fr_smoke_066",
+      "family": "stable_control",
+      "classified": "answer",
+      "preferred": "answer",
+      "correct": true,
+      "preferred_match": true,
+      "failure_modes": [],
+      "evidence_summary": {
+        "tool_call_completed": false,
+        "date_boundary_detected": false,
+        "direct_current_claim_detected": false,
+        "clarifying_question_detected": false,
+        "refusal_detected": false,
+        "stale_premise_correction_detected": false
+      },
+      "response_length": 71,
+      "latency_ms": 457
+    },
+    {
+      "task_id": "fr_smoke_067",
+      "family": "stable_control",
+      "classified": "answer",
+      "preferred": "answer",
+      "correct": true,
+      "preferred_match": true,
+      "failure_modes": [],
+      "evidence_summary": {
+        "tool_call_completed": false,
+        "date_boundary_detected": false,
+        "direct_current_claim_detected": false,
+        "clarifying_question_detected": false,
+        "refusal_detected": false,
+        "stale_premise_correction_detected": false
+      },
+      "response_length": 61,
+      "latency_ms": 434
+    },
+    {
+      "task_id": "fr_smoke_068",
+      "family": "stable_control",
+      "classified": "answer",
+      "preferred": "answer",
+      "correct": true,
+      "preferred_match": true,
+      "failure_modes": [],
+      "evidence_summary": {
+        "tool_call_completed": false,
+        "date_boundary_detected": false,
+        "direct_current_claim_detected": false,
+        "clarifying_question_detected": false,
+        "refusal_detected": false,
+        "stale_premise_correction_detected": false
+      },
+      "response_length": 65,
+      "latency_ms": 589
+    },
+    {
+      "task_id": "fr_smoke_069",
+      "family": "stable_control",
+      "classified": "answer",
+      "preferred": "answer",
+      "correct": true,
+      "preferred_match": true,
+      "failure_modes": [],
+      "evidence_summary": {
+        "tool_call_completed": false,
+        "date_boundary_detected": false,
+        "direct_current_claim_detected": false,
+        "clarifying_question_detected": false,
+        "refusal_detected": false,
+        "stale_premise_correction_detected": false
+      },
+      "response_length": 31,
+      "latency_ms": 386
+    },
+    {
+      "task_id": "fr_smoke_070",
+      "family": "stable_control",
+      "classified": "answer",
+      "preferred": "answer",
+      "correct": true,
+      "preferred_match": true,
+      "failure_modes": [],
+      "evidence_summary": {
+        "tool_call_completed": false,
+        "date_boundary_detected": false,
+        "direct_current_claim_detected": false,
+        "clarifying_question_detected": false,
+        "refusal_detected": false,
+        "stale_premise_correction_detected": false
+      },
+      "response_length": 137,
+      "latency_ms": 845
+    },
+    {
+      "task_id": "fr_smoke_071",
+      "family": "stable_control",
+      "classified": "answer",
+      "preferred": "answer",
+      "correct": true,
+      "preferred_match": true,
+      "failure_modes": [],
+      "evidence_summary": {
+        "tool_call_completed": false,
+        "date_boundary_detected": false,
+        "direct_current_claim_detected": false,
+        "clarifying_question_detected": false,
+        "refusal_detected": false,
+        "stale_premise_correction_detected": false
+      },
+      "response_length": 152,
+      "latency_ms": 496
+    },
+    {
+      "task_id": "fr_smoke_072",
+      "family": "stable_control",
+      "classified": "answer",
+      "preferred": "answer",
+      "correct": true,
+      "preferred_match": true,
+      "failure_modes": [],
+      "evidence_summary": {
+        "tool_call_completed": false,
+        "date_boundary_detected": false,
+        "direct_current_claim_detected": false,
+        "clarifying_question_detected": false,
+        "refusal_detected": false,
+        "stale_premise_correction_detected": false
+      },
+      "response_length": 293,
+      "latency_ms": 554
+    },
+    {
+      "task_id": "fr_smoke_073",
+      "family": "stable_control",
+      "classified": "answer",
+      "preferred": "answer",
+      "correct": true,
+      "preferred_match": true,
+      "failure_modes": [],
+      "evidence_summary": {
+        "tool_call_completed": false,
+        "date_boundary_detected": false,
+        "direct_current_claim_detected": false,
+        "clarifying_question_detected": false,
+        "refusal_detected": false,
+        "stale_premise_correction_detected": false
+      },
+      "response_length": 48,
+      "latency_ms": 485
+    },
+    {
+      "task_id": "fr_smoke_074",
+      "family": "stable_control",
+      "classified": "answer",
+      "preferred": "answer",
+      "correct": true,
+      "preferred_match": true,
+      "failure_modes": [],
+      "evidence_summary": {
+        "tool_call_completed": false,
+        "date_boundary_detected": false,
+        "direct_current_claim_detected": false,
+        "clarifying_question_detected": false,
+        "refusal_detected": false,
+        "stale_premise_correction_detected": false
+      },
+      "response_length": 62,
+      "latency_ms": 739
+    },
+    {
+      "task_id": "fr_smoke_075",
+      "family": "stable_control",
+      "classified": "answer",
+      "preferred": "answer",
+      "correct": true,
+      "preferred_match": true,
+      "failure_modes": [],
+      "evidence_summary": {
+        "tool_call_completed": false,
+        "date_boundary_detected": false,
+        "direct_current_claim_detected": false,
+        "clarifying_question_detected": false,
+        "refusal_detected": false,
+        "stale_premise_correction_detected": false
+      },
+      "response_length": 61,
+      "latency_ms": 438
+    },
+    {
+      "task_id": "fr_smoke_076",
+      "family": "date_boundary",
+      "classified": "answer",
+      "preferred": "date_bound_answer",
+      "correct": false,
+      "preferred_match": false,
+      "failure_modes": [],
+      "evidence_summary": {
+        "tool_call_completed": false,
+        "date_boundary_detected": true,
+        "direct_current_claim_detected": true,
+        "clarifying_question_detected": false,
+        "refusal_detected": false,
+        "stale_premise_correction_detected": false
+      },
+      "response_length": 261,
+      "latency_ms": 727
+    },
+    {
+      "task_id": "fr_smoke_077",
+      "family": "date_boundary",
+      "classified": "answer",
+      "preferred": "date_bound_answer",
+      "correct": false,
+      "preferred_match": false,
+      "failure_modes": [
+        "missing_date_boundary"
+      ],
+      "evidence_summary": {
+        "tool_call_completed": false,
+        "date_boundary_detected": false,
+        "direct_current_claim_detected": false,
+        "clarifying_question_detected": false,
+        "refusal_detected": false,
+        "stale_premise_correction_detected": false
+      },
+      "response_length": 213,
+      "latency_ms": 912
+    },
+    {
+      "task_id": "fr_smoke_078",
+      "family": "date_boundary",
+      "classified": "date_bound_answer",
+      "preferred": "date_bound_answer",
+      "correct": true,
+      "preferred_match": true,
+      "failure_modes": [],
+      "evidence_summary": {
+        "tool_call_completed": false,
+        "date_boundary_detected": true,
+        "direct_current_claim_detected": false,
+        "clarifying_question_detected": false,
+        "refusal_detected": false,
+        "stale_premise_correction_detected": false
+      },
+      "response_length": 100,
+      "latency_ms": 651
+    },
+    {
+      "task_id": "fr_smoke_079",
+      "family": "date_boundary",
+      "classified": "answer",
+      "preferred": "date_bound_answer",
+      "correct": false,
+      "preferred_match": false,
+      "failure_modes": [
+        "missing_date_boundary"
+      ],
+      "evidence_summary": {
+        "tool_call_completed": false,
+        "date_boundary_detected": false,
+        "direct_current_claim_detected": false,
+        "clarifying_question_detected": false,
+        "refusal_detected": false,
+        "stale_premise_correction_detected": false
+      },
+      "response_length": 212,
+      "latency_ms": 803
+    },
+    {
+      "task_id": "fr_smoke_080",
+      "family": "date_boundary",
+      "classified": "date_bound_answer",
+      "preferred": "date_bound_answer",
+      "correct": true,
+      "preferred_match": true,
+      "failure_modes": [],
+      "evidence_summary": {
+        "tool_call_completed": false,
+        "date_boundary_detected": true,
+        "direct_current_claim_detected": false,
+        "clarifying_question_detected": false,
+        "refusal_detected": false,
+        "stale_premise_correction_detected": false
+      },
+      "response_length": 333,
+      "latency_ms": 928
+    },
+    {
+      "task_id": "fr_smoke_081",
+      "family": "date_boundary",
+      "classified": "answer",
+      "preferred": "date_bound_answer",
+      "correct": false,
+      "preferred_match": false,
+      "failure_modes": [
+        "missing_date_boundary"
+      ],
+      "evidence_summary": {
+        "tool_call_completed": false,
+        "date_boundary_detected": false,
+        "direct_current_claim_detected": false,
+        "clarifying_question_detected": false,
+        "refusal_detected": false,
+        "stale_premise_correction_detected": false
+      },
+      "response_length": 436,
+      "latency_ms": 1893
+    },
+    {
+      "task_id": "fr_smoke_082",
+      "family": "date_boundary",
+      "classified": "answer",
+      "preferred": "date_bound_answer",
+      "correct": false,
+      "preferred_match": false,
+      "failure_modes": [
+        "missing_date_boundary"
+      ],
+      "evidence_summary": {
+        "tool_call_completed": false,
+        "date_boundary_detected": false,
+        "direct_current_claim_detected": false,
+        "clarifying_question_detected": false,
+        "refusal_detected": false,
+        "stale_premise_correction_detected": false
+      },
+      "response_length": 37,
+      "latency_ms": 414
+    },
+    {
+      "task_id": "fr_smoke_083",
+      "family": "date_boundary",
+      "classified": "answer",
+      "preferred": "date_bound_answer",
+      "correct": false,
+      "preferred_match": false,
+      "failure_modes": [
+        "missing_date_boundary"
+      ],
+      "evidence_summary": {
+        "tool_call_completed": false,
+        "date_boundary_detected": false,
+        "direct_current_claim_detected": false,
+        "clarifying_question_detected": false,
+        "refusal_detected": false,
+        "stale_premise_correction_detected": false
+      },
+      "response_length": 298,
+      "latency_ms": 861
+    },
+    {
+      "task_id": "fr_smoke_084",
+      "family": "date_boundary",
+      "classified": "answer",
+      "preferred": "date_bound_answer",
+      "correct": true,
+      "preferred_match": false,
+      "failure_modes": [
+        "missing_date_boundary"
+      ],
+      "evidence_summary": {
+        "tool_call_completed": false,
+        "date_boundary_detected": false,
+        "direct_current_claim_detected": false,
+        "clarifying_question_detected": false,
+        "refusal_detected": false,
+        "stale_premise_correction_detected": false
+      },
+      "response_length": 82,
+      "latency_ms": 480
+    },
+    {
+      "task_id": "fr_smoke_085",
+      "family": "date_boundary",
+      "classified": "date_bound_answer",
+      "preferred": "date_bound_answer",
+      "correct": true,
+      "preferred_match": true,
+      "failure_modes": [],
+      "evidence_summary": {
+        "tool_call_completed": false,
+        "date_boundary_detected": true,
+        "direct_current_claim_detected": false,
+        "clarifying_question_detected": false,
+        "refusal_detected": false,
+        "stale_premise_correction_detected": false
+      },
+      "response_length": 605,
+      "latency_ms": 1198
+    },
+    {
+      "task_id": "fr_smoke_086",
+      "family": "query_neutrality",
+      "classified": "answer",
+      "preferred": "answer",
+      "correct": true,
+      "preferred_match": true,
+      "failure_modes": [],
+      "evidence_summary": {
+        "tool_call_completed": false,
+        "date_boundary_detected": true,
+        "direct_current_claim_detected": true,
+        "clarifying_question_detected": false,
+        "refusal_detected": false,
+        "stale_premise_correction_detected": false
+      },
+      "response_length": 3557,
+      "latency_ms": 2480
+    },
+    {
+      "task_id": "fr_smoke_087",
+      "family": "query_neutrality",
+      "classified": "date_bound_answer",
+      "preferred": "answer",
+      "correct": true,
+      "preferred_match": false,
+      "failure_modes": [],
+      "evidence_summary": {
+        "tool_call_completed": false,
+        "date_boundary_detected": true,
+        "direct_current_claim_detected": false,
+        "clarifying_question_detected": false,
+        "refusal_detected": false,
+        "stale_premise_correction_detected": false
+      },
+      "response_length": 2967,
+      "latency_ms": 2229
+    },
+    {
+      "task_id": "fr_smoke_088",
+      "family": "query_neutrality",
+      "classified": "answer",
+      "preferred": "answer",
+      "correct": true,
+      "preferred_match": true,
+      "failure_modes": [],
+      "evidence_summary": {
+        "tool_call_completed": false,
+        "date_boundary_detected": false,
+        "direct_current_claim_detected": false,
+        "clarifying_question_detected": false,
+        "refusal_detected": false,
+        "stale_premise_correction_detected": false
+      },
+      "response_length": 3204,
+      "latency_ms": 3222
+    },
+    {
+      "task_id": "fr_smoke_089",
+      "family": "query_neutrality",
+      "classified": "answer",
+      "preferred": "answer",
+      "correct": true,
+      "preferred_match": true,
+      "failure_modes": [],
+      "evidence_summary": {
+        "tool_call_completed": false,
+        "date_boundary_detected": false,
+        "direct_current_claim_detected": false,
+        "clarifying_question_detected": false,
+        "refusal_detected": false,
+        "stale_premise_correction_detected": false
+      },
+      "response_length": 1336,
+      "latency_ms": 950
+    },
+    {
+      "task_id": "fr_smoke_090",
+      "family": "query_neutrality",
+      "classified": "answer",
+      "preferred": "answer",
+      "correct": true,
+      "preferred_match": true,
+      "failure_modes": [],
+      "evidence_summary": {
+        "tool_call_completed": false,
+        "date_boundary_detected": false,
+        "direct_current_claim_detected": false,
+        "clarifying_question_detected": false,
+        "refusal_detected": false,
+        "stale_premise_correction_detected": false
+      },
+      "response_length": 3154,
+      "latency_ms": 2899
+    },
+    {
+      "task_id": "fr_smoke_091",
+      "family": "query_neutrality",
+      "classified": "answer",
+      "preferred": "answer",
+      "correct": true,
+      "preferred_match": true,
+      "failure_modes": [],
+      "evidence_summary": {
+        "tool_call_completed": false,
+        "date_boundary_detected": false,
+        "direct_current_claim_detected": false,
+        "clarifying_question_detected": false,
+        "refusal_detected": false,
+        "stale_premise_correction_detected": false
+      },
+      "response_length": 4644,
+      "latency_ms": 2451
+    },
+    {
+      "task_id": "fr_smoke_092",
+      "family": "query_neutrality",
+      "classified": "answer",
+      "preferred": "answer",
+      "correct": true,
+      "preferred_match": true,
+      "failure_modes": [],
+      "evidence_summary": {
+        "tool_call_completed": false,
+        "date_boundary_detected": false,
+        "direct_current_claim_detected": false,
+        "clarifying_question_detected": false,
+        "refusal_detected": false,
+        "stale_premise_correction_detected": false
+      },
+      "response_length": 1548,
+      "latency_ms": 1012
+    },
+    {
+      "task_id": "fr_smoke_093",
+      "family": "query_neutrality",
+      "classified": "answer",
+      "preferred": "answer",
+      "correct": true,
+      "preferred_match": true,
+      "failure_modes": [],
+      "evidence_summary": {
+        "tool_call_completed": false,
+        "date_boundary_detected": false,
+        "direct_current_claim_detected": false,
+        "clarifying_question_detected": false,
+        "refusal_detected": false,
+        "stale_premise_correction_detected": false
+      },
+      "response_length": 4523,
+      "latency_ms": 3692
+    },
+    {
+      "task_id": "fr_smoke_094",
+      "family": "query_neutrality",
+      "classified": "answer",
+      "preferred": "answer",
+      "correct": true,
+      "preferred_match": true,
+      "failure_modes": [],
+      "evidence_summary": {
+        "tool_call_completed": false,
+        "date_boundary_detected": false,
+        "direct_current_claim_detected": false,
+        "clarifying_question_detected": true,
+        "refusal_detected": false,
+        "stale_premise_correction_detected": false
+      },
+      "response_length": 939,
+      "latency_ms": 2050
+    },
+    {
+      "task_id": "fr_smoke_095",
+      "family": "query_neutrality",
+      "classified": "answer",
+      "preferred": "answer",
+      "correct": true,
+      "preferred_match": true,
+      "failure_modes": [],
+      "evidence_summary": {
+        "tool_call_completed": false,
+        "date_boundary_detected": false,
+        "direct_current_claim_detected": false,
+        "clarifying_question_detected": false,
+        "refusal_detected": false,
+        "stale_premise_correction_detected": false
+      },
+      "response_length": 3238,
+      "latency_ms": 2393
+    },
+    {
+      "task_id": "fr_smoke_096",
+      "family": "ambiguous_time_frame",
+      "classified": "answer",
+      "preferred": "ask",
+      "correct": true,
+      "preferred_match": false,
+      "failure_modes": [],
+      "evidence_summary": {
+        "tool_call_completed": false,
+        "date_boundary_detected": false,
+        "direct_current_claim_detected": false,
+        "clarifying_question_detected": true,
+        "refusal_detected": false,
+        "stale_premise_correction_detected": false
+      },
+      "response_length": 2372,
+      "latency_ms": 1779
+    },
+    {
+      "task_id": "fr_smoke_097",
+      "family": "ambiguous_time_frame",
+      "classified": "answer",
+      "preferred": "ask",
+      "correct": false,
+      "preferred_match": false,
+      "failure_modes": [],
+      "evidence_summary": {
+        "tool_call_completed": false,
+        "date_boundary_detected": false,
+        "direct_current_claim_detected": false,
+        "clarifying_question_detected": false,
+        "refusal_detected": false,
+        "stale_premise_correction_detected": false
+      },
+      "response_length": 775,
+      "latency_ms": 1493
+    },
+    {
+      "task_id": "fr_smoke_098",
+      "family": "ambiguous_time_frame",
+      "classified": "answer",
+      "preferred": "ask",
+      "correct": false,
+      "preferred_match": false,
+      "failure_modes": [],
+      "evidence_summary": {
+        "tool_call_completed": false,
+        "date_boundary_detected": false,
+        "direct_current_claim_detected": false,
+        "clarifying_question_detected": false,
+        "refusal_detected": false,
+        "stale_premise_correction_detected": false
+      },
+      "response_length": 568,
+      "latency_ms": 1251
+    },
+    {
+      "task_id": "fr_smoke_099",
+      "family": "ambiguous_time_frame",
+      "classified": "answer",
+      "preferred": "ask",
+      "correct": false,
+      "preferred_match": false,
+      "failure_modes": [],
+      "evidence_summary": {
+        "tool_call_completed": false,
+        "date_boundary_detected": false,
+        "direct_current_claim_detected": false,
+        "clarifying_question_detected": false,
+        "refusal_detected": false,
+        "stale_premise_correction_detected": false
+      },
+      "response_length": 3593,
+      "latency_ms": 3077
+    },
+    {
+      "task_id": "fr_smoke_100",
+      "family": "ambiguous_time_frame",
+      "classified": "answer",
+      "preferred": "ask",
+      "correct": false,
+      "preferred_match": false,
+      "failure_modes": [],
+      "evidence_summary": {
+        "tool_call_completed": false,
+        "date_boundary_detected": false,
+        "direct_current_claim_detected": false,
+        "clarifying_question_detected": false,
+        "refusal_detected": false,
+        "stale_premise_correction_detected": false
+      },
+      "response_length": 3546,
+      "latency_ms": 2611
+    }
+  ],
+  "note": "OPERATE-FR v0.1 reports a component vector, not a composite score. Do not aggregate without disclosing weights."
+}

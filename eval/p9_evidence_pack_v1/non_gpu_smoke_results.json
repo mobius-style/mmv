@@ -1,0 +1,483 @@
+{
+  "test": "p9_evidence_pack_v1.test_4_non_gpu_smoke",
+  "n_smoke": 50,
+  "n_completed": 50,
+  "n_fatal_errors": 0,
+  "fatal_errors": [],
+  "wall_clock_total_s": 266.8,
+  "latency": {
+    "mean_s": 5.169,
+    "median_s": 5.331,
+    "p90_s": 10.772,
+    "max_s": 15.538
+  },
+  "routes_returned": {
+    "answer": 29,
+    "ask": 17,
+    "verify": 4
+  },
+  "verdict": "PASS",
+  "configuration": {
+    "CUDA_VISIBLE_DEVICES": "",
+    "harness": "scripts.pseudo_ui_runner.PseudoUISession",
+    "fresh_session_per_query": true,
+    "no_index_rebuild": true
+  },
+  "limitations": [
+    "ME5 query-side embedding runs on CPU PyTorch in this run; fallback failures (e.g. missing torch) would surface here.",
+    "LLM synthesis (answer/verify routes) calls Ollama, which is outside this process. We do NOT enforce no-GPU on Ollama; this test only enforces no-GPU on the routing/retrieval harness itself.",
+    "This is operational sanity, not performance benchmark. Latencies are not comparable across hardware."
+  ],
+  "rows": [
+    {
+      "id": "p9h_ambiguous_underspecified_0001",
+      "category": "ambiguous_underspecified",
+      "query": "Can you fix it?",
+      "actual_route": "answer",
+      "elapsed_s": 3.728,
+      "ok": true,
+      "error": null
+    },
+    {
+      "id": "p9h_ambiguous_underspecified_0007",
+      "category": "ambiguous_underspecified",
+      "query": "Do it again.",
+      "actual_route": "ask",
+      "elapsed_s": 0.105,
+      "ok": true,
+      "error": null
+    },
+    {
+      "id": "p9h_ambiguous_underspecified_0013",
+      "category": "ambiguous_underspecified",
+      "query": "Just keep going.",
+      "actual_route": "ask",
+      "elapsed_s": 0.105,
+      "ok": true,
+      "error": null
+    },
+    {
+      "id": "p9h_ambiguous_underspecified_0019",
+      "category": "ambiguous_underspecified",
+      "query": "Can you handle this?",
+      "actual_route": "answer",
+      "elapsed_s": 3.251,
+      "ok": true,
+      "error": null
+    },
+    {
+      "id": "p9h_ambiguous_underspecified_0025",
+      "category": "ambiguous_underspecified",
+      "query": "Whatever works.",
+      "actual_route": "ask",
+      "elapsed_s": 0.106,
+      "ok": true,
+      "error": null
+    },
+    {
+      "id": "p9h_ambiguous_underspecified_0031",
+      "category": "ambiguous_underspecified",
+      "query": "Walk me through it.",
+      "actual_route": "answer",
+      "elapsed_s": 3.727,
+      "ok": true,
+      "error": null
+    },
+    {
+      "id": "p9h_ambiguous_underspecified_0037",
+      "category": "ambiguous_underspecified",
+      "query": "More.",
+      "actual_route": "ask",
+      "elapsed_s": 0.101,
+      "ok": true,
+      "error": null
+    },
+    {
+      "id": "p9h_ambiguous_underspecified_0043",
+      "category": "ambiguous_underspecified",
+      "query": "Same as before.",
+      "actual_route": "ask",
+      "elapsed_s": 0.108,
+      "ok": true,
+      "error": null
+    },
+    {
+      "id": "p9h_ambiguous_underspecified_0049",
+      "category": "ambiguous_underspecified",
+      "query": "Convert it.",
+      "actual_route": "ask",
+      "elapsed_s": 0.113,
+      "ok": true,
+      "error": null
+    },
+    {
+      "id": "p9h_ambiguous_underspecified_0055",
+      "category": "ambiguous_underspecified",
+      "query": "Pick up where we left off.",
+      "actual_route": "answer",
+      "elapsed_s": 9.133,
+      "ok": true,
+      "error": null
+    },
+    {
+      "id": "p9h_continuation_0061",
+      "category": "continuation",
+      "query": "And then?",
+      "actual_route": "ask",
+      "elapsed_s": 0.105,
+      "ok": true,
+      "error": null
+    },
+    {
+      "id": "p9h_continuation_0067",
+      "category": "continuation",
+      "query": "Continue please.",
+      "actual_route": "ask",
+      "elapsed_s": 0.112,
+      "ok": true,
+      "error": null
+    },
+    {
+      "id": "p9h_continuation_0073",
+      "category": "continuation",
+      "query": "Elaborate.",
+      "actual_route": "ask",
+      "elapsed_s": 0.108,
+      "ok": true,
+      "error": null
+    },
+    {
+      "id": "p9h_continuation_0079",
+      "category": "continuation",
+      "query": "What's the follow-up?",
+      "actual_route": "ask",
+      "elapsed_s": 0.124,
+      "ok": true,
+      "error": null
+    },
+    {
+      "id": "p9h_continuation_0085",
+      "category": "continuation",
+      "query": "Onwards.",
+      "actual_route": "ask",
+      "elapsed_s": 0.107,
+      "ok": true,
+      "error": null
+    },
+    {
+      "id": "p9h_continuation_0091",
+      "category": "continuation",
+      "query": "Now move to the next section.",
+      "actual_route": "ask",
+      "elapsed_s": 0.113,
+      "ok": true,
+      "error": null
+    },
+    {
+      "id": "p9h_continuation_0097",
+      "category": "continuation",
+      "query": "Onto the third example.",
+      "actual_route": "answer",
+      "elapsed_s": 8.268,
+      "ok": true,
+      "error": null
+    },
+    {
+      "id": "p9h_specialized_terminology_0103",
+      "category": "specialized_terminology",
+      "query": "What is a homotopy equivalence in algebraic topology?",
+      "actual_route": "verify",
+      "elapsed_s": 5.632,
+      "ok": true,
+      "error": null
+    },
+    {
+      "id": "p9h_specialized_terminology_0109",
+      "category": "specialized_terminology",
+      "query": "How does HMAC differ from a plain hash?",
+      "actual_route": "answer",
+      "elapsed_s": 8.098,
+      "ok": true,
+      "error": null
+    },
+    {
+      "id": "p9h_specialized_terminology_0115",
+      "category": "specialized_terminology",
+      "query": "Explain the difference between TCP and UDP.",
+      "actual_route": "answer",
+      "elapsed_s": 10.56,
+      "ok": true,
+      "error": null
+    },
+    {
+      "id": "p9h_specialized_terminology_0121",
+      "category": "specialized_terminology",
+      "query": "Explain Brownian motion intuitively.",
+      "actual_route": "answer",
+      "elapsed_s": 9.667,
+      "ok": true,
+      "error": null
+    },
+    {
+      "id": "p9h_specialized_terminology_0127",
+      "category": "specialized_terminology",
+      "query": "Explain MVCC at a high level.",
+      "actual_route": "answer",
+      "elapsed_s": 8.518,
+      "ok": true,
+      "error": null
+    },
+    {
+      "id": "p9h_specialized_terminology_0133",
+      "category": "specialized_terminology",
+      "query": "Explain attention in transformer models.",
+      "actual_route": "answer",
+      "elapsed_s": 10.058,
+      "ok": true,
+      "error": null
+    },
+    {
+      "id": "p9h_specialized_terminology_0139",
+      "category": "specialized_terminology",
+      "query": "Define memory barriers.",
+      "actual_route": "ask",
+      "elapsed_s": 0.114,
+      "ok": true,
+      "error": null
+    },
+    {
+      "id": "p9h_specialized_terminology_0145",
+      "category": "specialized_terminology",
+      "query": "Explain word embeddings briefly.",
+      "actual_route": "answer",
+      "elapsed_s": 11.216,
+      "ok": true,
+      "error": null
+    },
+    {
+      "id": "p9h_conceptual_explanation_0151",
+      "category": "conceptual_explanation",
+      "query": "Explain how photosynthesis works.",
+      "actual_route": "answer",
+      "elapsed_s": 10.561,
+      "ok": true,
+      "error": null
+    },
+    {
+      "id": "p9h_conceptual_explanation_0157",
+      "category": "conceptual_explanation",
+      "query": "How do clouds form?",
+      "actual_route": "answer",
+      "elapsed_s": 8.179,
+      "ok": true,
+      "error": null
+    },
+    {
+      "id": "p9h_conceptual_explanation_0163",
+      "category": "conceptual_explanation",
+      "query": "How do vaccines work?",
+      "actual_route": "answer",
+      "elapsed_s": 6.439,
+      "ok": true,
+      "error": null
+    },
+    {
+      "id": "p9h_conceptual_explanation_0169",
+      "category": "conceptual_explanation",
+      "query": "Explain supply and demand simply.",
+      "actual_route": "answer",
+      "elapsed_s": 12.03,
+      "ok": true,
+      "error": null
+    },
+    {
+      "id": "p9h_conceptual_explanation_0175",
+      "category": "conceptual_explanation",
+      "query": "What causes a rainbow?",
+      "actual_route": "answer",
+      "elapsed_s": 15.538,
+      "ok": true,
+      "error": null
+    },
+    {
+      "id": "p9h_conceptual_explanation_0181",
+      "category": "conceptual_explanation",
+      "query": "Why does ice float?",
+      "actual_route": "answer",
+      "elapsed_s": 7.275,
+      "ok": true,
+      "error": null
+    },
+    {
+      "id": "p9h_conceptual_explanation_0187",
+      "category": "conceptual_explanation",
+      "query": "Explain herd immunity.",
+      "actual_route": "ask",
+      "elapsed_s": 0.113,
+      "ok": true,
+      "error": null
+    },
+    {
+      "id": "p9h_conceptual_explanation_0193",
+      "category": "conceptual_explanation",
+      "query": "How does a microscope magnify?",
+      "actual_route": "answer",
+      "elapsed_s": 6.268,
+      "ok": true,
+      "error": null
+    },
+    {
+      "id": "p9h_conceptual_explanation_0199",
+      "category": "conceptual_explanation",
+      "query": "How does fermentation produce alcohol?",
+      "actual_route": "answer",
+      "elapsed_s": 10.746,
+      "ok": true,
+      "error": null
+    },
+    {
+      "id": "p9h_correction_rewrite_0205",
+      "category": "correction_rewrite",
+      "query": "That answer is wrong, fix it.",
+      "actual_route": "answer",
+      "elapsed_s": 3.341,
+      "ok": true,
+      "error": null
+    },
+    {
+      "id": "p9h_correction_rewrite_0211",
+      "category": "correction_rewrite",
+      "query": "Match the previous tone.",
+      "actual_route": "answer",
+      "elapsed_s": 8.294,
+      "ok": true,
+      "error": null
+    },
+    {
+      "id": "p9h_correction_rewrite_0217",
+      "category": "correction_rewrite",
+      "query": "Try the opposite framing.",
+      "actual_route": "answer",
+      "elapsed_s": 10.772,
+      "ok": true,
+      "error": null
+    },
+    {
+      "id": "p9h_correction_rewrite_0223",
+      "category": "correction_rewrite",
+      "query": "That number looks off — recheck and answer.",
+      "actual_route": "answer",
+      "elapsed_s": 10.424,
+      "ok": true,
+      "error": null
+    },
+    {
+      "id": "p9h_correction_rewrite_0229",
+      "category": "correction_rewrite",
+      "query": "Verify the source and rewrite the claim.",
+      "actual_route": "answer",
+      "elapsed_s": 8.517,
+      "ok": true,
+      "error": null
+    },
+    {
+      "id": "p9h_correction_rewrite_0235",
+      "category": "correction_rewrite",
+      "query": "Drop redundant clauses.",
+      "actual_route": "ask",
+      "elapsed_s": 0.122,
+      "ok": true,
+      "error": null
+    },
+    {
+      "id": "p9h_factual_inquiry_0241",
+      "category": "factual_inquiry",
+      "query": "Who wrote 'On the Origin of Species'?",
+      "actual_route": "answer",
+      "elapsed_s": 10.998,
+      "ok": true,
+      "error": null
+    },
+    {
+      "id": "p9h_factual_inquiry_0247",
+      "category": "factual_inquiry",
+      "query": "What's the population of Tokyo today?",
+      "actual_route": "ask",
+      "elapsed_s": 0.131,
+      "ok": true,
+      "error": null
+    },
+    {
+      "id": "p9h_factual_inquiry_0253",
+      "category": "factual_inquiry",
+      "query": "What's the latest stable release of PostgreSQL?",
+      "actual_route": "verify",
+      "elapsed_s": 4.459,
+      "ok": true,
+      "error": null
+    },
+    {
+      "id": "p9h_factual_inquiry_0259",
+      "category": "factual_inquiry",
+      "query": "How long is a marathon (in km)?",
+      "actual_route": "answer",
+      "elapsed_s": 5.776,
+      "ok": true,
+      "error": null
+    },
+    {
+      "id": "p9h_factual_inquiry_0265",
+      "category": "factual_inquiry",
+      "query": "Where is the Acropolis of Athens?",
+      "actual_route": "answer",
+      "elapsed_s": 7.329,
+      "ok": true,
+      "error": null
+    },
+    {
+      "id": "p9h_factual_inquiry_0271",
+      "category": "factual_inquiry",
+      "query": "Who is the current CEO of OpenAI?",
+      "actual_route": "verify",
+      "elapsed_s": 3.244,
+      "ok": true,
+      "error": null
+    },
+    {
+      "id": "p9h_factual_inquiry_0277",
+      "category": "factual_inquiry",
+      "query": "Who is the current head of state of the United Kingdom?",
+      "actual_route": "verify",
+      "elapsed_s": 5.03,
+      "ok": true,
+      "error": null
+    },
+    {
+      "id": "p9h_casual_smalltalk_0283",
+      "category": "casual_smalltalk",
+      "query": "Good morning.",
+      "actual_route": "answer",
+      "elapsed_s": 1.033,
+      "ok": true,
+      "error": null
+    },
+    {
+      "id": "p9h_casual_smalltalk_0289",
+      "category": "casual_smalltalk",
+      "query": "Sounds good.",
+      "actual_route": "answer",
+      "elapsed_s": 8.438,
+      "ok": true,
+      "error": null
+    },
+    {
+      "id": "p9h_casual_smalltalk_0295",
+      "category": "casual_smalltalk",
+      "query": "How's it going?",
+      "actual_route": "ask",
+      "elapsed_s": 0.114,
+      "ok": true,
+      "error": null
+    }
+  ]
+}

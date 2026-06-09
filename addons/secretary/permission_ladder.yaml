@@ -1,0 +1,173 @@
+# Secretary permission ladder.
+#
+# Declares the read / write / network surface for each verb exposed by
+# `python -m addons.secretary`. This is *not* enforced at runtime by
+# the secretary itself — it is an audit-friendly statement of intent
+# that Claude (the supervising session) can read before invoking any
+# verb so the blast radius is known up front.
+#
+# Conventions:
+#   reads:    glob-like paths (relative to repo root) the verb will read
+#   writes:   glob-like paths the verb will WRITE to
+#   network:  list of outbound calls (target host / purpose / cost notes);
+#             null when the verb is purely local
+#   side_effects:  free-text notes on observable changes beyond reads/writes
+#   halt_aware:    true if the verb checks `state/halt` for cooperative cancel
+#
+# Adding a new verb? Add an entry here BEFORE wiring it into cli.py.
+schema_version: 1
+
+verbs:
+
+  version:
+    description: Print the currently-pinned MMV Large release binding.
+    reads:
+      - operate-fr-bench/releases/large/current.yaml
+      - <profile_path>  # resolved from the pointer
+    writes: []
+    network: null
+    side_effects: stdout only
+    halt_aware: false
+
+  bump:
+    description: Update the active-release pointer to a new RC.
+    reads:
+      - operate-fr-bench/releases/large/current.yaml
+    writes:
+      - operate-fr-bench/releases/large/current.yaml
+    network: null
+    side_effects: |
+      The pointer file is overwritten. The next invocation of any verb
+      uses the new release. Reversible by re-running bump with the prior
+      arguments, or by `git checkout HEAD -- <pointer>`.
+    halt_aware: false
+
+  review-packet:
+    description: Digest a human-review packet directory into a Markdown brief.
+    reads:
+      - <target>/*.csv
+      - <target>/*.md
+    writes:
+      - addons/secretary/state/digests/review_packet_<ts>.md  # unless --out
+    network:
+      - condition: --with-synthesis AND NOT --dry-run-synthesis
+        target: <provider_endpoint>  # resolved from pointer
+        purpose: synthesis narrative (Top-3 / Risks / Ignore)
+        cost: tokens billed to api_key_env account
+    side_effects: Append-only digest file at the resolved out path.
+    halt_aware: true  # halt is honored before the LLM call
+
+  list:
+    description: Print this permission ladder so Claude can see what each verb is allowed to touch.
+    reads:
+      - addons/secretary/permission_ladder.yaml
+    writes: []
+    network: null
+    side_effects: stdout only
+    halt_aware: false
+
+  eval-results:
+    description: Digest a generic eval directory (CSV / JSONL / log / md).
+    reads:
+      - <target>/**/*
+    writes:
+      - addons/secretary/state/digests/eval_results_<ts>.md  # unless --out
+    network: null
+    side_effects: Read-only walk; structural digest only.
+    halt_aware: true
+
+  git-history:
+    description: Digest recent git history (commits + diffs) into a Markdown brief.
+    reads:
+      - .git/  # via `git log` / `git show --numstat`
+    writes:
+      - addons/secretary/state/digests/git_history_<ts>.md  # unless --out
+    network: null
+    side_effects: Read-only git subprocess invocations.
+    halt_aware: true
+
+  bench-summary:
+    description: Catalog files in a benchmarks/reports/ directory.
+    reads:
+      - <target>/*
+    writes:
+      - addons/secretary/state/digests/bench_summary_<ts>.md  # unless --out
+    network: null
+    side_effects: Read-only listing; first 3 rows of summary CSVs are sampled.
+    halt_aware: true
+
+  repo-grep:
+    description: Structured grep summary (top files / dirs / samples).
+    reads:
+      - .  # repo-wide unless --paths
+    writes:
+      - addons/secretary/state/digests/repo_grep_<ts>.md  # unless --out
+    network: null
+    side_effects: Read-only ripgrep/grep subprocess invocation.
+    halt_aware: true
+
+  pattern-library:
+    description: Digest config/pattern_library/ — pattern counts, status mix, sub-topic saturation, recent lifecycle events.
+    reads:
+      - config/pattern_library/*.jsonl
+      - config/pattern_library/_taxonomy.yaml
+      - config/pattern_library/thresholds.yaml
+    writes:
+      - addons/secretary/state/digests/pattern_library_<ts>.md  # unless --out
+    network: null
+    side_effects: Read-only JSONL parse + counters.
+    halt_aware: true
+
+  docs:
+    description: Catalog docs/*.md by topic prefix — title + first paragraph for each, optionally filter by mtime.
+    reads:
+      - docs/*.md  # top-level only
+    writes:
+      - addons/secretary/state/digests/docs_<ts>.md  # unless --out
+    network: null
+    side_effects: Read-only markdown parse.
+    halt_aware: true
+
+  handoff:
+    description: Digest or install cross-agent shared-memory files.
+    reads:
+      - AGENTS.md
+      - docs/current/HANDOFF.md
+      - docs/current/DOCS_AUTHORITY_MAP.md
+      - docs/current/MMV_FRONTIER_CHAT_TRIAL_PACK_RC3_3_L0V8_4.md
+      - docs/current/MMV_FRONTIER_CHAT_TRIAL_PACK_RC3_3_L0V8_4.sources.json
+      - addons/secretary/state/digests/*
+      - addons/secretary/state/logs/*
+    writes:
+      - addons/secretary/state/digests/handoff_<ts>.md  # unless --out
+      - addons/secretary/state/digests/next_ai_packet_<ts>.md  # with --next-agent-packet unless --out
+      - AGENTS.md  # only with --install; skipped if present unless --force
+      - docs/current/HANDOFF.md  # only with --install; skipped if present unless --force
+    network: null
+    side_effects: |
+      Default mode is an append-only readiness digest. With --install,
+      vendor-neutral shared-memory templates are created for Codex,
+      Claude Code, OpenCode-style agents, and other local coding
+      assistants. Existing files are left untouched unless --force is set.
+    halt_aware: true
+
+  explain:
+    description: Drill into one verb — full spec from this ladder plus the N most recent invocations from state/logs/.
+    reads:
+      - addons/secretary/permission_ladder.yaml
+      - addons/secretary/state/logs/<verb>_*.jsonl
+    writes: []
+    network: null
+    side_effects: stdout only
+    halt_aware: false
+
+# Hard rules — these apply to EVERY verb, present and future:
+#   - No writes outside addons/secretary/state/ or
+#     operate-fr-bench/releases/large/current.yaml.
+#   - No network calls without an explicit pointer-resolved endpoint AND
+#     an api_key_env that's present in the environment. Missing key →
+#     skip the call (return 0 with a "Synthesis skipped" notice).
+#   - The api_key_env value is read but NEVER written to logs, digests,
+#     stdout, or exception messages.
+#   - When a verb honors halt (halt_aware: true), `state/halt` is checked
+#     at every coarse-grained boundary so Claude can stop a long task.

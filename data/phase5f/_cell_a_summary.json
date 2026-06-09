@@ -1,0 +1,40 @@
+{
+  "test": "phase5f.cell_a.ambiguous_n30",
+  "n": 30,
+  "n_target": 30,
+  "early_exit_triggered": false,
+  "seed": 20260430,
+  "n_judged_ok": 30,
+  "n_judge_fail": 0,
+  "n_groq_ok": 29,
+  "n_groq_403": 0,
+  "judge_used_fallback_after_3_strike": false,
+  "raw_mean_total20": 17.23,
+  "governed_mean_total20": 15.7,
+  "delta_total20": -1.53,
+  "fabrication_rate_auto": 0.2667,
+  "fabrication_rate_auto_ci95": [
+    0.1418,
+    0.4445
+  ],
+  "retrieval_hit_rate_box_w": 0.0,
+  "fabrication_x_retrieval_2x2": {
+    "fab_yes_retrieval_hit": 0,
+    "fab_yes_retrieval_miss": 8,
+    "fab_no_retrieval_hit": 0,
+    "fab_no_retrieval_miss": 22
+  },
+  "sub_distribution": {
+    "other": 16,
+    "short_question": 5,
+    "wh_underspec": 1,
+    "referential": 4,
+    "imperative": 4
+  },
+  "judge_token_usage": {
+    "prompt_tokens": 14277,
+    "completion_tokens": 13851,
+    "total_tokens": 28128
+  },
+  "elapsed_s": 255.3
+}

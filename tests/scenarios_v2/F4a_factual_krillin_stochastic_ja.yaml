@@ -1,0 +1,33 @@
+name: F4a_factual_krillin_stochastic_ja
+language: ja
+category: F4a_factual_stochastic
+description: >
+  F4a — JA Krillin's wife factual query with stochastic gate. qwen3.5:9b
+  has documented prompt-following variance (Pattern C R1: 18号 / ビーデル
+  / チチ / ビクリ across reruns). v1 single-run assertion was either too
+  strict or vacuously passing. v2 stochastic gate runs N=5 and requires
+  3/5 PASS — honest middle ground given the model's variance.
+active_language_seed: ja
+turns:
+  - user: "クリリンの妻は誰?"
+    assert:
+      route_in: ["answer", "verify", "ask"]
+      self_referential: false
+      response_must_not_contain:
+        - "Qwen"
+        - "Hillary"
+        - "Clinton"
+        - "希拉里"
+v2_assertions:
+  - response_must_semantically_contain:
+      concept: >
+        Krillin's wife as Android 18 (人造人間18号 / 18号 / Android
+        Eighteen). The response should identify Android 18 as the
+        canonical answer, optionally with citation. Honest uncertainty
+        ("sources don't directly confirm but…") with Android 18 named
+        also scores 3+; outright wrong character (Bulma / Chi-Chi /
+        Videl) scores 1-2.
+      min_score: 3
+stochastic_gate:
+  runs: 5
+  min_pass: 3

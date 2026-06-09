@@ -1,0 +1,8 @@
+This directory inherits the license of the parent repository.
+
+Code in this directory is provided under the same license as
+the parent MOBIUS MMV repository (AGPL-3.0-or-later). See the
+root LICENSE file of the parent project.
+
+The benchmark documents and dataset items in this directory are
+governed additionally by NON_ASSERTION_COVENANT.md.

@@ -1,0 +1,24 @@
+cff-version: 1.2.0
+title: "OPERATE-FR v0.1 — Freshness Routing Track (candidate operational benchmark)"
+message: "If you use this artifact, please cite the specification document and the harness commit."
+type: dataset
+authors:
+  - family-names: Toeda
+    given-names: Taiko
+    affiliation: "MOBIUS LLC"
+date-released: "2026-05-16"
+version: "0.1.0"
+abstract: >
+  OPERATE-FR is a route-first freshness evaluation track. The v0.1
+  artifact ships a 100-task Smoke-100 subset with per-task route labels,
+  a transparent rule-based route classifier, a scorer that reports a
+  component vector (no composite), and a harness for OpenAI-compatible
+  and local model adapters. OPERATE-FR is a candidate operational
+  benchmark track, not a standard benchmark.
+keywords:
+  - benchmark
+  - freshness
+  - routing
+  - operational evaluation
+  - non-assertion
+license: AGPL-3.0-or-later

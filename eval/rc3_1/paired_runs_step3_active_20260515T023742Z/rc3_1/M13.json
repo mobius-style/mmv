@@ -1,0 +1,32 @@
+{
+  "id": "M13",
+  "category": "math",
+  "query": "Define the evaluation formula for grounding rate.",
+  "expected_apply_decision": "apply_criteria",
+  "expected_step": "step2_strong",
+  "reword_pair_id": null,
+  "env": "rc3_1",
+  "phase2_decision": "apply_criteria",
+  "harness_fallback": null,
+  "step3_status": "deferred_api_gated",
+  "gating_enabled": true,
+  "addendum_chars": 1029,
+  "addendum_text": "[Box A Application Gate]\n## 0. Application Gate\n\nThis document is used only when MMV or the 120B execution system is performing mathematical modeling, formalization, theoretical explanation, evaluation-formula design, paper or patent documentation, or design review of MMV internal behavior.\n\nDo not apply this document as CRITERIA in the following cases:\n\n- General questions.\n- Questions that only require a short answer.\n- Ordinary coding questions.\n- Questions requiring up-to-date information.\n- Casual conversation, translation, or simple definition explanations.\n- Cases where the word \"model\" does not mean a mathematical model.\n\nEven if this document is retrieved, if the query is outside its scope, apply it weakly as REFERENCE or ignore it.\n\n[Box A Response Style Policy]\n- Do not attach self-scoring metrics (pass rate, grounding rate, fabrication rate, etc.) to your own response.\n- Do not assert metric values without prior evaluation.\n- Do not impose mathematical formalization on questions that do not require it.",
+  "retrieve_box_a": true,
+  "step1_negative": false,
+  "step2_strong": true,
+  "step3_invoked": false,
+  "winning_label": "MMV_Mathematical_Modeling_Doctrine_and_Formalism_EN.md",
+  "decisions_per_doc": {
+    "MMV_Mathematical_Modeling_Doctrine_and_Formalism_EN.md": "apply_criteria"
+  },
+  "response": "The evaluation formula for grounding rate is not a single universal constant but a context-dependent ratio: **Grounding Rate = (Number of Claims Supported by Evidence) / (Total Number of Claims Made)**. In practical modeling, this often translates to a weighted sum where each claim $c_i$ contributes $w_i \\cdot \\mathbb{I}(\\text{evidence}_i \\text{ exists})$, with weights $w_i$ reflecting the claim's importance or risk. Crucially, the \"evidence\" itself is not static; it is dynamically filtered by the model's internal confidence thresholds and the reliability of the retrieval source, meaning the denominator (total claims) effectively shrinks as the model becomes more conservative, creating a feedback loop where higher scrutiny lowers the raw count but potentially raises the *quality* of the remaining grounded claims.\n\nWhy does the definition of \"evidence\" shift depending on whether the source is a verified database, a real-time web search, or an internal memory trace?",
+  "response_chars": 978,
+  "approx_tokens": 244,
+  "latency_s": 2.44,
+  "harness_timing_ms": {
+    "total": 2439.6719760261476,
+    "llm": 2439.6472289809026
+  },
+  "br_0004_leakage_flags": []
+}

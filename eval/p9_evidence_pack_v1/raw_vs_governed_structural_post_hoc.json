@@ -1,0 +1,185 @@
+{
+  "test": "p9_evidence_pack_v1.test_2_structural_post_hoc",
+  "context": "Test 2's primary signal was INCONCLUSIVE_NO_JUDGE because the Groq judge endpoint returned HTTP 403 across all calls during the Phase 5C run. This script extracts structural features from the already-captured raw/governed pairs without re-introducing a judge or modifying source code.",
+  "n_pairs": 60,
+  "raw_overall": {
+    "n": 60,
+    "mean_length_chars": 923.5,
+    "ends_with_question_rate": 0.1,
+    "contains_question_rate": 0.5333,
+    "mentions_verify_rate": 0.2167,
+    "mentions_freshness_rate": 0.0333,
+    "empty_rate": 0.0
+  },
+  "governed_overall": {
+    "n": 60,
+    "mean_length_chars": 447.5,
+    "ends_with_question_rate": 0.4167,
+    "contains_question_rate": 0.4667,
+    "mentions_verify_rate": 0.1833,
+    "mentions_freshness_rate": 0.0333,
+    "empty_rate": 0.0
+  },
+  "by_category": {
+    "ambiguous_underspecified": {
+      "n": 18,
+      "raw": {
+        "n": 18,
+        "mean_length_chars": 768.4,
+        "ends_with_question_rate": 0.1111,
+        "contains_question_rate": 0.8889,
+        "mentions_verify_rate": 0.2222,
+        "mentions_freshness_rate": 0.0,
+        "empty_rate": 0.0
+      },
+      "governed": {
+        "n": 18,
+        "mean_length_chars": 257.9,
+        "ends_with_question_rate": 0.6667,
+        "contains_question_rate": 0.6667,
+        "mentions_verify_rate": 0.1111,
+        "mentions_freshness_rate": 0.0,
+        "empty_rate": 0.0
+      }
+    },
+    "continuation": {
+      "n": 8,
+      "raw": {
+        "n": 8,
+        "mean_length_chars": 867.5,
+        "ends_with_question_rate": 0.375,
+        "contains_question_rate": 1.0,
+        "mentions_verify_rate": 0.375,
+        "mentions_freshness_rate": 0.0,
+        "empty_rate": 0.0
+      },
+      "governed": {
+        "n": 8,
+        "mean_length_chars": 349.6,
+        "ends_with_question_rate": 0.75,
+        "contains_question_rate": 0.75,
+        "mentions_verify_rate": 0.25,
+        "mentions_freshness_rate": 0.0,
+        "empty_rate": 0.0
+      }
+    },
+    "specialized_terminology": {
+      "n": 6,
+      "raw": {
+        "n": 6,
+        "mean_length_chars": 1532.8,
+        "ends_with_question_rate": 0.0,
+        "contains_question_rate": 0.5,
+        "mentions_verify_rate": 0.0,
+        "mentions_freshness_rate": 0.0,
+        "empty_rate": 0.0
+      },
+      "governed": {
+        "n": 6,
+        "mean_length_chars": 753.5,
+        "ends_with_question_rate": 0.1667,
+        "contains_question_rate": 0.5,
+        "mentions_verify_rate": 0.0,
+        "mentions_freshness_rate": 0.0,
+        "empty_rate": 0.0
+      }
+    },
+    "conceptual_explanation": {
+      "n": 8,
+      "raw": {
+        "n": 8,
+        "mean_length_chars": 1677.2,
+        "ends_with_question_rate": 0.0,
+        "contains_question_rate": 0.125,
+        "mentions_verify_rate": 0.0,
+        "mentions_freshness_rate": 0.0,
+        "empty_rate": 0.0
+      },
+      "governed": {
+        "n": 8,
+        "mean_length_chars": 679.5,
+        "ends_with_question_rate": 0.125,
+        "contains_question_rate": 0.125,
+        "mentions_verify_rate": 0.0,
+        "mentions_freshness_rate": 0.0,
+        "empty_rate": 0.0
+      }
+    },
+    "correction_rewrite": {
+      "n": 8,
+      "raw": {
+        "n": 8,
+        "mean_length_chars": 651.4,
+        "ends_with_question_rate": 0.0,
+        "contains_question_rate": 0.375,
+        "mentions_verify_rate": 0.25,
+        "mentions_freshness_rate": 0.0,
+        "empty_rate": 0.0
+      },
+      "governed": {
+        "n": 8,
+        "mean_length_chars": 511.2,
+        "ends_with_question_rate": 0.25,
+        "contains_question_rate": 0.375,
+        "mentions_verify_rate": 0.25,
+        "mentions_freshness_rate": 0.0,
+        "empty_rate": 0.0
+      }
+    },
+    "factual_inquiry": {
+      "n": 10,
+      "raw": {
+        "n": 10,
+        "mean_length_chars": 657.4,
+        "ends_with_question_rate": 0.0,
+        "contains_question_rate": 0.0,
+        "mentions_verify_rate": 0.4,
+        "mentions_freshness_rate": 0.2,
+        "empty_rate": 0.0
+      },
+      "governed": {
+        "n": 10,
+        "mean_length_chars": 505.6,
+        "ends_with_question_rate": 0.2,
+        "contains_question_rate": 0.2,
+        "mentions_verify_rate": 0.5,
+        "mentions_freshness_rate": 0.2,
+        "empty_rate": 0.0
+      }
+    },
+    "casual_smalltalk": {
+      "n": 2,
+      "raw": {
+        "n": 2,
+        "mean_length_chars": 119.0,
+        "ends_with_question_rate": 0.5,
+        "contains_question_rate": 0.5,
+        "mentions_verify_rate": 0.0,
+        "mentions_freshness_rate": 0.0,
+        "empty_rate": 0.0
+      },
+      "governed": {
+        "n": 2,
+        "mean_length_chars": 153.5,
+        "ends_with_question_rate": 0.5,
+        "contains_question_rate": 0.5,
+        "mentions_verify_rate": 0.0,
+        "mentions_freshness_rate": 0.0,
+        "empty_rate": 0.0
+      }
+    }
+  },
+  "selected_deltas": {
+    "ends_with_question_governed_minus_raw": 0.3167,
+    "mentions_verify_governed_minus_raw": -0.0334,
+    "mentions_freshness_governed_minus_raw": 0.0,
+    "mean_length_chars_governed_minus_raw": -476.0,
+    "ambiguous_ends_with_question_governed_minus_raw": 0.5556
+  },
+  "caveats": [
+    "Structural features only. NOT a judgment substitute.",
+    "Does not measure correctness, restraint quality, or naturalness — those would require a judge.",
+    "Identical raw text → identical features; this can't distinguish equally-shaped good and bad responses.",
+    "Numbers are *suggestive* indicators of governance behavior (e.g., higher ends_with_question on ambiguous prompts is consistent with the appraisal layer asking back), but they are NOT a substitute for the missing judge."
+  ]
+}

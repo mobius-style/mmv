@@ -1,0 +1,47 @@
+name: F5_shiritori_rule_ja
+language: ja
+category: F5_shiritori_rule_adherence
+description: >
+  F5 — JA しりとり rule adherence. Real UI failure: qwen3.5:9b architectural
+  limit — the model cannot reliably chain the last mora of the previous
+  word (e.g. "りんご" → needs word starting with "ご"; model emits "さくら"
+  ignoring the rule). Known 9B-architecture limit; v2 baseline is measured
+  not to claim fix, but to make the failure mode legible in the harness.
+  shiritori_rule_adherence judge inspects turn-by-turn chaining.
+active_language_seed: ja
+turns:
+  - user: "しりとりをしましょう。最初は「りんご」です。"
+    assert:
+      route_in: ["answer", "ask"]
+      response_must_not_contain:
+        - "Qwen"
+        - "通义千问"
+  - user: "次をどうぞ"
+    assert:
+      response_must_not_contain:
+        - "Qwen"
+        - "通义千问"
+  - user: "もう一度"
+    assert:
+      response_must_not_contain:
+        - "Qwen"
+        - "通义千问"
+v2_assertions:
+  - shiritori_rule_adherence:
+      turns: [0, 1, 2]
+      check_prompt: >
+        Evaluate しりとり rule adherence across turns. Rules: (1) each new
+        word must start with the last mora of the previous word (long
+        vowels and ん-termination rules apply); (2) no word may end in
+        ん (that would lose the game); (3) no repeated words. A high
+        score (4-5) means the assistant correctly chains at least two
+        consecutive valid words with the right leading mora. A low
+        score (1-2) means the assistant ignores the chaining rule and
+        emits arbitrary words (e.g. turn-1 ends with ご but assistant
+        offers "さくら" starting with さ), or emits an ん-ending word,
+        or repeats. Score 3 for partial compliance (one correct chain,
+        one slip).
+      min_score: 3
+stochastic_gate:
+  runs: 3
+  min_pass: 2

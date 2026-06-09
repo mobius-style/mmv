@@ -1,0 +1,20 @@
+name: mixed_query_boundary_zh
+language: zh
+category: mixed
+description: >
+  Mixed ZH query must not fast-path.
+active_language_seed: zh
+turns:
+  - user: "你好，请问 MOBIUS 是什么？"
+    assert:
+      route_in: ["answer", "verify"]
+      response_language: "zh"
+      response_length_min: 20
+      reason_codes_must_not_include:
+        - "CASUAL_GREETING_FAST_PATH"
+      response_must_contain_any:
+        - "MOBIUS"
+        - "Möbius"
+        - "运行时"
+        - "系统"
+      must_not_error: true

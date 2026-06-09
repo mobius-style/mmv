@@ -1,0 +1,32 @@
+{
+  "id": "M19",
+  "category": "math",
+  "query": "What's the threshold design for safety relevance?",
+  "expected_apply_decision": "apply_criteria",
+  "expected_step": "step2_strong",
+  "reword_pair_id": null,
+  "env": "rc3_1",
+  "phase2_decision": "apply_criteria",
+  "harness_fallback": null,
+  "step3_status": "deferred_api_gated",
+  "gating_enabled": true,
+  "addendum_chars": 1029,
+  "addendum_text": "[Box A Application Gate]\n## 0. Application Gate\n\nThis document is used only when MMV or the 120B execution system is performing mathematical modeling, formalization, theoretical explanation, evaluation-formula design, paper or patent documentation, or design review of MMV internal behavior.\n\nDo not apply this document as CRITERIA in the following cases:\n\n- General questions.\n- Questions that only require a short answer.\n- Ordinary coding questions.\n- Questions requiring up-to-date information.\n- Casual conversation, translation, or simple definition explanations.\n- Cases where the word \"model\" does not mean a mathematical model.\n\nEven if this document is retrieved, if the query is outside its scope, apply it weakly as REFERENCE or ignore it.\n\n[Box A Response Style Policy]\n- Do not attach self-scoring metrics (pass rate, grounding rate, fabrication rate, etc.) to your own response.\n- Do not assert metric values without prior evaluation.\n- Do not impose mathematical formalization on questions that do not require it.",
+  "retrieve_box_a": true,
+  "step1_negative": false,
+  "step2_strong": true,
+  "step3_invoked": false,
+  "winning_label": "MMV_Mathematical_Modeling_Doctrine_and_Formalism_EN.md",
+  "decisions_per_doc": {
+    "MMV_Mathematical_Modeling_Doctrine_and_Formalism_EN.md": "apply_criteria"
+  },
+  "response": "The threshold design for safety relevance is a dynamic boundary where the system shifts from standard operational logic to high-fidelity risk mitigation. This boundary is not a fixed percentage or static rule but a context-sensitive filter that activates when a query implies potential for physical harm, legal liability, or significant social disruption. It functions by evaluating the *consequence space* of a proposed action rather than just the semantic content of the request. When the projected impact exceeds a certain magnitude of harm, the system prioritizes refusal, redirection, or the provision of safety-critical disclaimers over direct assistance.\n\nWhy is this threshold often calibrated to be lower for emerging technologies or unverified claims compared to established domains?\n\n**Alternative framing:** Consider the threshold not as a gatekeeper that blocks access, but as a pressure valve that redirects energy toward constructive, safe pathways when the pressure of potential harm becomes too high.",
+  "response_chars": 1017,
+  "approx_tokens": 254,
+  "latency_s": 2.484,
+  "harness_timing_ms": {
+    "total": 2484.298330004094,
+    "llm": 2484.2723929905333
+  },
+  "br_0004_leakage_flags": []
+}

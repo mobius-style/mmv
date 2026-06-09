@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Try MOBIUS — one paste, no install</title>
+<meta name="description" content="Paste a single prompt into ChatGPT, Claude, or Gemini and watch MOBIUS MMV decide whether answering is justified before it responds." />
+<style>
+  :root { --bg:#0d1117; --panel:#161b22; --border:#30363d; --fg:#e6edf3; --muted:#9da7b3; --accent:#2f81f7; --ok:#2ea043; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--fg);
+         font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif; }
+  .wrap { max-width:880px; margin:0 auto; padding:32px 20px 64px; }
+  h1 { font-size:1.9rem; margin:0 0 6px; }
+  .sub { color:var(--muted); margin:0 0 24px; }
+  p { margin:12px 0; }
+  a { color:var(--accent); text-decoration:none; }
+  a:hover { text-decoration:underline; }
+  .note { background:var(--panel); border:1px solid var(--border); border-radius:8px;
+          padding:12px 16px; color:var(--muted); font-size:.93rem; }
+  .bar { display:flex; flex-wrap:wrap; gap:10px; align-items:center; margin:20px 0 10px; }
+  button, .btn { font:inherit; font-weight:600; border-radius:8px; padding:10px 18px; cursor:pointer;
+                 border:1px solid var(--border); background:var(--panel); color:var(--fg); }
+  button.primary { background:var(--accent); border-color:var(--accent); color:#fff; }
+  button:disabled { opacity:.55; cursor:default; }
+  .status { color:var(--muted); font-size:.9rem; }
+  textarea { width:100%; height:340px; margin-top:8px; resize:vertical; tab-size:2;
+             background:#0b0f14; color:#d7dee6; border:1px solid var(--border); border-radius:8px;
+             padding:14px; font:13px/1.5 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; white-space:pre; }
+  ul { color:var(--muted); }
+  code { background:var(--panel); border:1px solid var(--border); border-radius:5px; padding:1px 6px; font-size:.9em; }
+  footer { margin-top:40px; padding-top:18px; border-top:1px solid var(--border); color:var(--muted); font-size:.86rem; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Try MOBIUS — one paste, no install</h1>
+  <p class="sub">MOBIUS MMV decides whether answering is <em>justified</em> before it responds.
+     Feel that on any frontier model — one paste, no setup.</p>
+
+  <p class="note"><strong>What this is.</strong> A prompt-level demonstration of the
+     <strong>L0&nbsp;v8.4</strong> governance layer (answer / verify / ask / re-anchor / abstain).
+     It is <strong>not</strong> the full local runtime — no retrieval, no live verification — so it
+     can only be honest about that limit. For the real thing, see the
+     <a href="https://github.com/mobius-style/mmv">repository</a>.</p>
+
+  <div class="bar">
+    <button id="copy" class="primary" disabled>Copy prompt</button>
+    <a class="btn" id="download" href="https://raw.githubusercontent.com/mobius-style/mmv/main/TRY_MOBIUS.md" download="TRY_MOBIUS.md">Download .md</a>
+    <a class="btn" href="https://github.com/mobius-style/mmv/blob/main/TRY_MOBIUS.md">View on GitHub</a>
+    <span class="status" id="status">Loading the latest prompt…</span>
+  </div>
+
+  <textarea id="prompt" readonly spellcheck="false" aria-label="MOBIUS trial prompt">Loading…</textarea>
+
+  <p><strong>Then paste it into a fresh ChatGPT / Claude / Gemini chat</strong> (or the system /
+     developer field if the app has one) and try:</p>
+  <ul>
+    <li><code>Fix it.</code> — should <em>ask</em> for the missing referent, not guess.</li>
+    <li><code>What's the BTC price right now?</code> — should flag it needs live verification it can't do here.</li>
+    <li><code>What is the capital of France?</code> — should answer directly.</li>
+  </ul>
+
+  <footer>
+    Author of record: <strong>Taiko Toeda</strong>. Rights holder / licensing authority: <strong>MOBIUS LLC</strong>.
+    Machine-readable protocol material: AGPL-3.0-or-later · explanatory text: CC BY-NC-SA 4.0.
+    The prompt above is fetched live from
+    <a href="https://github.com/mobius-style/mmv/blob/main/TRY_MOBIUS.md">TRY_MOBIUS.md</a> — single source of truth.
+  </footer>
+</div>
+
+<script>
+(function () {
+  var RAW = "https://raw.githubusercontent.com/mobius-style/mmv/main/TRY_MOBIUS.md";
+  var CDN = "https://cdn.jsdelivr.net/gh/mobius-style/mmv@main/TRY_MOBIUS.md";
+  var BEGIN = "# BEGIN MOBIUS MMV TRIAL PROMPT";
+  var END = "# END MOBIUS MMV TRIAL PROMPT";
+  var ta = document.getElementById("prompt");
+  var copyBtn = document.getElementById("copy");
+  var statusEl = document.getElementById("status");
+
+  function extract(md) {
+    var b = md.indexOf(BEGIN), e = md.indexOf(END);
+    return (b >= 0 && e >= 0) ? md.slice(b, e + END.length) : md;
+  }
+  function setStatus(t) { statusEl.textContent = t; }
+
+  function load(url, fallback) {
+    return fetch(url).then(function (r) {
+      if (!r.ok) throw new Error(r.status);
+      return r.text();
+    }).catch(function (err) {
+      if (fallback) return load(fallback, null);
+      throw err;
+    });
+  }
+
+  load(RAW, CDN).then(function (md) {
+    var prompt = extract(md);
+    ta.value = prompt;
+    copyBtn.disabled = false;
+    setStatus("~" + Math.round(prompt.length / 1024) + " KB · " + prompt.length.toLocaleString() + " chars · loaded");
+  }).catch(function () {
+    ta.value = "Couldn't load the prompt automatically. Open TRY_MOBIUS.md on GitHub and copy it there:\n" +
+               "https://github.com/mobius-style/mmv/blob/main/TRY_MOBIUS.md";
+    setStatus("load failed — use the GitHub link");
+  });
+
+  copyBtn.addEventListener("click", function () {
+    var done = function () {
+      var old = copyBtn.textContent;
+      copyBtn.textContent = "Copied ✓";
+      setTimeout(function () { copyBtn.textContent = old; }, 1600);
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(ta.value).then(done, function () { ta.select(); document.execCommand("copy"); done(); });
+    } else {
+      ta.select(); document.execCommand("copy"); done();
+    }
+  });
+})();
+</script>
+</body>
+</html>

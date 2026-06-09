@@ -1,0 +1,22 @@
+name: factual_general_en
+language: en
+category: factual_general
+description: >
+  Neutral EN factual — what is a binary search tree.
+active_language_seed: en
+turns:
+  - user: "What is a binary search tree?"
+    assert:
+      route_in: ["answer", "verify", "ask"]
+      self_referential: false
+      response_language: "en"
+      response_length_min: 20
+      response_length_max: 2000
+      reason_codes_must_not_include:
+        - "CASUAL_GREETING_FAST_PATH"
+      response_must_contain_any:
+        - "tree"
+        - "node"
+        - "binary"
+        - "BST"
+      must_not_error: true

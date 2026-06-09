@@ -1,0 +1,200 @@
+# Model profiles for the standard benchmark harness.
+#
+# Each profile MUST specify:
+#   - backend: ollama | groq | openai_compatible | dummy
+#   - endpoint: base URL
+#   - model_id: exact model id the backend exposes
+#   - purity_guard: dict of constraints that MUST hold at call time
+#
+# The purity_guard prevents silent fallback (e.g. 120B request being
+# answered by a local 9B). See benchmarks/lib/purity_guard.py.
+
+profiles:
+
+  local-ollama-9b:
+    description: "Reference 9B (qwen3.5:9b) via local Ollama. Uses api/generate with think:false."
+    backend: ollama
+    endpoint: http://localhost:11434
+    model_id: qwen3.5:9b
+    api_kind: ollama_generate            # api/generate, not OpenAI compat
+    temperature: 0.0
+    max_tokens: 1024
+    timeout_s: 120
+    retry: 1
+    extra:
+      think: false                        # CRITICAL — see CLAUDE.md
+    purity_guard:
+      require_backend: ollama
+      require_model_substring: "qwen3.5"
+      forbid_endpoint_substring: ["api.groq.com", "api.openai.com"]
+
+  groq-gpt-oss-120b:
+    description: "120B reference (openai/gpt-oss-120b) via Groq cloud API."
+    backend: groq
+    endpoint: https://api.groq.com/openai/v1
+    model_id: openai/gpt-oss-120b
+    api_kind: openai_chat
+    temperature: 0.0
+    max_tokens: 1024
+    timeout_s: 60
+    retry: 2
+    api_key_env: GROQ_API_KEY             # may also be read from .env.groq
+    purity_guard:
+      require_backend: groq
+      require_model_substring: "gpt-oss-120b"
+      forbid_endpoint_substring: ["localhost", "127.0.0.1", "ollama"]
+
+  mobius-mmv-governed-9b:
+    description: |
+      MMV RoutingEngine in front of the local 9B model (qwen3.5:9b).
+      Runs in-process — no HTTP wrapper — so the bench harness can directly
+      compare the bare 9B and the governed-9B paths without extra latency.
+      Adapter: OllamaAdapter. Retrieval (RAG / Box B / web) is OFF so the
+      comparison isolates the routing+governance layer's effect.
+    backend: mobius_engine
+    target_backend: ollama
+    target_endpoint: http://localhost:11434
+    endpoint: "in-process://routing_engine"
+    model_id: qwen3.5:9b
+    api_kind: mobius_engine
+    temperature: 0.0
+    max_tokens: 1024
+    timeout_s: 180
+    retry: 0
+    purity_guard:
+      require_backend: mobius_engine
+      require_model_substring: "qwen3.5"
+      forbid_endpoint_substring: ["api.groq.com"]
+
+  mobius-mmv-governed-120b:
+    description: |
+      MMV RoutingEngine in front of the cloud 120B model
+      (openai/gpt-oss-120b via Groq). Uses the benchmark-side
+      GroqInferenceAdapter so src/ is unmodified. Retrieval is OFF.
+    backend: mobius_engine
+    target_backend: groq
+    target_endpoint: https://api.groq.com/openai/v1
+    endpoint: "in-process://routing_engine"
+    model_id: openai/gpt-oss-120b
+    api_kind: mobius_engine
+    temperature: 0.0
+    max_tokens: 1024
+    timeout_s: 120
+    retry: 0
+    api_key_env: GROQ_API_KEY
+    purity_guard:
+      require_backend: mobius_engine
+      require_model_substring: "gpt-oss-120b"
+      forbid_endpoint_substring: ["localhost:11434", "127.0.0.1:11434"]
+
+  mobius-mmv-governed-9b-v2:
+    description: |
+      Same backend as mobius-mmv-governed-9b but with the benchmark-side
+      post-processor enabled (contextual clarify + verify fallback). See
+      benchmarks/lib/mmv_post_processor.py. No src/ changes.
+    backend: mobius_engine
+    target_backend: ollama
+    target_endpoint: http://localhost:11434
+    endpoint: "in-process://routing_engine"
+    model_id: qwen3.5:9b
+    api_kind: mobius_engine
+    temperature: 0.0
+    max_tokens: 1024
+    timeout_s: 180
+    retry: 0
+    post_process: true
+    purity_guard:
+      require_backend: mobius_engine
+      require_model_substring: "qwen3.5"
+      forbid_endpoint_substring: ["api.groq.com"]
+
+  mobius-mmv-governed-120b-v2:
+    description: |
+      Same backend as mobius-mmv-governed-120b but with the benchmark-side
+      post-processor enabled (contextual clarify + verify fallback).
+    backend: mobius_engine
+    target_backend: groq
+    target_endpoint: https://api.groq.com/openai/v1
+    endpoint: "in-process://routing_engine"
+    model_id: openai/gpt-oss-120b
+    api_kind: mobius_engine
+    temperature: 0.0
+    max_tokens: 1024
+    timeout_s: 120
+    retry: 0
+    api_key_env: GROQ_API_KEY
+    post_process: true
+    purity_guard:
+      require_backend: mobius_engine
+      require_model_substring: "gpt-oss-120b"
+      forbid_endpoint_substring: ["localhost:11434", "127.0.0.1:11434"]
+
+  # ── Raw gemma4:26b — control baseline for MMV Medium evaluation ──
+  # Pure Ollama call, no governance. Used as the Raw counterpart to
+  # the mobius-mmv-governed-gemma4-26b profile in standard benchmarks.
+  raw-gemma4-26b:
+    description: "Raw gemma4:26b (Q4_K_M, MMV-M baseline) via local Ollama. api/generate + think:false."
+    backend: ollama
+    endpoint: http://localhost:11434
+    model_id: gemma4:26b
+    api_kind: ollama_generate
+    temperature: 0.0
+    max_tokens: 1024
+    timeout_s: 180
+    retry: 1
+    extra:
+      think: false
+    purity_guard:
+      require_backend: ollama
+      require_model_substring: "gemma4"
+      forbid_endpoint_substring: ["api.groq.com", "api.openai.com"]
+
+  # ── MMV-governed gemma4:26b — via RoutingEngine (9B-class stack) ──
+  # IMPORTANT (architectural asymmetry):
+  #   The standard-benchmark "governed" path uses src/kernel/routing_engine.py
+  #   (the same governance fabric used for the local 9B path) PLUS the
+  #   benchmark-side post-processor (benchmarks/lib/mmv_post_processor.py).
+  #   This is DIFFERENT from OPERATE-FR's "MMV Medium RC3.3", which uses
+  #   the Large RC3.3 v3.1 stack (route_transformer + post_validator +
+  #   force_reanchor_v2 in operate-fr-bench/harness/route_transformer.py).
+  #   Both are valid "MMV governance over gemma4:26b" experiments but
+  #   they probe DIFFERENT governance architectures. When reporting
+  #   standard-bench results, label this profile explicitly as
+  #   "MMV Medium (RoutingEngine variant)" to avoid confusion with
+  #   OPERATE-FR Medium RC3.3.
+  mobius-mmv-governed-gemma4-26b:
+    description: |
+      MMV RoutingEngine (src/kernel/routing_engine.py) in front of
+      gemma4:26b via local Ollama. Adapter: OllamaAdapter. Retrieval
+      (RAG / Box B / web) is OFF so the comparison isolates the
+      routing+post-processor layer's effect. NOTE: this is the
+      RoutingEngine variant; OPERATE-FR's Medium RC3.3 uses a
+      different (Large RC3.3 v3.1) governance stack.
+    backend: mobius_engine
+    target_backend: ollama
+    target_endpoint: http://localhost:11434
+    endpoint: "in-process://routing_engine"
+    model_id: gemma4:26b
+    api_kind: mobius_engine
+    temperature: 0.0
+    max_tokens: 1024
+    timeout_s: 240
+    retry: 0
+    post_process: true
+    purity_guard:
+      require_backend: mobius_engine
+      require_model_substring: "gemma4"
+      forbid_endpoint_substring: ["api.groq.com"]
+
+  dummy:
+    description: "Deterministic stub. Returns a templated reply. Used by smoke tests when no API access is desired."
+    backend: dummy
+    endpoint: "none"
+    model_id: dummy-echo-v1
+    api_kind: dummy
+    temperature: 0.0
+    max_tokens: 256
+    timeout_s: 5
+    retry: 0
+    purity_guard:
+      require_backend: dummy

@@ -1,0 +1,77 @@
+{
+  "phase": "secretary_stage0h_refresh",
+  "tool": "addons/secretary/update_current_docs.py",
+  "snapshot_timestamp_utc": "20260502_032723",
+  "snapshot_dir": "eval/secretary_current_refresh/snapshots/20260502_032723",
+  "repo_head_at_run": "b156b4c60c493cbe9b3b0ea40d552b9c6f81a492",
+  "branch": "coverage-repair-alpha-beta",
+  "applied": true,
+  "files_changed": [],
+  "per_file_status": {
+    "RELEASE_STATUS.md": {
+      "status": "unchanged",
+      "sha256": "208060cca258dc7c3c9999204ef9b525ccbf988dbc90846929916d84d568e236"
+    },
+    "DOCS_AUTHORITY_MAP.md": {
+      "status": "unchanged",
+      "sha256": "0f2cfcce66a81ad2f55a04318238d112faf02bd39d61ad322a9bb83be71ee418"
+    },
+    "PUBLIC_RELEASE_READINESS.md": {
+      "status": "unchanged",
+      "sha256": "5ec81ff35b5e79d161ac782e94d66c1f4c4c82a04f8b4822241e94fcddde0d92"
+    },
+    "SETUP_GAPS.md": {
+      "status": "unchanged",
+      "sha256": "e68c54814cf8ab58a0f5dc426252f96e1845158aebe00f5989609bd25fbcbed4"
+    }
+  },
+  "live_state_used_for_update": {
+    "current_head_full": "b156b4c60c493cbe9b3b0ea40d552b9c6f81a492",
+    "current_head_short": "b156b4c",
+    "current_branch": "coverage-repair-alpha-beta",
+    "release_candidate_tag": "mmv_core_v0_1_rc3_release_candidate_20260430_2336",
+    "release_candidate_commit": "7f53fe1dbdf189f014b0cd2643a996148fc5dba7",
+    "release_candidate_commit_short": "7f53fe1",
+    "release_candidate_commit_subject": "chore(release): audit RC3 readiness and module integrity",
+    "release_candidate_commit_matches_expected": true,
+    "rc3_tags_all": [
+      "mmv_core_v0_1_rc3_project_log_review_preset_20260430_1922",
+      "mmv_core_v0_1_rc3_release_candidate_20260430_2336",
+      "mmv_core_v0_1_rc3_ux_polish_20260430_1827"
+    ],
+    "old_rc3_tags": [
+      "mmv_core_v0_1_rc3_project_log_review_preset_20260430_1922",
+      "mmv_core_v0_1_rc3_ux_polish_20260430_1827"
+    ],
+    "porcelain_total_lines": 148,
+    "porcelain_counts": {
+      "modified": 0,
+      "untracked": 148
+    },
+    "latest_stage_report": "docs/SECRETARY_STAGE0_TOTALIZATION.md",
+    "_provenance": {
+      "tool": "addons/secretary/update_current_docs.py",
+      "method": "git rev-list / rev-parse / status / tag / show"
+    }
+  },
+  "docs_current_files_in_scope": [
+    "RELEASE_STATUS.md",
+    "DOCS_AUTHORITY_MAP.md",
+    "PUBLIC_RELEASE_READINESS.md",
+    "SETUP_GAPS.md"
+  ],
+  "tgated_items_NOT_touched_by_this_tool": [
+    "patent attorney / Path C completion",
+    "public push approval",
+    "GitHub release completion",
+    "Zenodo deposit completion",
+    "Hugging Face upload completion",
+    "legal / license declarations",
+    "untracked artifact policy final outcome",
+    "v0.1.0 final declaration"
+  ],
+  "rollback_script": "rollback.sh",
+  "diff_file": "current_docs_update.diff",
+  "manifest_file": "ROLLBACK_MANIFEST.md",
+  "run_timestamp_utc": "2026-05-02T03:27:23Z"
+}

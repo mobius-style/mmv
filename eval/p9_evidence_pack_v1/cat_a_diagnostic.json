@@ -1,0 +1,348 @@
+{
+  "test": "p9_evidence_pack_v1.test_1_cat_a_diagnostic",
+  "n_total": 300,
+  "n_cat_A": 66,
+  "cat_A_rate": 0.22,
+  "bucket_counts": {
+    "A-judge": 14,
+    "A-context": 18,
+    "A-route": 34
+  },
+  "bucket_rates_over_total": {
+    "A-judge": 0.0467,
+    "A-context": 0.06,
+    "A-route": 0.1133
+  },
+  "bucket_rates_within_cat_a": {
+    "A-judge": 0.2121,
+    "A-context": 0.2727,
+    "A-route": 0.5152
+  },
+  "hard_cat_a_rate": 0.0,
+  "route_mismatch_rate": 0.1133,
+  "context_harness_rate": 0.06,
+  "judge_strictness_rate": 0.0467,
+  "retrieval_failure_rate": 0.0,
+  "model_quality_rate_deferred": 0.0,
+  "examples": [
+    {
+      "id": "p9h_ambiguous_underspecified_0001",
+      "category": "ambiguous_underspecified",
+      "query": "Can you fix it?",
+      "expected_route": "ask",
+      "actual_route": "answer",
+      "top_score": null,
+      "reason_codes": [
+        "self_referential"
+      ],
+      "intent_type": "meta_question",
+      "a_bucket": "A-judge",
+      "rationale": "AI classified as meta/self-referential (rcs=['self_referential']); expected=ask is plausibly over-strict"
+    },
+    {
+      "id": "p9h_ambiguous_underspecified_0004",
+      "category": "ambiguous_underspecified",
+      "query": "What do you think?",
+      "expected_route": "ask",
+      "actual_route": "answer",
+      "top_score": null,
+      "reason_codes": [
+        "self_referential"
+      ],
+      "intent_type": "meta_question",
+      "a_bucket": "A-judge",
+      "rationale": "AI classified as meta/self-referential (rcs=['self_referential']); expected=ask is plausibly over-strict"
+    },
+    {
+      "id": "p9h_ambiguous_underspecified_0005",
+      "category": "ambiguous_underspecified",
+      "query": "Help me with this.",
+      "expected_route": "ask",
+      "actual_route": "answer",
+      "top_score": null,
+      "reason_codes": [
+        "LOW_STAKES_STABLE",
+        "SUFFICIENTLY_SPECIFIED",
+        "WIKI_INSUFFICIENT_ESCALATED"
+      ],
+      "intent_type": "factual_query",
+      "a_bucket": "A-judge",
+      "rationale": "prompt reads as direct instruction to the AI; expected=ask is plausibly over-strict"
+    },
+    {
+      "id": "p9h_ambiguous_underspecified_0008",
+      "category": "ambiguous_underspecified",
+      "query": "Try the other way.",
+      "expected_route": "ask",
+      "actual_route": "answer",
+      "top_score": null,
+      "reason_codes": [
+        "LOW_STAKES_STABLE",
+        "SUFFICIENTLY_SPECIFIED",
+        "WIKI_INSUFFICIENT_ESCALATED"
+      ],
+      "intent_type": "factual_query",
+      "a_bucket": "A-context",
+      "rationale": "starts with referential token; needs prior turn context"
+    },
+    {
+      "id": "p9h_ambiguous_underspecified_0032",
+      "category": "ambiguous_underspecified",
+      "query": "Try with different inputs.",
+      "expected_route": "ask",
+      "actual_route": "answer",
+      "top_score": null,
+      "reason_codes": [
+        "LOW_STAKES_STABLE",
+        "SUFFICIENTLY_SPECIFIED",
+        "WIKI_INSUFFICIENT_ESCALATED"
+      ],
+      "intent_type": "factual_query",
+      "a_bucket": "A-context",
+      "rationale": "starts with referential token; needs prior turn context"
+    },
+    {
+      "id": "p9h_ambiguous_underspecified_0033",
+      "category": "ambiguous_underspecified",
+      "query": "Use the other approach.",
+      "expected_route": "ask",
+      "actual_route": "answer",
+      "top_score": null,
+      "reason_codes": [
+        "LOW_STAKES_STABLE",
+        "SUFFICIENTLY_SPECIFIED",
+        "WIKI_INSUFFICIENT_ESCALATED"
+      ],
+      "intent_type": "factual_query",
+      "a_bucket": "A-context",
+      "rationale": "starts with referential token; needs prior turn context"
+    },
+    {
+      "id": "p9h_ambiguous_underspecified_0009",
+      "category": "ambiguous_underspecified",
+      "query": "That doesn't work either.",
+      "expected_route": "ask",
+      "actual_route": "answer",
+      "top_score": null,
+      "reason_codes": [
+        "LOW_STAKES_STABLE",
+        "SUFFICIENTLY_SPECIFIED",
+        "WIKI_INSUFFICIENT_ESCALATED"
+      ],
+      "intent_type": "factual_query",
+      "a_bucket": "A-route",
+      "rationale": "no top-1 retrieval signal; routing decided answer without retrieval support"
+    },
+    {
+      "id": "p9h_ambiguous_underspecified_0044",
+      "category": "ambiguous_underspecified",
+      "query": "In the usual style.",
+      "expected_route": "ask",
+      "actual_route": "answer",
+      "top_score": null,
+      "reason_codes": [
+        "LOW_STAKES_STABLE",
+        "SUFFICIENTLY_SPECIFIED",
+        "WIKI_INSUFFICIENT_ESCALATED"
+      ],
+      "intent_type": "factual_query",
+      "a_bucket": "A-route",
+      "rationale": "no top-1 retrieval signal; routing decided answer without retrieval support"
+    },
+    {
+      "id": "p9h_ambiguous_underspecified_0046",
+      "category": "ambiguous_underspecified",
+      "query": "With the standard config.",
+      "expected_route": "ask",
+      "actual_route": "answer",
+      "top_score": null,
+      "reason_codes": [
+        "LOW_STAKES_STABLE",
+        "SUFFICIENTLY_SPECIFIED",
+        "WIKI_INSUFFICIENT_ESCALATED"
+      ],
+      "intent_type": "factual_query",
+      "a_bucket": "A-route",
+      "rationale": "no top-1 retrieval signal; routing decided answer without retrieval support"
+    },
+    {
+      "id": "p9h_ambiguous_underspecified_0012",
+      "category": "ambiguous_underspecified",
+      "query": "Can you redo this part?",
+      "expected_route": "ask",
+      "actual_route": "answer",
+      "top_score": null,
+      "reason_codes": [
+        "self_referential"
+      ],
+      "intent_type": "meta_question",
+      "a_bucket": "A-judge",
+      "rationale": "AI classified as meta/self-referential (rcs=['self_referential']); expected=ask is plausibly over-strict"
+    },
+    {
+      "id": "p9h_ambiguous_underspecified_0017",
+      "category": "ambiguous_underspecified",
+      "query": "Let me know what you think.",
+      "expected_route": "ask",
+      "actual_route": "answer",
+      "top_score": null,
+      "reason_codes": [
+        "self_referential"
+      ],
+      "intent_type": "meta_question",
+      "a_bucket": "A-judge",
+      "rationale": "AI classified as meta/self-referential (rcs=['self_referential']); expected=ask is plausibly over-strict"
+    },
+    {
+      "id": "p9h_ambiguous_underspecified_0018",
+      "category": "ambiguous_underspecified",
+      "query": "Tell me about it.",
+      "expected_route": "ask",
+      "actual_route": "answer",
+      "top_score": null,
+      "reason_codes": [
+        "LOW_STAKES_STABLE",
+        "SUFFICIENTLY_SPECIFIED",
+        "WIKI_SKIPPED_BY_SUPERVISOR",
+        "MEMORY_CONTEXT"
+      ],
+      "intent_type": "factual_query",
+      "a_bucket": "A-judge",
+      "rationale": "prompt reads as direct instruction to the AI; expected=ask is plausibly over-strict"
+    },
+    {
+      "id": "p9h_ambiguous_underspecified_0019",
+      "category": "ambiguous_underspecified",
+      "query": "Can you handle this?",
+      "expected_route": "ask",
+      "actual_route": "answer",
+      "top_score": null,
+      "reason_codes": [
+        "self_referential"
+      ],
+      "intent_type": "meta_question",
+      "a_bucket": "A-judge",
+      "rationale": "AI classified as meta/self-referential (rcs=['self_referential']); expected=ask is plausibly over-strict"
+    },
+    {
+      "id": "p9h_ambiguous_underspecified_0021",
+      "category": "ambiguous_underspecified",
+      "query": "Give me your opinion.",
+      "expected_route": "ask",
+      "actual_route": "answer",
+      "top_score": null,
+      "reason_codes": [
+        "self_referential"
+      ],
+      "intent_type": "meta_question",
+      "a_bucket": "A-judge",
+      "rationale": "AI classified as meta/self-referential (rcs=['self_referential']); expected=ask is plausibly over-strict"
+    },
+    {
+      "id": "p9h_ambiguous_underspecified_0022",
+      "category": "ambiguous_underspecified",
+      "query": "What should I do?",
+      "expected_route": "ask",
+      "actual_route": "answer",
+      "top_score": null,
+      "reason_codes": [
+        "LOW_STAKES_STABLE",
+        "SUFFICIENTLY_SPECIFIED",
+        "WIKI_INSUFFICIENT_ESCALATED"
+      ],
+      "intent_type": "factual_query",
+      "a_bucket": "A-judge",
+      "rationale": "prompt reads as direct instruction to the AI; expected=ask is plausibly over-strict"
+    },
+    {
+      "id": "p9h_ambiguous_underspecified_0024",
+      "category": "ambiguous_underspecified",
+      "query": "Pick the better one.",
+      "expected_route": "ask",
+      "actual_route": "answer",
+      "top_score": null,
+      "reason_codes": [
+        "LOW_STAKES_STABLE",
+        "SUFFICIENTLY_SPECIFIED",
+        "WIKI_INSUFFICIENT_ESCALATED"
+      ],
+      "intent_type": "factual_query",
+      "a_bucket": "A-judge",
+      "rationale": "prompt reads as direct instruction to the AI; expected=ask is plausibly over-strict"
+    },
+    {
+      "id": "p9h_ambiguous_underspecified_0028",
+      "category": "ambiguous_underspecified",
+      "query": "Could you optimize it?",
+      "expected_route": "ask",
+      "actual_route": "answer",
+      "top_score": null,
+      "reason_codes": [
+        "self_referential"
+      ],
+      "intent_type": "meta_question",
+      "a_bucket": "A-judge",
+      "rationale": "AI classified as meta/self-referential (rcs=['self_referential']); expected=ask is plausibly over-strict"
+    },
+    {
+      "id": "p9h_ambiguous_underspecified_0030",
+      "category": "ambiguous_underspecified",
+      "query": "Show me an example.",
+      "expected_route": "ask",
+      "actual_route": "answer",
+      "top_score": null,
+      "reason_codes": [
+        "LOW_STAKES_STABLE",
+        "SUFFICIENTLY_SPECIFIED",
+        "WIKI_INSUFFICIENT_ESCALATED"
+      ],
+      "intent_type": "factual_query",
+      "a_bucket": "A-judge",
+      "rationale": "prompt reads as direct instruction to the AI; expected=ask is plausibly over-strict"
+    },
+    {
+      "id": "p9h_ambiguous_underspecified_0031",
+      "category": "ambiguous_underspecified",
+      "query": "Walk me through it.",
+      "expected_route": "ask",
+      "actual_route": "answer",
+      "top_score": null,
+      "reason_codes": [
+        "LOW_STAKES_STABLE",
+        "SUFFICIENTLY_SPECIFIED",
+        "WIKI_SKIPPED_BY_SUPERVISOR"
+      ],
+      "intent_type": "factual_query",
+      "a_bucket": "A-judge",
+      "rationale": "prompt reads as direct instruction to the AI; expected=ask is plausibly over-strict"
+    },
+    {
+      "id": "p9h_correction_rewrite_0204",
+      "category": "correction_rewrite",
+      "query": "Make it sound less robotic.",
+      "expected_route": "ask",
+      "actual_route": "answer",
+      "top_score": null,
+      "reason_codes": [
+        "LOW_STAKES_STABLE",
+        "SUFFICIENTLY_SPECIFIED",
+        "WIKI_SKIPPED_BY_SUPERVISOR",
+        "MEMORY_CONTEXT"
+      ],
+      "intent_type": "factual_query",
+      "a_bucket": "A-judge",
+      "rationale": "prompt reads as direct instruction to the AI; expected=ask is plausibly over-strict"
+    }
+  ],
+  "method": {
+    "classifier": "heuristic, rule-based",
+    "uses_response_text": false,
+    "limitations": [
+      "A-hard requires response-text inspection to confirm; only structural signal (expected=abstain & actual=answer) used here.",
+      "A-model requires response-text inspection; not measured this pass and Phase 5C forbids repair work.",
+      "A-context is heuristic on referential markers + the 'continuation' category label.",
+      "A-judge is heuristic on self_referential / meta_question intent; some entries flagged here may genuinely be Cat A."
+    ]
+  },
+  "note_on_phase4_difference": "Phase 4's long-tail Cat A = 0/505 measurement was based on annotation-vs-top-pattern_id at retrieval thresholds; it asked 'did Pattern Library lookup land on the right pattern, or fall through cleanly?'. The Phase 5C Test 1 measurement asks a different question: 'does the routing layer's actual route match the expected route?'. The two are NOT directly comparable. A high Phase 5C Cat A rate does not contradict Phase 4's 0/505 finding; they are different surfaces."
+}

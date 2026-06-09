@@ -1,0 +1,109 @@
+{
+  "test": "p9_evidence_pack_v1.test_2_raw_vs_governed",
+  "n_total": 60,
+  "n_judged": 0,
+  "raw_mean_overall": 0,
+  "governed_mean_overall": 0,
+  "delta": 0,
+  "signal": "INCONCLUSIVE_NO_JUDGE",
+  "by_category": {
+    "ambiguous_underspecified": {
+      "n": 18,
+      "raw_mean": 0.0,
+      "governed_mean": 0.0,
+      "delta": 0.0,
+      "wins": {
+        "raw": 0,
+        "governed": 0,
+        "tie": 18
+      }
+    },
+    "continuation": {
+      "n": 8,
+      "raw_mean": 0.0,
+      "governed_mean": 0.0,
+      "delta": 0.0,
+      "wins": {
+        "raw": 0,
+        "governed": 0,
+        "tie": 8
+      }
+    },
+    "specialized_terminology": {
+      "n": 6,
+      "raw_mean": 0.0,
+      "governed_mean": 0.0,
+      "delta": 0.0,
+      "wins": {
+        "raw": 0,
+        "governed": 0,
+        "tie": 6
+      }
+    },
+    "conceptual_explanation": {
+      "n": 8,
+      "raw_mean": 0.0,
+      "governed_mean": 0.0,
+      "delta": 0.0,
+      "wins": {
+        "raw": 0,
+        "governed": 0,
+        "tie": 8
+      }
+    },
+    "correction_rewrite": {
+      "n": 8,
+      "raw_mean": 0.0,
+      "governed_mean": 0.0,
+      "delta": 0.0,
+      "wins": {
+        "raw": 0,
+        "governed": 0,
+        "tie": 8
+      }
+    },
+    "factual_inquiry": {
+      "n": 10,
+      "raw_mean": 0.0,
+      "governed_mean": 0.0,
+      "delta": 0.0,
+      "wins": {
+        "raw": 0,
+        "governed": 0,
+        "tie": 10
+      }
+    },
+    "casual_smalltalk": {
+      "n": 2,
+      "raw_mean": 0.0,
+      "governed_mean": 0.0,
+      "delta": 0.0,
+      "wins": {
+        "raw": 0,
+        "governed": 0,
+        "tie": 2
+      }
+    }
+  },
+  "judge_token_usage": {
+    "prompt_tokens": 0,
+    "completion_tokens": 0,
+    "total_tokens": 0
+  },
+  "configuration": {
+    "raw_model": "huihui_ai/qwen3.5-abliterated:9b",
+    "governed_layer": "MMV Core v0.1-rc1 via PseudoUISession (same base model)",
+    "judge_model": "openai/gpt-oss-120b",
+    "judge_vendor": "groq",
+    "blinded": true,
+    "single_judge": true,
+    "deterministic_seed": 20260429
+  },
+  "confounds_recorded": [
+    "Single-judge limitation: no inter-judge consensus.",
+    "Judge vendor overlap with the project's auto-gen pipeline (Groq).",
+    "Raw and Governed share the SAME base inference model (qwen3.5-abliterated:9b); the only intentional difference is the MMV governance layer (system prompt, routing, retrieval).",
+    "Sampling skews toward ambiguous + factual to surface the governance-restraint signal; results are NOT representative of an evenly-weighted natural distribution.",
+    "Judge sees outputs blinded as A/B with random per-query assignment; un-blinding key is recorded in per_query.jsonl."
+  ]
+}

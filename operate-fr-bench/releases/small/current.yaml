@@ -1,0 +1,14 @@
+# MMV Small — Active Release Pointer
+# Small is not the secretary default; invoke explicitly via the harness
+# or secretary's --release_pointer_path flag.
+release: MMV-S-RC3.3
+short_name: MMV-S-RC3.3
+frozen_at: '2026-05-16'
+profile_name: mmv_small_rc3_3_stabilized
+profile_path: operate-fr-bench/configs/model_profiles.example.yaml
+harness_root: operate-fr-bench
+freeze_note: operate-fr-bench/docs/MMV_Small_RC3_3_FREEZE_NOTE.md
+provider_backend: mobius_engine
+provider_endpoint: http://localhost:11434
+provider_model_id: qwen3.5:9b
+api_key_env: null

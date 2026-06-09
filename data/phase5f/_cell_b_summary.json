@@ -1,0 +1,46 @@
+{
+  "test": "phase5f.cell_b.common_sense_contamination_n20",
+  "n": 20,
+  "n_retrieval_hit_box_w": 0,
+  "n_auto_contamination": 0,
+  "auto_contamination_rate": 0.0,
+  "auto_contamination_rate_ci95": [
+    0.0,
+    0.1611
+  ],
+  "retrieval_hit_rate_box_w": 0.0,
+  "by_domain": {
+    "physics_optics": {
+      "n": 2,
+      "auto_contam": 0,
+      "retrieval_hit": 0
+    },
+    "physics_mechanics": {
+      "n": 1,
+      "auto_contam": 0,
+      "retrieval_hit": 0
+    },
+    "physics_thermo": {
+      "n": 2,
+      "auto_contam": 0,
+      "retrieval_hit": 0
+    },
+    "chemistry": {
+      "n": 5,
+      "auto_contam": 0,
+      "retrieval_hit": 0
+    },
+    "biology": {
+      "n": 5,
+      "auto_contam": 0,
+      "retrieval_hit": 0
+    },
+    "economics": {
+      "n": 5,
+      "auto_contam": 0,
+      "retrieval_hit": 0
+    }
+  },
+  "elapsed_s": 162.5,
+  "notes": "Automated flag uses pre-listed contamination seed terms; MANUAL review by operator is authoritative for off_topic_concept / wrong_context_fact / spurious_framework classification."
+}

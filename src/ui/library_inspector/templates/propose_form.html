@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %}Propose Deletion · {{ p.id }} — Pattern Library{% endblock %}
+{% block content %}
+<a href="/pattern/{{ p.id }}" style="font-size:0.85rem;">← Back to {{ p.id }}</a>
+
+<h1>Propose Deletion — <code>{{ p.id }}</code></h1>
+
+{% if result %}
+<article style="background:#d1fae5;color:#065f46;padding:0.75rem 1rem;">
+  <strong>Proposal recorded.</strong>
+  <ul>
+    <li>proposal_id: <code>{{ result.proposal_id }}</code></li>
+    <li>pattern lifecycle now: <code>user_deletion_proposed</code></li>
+    <li>visible to T at <a href="/audit">/audit</a> next reload.</li>
+  </ul>
+</article>
+{% endif %}
+
+{% if error %}
+<article style="background:#fee2e2;color:#991b1b;padding:0.75rem 1rem;">
+  <strong>Could not submit:</strong> {{ error }}
+</article>
+{% endif %}
+
+<form method="post" style="max-width:600px;">
+  <label>
+    Proposer (pseudonym, or leave empty for anonymous; max 80 chars)
+    <input type="text" name="proposer" maxlength="80" value="{{ proposer }}">
+  </label>
+  <label>
+    Reason (5..1000 characters; explain why this pattern should be removed)
+    <textarea name="reason" rows="6" minlength="5" maxlength="1000" required>{{ reason }}</textarea>
+  </label>
+  <p style="font-size:0.85rem;color:var(--pico-secondary);">
+    Submission rate: 5 proposals / IP / day (spec 5.7.6.3).
+    T reviews monthly out-of-band; approval/rejection is recorded in
+    <code>lifecycle.history</code>.
+  </p>
+  <button type="submit" {% if result %}disabled{% endif %}>
+    Submit proposal
+  </button>
+</form>
+{% endblock %}

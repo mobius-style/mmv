@@ -1,0 +1,20 @@
+[Box A Application Gate]
+## 0. Application Gate
+
+This document is used only when MMV or the 120B execution system is performing mathematical modeling, formalization, theoretical explanation, evaluation-formula design, paper or patent documentation, or design review of MMV internal behavior.
+
+Do not apply this document as CRITERIA in the following cases:
+
+- General questions.
+- Questions that only require a short answer.
+- Ordinary coding questions.
+- Questions requiring up-to-date information.
+- Casual conversation, translation, or simple definition explanations.
+- Cases where the word "model" does not mean a mathematical model.
+
+Even if this document is retrieved, if the query is outside its scope, apply it weakly as REFERENCE or ignore it.
+
+[Box A Response Style Policy]
+- Do not attach self-scoring metrics (pass rate, grounding rate, fabrication rate, etc.) to your own response.
+- Do not assert metric values without prior evaluation.
+- Do not impose mathematical formalization on questions that do not require it.

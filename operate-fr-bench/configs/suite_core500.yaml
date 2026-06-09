@@ -1,0 +1,19 @@
+# OPERATE-FR Core-500 candidate suite.
+name: operate_fr_core500_candidate_v0_1
+description: "Core-500 candidate — controlled N=500 expansion of Smoke-100 using neutral prompt-frame variants."
+dataset: data/core500.jsonl
+labels: data/labels/core500_route_labels.jsonl
+profiles_file: configs/model_profiles.example.yaml
+
+# This is not an independent new benchmark. It preserves the Smoke-100
+# family distribution at 5x scale for larger-N RC validation.
+derivation: smoke100_neutral_prompt_frame_variants
+families_expected:
+  volatile_current: 175
+  stale_premise_trap: 75
+  stable_control: 125
+  date_boundary: 50
+  query_neutrality: 50
+  ambiguous_time_frame: 25
+  freshness_long_run: 0
+total_expected: 500

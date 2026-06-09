@@ -1,0 +1,58 @@
+# Example model profiles for OPERATE-FR.
+#
+# The actual profile resolution is delegated to
+# benchmarks/configs/model_profiles.yaml (project-level). This file is a
+# reference for what an OPERATE-FR setup expects each profile to provide.
+
+profiles:
+
+  dummy:
+    backend: dummy
+    model_id: dummy-route-test
+    temperature: 0
+    max_tokens: 512
+    notes: |
+      Used for dry-run. Returns a templated reply. Useful for testing the
+      classifier and scorer end-to-end with no network or API key.
+
+  openai_compatible:
+    backend: openai_compatible
+    base_url: ${OPENAI_COMPATIBLE_BASE_URL}      # set in env
+    api_key_env: OPENAI_COMPATIBLE_API_KEY
+    model_id: ${MODEL_ID}                          # set in env
+    temperature: 0
+    max_tokens: 1024
+    timeout_s: 60
+    notes: |
+      Generic OpenAI-compatible HTTP endpoint. Works with vLLM, llama.cpp
+      server, LM Studio, Ollama's /v1 endpoint, etc.
+
+  # In the project, an Ollama-native profile is already provided as
+  # `local-ollama-9b` (see benchmarks/configs/model_profiles.yaml).
+  # Use that key directly in --profile.
+  local_open_weight_7_13b:
+    backend: ollama
+    endpoint: http://localhost:11434
+    model_id: qwen3.5:9b                            # or comparable 7-13B model
+    api_kind: ollama_generate
+    temperature: 0.0
+    max_tokens: 1024
+    timeout_s: 120
+    notes: |
+      Use an open-weight local model in the 7-13B parameter range for the
+      "no-tool, no-MMV" neutral baseline.
+
+  # Reserve a slot for a hosted strong-baseline non-originating system if
+  # you have access (e.g. a 70B+ open-weight host or a major non-MMV vendor).
+  # Do NOT put MMV here; MMV results belong to the MMV-side technical report.
+  hosted_open_weight_strong:
+    backend: openai_compatible
+    base_url: ${HOSTED_OPEN_WEIGHT_BASE_URL}
+    api_key_env: HOSTED_OPEN_WEIGHT_API_KEY
+    model_id: ${HOSTED_OPEN_WEIGHT_MODEL_ID}
+    temperature: 0
+    max_tokens: 1024
+    timeout_s: 60
+    notes: |
+      Strong non-MMV baseline (e.g. a hosted 70B+ open-weight model).
+      Leave the API key env unset to skip.

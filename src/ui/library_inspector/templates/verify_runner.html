@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block title %}Verify {{ p.id }} — Pattern Library{% endblock %}
+{% block content %}
+<a href="/pattern/{{ p.id }}" style="font-size:0.85rem;">← Back to {{ p.id }}</a>
+
+<h1>Cross-lingual verification — <code>{{ p.id }}</code></h1>
+<p>{{ p.cross_lingual_test_queries | length }} test query(s) on this pattern.</p>
+
+<form method="post">
+  <button type="submit">Run cross-lingual test (lazy-loads ME5; ~5 s first time)</button>
+</form>
+
+{% if error %}
+<article style="background:#fee2e2;color:#991b1b;padding:0.75rem 1rem;">
+  <strong>Error:</strong> {{ error }}
+</article>
+{% endif %}
+
+{% if results %}
+<h2>Results — pass rate: <strong>{{ "%.1f%%" | format((pass_rate or 0) * 100) }}</strong></h2>
+<table>
+  <thead>
+    <tr>
+      <th>lang</th><th>query</th><th>expected</th>
+      <th>top match</th><th>score</th><th>this pattern</th><th>min cosine</th><th>passed</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for r in results %}
+    <tr>
+      <td>{{ r.lang }}</td>
+      <td>{{ r.query }}</td>
+      <td>{% if r.expected_match %}match{% else %}no-match{% endif %}</td>
+      <td>{% if r.actual_top_pattern %}<code>{{ r.actual_top_pattern }}</code>{% else %}—{% endif %}</td>
+      <td>{{ "%.3f" | format(r.actual_top_score) }}</td>
+      <td>{{ "%.3f" | format(r.this_pattern_score) }}</td>
+      <td>{% if r.min_cosine is not none %}{{ "%.2f" | format(r.min_cosine) }}{% else %}—{% endif %}</td>
+      <td>{% if r.passed %}<span class="badge active">PASS</span>{% else %}<span class="badge deprecated">FAIL</span>{% endif %}</td>
+    </tr>
+    {% if r.error %}
+    <tr><td colspan="8" style="color:#991b1b;font-size:0.85rem;">err: {{ r.error }}</td></tr>
+    {% endif %}
+    {% endfor %}
+  </tbody>
+</table>
+{% endif %}
+{% endblock %}

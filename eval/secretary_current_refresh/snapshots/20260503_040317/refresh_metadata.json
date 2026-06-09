@@ -1,0 +1,90 @@
+{
+  "phase": "secretary_stage0h_refresh",
+  "tool": "addons/secretary/update_current_docs.py",
+  "snapshot_timestamp_utc": "20260503_040317",
+  "snapshot_dir": "eval/secretary_current_refresh/snapshots/20260503_040317",
+  "repo_head_at_run": "2047f3092341e20ccbba5b4890adb6cf33fdec0e",
+  "branch": "coverage-repair-alpha-beta",
+  "applied": true,
+  "files_changed": [
+    "RELEASE_STATUS.md",
+    "DOCS_AUTHORITY_MAP.md",
+    "PUBLIC_RELEASE_READINESS.md",
+    "SETUP_GAPS.md"
+  ],
+  "per_file_status": {
+    "RELEASE_STATUS.md": {
+      "status": "updated",
+      "before_sha256": "208060cca258dc7c3c9999204ef9b525ccbf988dbc90846929916d84d568e236",
+      "after_sha256": "ff2fc03d1e8cd3153d2e06394193f4d451c32062fdfdfe2fb867fdf9ad5c879b",
+      "diff_lines": 11
+    },
+    "DOCS_AUTHORITY_MAP.md": {
+      "status": "updated",
+      "before_sha256": "0f2cfcce66a81ad2f55a04318238d112faf02bd39d61ad322a9bb83be71ee418",
+      "after_sha256": "fe3c94f765386a5a4529c16b7349550a79befdaf68b76d90f5904838c2657459",
+      "diff_lines": 11
+    },
+    "PUBLIC_RELEASE_READINESS.md": {
+      "status": "updated",
+      "before_sha256": "5ec81ff35b5e79d161ac782e94d66c1f4c4c82a04f8b4822241e94fcddde0d92",
+      "after_sha256": "b4d5de1bca4ade75b077b45ea89ae3fe7d335a680a54999719121f25370fa9bd",
+      "diff_lines": 11
+    },
+    "SETUP_GAPS.md": {
+      "status": "updated",
+      "before_sha256": "e68c54814cf8ab58a0f5dc426252f96e1845158aebe00f5989609bd25fbcbed4",
+      "after_sha256": "f549e0df9e377498187ad5810c22ef3c3c58e45483fa24d98b7d05a69d92dba6",
+      "diff_lines": 11
+    }
+  },
+  "live_state_used_for_update": {
+    "current_head_full": "2047f3092341e20ccbba5b4890adb6cf33fdec0e",
+    "current_head_short": "2047f30",
+    "current_branch": "coverage-repair-alpha-beta",
+    "release_candidate_tag": "mmv_core_v0_1_rc3_release_candidate_20260430_2336",
+    "release_candidate_commit": "7f53fe1dbdf189f014b0cd2643a996148fc5dba7",
+    "release_candidate_commit_short": "7f53fe1",
+    "release_candidate_commit_subject": "chore(release): audit RC3 readiness and module integrity",
+    "release_candidate_commit_matches_expected": true,
+    "rc3_tags_all": [
+      "mmv_core_v0_1_rc3_project_log_review_preset_20260430_1922",
+      "mmv_core_v0_1_rc3_release_candidate_20260430_2336",
+      "mmv_core_v0_1_rc3_ux_polish_20260430_1827"
+    ],
+    "old_rc3_tags": [
+      "mmv_core_v0_1_rc3_project_log_review_preset_20260430_1922",
+      "mmv_core_v0_1_rc3_ux_polish_20260430_1827"
+    ],
+    "porcelain_total_lines": 153,
+    "porcelain_counts": {
+      "modified": 3,
+      "untracked": 150
+    },
+    "latest_stage_report": "docs/SECRETARY_STAGE0_TOTALIZATION.md",
+    "_provenance": {
+      "tool": "addons/secretary/update_current_docs.py",
+      "method": "git rev-list / rev-parse / status / tag / show"
+    }
+  },
+  "docs_current_files_in_scope": [
+    "RELEASE_STATUS.md",
+    "DOCS_AUTHORITY_MAP.md",
+    "PUBLIC_RELEASE_READINESS.md",
+    "SETUP_GAPS.md"
+  ],
+  "tgated_items_NOT_touched_by_this_tool": [
+    "patent attorney / Path C completion",
+    "public push approval",
+    "GitHub release completion",
+    "Zenodo deposit completion",
+    "Hugging Face upload completion",
+    "legal / license declarations",
+    "untracked artifact policy final outcome",
+    "v0.1.0 final declaration"
+  ],
+  "rollback_script": "rollback.sh",
+  "diff_file": "current_docs_update.diff",
+  "manifest_file": "ROLLBACK_MANIFEST.md",
+  "run_timestamp_utc": "2026-05-03T04:03:17Z"
+}

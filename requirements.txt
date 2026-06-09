@@ -1,0 +1,5 @@
+# Möbius MMV — Python dependencies
+requests>=2.31.0
+langdetect>=1.0.9
+sentence-transformers>=2.7.0
+gradio>=6.0.0

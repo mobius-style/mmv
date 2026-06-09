@@ -1,0 +1,138 @@
+{% extends "base.html" %}
+{% block title %}Audit Log — Pattern Library{% endblock %}
+{% block content %}
+<h1>Audit Log + Health Dashboard</h1>
+
+<section>
+  <h2>Library Health</h2>
+  <div class="stats">
+    <div>Total: <strong>{{ stats.total }}</strong></div>
+    <div>Active: <strong>{{ stats.active }}</strong></div>
+    <div>Deprecated: <strong>{{ stats.deprecated }}</strong></div>
+    <div>Pending proposals: <strong>{{ stats.deletion_proposals }}</strong></div>
+    <div>Recent traces: <strong>{{ recent_trace_count }}</strong></div>
+  </div>
+</section>
+
+<section>
+  <h2>Trace Metrics ({{ trace_metrics.count }} latest)</h2>
+  <ul>
+    <li>Library-match rate: <strong>{{ "%.1f%%" | format(trace_metrics.match_rate * 100) }}</strong></li>
+    <li>By topic: {% for k, v in trace_metrics.by_topic.items() %}<code>{{ k }}</code>: {{ v }}{% if not loop.last %} · {% endif %}{% endfor %}{% if not trace_metrics.by_topic %}—{% endif %}</li>
+    <li>By confidence: {% for k, v in trace_metrics.by_confidence.items() %}<code>{{ k }}</code>: {{ v }}{% if not loop.last %} · {% endif %}{% endfor %}{% if not trace_metrics.by_confidence %}—{% endif %}</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Library Composition</h2>
+  <h3>Origin breakdown</h3>
+  <ul>
+    {% for origin, count in origin_breakdown.items() %}
+    <li><code>{{ origin }}</code>: <strong>{{ count }}</strong> patterns</li>
+    {% endfor %}
+  </ul>
+  <h3>Hit-count distribution</h3>
+  <table>
+    <thead><tr><th>bucket</th><th>patterns</th></tr></thead>
+    <tbody>
+      {% for label, n in hit_count_histogram %}
+      <tr><td>{{ label }} hits</td><td>{{ n }}</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <h2>Library Size Growth</h2>
+  {% if library_size_growth %}
+  <table>
+    <thead><tr><th>date</th><th>cumulative patterns</th></tr></thead>
+    <tbody>
+      {% for date, total in library_size_growth %}
+      <tr><td>{{ date }}</td><td>{{ total }}</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}<p>No creation events recorded.</p>{% endif %}
+</section>
+
+<section>
+  <h2>Auto-gen Batch Summary ({{ autogen_batches | length }})</h2>
+  {% if autogen_batches %}
+  <table>
+    <thead><tr><th>batch_id</th><th>started_at</th><th>patterns</th><th>examples added</th><th>primary used</th></tr></thead>
+    <tbody>
+      {% for b in autogen_batches %}
+      <tr>
+        <td><code>{{ b.batch_id }}</code></td>
+        <td>{{ b.started_at }}</td>
+        <td>{{ b.patterns_count }}</td>
+        <td>{{ b.examples_added }}</td>
+        <td>{{ b.primary_used_count }} / {{ b.patterns_count }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}<p>No auto-gen batch summaries yet.</p>{% endif %}
+</section>
+
+<section>
+  <h2>Pending Deletion Proposals ({{ pending_proposals | length }})</h2>
+  {% if pending_proposals %}
+  <table>
+    <thead><tr><th>pattern</th><th>proposer</th><th>date</th><th>reason</th></tr></thead>
+    <tbody>
+      {% for prop in pending_proposals %}
+      <tr>
+        <td><a href="/pattern/{{ prop.pattern_id }}"><code>{{ prop.pattern_id }}</code></a></td>
+        <td>{{ prop.proposer }}</td>
+        <td>{{ prop.date.strftime("%Y-%m-%d %H:%M") }}</td>
+        <td>{{ prop.reason }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}<p>No pending proposals.</p>{% endif %}
+</section>
+
+<section>
+  <h2>Deprecation Candidates ({{ deprecation_candidates | length }})</h2>
+  {% if deprecation_candidates %}
+  <ul>
+    {% for p in deprecation_candidates %}
+    <li><a href="/pattern/{{ p.id }}"><code>{{ p.id }}</code></a> — {{ p.intent }}</li>
+    {% endfor %}
+  </ul>
+  {% else %}<p>None flagged.</p>{% endif %}
+</section>
+
+<section>
+  <h2>Recent Lifecycle Events
+    ({{ timeline_page * timeline_page_size + 1 }}-{{ timeline_page * timeline_page_size + (timeline | length) }}
+    of {{ timeline_total }})</h2>
+  {% if timeline %}
+  <table>
+    <thead><tr><th>timestamp</th><th>pattern</th><th>event</th><th>actor</th><th>detail</th></tr></thead>
+    <tbody>
+      {% for e in timeline %}
+      <tr>
+        <td>{{ e.timestamp.strftime("%Y-%m-%d %H:%M") }}</td>
+        <td><a href="/pattern/{{ e.pattern_id }}"><code>{{ e.pattern_id }}</code></a></td>
+        <td><code>{{ e.event }}</code></td>
+        <td>{{ e.actor }}</td>
+        <td>{{ e.detail }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <nav style="margin-top:1rem;">
+    {% if timeline_page > 0 %}
+    <a href="?page={{ timeline_page - 1 }}">← prev</a>
+    {% endif %}
+    {% if timeline_page * timeline_page_size + (timeline | length) < timeline_total %}
+    <a href="?page={{ timeline_page + 1 }}">next →</a>
+    {% endif %}
+  </nav>
+  {% else %}<p>No lifecycle events recorded yet.</p>{% endif %}
+</section>
+{% endblock %}

@@ -1,0 +1,17 @@
+name: factual_krillin_zh
+language: zh
+category: factual_krillin
+description: >
+  ZH factual entity lookup.
+active_language_seed: zh
+turns:
+  - user: "克林的妻子是谁？"
+    assert:
+      route_in: ["answer", "verify", "ask"]
+      self_referential: false
+      response_language: "zh"
+      response_length_min: 5
+      response_length_max: 1500
+      reason_codes_must_not_include:
+        - "CASUAL_GREETING_FAST_PATH"
+      must_not_error: true

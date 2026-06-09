@@ -1,0 +1,30 @@
+{
+  "id": "M07",
+  "category": "math",
+  "query": "What's the falsifiability path for the over-generalization claim?",
+  "expected_apply_decision": "apply_criteria",
+  "expected_step": "step2_strong",
+  "reword_pair_id": null,
+  "env": "rc3_0",
+  "phase2_decision": "apply_reference",
+  "harness_fallback": null,
+  "step3_status": "deferred_api_gated",
+  "gating_enabled": false,
+  "addendum_chars": 0,
+  "addendum_text": "",
+  "retrieve_box_a": true,
+  "step1_negative": false,
+  "step2_strong": false,
+  "step3_invoked": false,
+  "winning_label": null,
+  "decisions_per_doc": {},
+  "response": "The falsifiability path for an over-generalization claim involves identifying a specific, counter-instance that contradicts the broad rule derived from limited data. For example, if a claim states \"All swans are white,\" the path to falsification is the observation of a single non-white swan. This process relies on the unstated premise that a single exception is sufficient to invalidate a universal generalization, shifting the burden of proof from the exception to the original rule.",
+  "response_chars": 486,
+  "approx_tokens": 121,
+  "latency_s": 1.565,
+  "harness_timing_ms": {
+    "total": 1565.0174550246447,
+    "llm": 1565.0153489841614
+  },
+  "br_0004_leakage_flags": []
+}

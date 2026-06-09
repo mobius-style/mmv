@@ -1,0 +1,3 @@
+# Runtime audit JSONL. Only .gitkeep is committed.
+*.jsonl
+!.gitkeep

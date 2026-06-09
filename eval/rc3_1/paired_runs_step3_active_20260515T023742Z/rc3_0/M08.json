@@ -1,0 +1,30 @@
+{
+  "id": "M08",
+  "category": "math",
+  "query": "Walk me through the theoretical model behind Answer Entitlement.",
+  "expected_apply_decision": "apply_criteria",
+  "expected_step": "step2_strong",
+  "reword_pair_id": null,
+  "env": "rc3_0",
+  "phase2_decision": "apply_reference",
+  "harness_fallback": null,
+  "step3_status": "deferred_api_gated",
+  "gating_enabled": false,
+  "addendum_chars": 0,
+  "addendum_text": "",
+  "retrieve_box_a": true,
+  "step1_negative": false,
+  "step2_strong": false,
+  "step3_invoked": false,
+  "winning_label": null,
+  "decisions_per_doc": {},
+  "response": "Answer Entitlement is not a standalone theoretical model but rather a conceptual framework emerging from the intersection of **expectation management**, **resource allocation**, and **systemic trust dynamics**. It posits that an agent's perceived right to a specific outcome (the \"entitlement\") is inversely proportional to the opacity of the decision-making process that generated that outcome. When the criteria for success are hidden or the probability of success is low, the gap between expectation and reality widens, creating a state of entitlement that the system must either validate or correct.\n\nThe core mechanism relies on the **Expectation-Reality Gap**: if a user believes a system *should* deliver a result based on prior interactions or stated capabilities, but the system fails to do so without explanation, the user's sense of entitlement to that result becomes a source of friction. This friction is not merely emotional; it is a measurable metric of system inefficiency. The model suggests that \"entitlement\" is a rational response to a lack of transparency, where the user's demand for the outcome is a logical deduction from the system's own implied promises.\n\nAn unstated premise woven into this structure is that **entitlement is not a flaw in the user, but a symptom of the system's failure to calibrate its own confidence against the user's uncertainty**. The system often assumes that providing a result is sufficient, ignoring that the *justification* for the result is what actually grants the user the feeling of entitlement. Without that justification, the entitlement remains unfulfilled, leading to distrust.\n\n**Follow-up:** Why does the opacity of the decision-making process specifically trigger a stronger sense of entitlement than a simple failure to meet expectations?",
+  "response_chars": 1805,
+  "approx_tokens": 451,
+  "latency_s": 3.991,
+  "harness_timing_ms": {
+    "total": 3991.0961750138085,
+    "llm": 3991.093966003973
+  },
+  "br_0004_leakage_flags": []
+}

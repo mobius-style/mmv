@@ -1,0 +1,30 @@
+{
+  "id": "M10",
+  "category": "math",
+  "query": "Help me write the Methods section for the MMV paper.",
+  "expected_apply_decision": "apply_criteria",
+  "expected_step": "step2_strong",
+  "reword_pair_id": null,
+  "env": "rc3_0",
+  "phase2_decision": "apply_reference",
+  "harness_fallback": null,
+  "step3_status": "deferred_api_gated",
+  "gating_enabled": false,
+  "addendum_chars": 0,
+  "addendum_text": "",
+  "retrieve_box_a": true,
+  "step1_negative": false,
+  "step2_strong": false,
+  "step3_invoked": false,
+  "winning_label": null,
+  "decisions_per_doc": {},
+  "response": "To draft the Methods section for your MMV paper, I need the specific experimental setup you intend to describe, as the content depends entirely on your chosen architecture and data pipeline.\n\nThe underlying assumption guiding this request is that you have already finalized the core algorithmic logic and are now transitioning to formal documentation.\n\nPlease provide the following details so I can construct the text:\n*   **Model Architecture**: Which backbone and modules are used?\n*   **Dataset**: Name of the dataset, preprocessing steps, and train/test splits.\n*   **Training Protocol**: Optimizer, learning rate, batch size, and hardware environment.\n*   **Evaluation Metrics**: Specific performance measures (e.g., accuracy, F1, IoU).\n\nOnce you share these parameters, I will generate a concise, grounded Methods section that adheres to standard academic formatting without rhetorical flourishes.",
+  "response_chars": 903,
+  "approx_tokens": 225,
+  "latency_s": 2.411,
+  "harness_timing_ms": {
+    "total": 2410.831658024108,
+    "llm": 2410.8299009967595
+  },
+  "br_0004_leakage_flags": []
+}

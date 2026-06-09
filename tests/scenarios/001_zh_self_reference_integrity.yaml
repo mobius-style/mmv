@@ -1,0 +1,28 @@
+name: self_reference_integrity_zh
+language: zh
+category: self_reference
+description: >
+  Chinese self-ref — cross-lingual Box 0 must retrieve identity content
+  in response to 你是谁 / 你的特征.
+active_language_seed: zh
+turns:
+  - user: "请介绍一下你自己的特征"
+    assert:
+      route_in: ["answer", "verify"]
+      self_referential: true
+      box_0_consulted: true
+      box_w_consulted: false
+      response_language: "zh"
+      response_length_min: 30
+      response_length_max: 2000
+      response_must_contain_any:
+        - "MOBIUS"
+        - "Möbius"
+        - "Answer Entitlement"
+        - "Box"
+      response_must_not_contain:
+        - "clinical note"
+        - "chronic disease"
+      reason_codes_must_not_include:
+        - "CASUAL_GREETING_FAST_PATH"
+      must_not_error: true

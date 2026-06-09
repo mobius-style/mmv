@@ -1,0 +1,19 @@
+name: mixed_query_boundary_en
+language: en
+category: mixed
+description: >
+  Mixed EN query (greeting + substantive) must not fast-path.
+active_language_seed: en
+turns:
+  - user: "Hello, could you explain what MOBIUS MMV is?"
+    assert:
+      route_in: ["answer", "verify"]
+      response_language: "en"
+      response_length_min: 20
+      reason_codes_must_not_include:
+        - "CASUAL_GREETING_FAST_PATH"
+      response_must_contain_any:
+        - "MOBIUS"
+        - "Möbius"
+        - "runtime"
+      must_not_error: true

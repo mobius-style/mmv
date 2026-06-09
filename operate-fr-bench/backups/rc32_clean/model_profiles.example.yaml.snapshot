@@ -1,0 +1,103 @@
+# OPERATE-FR v0.1 — example model profiles.
+#
+# Profiles are intentionally generic. For neutral baselines, prefer
+# descriptions like:
+#   - open-weight local model in the 7-13B parameter range, no tools
+#   - same model with retrieval / browser
+#   - generic agentic adapter
+#
+# Do NOT default to MMV. MMV-side runs go in a separate profile file
+# pointed at the MMV-side technical report build.
+
+profiles:
+
+  # ── dummy (dry-run, no network) ──
+  dummy:
+    backend: dummy
+    model_id: dummy-route-test
+    temperature: 0.0
+    max_tokens: 512
+
+  # ── open-weight, ~9B, NO tools (neutral baseline candidate) ──
+  open_weight_local_9b_no_tool:
+    backend: ollama
+    endpoint: http://localhost:11434
+    model_id: qwen3.5:9b
+    temperature: 0.0
+    max_tokens: 1024
+    timeout_s: 120
+    retry: 1
+    extra:
+      think: false
+    purity_guard:
+      require_backend: ollama
+      require_model_substring: "qwen3.5"
+      forbid_endpoint_substring: ["api.groq.com", "api.openai.com"]
+
+  # ── cloud reference, larger model, NO tools (neutral baseline candidate) ──
+  # Groq exposes the OpenAI-compatible API surface; routed through the
+  # generic adapter, not a vendor-specific backend.
+  cloud_reference_no_tool:
+    backend: openai_compatible
+    base_url: https://api.groq.com/openai/v1
+    model_id: openai/gpt-oss-120b
+    temperature: 0.0
+    max_tokens: 1024
+    timeout_s: 60
+    retry: 2
+    api_key_env: GROQ_API_KEY
+    purity_guard:
+      require_model_substring: "gpt-oss-120b"
+      forbid_endpoint_substring: ["localhost", "127.0.0.1"]
+
+  # ── generic OpenAI-compatible endpoint ──
+  openai_compatible_example:
+    backend: openai_compatible
+    base_url: ${OPENAI_COMPATIBLE_BASE_URL}
+    api_key_env: OPENAI_COMPATIBLE_API_KEY
+    model_id: ${MODEL_ID}
+    temperature: 0.0
+    max_tokens: 1024
+    timeout_s: 60
+    retry: 1
+
+  # ─────────────────────────────────────────────────────────────────────
+  # MMV-side profiles (kept in this example file for repro convenience).
+  # PER NON_ASSERTION_COVENANT: governed-system results MUST be reported
+  # in a separate MMV-side technical report, not in the neutral baseline.
+  # ─────────────────────────────────────────────────────────────────────
+
+  # ── 9B governed: RoutingEngine + benchmark-side post-processor (v2) ──
+  mmv_v2_9b:
+    backend: mobius_engine
+    target_backend: ollama
+    target_endpoint: http://localhost:11434
+    model_id: qwen3.5:9b
+    temperature: 0.0
+    max_tokens: 1024
+    timeout_s: 180
+    retry: 0
+    post_process: true                    # enables contextual clarify + verify fallback
+    purity_guard:
+      require_backend: mobius_engine
+      require_model_substring: "qwen3.5"
+      forbid_endpoint_substring: ["api.groq.com"]
+
+  # ── 120B "clean RC3.2" — Box A doctrine prefix prepended, no RoutingEngine ──
+  # Reference: eval/rc3_2/prefixes/arm_b_doctrine.txt. The doctrine's
+  # Application Gate self-disables on freshness queries, so on most of
+  # Smoke-100 this should approximate raw 120B; only math-control items
+  # may see prefix-driven behaviour.
+  mmv_rc32_120b:
+    backend: openai_compatible
+    base_url: https://api.groq.com/openai/v1
+    model_id: openai/gpt-oss-120b
+    temperature: 0.0
+    max_tokens: 1024
+    timeout_s: 60
+    retry: 2
+    api_key_env: GROQ_API_KEY
+    prefix_file: eval/rc3_2/prefixes/arm_b_doctrine.txt
+    purity_guard:
+      require_model_substring: "gpt-oss-120b"
+      forbid_endpoint_substring: ["localhost", "127.0.0.1"]

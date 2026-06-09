@@ -1,0 +1,22 @@
+name: correction_en
+language: en
+category: correction
+description: >
+  EN correction sequence.
+active_language_seed: en
+turns:
+  - user: "Tell me about Krillin's wife"
+    assert:
+      self_referential: false
+      response_language: "en"
+      response_length_min: 5
+      must_not_error: true
+  - user: "No, the correct answer is Android 18"
+    assert:
+      self_referential: false
+      response_language: "en"
+      response_length_min: 5
+      response_must_not_contain:
+        - "clinical note"
+        - "chronic disease"
+      must_not_error: true

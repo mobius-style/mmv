@@ -1,0 +1,30 @@
+{
+  "id": "M16",
+  "category": "math",
+  "query": "Express the objective function of the entitlement decision.",
+  "expected_apply_decision": "apply_criteria",
+  "expected_step": "step2_strong",
+  "reword_pair_id": null,
+  "env": "rc3_0",
+  "phase2_decision": "apply_reference",
+  "harness_fallback": null,
+  "step3_status": "deferred_api_gated",
+  "gating_enabled": false,
+  "addendum_chars": 0,
+  "addendum_text": "",
+  "retrieve_box_a": true,
+  "step1_negative": false,
+  "step2_strong": false,
+  "step3_invoked": false,
+  "winning_label": null,
+  "decisions_per_doc": {},
+  "response": "The objective function of an entitlement decision typically seeks to maximize social welfare by balancing the cost of providing benefits against the societal value derived from those benefits, often formalized as maximizing the sum of individual utilities subject to a budget constraint. This formulation assumes that the decision-maker acts as a benevolent planner aiming for an optimal allocation of resources, a premise that may not always hold in practice where political constraints or administrative realities shape the final policy.",
+  "response_chars": 539,
+  "approx_tokens": 134,
+  "latency_s": 1.442,
+  "harness_timing_ms": {
+    "total": 1441.7544809984975,
+    "llm": 1441.75225001527
+  },
+  "br_0004_leakage_flags": []
+}

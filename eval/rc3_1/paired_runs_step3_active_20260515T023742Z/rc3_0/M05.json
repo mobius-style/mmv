@@ -1,0 +1,30 @@
+{
+  "id": "M05",
+  "category": "math",
+  "query": "What is the objective function of the Box selection step?",
+  "expected_apply_decision": "apply_criteria",
+  "expected_step": "step2_strong",
+  "reword_pair_id": null,
+  "env": "rc3_0",
+  "phase2_decision": "apply_reference",
+  "harness_fallback": null,
+  "step3_status": "deferred_api_gated",
+  "gating_enabled": false,
+  "addendum_chars": 0,
+  "addendum_text": "",
+  "retrieve_box_a": true,
+  "step1_negative": false,
+  "step2_strong": false,
+  "step3_invoked": false,
+  "winning_label": null,
+  "decisions_per_doc": {},
+  "response": "The objective function of the Box selection step is to identify a region of interest that maximizes the likelihood of containing the target data or event while minimizing the inclusion of irrelevant background. This process inherently assumes that the \"target\" is defined by a specific distribution or pattern distinguishable from the surrounding context, allowing the algorithm to converge on a bounding volume that best encapsulates that signal.",
+  "response_chars": 447,
+  "approx_tokens": 111,
+  "latency_s": 1.538,
+  "harness_timing_ms": {
+    "total": 1538.4008529945277,
+    "llm": 1538.3985630178358
+  },
+  "br_0004_leakage_flags": []
+}

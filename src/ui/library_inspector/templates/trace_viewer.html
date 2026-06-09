@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block title %}Routing Traces — Pattern Library{% endblock %}
+{% block content %}
+<h1>Routing Traces</h1>
+<p style="font-size:0.85rem;color:var(--pico-secondary);">
+  Source: <code>{{ traces_dir }}</code> · 30-day retention · advisory mode (Phase 1).
+</p>
+<form method="get" style="display:flex;gap:0.5rem;flex-wrap:wrap;">
+  <input type="text" name="matched_pattern_id" value="{{ matched or '' }}"
+         placeholder="matched pattern id">
+  <input type="text" name="topic" value="{{ topic or '' }}" placeholder="topic">
+  <input type="date" name="from" value="{{ from_date or '' }}">
+  <input type="date" name="to" value="{{ to_date or '' }}">
+  <input type="number" name="n" value="{{ n }}" min="1" max="500" style="width:6rem;">
+  <button type="submit">Filter</button>
+</form>
+
+<p>{{ traces | length }} trace(s) shown.</p>
+
+{% if traces %}
+<table>
+  <thead>
+    <tr>
+      <th>timestamp</th><th>query</th><th>matched</th>
+      <th>score</th><th>conf</th><th>final_route</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for t in traces %}
+    <tr>
+      <td><code>{{ t.timestamp }}</code></td>
+      <td>{{ t.query[:60] }}{% if t.query | length > 60 %}…{% endif %}</td>
+      <td>
+        {% set lk = t.library_lookup or {} %}
+        {% if lk.matched_pattern_id %}
+          <a href="/pattern/{{ lk.matched_pattern_id }}">
+            <code>{{ lk.matched_pattern_id }}</code></a>
+        {% else %}—{% endif %}
+      </td>
+      <td>{% if lk.match_score is defined and lk.match_score is not none %}{{ "%.3f" | format(lk.match_score) }}{% else %}—{% endif %}</td>
+      <td>{{ lk.confidence or '—' }}</td>
+      <td>{{ t.final_route or '—' }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<p>No traces yet. Set <code>MOBIUS_PATTERN_LIBRARY=1</code> when invoking the
+   routing engine to start populating this directory.</p>
+{% endif %}
+{% endblock %}

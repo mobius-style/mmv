@@ -1,0 +1,303 @@
+# Pattern Library Sub-Topic Taxonomy — Phase 4 Commit 1
+#
+# Hierarchy:
+#   - Topic level: Phase 1-3 5 topics inherited (mandatory invariant)
+#   - Sub-topic level: 30+ sub-topics under the 5 topics
+#   - Each sub-topic targets 100-500 patterns at Phase 4 closure
+#
+# Phase 1-3 patterns map onto the new sub-topic structure via the
+# `legacy_intents` field on each sub-topic (so existing 80 patterns
+# can be reclassified without re-creation).
+#
+# Spec ref: docs/PATTERN_LIBRARY_SPEC_v1_4_1.md §5.5 (Phase 4 plan)
+#           docs/CLAUDE_CODE_PHASE_4_AUTONOMOUS_PROMPT_v2.md STEP 1
+
+version: "1.0"
+phase: "phase_4_v2"
+designed_at: "2026-04-27"
+
+# ─── self_reference (Phase 1-3: 15 patterns → Phase 4: 6 sub-topics) ───
+self_reference:
+  description: "Queries about the agent itself (identity, capabilities, design)"
+  primary_box: "box_0"
+  exclude_boxes: ["box_w"]
+  synthesis_mode: "identity_response"
+  sub_topics:
+    sr_identity:
+      description: "Who are you / describe yourself / persona"
+      legacy_intents:
+        - describe_self
+        - describe_creator
+        - describe_origin
+      target_patterns: 200
+      priority: high
+    sr_capabilities:
+      description: "What can you do / functions / features"
+      legacy_intents:
+        - describe_capabilities
+        - describe_role
+        - describe_communication_language
+      target_patterns: 250
+      priority: high
+    sr_limitations:
+      description: "Limitations / what you can't do / constraints"
+      legacy_intents:
+        - describe_limitations
+        - describe_consciousness
+      target_patterns: 200
+      priority: medium
+    sr_architecture:
+      description: "Internal architecture / how you work / design philosophy"
+      legacy_intents:
+        - describe_architecture
+        - describe_philosophy
+        - describe_purpose
+      target_patterns: 200
+      priority: medium
+    sr_lifecycle:
+      description: "Version / temporal state / memory / trustworthiness"
+      legacy_intents:
+        - describe_version
+        - describe_temporal_state
+        - describe_memory
+        - describe_trustworthiness
+      target_patterns: 200
+      priority: medium
+    sr_meta_dialogue:
+      description: "Dialogue about the dialogue itself (turn count, summary, prior turn)"
+      legacy_intents: []
+      target_patterns: 150
+      priority: low
+
+# ─── conceptual_explain (Phase 1-3: 23 patterns → Phase 4: 7 sub-topics) ───
+conceptual_explain:
+  description: "Explanations of MOBIUS-internal concepts + general technical concepts"
+  primary_box: "box_0"
+  exclude_boxes: ["box_w"]
+  synthesis_mode: "evidence_grounded"
+  sub_topics:
+    ce_mobius_core:
+      description: "Core MOBIUS framework concepts (system, governance, AE, philosophy)"
+      legacy_intents:
+        - explain_mobius_concept
+        - explain_answer_entitlement
+        - explain_governance
+        - explain_constitutional_invariants
+      target_patterns: 250
+      priority: high
+    ce_mobius_components:
+      description: "MOBIUS subsystem components (Box 0/W/X, QK, EAL pipeline, routing engine)"
+      legacy_intents:
+        - explain_box_0
+        - explain_box_w
+        - explain_box_w_xling
+        - explain_question_kernel
+        - explain_qk_xling
+        - explain_qk_zh
+        - explain_routing_engine
+        - explain_routing_engine_xling
+        - explain_eal_pipeline
+      target_patterns: 350
+      priority: high
+    ce_mobius_methodology:
+      description: "MOBIUS methodologies (KVS, evidence adjudication, reflective verification, lifecycle states, pattern library, local-first)"
+      legacy_intents:
+        - explain_kvs
+        - explain_evidence_adjudication
+        - explain_reflective_verification
+        - explain_lifecycle_states
+        - explain_pattern_library
+        - explain_local_first_design
+      target_patterns: 250
+      priority: medium
+    ce_programming:
+      description: "Programming concepts (algorithms, design patterns, paradigms, protocols)"
+      legacy_intents:
+        - explain_algorithm_concept
+        - explain_design_pattern
+        - explain_paradigm
+        - explain_protocol
+      target_patterns: 300
+      priority: medium
+    ce_science:
+      description: "Scientific concepts (physics, biology, chemistry, math)"
+      legacy_intents: []
+      target_patterns: 250
+      priority: medium
+    ce_humanities:
+      description: "Humanities concepts (philosophy, linguistics, history, culture)"
+      legacy_intents: []
+      target_patterns: 200
+      priority: medium
+    ce_meta_concept:
+      description: "Meta-conceptual queries (what is X, define X, how does X work) for novel/edge concepts"
+      legacy_intents: []
+      target_patterns: 200
+      priority: medium
+
+# ─── factual_inquiry (Phase 1-3: 23 patterns → Phase 4: 8 sub-topics) ───
+factual_inquiry:
+  description: "Factual questions answerable via knowledge retrieval"
+  primary_box: "box_w"
+  exclude_boxes: ["box_0"]
+  synthesis_mode: "factual_synthesis"
+  sub_topics:
+    fi_definition:
+      description: "Definition / meaning queries (what is X, define X, X とは)"
+      legacy_intents:
+        - ask_definition
+        - ask_definition_ja
+        - ask_definition_zh
+        - ask_meaning
+      target_patterns: 300
+      priority: high
+    fi_authorship:
+      description: "Author / creator / inventor queries"
+      legacy_intents:
+        - ask_authorship
+        - ask_authorship_ja
+        - ask_authorship_zh
+      target_patterns: 200
+      priority: medium
+    fi_relationship:
+      description: "Entity relationships (wife/husband/parent/child, professional, geographic)"
+      legacy_intents:
+        - ask_about_entity_relationship
+      target_patterns: 250
+      priority: high
+    fi_classification:
+      description: "Taxonomic / categorical queries (what category, classification, type)"
+      legacy_intents:
+        - ask_classification
+        - ask_classification_taxonomy
+      target_patterns: 200
+      priority: medium
+    fi_quantitative:
+      description: "Quantitative facts (population, height, distance, count)"
+      legacy_intents:
+        - ask_quantitative
+      target_patterns: 250
+      priority: medium
+    fi_temporal:
+      description: "When-queries (founding, event, historical period)"
+      legacy_intents:
+        - ask_historical_event
+        - ask_current_status
+      target_patterns: 200
+      priority: medium
+    fi_geographic:
+      description: "Where / location queries"
+      legacy_intents:
+        - ask_geographic
+      target_patterns: 200
+      priority: low
+    fi_specialized:
+      description: "Programming / scientific / cultural / award / etymology / acronym facts"
+      legacy_intents:
+        - ask_programming_concept
+        - ask_scientific_fact
+        - ask_fictional_lore
+        - ask_award_winner
+        - ask_etymology
+        - ask_acronym
+        - ask_origin
+        - ask_comparison
+        - ask_how_to
+      target_patterns: 400
+      priority: high
+
+# ─── correction (Phase 1-3: 12 patterns → Phase 4: 5 sub-topics) ───
+correction:
+  description: "User-driven correction of prior assistant output"
+  primary_box: "box_0"
+  exclude_boxes: []
+  synthesis_mode: "acknowledge_correction"
+  sub_topics:
+    co_factual:
+      description: "Factual correction (X should be Y, not Z)"
+      legacy_intents:
+        - polite_factual_correction
+        - curt_factual_rejection
+        - correction_with_evidence_xling
+        - correction_with_evidence_zh
+      target_patterns: 250
+      priority: high
+    co_identity:
+      description: "Identity correction (you are MOBIUS, not GPT)"
+      legacy_intents:
+        - identity_correction
+      target_patterns: 150
+      priority: high
+    co_unit:
+      description: "Unit / dimension correction (meters, not feet)"
+      legacy_intents:
+        - unit_value_correction
+      target_patterns: 100
+      priority: low
+    co_polite:
+      description: "Polite disagreement / minor clarification / soft misunderstanding"
+      legacy_intents:
+        - polite_disagreement
+        - minor_clarification
+        - soft_misunderstanding_correction
+        - spelling_grammar_correction
+      target_patterns: 200
+      priority: medium
+    co_frame:
+      description: "Frame / scope correction (you answered the wrong question, scope clarification)"
+      legacy_intents:
+        - frame_correction
+        - scope_clarification_correction
+      target_patterns: 150
+      priority: medium
+
+# ─── casual_engagement (Phase 1-3: 7 patterns → Phase 4: 6 sub-topics) ───
+casual_engagement:
+  description: "Social / pleasantry exchanges (greetings, thanks, small talk)"
+  primary_box: "box_0"
+  exclude_boxes: ["box_w"]
+  synthesis_mode: "acknowledge_pleasantry"
+  sub_topics:
+    cg_greeting:
+      description: "Greetings (hello / hi / good morning / time-of-day greetings)"
+      legacy_intents:
+        - extended_greeting
+      target_patterns: 200
+      priority: high
+    cg_farewell:
+      description: "Farewells (goodbye / see you / bye)"
+      legacy_intents:
+        - farewell
+      target_patterns: 150
+      priority: medium
+    cg_thanks:
+      description: "Acknowledgment / thanks / appreciation"
+      legacy_intents:
+        - acknowledgment_thanks
+        - compliment_or_appreciation
+      target_patterns: 200
+      priority: high
+    cg_small_talk:
+      description: "Small talk (how are you, weather, casual chat)"
+      legacy_intents:
+        - small_talk
+      target_patterns: 200
+      priority: high
+    cg_emotional:
+      description: "Emotional check-in / mood expression"
+      legacy_intents:
+        - emotional_check_in
+      target_patterns: 150
+      priority: medium
+    cg_agreement:
+      description: "Agreement / acknowledgment (yes, exactly, that's right)"
+      legacy_intents:
+        - agreement
+      target_patterns: 100
+      priority: low
+
+# ─── Summary ───
+# Total sub-topics: 32 (≥ 30 spec gate)
+# Sum of target_patterns: ~6,150 (Phase 4 PL milestone trajectory: 1k → 3k → 5k → 10k)
+# Phase 1-3 80 patterns reclassified via legacy_intents mapping
+# Sub-topic ID convention: <topic_prefix>_<keyword> (sr_*, ce_*, fi_*, co_*, cg_*)

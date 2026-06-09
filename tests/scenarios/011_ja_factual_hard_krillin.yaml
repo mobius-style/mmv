@@ -1,0 +1,42 @@
+name: factual_hard_krillin_ja
+language: ja
+category: factual_hard
+description: >
+  Post C.3 fix regression guard for JA. 「クリリンの妻は誰？」 →
+  intent != meta_question / casual_greeting → escalation predicate
+  fires → Brave consultation verified via box_s_consulted and
+  WIKI_INSUFFICIENT_ESCALATED reason code.
+active_language_seed: ja
+turns:
+  - user: "クリリンの妻は誰？"
+    assert:
+      route_in: ["answer", "verify", "ask"]
+      self_referential: false
+      box_s_consulted: true
+      box_w_consulted: true
+      response_language: "ja"
+      response_length_min: 20
+      response_length_max: 1500
+      reason_codes_must_include:
+        - "WIKI_INSUFFICIENT_ESCALATED"
+      reason_codes_must_not_include:
+        - "CASUAL_GREETING_FAST_PATH"
+        - "WIKI_INSUFFICIENT_STOP"
+      response_must_not_contain:
+        - "Qwen"
+        - "通义千问"
+        - "阿里巴巴"
+        - "Llama"
+        - "GPT"
+        - "ヒラリー"
+        - "希拉里"
+        - "クリントン"
+      # Post Pattern C fix: JA Krillin triggers Brave escalation and
+      # sometimes reaches 18号 / Android 18 in response. The specific
+      # character name cited is stochastic at temperature 0.2 (18号 /
+      # ビーデル / チチ / ビクリ observed across reruns). Scenario
+      # asserts only structural non-regression — identity leakage
+      # absence + Clinton-class absence. Specific-name reliability
+      # noted as qwen3.5:9b prompt-following limitation in
+      # docs/PATTERN_C_SYNTHESIS_FIX_20260424.md §Residuals.
+      must_not_error: true

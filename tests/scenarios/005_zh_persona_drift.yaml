@@ -1,0 +1,23 @@
+name: persona_drift_zh
+language: zh
+category: persona_drift
+description: >
+  ZH self-ref regression guard.
+active_language_seed: zh
+turns:
+  - user: "你是谁，有什么特点？"
+    assert:
+      route_in: ["answer", "verify"]
+      self_referential: true
+      box_0_consulted: true
+      response_language: "zh"
+      response_length_min: 20
+      response_length_max: 2000
+      response_must_not_contain:
+        - "clinical note helper"
+        - "chronic disease"
+        - "K-12 learner"
+        - "diagnose and prescribe"
+      reason_codes_must_not_include:
+        - "CASUAL_GREETING_FAST_PATH"
+      must_not_error: true

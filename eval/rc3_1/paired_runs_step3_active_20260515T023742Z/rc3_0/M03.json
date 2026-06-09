@@ -1,0 +1,30 @@
+{
+  "id": "M03",
+  "category": "math",
+  "query": "What are the variable definitions in P_fab?",
+  "expected_apply_decision": "apply_criteria",
+  "expected_step": "step2_strong",
+  "reword_pair_id": null,
+  "env": "rc3_0",
+  "phase2_decision": "apply_reference",
+  "harness_fallback": null,
+  "step3_status": "deferred_api_gated",
+  "gating_enabled": false,
+  "addendum_chars": 0,
+  "addendum_text": "",
+  "retrieve_box_a": true,
+  "step1_negative": false,
+  "step2_strong": false,
+  "step3_invoked": false,
+  "winning_label": null,
+  "decisions_per_doc": {},
+  "response": "The variable definitions in $P_{fab}$ depend entirely on the specific context of your current project, as this notation is not universally standardized. In many fabrication or manufacturing contexts, $P_{fab}$ typically represents a probability distribution or a process parameter related to the fabrication step, where variables might include yield rates, defect densities, or specific geometric tolerances. However, without access to your specific documentation or codebase, I cannot list the exact variables you are referencing. Could you clarify which specific framework, paper, or software module defines $P_{fab}$ for you?",
+  "response_chars": 628,
+  "approx_tokens": 157,
+  "latency_s": 1.883,
+  "harness_timing_ms": {
+    "total": 1882.7203760156408,
+    "llm": 1882.7183269895613
+  },
+  "br_0004_leakage_flags": []
+}

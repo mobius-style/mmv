@@ -1,0 +1,30 @@
+{
+  "id": "M14",
+  "category": "math",
+  "query": "Formulate a mathematical model for the cold-start regime.",
+  "expected_apply_decision": "apply_criteria",
+  "expected_step": "step2_strong",
+  "reword_pair_id": null,
+  "env": "rc3_0",
+  "phase2_decision": "apply_reference",
+  "harness_fallback": null,
+  "step3_status": "deferred_api_gated",
+  "gating_enabled": false,
+  "addendum_chars": 0,
+  "addendum_text": "",
+  "retrieve_box_a": true,
+  "step1_negative": false,
+  "step2_strong": false,
+  "step3_invoked": false,
+  "winning_label": null,
+  "decisions_per_doc": {},
+  "response": "The cold-start regime is best modeled as a high-variance, low-information state where the system's output distribution is initialized by prior assumptions rather than empirical data. In this formulation, the model's confidence scores are decoupled from observed performance metrics, reflecting the inherent uncertainty of predicting user intent without historical interaction logs. A critical, often unstated premise woven into this structure is that the \"cold start\" is not merely a data scarcity problem, but a fundamental mismatch between the model's learned priors and the specific, unobserved reality of the new user or item, requiring the system to actively manage the tension between exploration (testing diverse hypotheses) and exploitation (relying on generic averages) until sufficient signal emerges to stabilize the distribution.",
+  "response_chars": 841,
+  "approx_tokens": 210,
+  "latency_s": 2.058,
+  "harness_timing_ms": {
+    "total": 2058.102676004637,
+    "llm": 2058.100091991946
+  },
+  "br_0004_leakage_flags": []
+}

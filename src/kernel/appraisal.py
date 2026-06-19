@@ -124,8 +124,20 @@ class Appraiser:
     UNDER_SPEC_PATTERNS = re.compile(
         r"\b(compare|summarize|summarise)\b"
         r"(?!.*\b(for|between|vs|versus|of|in|across)\b)"
-        # Japanese: bare action verbs without object (比較して、まとめて、要約して)
-        r"|^(比較して|まとめて|要約して|説明して|教えて)$"
+        # Japanese bare/deictic action commands with no object. Whole-query
+        # anchored (low false-positive risk): optional leading deictic
+        # (それ/これ…) and trailing punctuation tolerated. (ERO Infinity v0.13 —
+        # fixes the prior `^(...)$` anchor that rejected a trailing "。" and
+        # widens the verb set.)
+        r"|^(?:(?:それ|これ|その|あの|あれ)[でをにのは、,]?\s*)?"
+        r"(?:比較して|まとめて|要約して|説明して|教えて|改善して|選んで|やって"
+        r"|直して|なおして|進めて|対応して|処理して|やり直して)[。.!?！？\s]*$"
+        # English bare/deictic imperatives with no object (whole-query anchored).
+        r"|^(?:do it|do this|do that|fix it|fix this|fix that|redo it|continue"
+        r"|sort (?:it|this|that|these|those) out|handle (?:it|this|that)"
+        r"|take care of it|optimi[sz]e it|improve (?:it|this|that)"
+        r"|what should i (?:choose|pick|select|do)|which (?:one|to (?:choose|pick))"
+        r"|pick (?:one|the best one?))[\s.!?]*$"
         # Chinese: bare action verbs without object
         r"|^(比较一下|总结|解释一下|告诉我|介绍)$",
         re.IGNORECASE,

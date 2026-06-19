@@ -271,3 +271,12 @@ SaaS without source-availability), contact:
 Bug reports, ergonomic feedback, and questions about the current RC3.3 /
 L0 v8.4 workspace are welcome through the project's issue channel
 (channel TBD before public push).
+
+## Related — the Möbius program
+
+Part of the [MOBIUS](https://github.com/mobius-style) program — local-first, AGPL:
+
+- [mmv](https://github.com/mobius-style/mmv) — answer-entitlement runtime: decides *whether* answering is warranted
+- [rqa](https://github.com/mobius-style/rqa) — reflective questioning adapter: deepens *the question* when it is not
+- [rcgov](https://github.com/mobius-style/rcgov) — reflective context governor: governs *what a model may read*
+- [infinity](https://github.com/mobius-style/infinity) — composite capstone (MMV × RQA) with an OpenAI-compatible API

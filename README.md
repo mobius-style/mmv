@@ -216,6 +216,13 @@ A condensed list — see current L0 / RC3.3 notes for the full set:
 
 ## Publications
 
+**Flagship — the Answer Entitlement architecture this runtime implements:**
+
+- Taiko Toeda. *The Unasked Question: Answer Entitlement and the Act-Disvalue of Unwarranted Response* (2026). [doi.org/10.5281/zenodo.20606882](https://doi.org/10.5281/zenodo.20606882)
+- Taiko Toeda. *Operation Entitlement: External Governance and the Making of a 12B Clerk* (2026). [doi.org/10.5281/zenodo.20607475](https://doi.org/10.5281/zenodo.20607475)
+
+Related:
+
 - Mobius Reflective Framework: [doi.org/10.5281/zenodo.14538829](https://doi.org/10.5281/zenodo.14538829)
 - P-7: Question Kernels as Outer Conscience (forthcoming)
 - MOBIUS Codex (forthcoming)

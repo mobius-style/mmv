@@ -22,3 +22,13 @@ keywords:
   - operational evaluation
   - non-assertion
 license: AGPL-3.0-or-later
+preferred-citation:
+  type: article
+  title: "OPERATE-R Freshness Routing Track v0.3.6: Route-First Evaluation for Temporal Volatility, Stale-Knowledge Control, and Core-500 Candidate Validation"
+  authors:
+    - family-names: Toeda
+      given-names: Taiko
+      affiliation: "MOBIUS LLC"
+  year: 2026
+  doi: 10.5281/zenodo.20510113
+  url: "https://doi.org/10.5281/zenodo.20510113"

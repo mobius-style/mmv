@@ -221,6 +221,10 @@ A condensed list — see current L0 / RC3.3 notes for the full set:
 - Taiko Toeda. *The Unasked Question: Answer Entitlement and the Act-Disvalue of Unwarranted Response* (2026). [doi.org/10.5281/zenodo.20606882](https://doi.org/10.5281/zenodo.20606882)
 - Taiko Toeda. *Operation Entitlement: External Governance and the Making of a 12B Clerk* (2026). [doi.org/10.5281/zenodo.20607475](https://doi.org/10.5281/zenodo.20607475)
 
+**Benchmark proposal — freshness-routing evaluation (the [`operate-fr-bench/`](operate-fr-bench/) artifact implements this):**
+
+- Taiko Toeda. *OPERATE-R Freshness Routing Track v0.3.6: Route-First Evaluation for Temporal Volatility, Stale-Knowledge Control, and Core-500 Candidate Validation* (2026). [doi.org/10.5281/zenodo.20510113](https://doi.org/10.5281/zenodo.20510113)
+
 Related:
 
 - Mobius Reflective Framework: [doi.org/10.5281/zenodo.14538829](https://doi.org/10.5281/zenodo.14538829)

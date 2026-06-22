@@ -1,10 +1,10 @@
 # OPERATE-FR v0.1 — Specification Digest
 
-> **Version note.** This is the v0.1 specification digest. The current empirical paper is **OPERATE-FR v0.3.6** (Smoke-100 validation + Core-500 candidate stress check), deposited on Zenodo.
+> **Version note.** This is the v0.1 specification digest. The current empirical paper is **OPERATE-FR v0.3.6** (Smoke-100 validation + Core-500 candidate stress check), deposited on Zenodo as the **OPERATE-R Freshness Routing Track**: [doi.org/10.5281/zenodo.20510113](https://doi.org/10.5281/zenodo.20510113).
 
 This document is a working digest of the v0.1 specification of
 **OPERATE-R Freshness Routing Track**. The authoritative source of truth
-is the paper of the same name; this digest exists so that the runnable
+is the paper of the same name ([doi.org/10.5281/zenodo.20510113](https://doi.org/10.5281/zenodo.20510113)); this digest exists so that the runnable
 artifact can be operated without re-reading the full paper for each
 session.
 

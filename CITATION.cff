@@ -1,0 +1,24 @@
+cff-version: 1.2.0
+title: "MOBIUS MMV — Answer Entitlement Runtime"
+message: "If you use this software, please cite it using the metadata below."
+type: software
+authors:
+  - family-names: Toeda
+    given-names: Taiko
+    affiliation: MOBIUS LLC
+abstract: >-
+  A local-first AI runtime implementing Answer Entitlement Architecture:
+  it determines whether answering is justified before generating a response,
+  combining retrieval and evidence verification over a multilingual FAISS/ME5
+  Wikipedia index. Runs locally via Ollama or against cloud backends.
+repository-code: "https://github.com/mobius-style/mmv"
+url: "https://github.com/mobius-style/mmv"
+license: AGPL-3.0-or-later
+version: v0.8.2-preview
+date-released: 2026-05-31
+keywords:
+  - answer-entitlement
+  - retrieval-augmented-generation
+  - local-first
+  - governance
+  - conversational-ai

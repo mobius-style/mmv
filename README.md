@@ -5,6 +5,12 @@ is justified before generating a response.
 
 Author: Taiko Toeda / MOBIUS LLC
 
+**Start here:** [Try it (no install)](#try-it-now-no-install) ·
+[Install & run](#quick-start-small-line--local-qwen359b) ·
+[What it does](#what-it-does) ·
+[Publications](#publications) ·
+[License](#licensing)
+
 ## Try it now (no install)
 
 Want to feel the governance behavior before installing anything? Paste the

@@ -19,11 +19,13 @@ python -m addons.secretary list
 Prefer the project virtualenv when available:
 
 ```bash
-$HOME/デスクトップ/mobius_ai/venv313/bin/python -m addons.secretary version
-$HOME/デスクトップ/mobius_ai/venv313/bin/python -m addons.secretary list
+# from an activated project venv (Python 3.13)
+python -m addons.secretary version
+python -m addons.secretary list
 ```
 
-Codex startup is wired through repo-local hooks:
+Codex startup is wired through repo-local hooks (local development
+scaffolding — gitignored, not shipped in the public snapshot):
 
 - `.codex/config.toml` enables `hooks`
 - `.codex/hooks.json` runs `.codex/hooks/session_start_secretary.py`

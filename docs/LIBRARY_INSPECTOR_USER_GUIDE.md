@@ -24,7 +24,7 @@ Optional flags:
 For Phase 1 you can add a shell alias to your own `~/.bashrc`:
 
 ```bash
-alias mobius_lib='cd ~/デスクトップ/mobius_ai/MOBIUS_MMV && source ~/デスクトップ/mobius_ai/venv313/bin/activate && python -m src.ui.library_inspector.app'
+alias mobius_lib='cd /path/to/mmv && source /path/to/venv/bin/activate && python -m src.ui.library_inspector.app'
 ```
 
 The inspector is intentionally NOT auto-installed into anyone's shell

@@ -131,7 +131,7 @@ RC3.3 workspace baseline (2026-05-31, `pytest -q tests/`):
 If you want a fast subset, target a single area:
 
 ```bash
-pytest tests/test_routing_engine.py -q
+pytest tests/test_routing.py -q
 ```
 
 The full suite includes some tests that hit the local Ollama / FAISS /
@@ -148,7 +148,7 @@ The repo **does not** ship the large generated artifacts:
 | `data/raf/qk_index.faiss` | ~150 MB | rebuild locally |
 | `data/raf/teacher_data_raw.jsonl` (ISM corpus) | ~24 MB / 36,282 lines | distribution decision pending; see policy doc |
 | Wikipedia FAISS index + chunks (`Wiki/*`) | ~1.74 GB (4 files) | **HuggingFace** — fetched by `scripts/fetch_wiki_index.py` |
-| Kiwix ZIM (`~/デスクトップ/mobius_ai/kiwix/*.zim`) | ~12 GB | third-party; obtain from kiwix.org |
+| Kiwix ZIM (`<your-kiwix-dir>/*.zim`) | ~12 GB | third-party; obtain from kiwix.org |
 
 The full distribution policy is recorded in
 [docs/INDEX_DISTRIBUTION_POLICY.md](docs/INDEX_DISTRIBUTION_POLICY.md) (FAISS / ME5) and

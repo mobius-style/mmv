@@ -16,7 +16,7 @@ Author: Taiko Toeda / MOBIUS LLC
 Want to feel the governance behavior before installing anything? Paste the
 single self-contained prompt in **[TRY_MOBIUS.md](TRY_MOBIUS.md)** into a fresh
 ChatGPT / Claude / Gemini chat — **one paste, no setup.** It's a prompt-level
-demo of the L0 v8.4 governance layer (answer / verify / ask / abstain), not the
+demo of the L0 v8.4.1 governance layer (answer / verify / ask / abstain), not the
 full retrieval + evidence-adjudication runtime — that's the install below.
 
 **Grab the prompt in one click:** open the
@@ -286,8 +286,8 @@ SaaS without source-availability), contact:
 - **info@mobius.style** — please include intended deployment context.
 
 Bug reports, ergonomic feedback, and questions about the current RC3.3 /
-L0 v8.4 workspace are welcome through the project's issue channel
-(channel TBD before public push).
+L0 v8.4.1 workspace are welcome via
+[GitHub Issues](https://github.com/mobius-style/mmv/issues).
 
 ## Related — the Möbius program
 
@@ -297,3 +297,4 @@ Part of the [MOBIUS](https://github.com/mobius-style) program — local-first, A
 - [rqa](https://github.com/mobius-style/rqa) — reflective questioning adapter: deepens *the question* when it is not
 - [rcgov](https://github.com/mobius-style/rcgov) — reflective context governor: governs *what a model may read*
 - [infinity](https://github.com/mobius-style/infinity) — composite capstone (MMV × RQA) with an OpenAI-compatible API
+- [tokyo-insight](https://github.com/mobius-style/tokyo-insight) — on-demand civic-RAG engine for 東京都議会 deliberation records (engine + facts only)

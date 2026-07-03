@@ -12,7 +12,7 @@ any frontier model right now — **no install, one paste.**
 3. Then just talk to it, and watch how it *routes* your request.
 
 ## What this is — and isn't
-This is a **prompt-level demonstration** of MOBIUS MMV's **L0 v8.4** governance
+This is a **prompt-level demonstration** of MOBIUS MMV's **L0 v8.4.1** governance
 layer. The model adopts MMV's restraint and routing discipline
 (answer / verify / ask / re-anchor / abstain). It is **not** the full local
 runtime: there is no FAISS / Box W retrieval, no live evidence adjudication

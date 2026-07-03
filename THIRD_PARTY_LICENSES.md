@@ -1,10 +1,10 @@
-# Third-Party Licenses — MMV Core v0.1-rc1
+# Third-Party Licenses — MMV Core
 
 MMV Core is licensed AGPL-3.0-or-later (see [LICENSE](LICENSE)). This
 document inventories the third-party software, models, and data the
 runtime depends on, with their licenses and the role they play. It is
 intended to satisfy distribution attribution obligations for the
-v0.1-rc1 public release and to make the dependency surface auditable.
+public release and to make the dependency surface auditable.
 
 This file is informational and does not modify or override any
 upstream license. Where a discrepancy exists between this summary and
@@ -76,12 +76,12 @@ starts without them.
 | Groq API | https://groq.com/ (Groq's API terms) | Self-Governance Protocol supervisor; eval LLM judge |
 | Ollama (local) | https://ollama.com/ (Apache-2.0 server) | local inference; the LLM endpoint behind `OLLAMA_ENDPOINT` |
 | Hugging Face Hub (downloads) | https://huggingface.co/ (HF Hub terms) | model download |
-| Vertex AI (stub; optional) | per Google Cloud terms | not active in v0.1-rc1; placeholder in `.env.example` |
+| Vertex AI (stub; optional) | per Google Cloud terms | not active in this release; placeholder in `.env.example` |
 
 ## 4. Third-party data artifacts
 
 These are large data sets the runtime can use; **none are bundled in
-this repository**. v0.1-rc1 ships pointers and rebuild scripts, not
+this repository**. This release ships pointers and rebuild scripts, not
 the data.
 
 | Artifact | License | How to obtain |
@@ -108,7 +108,7 @@ Items authored or significantly modified for MOBIUS MMV:
 
 The "Wikipedia-derived data: CC BY-SA 4.0" line in the repository's
 README and LICENSE governs anything we redistribute that incorporates
-Wikipedia content. We do not bundle such content in v0.1-rc1, but the
+Wikipedia content. We do not bundle such content in this release, but the
 license stays compatible for any future distribution channel.
 
 ## 6. Reporting attribution issues

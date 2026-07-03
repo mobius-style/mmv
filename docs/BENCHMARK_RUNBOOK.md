@@ -7,7 +7,7 @@ Operational runbook for the standard benchmark harness. Pairs with
 
 1. Activate the project venv (Python 3.13):
    ```bash
-   source $HOME/デスクトップ/mobius_ai/venv313/bin/activate
+   source /path/to/venv/bin/activate
    # or the `mobius` alias
    ```
 2. Confirm Ollama is running and `qwen3.5:9b` is pulled:

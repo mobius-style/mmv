@@ -275,15 +275,17 @@ dependencies and data sources are inventoried in
 
 See [LICENSE_NOTICE.md](LICENSE_NOTICE.md) for details.
 
-### Commercial / non-AGPL licensing
+### Commercial license
 
-MMV Core is AGPL-3.0-or-later. The AGPL is a strong copyleft license
-and triggers source-availability obligations for network-deployed
-modifications. If you need a license without the AGPL's copyleft
-requirements (for proprietary integration, embedded distribution, or
-SaaS without source-availability), contact:
+If your organization cannot meet AGPL's source-disclosure obligations, a
+commercial license is available from MOBIUS LLC (sole rights holder):
+**USD 500 per month, per company — cancel anytime, no minimum term.**
+Annual invoicing available at USD 5,000/year.
 
-- **info@mobius.style** — please include intended deployment context.
+It is a license grant, not a service: no service is performed, no data of
+yours is accessed, and nothing you run depends on our availability.
+
+Contact: **info@mobius.style** — licensing questions are not handled in Issues.
 
 Bug reports, ergonomic feedback, and questions about the current RC3.3 /
 L0 v8.4.1 workspace are welcome via

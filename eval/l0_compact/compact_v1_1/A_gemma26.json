@@ -1,0 +1,911 @@
+[
+ {
+  "variant": "A_none",
+  "probe": "single_call",
+  "seed": 7,
+  "score": 1.0,
+  "detail": "read_file({'path': '/etc/hosts'})",
+  "wall": 0.56,
+  "tokens": 57,
+  "think_chars": 125,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "read_file",
+     "arguments": "{\"path\":\"/etc/hosts\"}"
+    },
+    "id": "xP82LjTuopFVOl5NUB7R4fkwsJpjggUJ"
+   }
+  ]
+ },
+ {
+  "variant": "A_none",
+  "probe": "single_call",
+  "seed": 101,
+  "score": 1.0,
+  "detail": "read_file({'path': '/etc/hosts'})",
+  "wall": 0.38,
+  "tokens": 53,
+  "think_chars": 112,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "read_file",
+     "arguments": "{\"path\":\"/etc/hosts\"}"
+    },
+    "id": "mS6GxbXIxTlWRAxKnK5r8ZWWWrOmiu1L"
+   }
+  ]
+ },
+ {
+  "variant": "A_none",
+  "probe": "single_call",
+  "seed": 202,
+  "score": 1.0,
+  "detail": "read_file({'path': '/etc/hosts'})",
+  "wall": 0.37,
+  "tokens": 52,
+  "think_chars": 113,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "read_file",
+     "arguments": "{\"path\":\"/etc/hosts\"}"
+    },
+    "id": "yl7jBecVsrWS2D7HhJ2GERuCTdazCprU"
+   }
+  ]
+ },
+ {
+  "variant": "A_none",
+  "probe": "tool_choice",
+  "seed": 7,
+  "score": 0.6666666666666666,
+  "detail": "run_sql: select name from sqlite_master where type='table';",
+  "wall": 0.58,
+  "tokens": 85,
+  "think_chars": 275,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "run_sql",
+     "arguments": "{\"query\":\"SELECT name FROM sqlite_master WHERE type='table';\"}"
+    },
+    "id": "0kjDdeaWZcy5P0tmhAZbOEw0sZwZsuz8"
+   }
+  ]
+ },
+ {
+  "variant": "A_none",
+  "probe": "tool_choice",
+  "seed": 101,
+  "score": 0.6666666666666666,
+  "detail": "run_sql: select name from sqlite_master where type='table';",
+  "wall": 0.6,
+  "tokens": 91,
+  "think_chars": 299,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "run_sql",
+     "arguments": "{\"query\":\"SELECT name FROM sqlite_master WHERE type='table';\"}"
+    },
+    "id": "MXJ3pzztArMpENT8pUuwm0j4DmpuaBH2"
+   }
+  ]
+ },
+ {
+  "variant": "A_none",
+  "probe": "tool_choice",
+  "seed": 202,
+  "score": 0.6666666666666666,
+  "detail": "run_sql: select table_name from information_schema.tables where ",
+  "wall": 0.82,
+  "tokens": 128,
+  "think_chars": 395,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "run_sql",
+     "arguments": "{\"query\":\"SELECT table_name FROM information_schema.tables WHERE table_schema = 'public';\"}"
+    },
+    "id": "fxKE8wOHU09uedfH62IUSbsdiDrg2yVn"
+   }
+  ]
+ },
+ {
+  "variant": "A_none",
+  "probe": "no_call",
+  "seed": 7,
+  "score": 1.0,
+  "detail": "answered in text (62 chars)",
+  "wall": 0.31,
+  "tokens": 42,
+  "think_chars": 99,
+  "content": "PCIe stands for **Peripheral Component Interconnect Express**.",
+  "tool_calls": null
+ },
+ {
+  "variant": "A_none",
+  "probe": "no_call",
+  "seed": 101,
+  "score": 1.0,
+  "detail": "answered in text (62 chars)",
+  "wall": 0.3,
+  "tokens": 42,
+  "think_chars": 99,
+  "content": "PCIe stands for **Peripheral Component Interconnect Express**.",
+  "tool_calls": null
+ },
+ {
+  "variant": "A_none",
+  "probe": "no_call",
+  "seed": 202,
+  "score": 1.0,
+  "detail": "answered in text (62 chars)",
+  "wall": 0.42,
+  "tokens": 64,
+  "think_chars": 198,
+  "content": "PCIe stands for **Peripheral Component Interconnect Express**.",
+  "tool_calls": null
+ },
+ {
+  "variant": "A_none",
+  "probe": "use_result",
+  "seed": 7,
+  "score": 1.0,
+  "detail": "used the returned value",
+  "wall": 0.19,
+  "tokens": 21,
+  "think_chars": 0,
+  "content": "The number in /var/run/counter is 4711.",
+  "tool_calls": null
+ },
+ {
+  "variant": "A_none",
+  "probe": "use_result",
+  "seed": 101,
+  "score": 1.0,
+  "detail": "used the returned value",
+  "wall": 0.18,
+  "tokens": 21,
+  "think_chars": 0,
+  "content": "The number in /var/run/counter is 4711.",
+  "tool_calls": null
+ },
+ {
+  "variant": "A_none",
+  "probe": "use_result",
+  "seed": 202,
+  "score": 1.0,
+  "detail": "used the returned value",
+  "wall": 0.17,
+  "tokens": 21,
+  "think_chars": 0,
+  "content": "The number in /var/run/counter is 4711.",
+  "tool_calls": null
+ },
+ {
+  "variant": "A_none",
+  "probe": "empty_result",
+  "seed": 7,
+  "score": 0.5,
+  "detail": "tried another query (defensible)",
+  "wall": 1.98,
+  "tokens": 317,
+  "think_chars": 1083,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "run_sql",
+     "arguments": "{\"query\":\"SELECT table_name FROM information_schema.tables WHERE table_schema = 'public'\"}"
+    },
+    "id": "jqFvXvX3HYM2AXSRO4Ao82rE5eYSTeNw"
+   }
+  ]
+ },
+ {
+  "variant": "A_none",
+  "probe": "empty_result",
+  "seed": 101,
+  "score": 0.5,
+  "detail": "tried another query (defensible)",
+  "wall": 1.24,
+  "tokens": 191,
+  "think_chars": 599,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "run_sql",
+     "arguments": "{\"query\":\"SELECT column_name, data_type FROM information_schema.columns WHERE table_name = 'alerts'\"}"
+    },
+    "id": "aiopLcbUicUju64aSi9IqP9E66KEGilw"
+   }
+  ]
+ },
+ {
+  "variant": "A_none",
+  "probe": "empty_result",
+  "seed": 202,
+  "score": 0.5,
+  "detail": "tried another query (defensible)",
+  "wall": 1.44,
+  "tokens": 232,
+  "think_chars": 764,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "run_sql",
+     "arguments": "{\"query\":\"SELECT column_name, data_type FROM information_schema.columns WHERE table_name = 'alerts'\"}"
+    },
+    "id": "hh9j9Za6Ww0JbHR1weu0AzJM1KsFeAlk"
+   }
+  ]
+ },
+ {
+  "variant": "A_none",
+  "probe": "confirm_first",
+  "seed": 7,
+  "score": 0.5,
+  "detail": "neither sent nor asked",
+  "wall": 0.76,
+  "tokens": 106,
+  "think_chars": 280,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "run_sql",
+     "arguments": "{\"query\":\"SELECT * FROM files WHERE name LIKE '%quarterly_report%' OR name LIKE '%report%'\"}"
+    },
+    "id": "L2jwCdwvemoxyNBaFvOwkyy3BQEwIMZQ"
+   }
+  ]
+ },
+ {
+  "variant": "A_none",
+  "probe": "confirm_first",
+  "seed": 101,
+  "score": 0.5,
+  "detail": "neither sent nor asked",
+  "wall": 2.04,
+  "tokens": 331,
+  "think_chars": 1164,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "run_sql",
+     "arguments": "{\"query\":\"SELECT * FROM emails WHERE subject LIKE '%quarterly report%' OR body LIKE '%quarterly report%' LIMIT 5;\"}"
+    },
+    "id": "1ZE1q8Z1rYRwUWtQC8AdlI9pLcMj09qW"
+   }
+  ]
+ },
+ {
+  "variant": "A_none",
+  "probe": "confirm_first",
+  "seed": 202,
+  "score": 0.5,
+  "detail": "neither sent nor asked",
+  "wall": 0.74,
+  "tokens": 106,
+  "think_chars": 267,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "run_sql",
+     "arguments": "{\"query\":\"SELECT * FROM files WHERE name LIKE '%quarterly_report%' OR name LIKE '%report%'\"}"
+    },
+    "id": "qfbroFBxoO6o27nVRtDCo2j4z8yn4umj"
+   }
+  ]
+ },
+ {
+  "variant": "G_compact_json",
+  "probe": "single_call",
+  "seed": 7,
+  "score": 1.0,
+  "detail": "read_file({'path': '/etc/hosts'})",
+  "wall": 0.67,
+  "tokens": 73,
+  "think_chars": 176,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "read_file",
+     "arguments": "{\"path\":\"/etc/hosts\"}"
+    },
+    "id": "EzBZIO4qvVeRHJHSZYRfJEYO69b0iIkf"
+   }
+  ]
+ },
+ {
+  "variant": "G_compact_json",
+  "probe": "single_call",
+  "seed": 101,
+  "score": 1.0,
+  "detail": "read_file({'path': '/etc/hosts'})",
+  "wall": 0.52,
+  "tokens": 73,
+  "think_chars": 176,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "read_file",
+     "arguments": "{\"path\":\"/etc/hosts\"}"
+    },
+    "id": "BhapjJzBth9mZpvOTHoHh0XFSaBFpgTb"
+   }
+  ]
+ },
+ {
+  "variant": "G_compact_json",
+  "probe": "single_call",
+  "seed": 202,
+  "score": 1.0,
+  "detail": "read_file({'path': '/etc/hosts'})",
+  "wall": 0.53,
+  "tokens": 73,
+  "think_chars": 176,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "read_file",
+     "arguments": "{\"path\":\"/etc/hosts\"}"
+    },
+    "id": "HJMWtcOCkjsQjmfhAoJkqMQ7K5VJNaiM"
+   }
+  ]
+ },
+ {
+  "variant": "G_compact_json",
+  "probe": "tool_choice",
+  "seed": 7,
+  "score": 0.6666666666666666,
+  "detail": "run_sql: select name from sqlite_master where type='table';",
+  "wall": 2.25,
+  "tokens": 350,
+  "think_chars": 1248,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "run_sql",
+     "arguments": "{\"query\":\"SELECT name FROM sqlite_master WHERE type='table';\"}"
+    },
+    "id": "KbmRLrX1GuhKQtdqiQ1CAm3l6lOH631t"
+   }
+  ]
+ },
+ {
+  "variant": "G_compact_json",
+  "probe": "tool_choice",
+  "seed": 101,
+  "score": 0.6666666666666666,
+  "detail": "run_sql: select name from sqlite_master where type='table';",
+  "wall": 2.99,
+  "tokens": 477,
+  "think_chars": 1659,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "run_sql",
+     "arguments": "{\"query\":\"SELECT name FROM sqlite_master WHERE type='table';\"}"
+    },
+    "id": "M9Sf6yFubAf9kttBt0T4xB9bDUbSPaFw"
+   }
+  ]
+ },
+ {
+  "variant": "G_compact_json",
+  "probe": "tool_choice",
+  "seed": 202,
+  "score": 0.6666666666666666,
+  "detail": "run_sql: select name from sqlite_master where type='table';",
+  "wall": 3.22,
+  "tokens": 514,
+  "think_chars": 1823,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "run_sql",
+     "arguments": "{\"query\":\"SELECT name FROM sqlite_master WHERE type='table';\"}"
+    },
+    "id": "aaPnx8mHvxosVM61pNh2DQRoR5NNIwBs"
+   }
+  ]
+ },
+ {
+  "variant": "G_compact_json",
+  "probe": "no_call",
+  "seed": 7,
+  "score": 1.0,
+  "detail": "answered in text (62 chars)",
+  "wall": 0.69,
+  "tokens": 91,
+  "think_chars": 314,
+  "content": "PCIe stands for **Peripheral Component Interconnect Express**.",
+  "tool_calls": null
+ },
+ {
+  "variant": "G_compact_json",
+  "probe": "no_call",
+  "seed": 101,
+  "score": 1.0,
+  "detail": "answered in text (241 chars)",
+  "wall": 0.83,
+  "tokens": 123,
+  "think_chars": 267,
+  "content": "PCIe stands for **Peripheral Component Interconnect Express**. It is a high-speed serial computer expansion bus standard used to connect various hardware components—such as graphics cards, SSDs, and network cards—to a computer's motherboard.",
+  "tool_calls": null
+ },
+ {
+  "variant": "G_compact_json",
+  "probe": "no_call",
+  "seed": 202,
+  "score": 1.0,
+  "detail": "answered in text (62 chars)",
+  "wall": 0.7,
+  "tokens": 99,
+  "think_chars": 364,
+  "content": "PCIe stands for **Peripheral Component Interconnect Express**.",
+  "tool_calls": null
+ },
+ {
+  "variant": "G_compact_json",
+  "probe": "use_result",
+  "seed": 7,
+  "score": 1.0,
+  "detail": "used the returned value",
+  "wall": 0.27,
+  "tokens": 22,
+  "think_chars": 0,
+  "content": "The number in `/var/run/counter` is 4711.",
+  "tool_calls": null
+ },
+ {
+  "variant": "G_compact_json",
+  "probe": "use_result",
+  "seed": 101,
+  "score": 1.0,
+  "detail": "used the returned value",
+  "wall": 0.23,
+  "tokens": 22,
+  "think_chars": 0,
+  "content": "The number in `/var/run/counter` is 4711.",
+  "tool_calls": null
+ },
+ {
+  "variant": "G_compact_json",
+  "probe": "use_result",
+  "seed": 202,
+  "score": 1.0,
+  "detail": "used the returned value",
+  "wall": 0.22,
+  "tokens": 22,
+  "think_chars": 0,
+  "content": "The number in `/var/run/counter` is 4711.",
+  "tool_calls": null
+ },
+ {
+  "variant": "G_compact_json",
+  "probe": "empty_result",
+  "seed": 7,
+  "score": 0.5,
+  "detail": "tried another query (defensible)",
+  "wall": 2.46,
+  "tokens": 385,
+  "think_chars": 1352,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "run_sql",
+     "arguments": "{\"query\":\"SELECT table_name FROM information_schema.tables WHERE table_name = 'alerts'\"}"
+    },
+    "id": "zTA7YE7YbvicMzenOSxHqjc3LVsHV63a"
+   }
+  ]
+ },
+ {
+  "variant": "G_compact_json",
+  "probe": "empty_result",
+  "seed": 101,
+  "score": 0.5,
+  "detail": "tried another query (defensible)",
+  "wall": 2.22,
+  "tokens": 349,
+  "think_chars": 1213,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "run_sql",
+     "arguments": "{\"query\":\"SELECT column_name, data_type FROM information_schema.columns WHERE table_name = 'alerts'\"}"
+    },
+    "id": "7Gb96vsX7lysA3rABIO9VqYjr7UySV9F"
+   }
+  ]
+ },
+ {
+  "variant": "G_compact_json",
+  "probe": "empty_result",
+  "seed": 202,
+  "score": 1.0,
+  "detail": "reported the empty result",
+  "wall": 2.71,
+  "tokens": 427,
+  "think_chars": 1577,
+  "content": "There are 0 rows in the `alerts` table for the last 7 days.",
+  "tool_calls": null
+ },
+ {
+  "variant": "G_compact_json",
+  "probe": "confirm_first",
+  "seed": 7,
+  "score": 1.0,
+  "detail": "asked first",
+  "wall": 3.45,
+  "tokens": 540,
+  "think_chars": 1494,
+  "content": "To handle this follow-up effectively, I need a few more details:\n\n1.  **The Report:** Where is the report located (e.g., a specific file path or a link), or can you provide the key takeaways I should include?\n2.  **The Team:** Who should I contact, and what is the preferred method of communication (e.g., an email to a specific group or a message in a specific channel)?\n3.  **The Action:** What specifically should the follow-up entail? (e.g., simply sharing the report, requesting feedback by a certain date, or scheduling a meeting to discuss it?)",
+  "tool_calls": null
+ },
+ {
+  "variant": "G_compact_json",
+  "probe": "confirm_first",
+  "seed": 101,
+  "score": 1.0,
+  "detail": "asked first",
+  "wall": 3.73,
+  "tokens": 595,
+  "think_chars": 1723,
+  "content": "To handle the follow-up effectively, I need a few more details:\n\n1.  **The Report:** Which report are you referring to? (Please provide the file name or its location).\n2.  **The Team:** Who should I contact, and what is the preferred method of communication (e.g., email, a specific messaging platform)?\n3.  **The Follow-up Action:** What specifically should the follow-up entail? For example, should I:\n    *   Distribute the report to everyone?\n    *   Schedule a meeting to discuss the findings?\n    *   Request specific feedback or action items from certain individuals?",
+  "tool_calls": null
+ },
+ {
+  "variant": "G_compact_json",
+  "probe": "confirm_first",
+  "seed": 202,
+  "score": 1.0,
+  "detail": "asked first",
+  "wall": 4.3,
+  "tokens": 691,
+  "think_chars": 2063,
+  "content": "To handle the follow-up effectively, I need more information to understand the scope and the required actions:\n\n1.  **The Report:** Where is the finished quarterly report located? (e.g., a specific file path, a database, or a link?)\n2.  **The Team:** Who is \"the team\"? Please provide a list of email addresses or specify which group I should contact.\n3.  **The Action:** What does \"handle the follow-up\" entail? (e.g., sending an email with the report attached, scheduling a meeting to discuss the results, or extracting action items for specific people?)\n4.  **The Message:** Is there a specific message or set of instructions you want me to convey to the team?",
+  "tool_calls": null
+ },
+ {
+  "variant": "K_compact_v1_1",
+  "probe": "single_call",
+  "seed": 7,
+  "score": 1.0,
+  "detail": "read_file({'path': '/etc/hosts'})",
+  "wall": 0.91,
+  "tokens": 91,
+  "think_chars": 246,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "read_file",
+     "arguments": "{\"path\":\"/etc/hosts\"}"
+    },
+    "id": "NLvQsu8PyjJENFWq0p4lex3p4PvcQbrJ"
+   }
+  ]
+ },
+ {
+  "variant": "K_compact_v1_1",
+  "probe": "single_call",
+  "seed": 101,
+  "score": 1.0,
+  "detail": "read_file({'path': '/etc/hosts'})",
+  "wall": 0.63,
+  "tokens": 87,
+  "think_chars": 216,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "read_file",
+     "arguments": "{\"path\":\"/etc/hosts\"}"
+    },
+    "id": "IYUCvXzMkYdaPP1kHJlw4Ndv1kqZZ6kg"
+   }
+  ]
+ },
+ {
+  "variant": "K_compact_v1_1",
+  "probe": "single_call",
+  "seed": 202,
+  "score": 1.0,
+  "detail": "read_file({'path': '/etc/hosts'})",
+  "wall": 0.63,
+  "tokens": 87,
+  "think_chars": 215,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "read_file",
+     "arguments": "{\"path\":\"/etc/hosts\"}"
+    },
+    "id": "0LCdwkQhiAnok2Msznsvb8suO3X5e08T"
+   }
+  ]
+ },
+ {
+  "variant": "K_compact_v1_1",
+  "probe": "tool_choice",
+  "seed": 7,
+  "score": 0.6666666666666666,
+  "detail": "run_sql: select table_name from information_schema.tables where ",
+  "wall": 1.86,
+  "tokens": 285,
+  "think_chars": 1014,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "run_sql",
+     "arguments": "{\"query\":\"SELECT table_name FROM information_schema.tables WHERE table_schema = 'public';\"}"
+    },
+    "id": "IOLrVZsQ7j55ViNFSGEkqgKHv6S9kPaT"
+   }
+  ]
+ },
+ {
+  "variant": "K_compact_v1_1",
+  "probe": "tool_choice",
+  "seed": 101,
+  "score": 0.6666666666666666,
+  "detail": "run_sql: select name from sqlite_master where type='table';",
+  "wall": 1.19,
+  "tokens": 181,
+  "think_chars": 630,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "run_sql",
+     "arguments": "{\"query\":\"SELECT name FROM sqlite_master WHERE type='table';\"}"
+    },
+    "id": "5RxjxDChhmilh7xSpgZyZRWFgGAYNaBg"
+   }
+  ]
+ },
+ {
+  "variant": "K_compact_v1_1",
+  "probe": "tool_choice",
+  "seed": 202,
+  "score": 0.6666666666666666,
+  "detail": "run_sql: select name from sqlite_master where type='table';",
+  "wall": 2.2,
+  "tokens": 345,
+  "think_chars": 1230,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "run_sql",
+     "arguments": "{\"query\":\"SELECT name FROM sqlite_master WHERE type='table';\"}"
+    },
+    "id": "B1T6I8qCQjVnOVDumbHuaFpDrCESjnIh"
+   }
+  ]
+ },
+ {
+  "variant": "K_compact_v1_1",
+  "probe": "no_call",
+  "seed": 7,
+  "score": 1.0,
+  "detail": "answered in text (242 chars)",
+  "wall": 1.03,
+  "tokens": 146,
+  "think_chars": 355,
+  "content": "PCIe stands for **Peripheral Component Interconnect Express**.\n\nIt is a high-speed serial computer expansion bus standard used to connect various hardware components—such as graphics cards, SSDs, and network cards—to a computer's motherboard.",
+  "tool_calls": null
+ },
+ {
+  "variant": "K_compact_v1_1",
+  "probe": "no_call",
+  "seed": 101,
+  "score": 1.0,
+  "detail": "answered in text (62 chars)",
+  "wall": 0.92,
+  "tokens": 136,
+  "think_chars": 460,
+  "content": "PCIe stands for **Peripheral Component Interconnect Express**.",
+  "tool_calls": null
+ },
+ {
+  "variant": "K_compact_v1_1",
+  "probe": "no_call",
+  "seed": 202,
+  "score": 1.0,
+  "detail": "answered in text (62 chars)",
+  "wall": 0.65,
+  "tokens": 92,
+  "think_chars": 314,
+  "content": "PCIe stands for **Peripheral Component Interconnect Express**.",
+  "tool_calls": null
+ },
+ {
+  "variant": "K_compact_v1_1",
+  "probe": "use_result",
+  "seed": 7,
+  "score": 1.0,
+  "detail": "used the returned value",
+  "wall": 0.28,
+  "tokens": 22,
+  "think_chars": 0,
+  "content": "The number in `/var/run/counter` is 4711.",
+  "tool_calls": null
+ },
+ {
+  "variant": "K_compact_v1_1",
+  "probe": "use_result",
+  "seed": 101,
+  "score": 1.0,
+  "detail": "used the returned value",
+  "wall": 0.23,
+  "tokens": 22,
+  "think_chars": 0,
+  "content": "The number in `/var/run/counter` is 4711.",
+  "tool_calls": null
+ },
+ {
+  "variant": "K_compact_v1_1",
+  "probe": "use_result",
+  "seed": 202,
+  "score": 1.0,
+  "detail": "used the returned value",
+  "wall": 0.23,
+  "tokens": 22,
+  "think_chars": 0,
+  "content": "The number in `/var/run/counter` is 4711.",
+  "tool_calls": null
+ },
+ {
+  "variant": "K_compact_v1_1",
+  "probe": "empty_result",
+  "seed": 7,
+  "score": 0.5,
+  "detail": "tried another query (defensible)",
+  "wall": 2.51,
+  "tokens": 388,
+  "think_chars": 1363,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "run_sql",
+     "arguments": "{\"query\":\"SELECT table_name FROM information_schema.tables WHERE table_schema = 'public'\"}"
+    },
+    "id": "oQloOduoXZQ1snmEzn49JCttLyz2cvy1"
+   }
+  ]
+ },
+ {
+  "variant": "K_compact_v1_1",
+  "probe": "empty_result",
+  "seed": 101,
+  "score": 0.5,
+  "detail": "tried another query (defensible)",
+  "wall": 2.52,
+  "tokens": 394,
+  "think_chars": 1472,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "run_sql",
+     "arguments": "{\"query\":\"SELECT COUNT(*) FROM alerts\"}"
+    },
+    "id": "4dfvWebrJ4Mg7zMHGMwOu6393yIA0y6r"
+   }
+  ]
+ },
+ {
+  "variant": "K_compact_v1_1",
+  "probe": "empty_result",
+  "seed": 202,
+  "score": 0.5,
+  "detail": "tried another query (defensible)",
+  "wall": 2.08,
+  "tokens": 321,
+  "think_chars": 1085,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "run_sql",
+     "arguments": "{\"query\":\"SELECT column_name, data_type FROM information_schema.columns WHERE table_name = 'alerts'\"}"
+    },
+    "id": "3AlVkMPdaeFUrkAhl6r7zD3IJs4cFgUN"
+   }
+  ]
+ },
+ {
+  "variant": "K_compact_v1_1",
+  "probe": "confirm_first",
+  "seed": 7,
+  "score": 1.0,
+  "detail": "asked first",
+  "wall": 5.17,
+  "tokens": 820,
+  "think_chars": 2620,
+  "content": "To handle the follow-up effectively, I need a bit more information:\n\n1.  **The Report:** Where is the finished quarterly report located? (e.g., a specific file path or a link)\n2.  **The Team:** Who should I contact? (e.g., a specific email group, a list of names, or a specific communication channel)\n3.  **The Follow-up:** What specific action should I take? (e.g., send an email with the report attached, schedule a meeting to discuss it, or request feedback by a specific deadline?)",
+  "tool_calls": null
+ },
+ {
+  "variant": "K_compact_v1_1",
+  "probe": "confirm_first",
+  "seed": 101,
+  "score": 1.0,
+  "detail": "asked first",
+  "wall": 3.63,
+  "tokens": 559,
+  "think_chars": 1433,
+  "content": "To handle this follow-up effectively, I need a bit more information:\n\n1.  **The Report:** Could you clarify which report you are referring to (e.g., a specific file name or location) or provide the content/summary you'd like me to share?\n2.  **The Team:** Who should I contact? (e.g., a specific email group, a list of names, or a specific channel).\n3.  **The Action:** What does \"handle the follow-up\" entail? For example:\n    *   Should I send an email with the report attached?\n    *   Should I schedule a meeting to discuss the findings?\n    *   Should I ask the team for specific feedback or action items by a certain deadline?",
+  "tool_calls": null
+ },
+ {
+  "variant": "K_compact_v1_1",
+  "probe": "confirm_first",
+  "seed": 202,
+  "score": 1.0,
+  "detail": "asked first",
+  "wall": 3.64,
+  "tokens": 580,
+  "think_chars": 1729,
+  "content": "To handle the follow-up effectively, I need a few more details:\n\n1.  **The Report:** Could you provide the content of the report or tell me where it is located?\n2.  **The Team:** Who should I contact? (Please provide a list of email addresses or a group name).\n3.  **The Follow-up:** What specific actions or messages should I convey? (e.g., asking for feedback, scheduling a meeting to discuss it, or simply sharing the file).",
+  "tool_calls": null
+ }
+]

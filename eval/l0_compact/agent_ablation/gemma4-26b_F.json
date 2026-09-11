@@ -1,0 +1,299 @@
+[
+ {
+  "variant": "F_askroute",
+  "probe": "single_call",
+  "seed": 7,
+  "score": 1.0,
+  "detail": "read_file({'path': '/etc/hosts'})",
+  "wall": 0.63,
+  "tokens": 72,
+  "think_chars": 171,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "read_file",
+     "arguments": "{\"path\":\"/etc/hosts\"}"
+    },
+    "id": "qHmgxJROdxp8CoYu1WBA9vQKw4DZJHbk"
+   }
+  ]
+ },
+ {
+  "variant": "F_askroute",
+  "probe": "single_call",
+  "seed": 101,
+  "score": 1.0,
+  "detail": "read_file({'path': '/etc/hosts'})",
+  "wall": 0.48,
+  "tokens": 72,
+  "think_chars": 171,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "read_file",
+     "arguments": "{\"path\":\"/etc/hosts\"}"
+    },
+    "id": "aUUNfFRuUvHDfR5eMwu6voNoijhPFMxP"
+   }
+  ]
+ },
+ {
+  "variant": "F_askroute",
+  "probe": "single_call",
+  "seed": 202,
+  "score": 1.0,
+  "detail": "read_file({'path': '/etc/hosts'})",
+  "wall": 0.38,
+  "tokens": 57,
+  "think_chars": 125,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "read_file",
+     "arguments": "{\"path\":\"/etc/hosts\"}"
+    },
+    "id": "ArIF7jNNI51mhzJesdBAnHrpEbTwy5G0"
+   }
+  ]
+ },
+ {
+  "variant": "F_askroute",
+  "probe": "tool_choice",
+  "seed": 7,
+  "score": 0.6666666666666666,
+  "detail": "run_sql: select table_name from information_schema.tables where ",
+  "wall": 2.13,
+  "tokens": 345,
+  "think_chars": 1201,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "run_sql",
+     "arguments": "{\"query\":\"SELECT table_name FROM information_schema.tables WHERE table_schema = 'public';\"}"
+    },
+    "id": "cOQnJCe94yjj27CjTC0dprzJcQFBlHqs"
+   }
+  ]
+ },
+ {
+  "variant": "F_askroute",
+  "probe": "tool_choice",
+  "seed": 101,
+  "score": 0.6666666666666666,
+  "detail": "run_sql: select table_name from information_schema.tables where ",
+  "wall": 2.4,
+  "tokens": 384,
+  "think_chars": 1412,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "run_sql",
+     "arguments": "{\"query\":\"SELECT table_name FROM information_schema.tables WHERE table_schema = 'public';\"}"
+    },
+    "id": "VTgxh5JFAj04YRpn9g0pQvcCh4vXQudU"
+   }
+  ]
+ },
+ {
+  "variant": "F_askroute",
+  "probe": "tool_choice",
+  "seed": 202,
+  "score": 0.6666666666666666,
+  "detail": "run_sql: select table_name from information_schema.tables where ",
+  "wall": 1.49,
+  "tokens": 232,
+  "think_chars": 797,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "run_sql",
+     "arguments": "{\"query\":\"SELECT table_name FROM information_schema.tables WHERE table_schema = 'public';\"}"
+    },
+    "id": "TCS5WEVnfHIgENWbxXnM6NA2lo7LZZlG"
+   }
+  ]
+ },
+ {
+  "variant": "F_askroute",
+  "probe": "no_call",
+  "seed": 7,
+  "score": 1.0,
+  "detail": "answered in text (62 chars)",
+  "wall": 0.54,
+  "tokens": 82,
+  "think_chars": 263,
+  "content": "PCIe stands for **Peripheral Component Interconnect Express**.",
+  "tool_calls": null
+ },
+ {
+  "variant": "F_askroute",
+  "probe": "no_call",
+  "seed": 101,
+  "score": 1.0,
+  "detail": "answered in text (62 chars)",
+  "wall": 0.53,
+  "tokens": 82,
+  "think_chars": 263,
+  "content": "PCIe stands for **Peripheral Component Interconnect Express**.",
+  "tool_calls": null
+ },
+ {
+  "variant": "F_askroute",
+  "probe": "no_call",
+  "seed": 202,
+  "score": 1.0,
+  "detail": "answered in text (62 chars)",
+  "wall": 0.34,
+  "tokens": 52,
+  "think_chars": 154,
+  "content": "PCIe stands for **Peripheral Component Interconnect Express**.",
+  "tool_calls": null
+ },
+ {
+  "variant": "F_askroute",
+  "probe": "use_result",
+  "seed": 7,
+  "score": 1.0,
+  "detail": "used the returned value",
+  "wall": 0.19,
+  "tokens": 21,
+  "think_chars": 0,
+  "content": "The number in /var/run/counter is 4711.",
+  "tool_calls": null
+ },
+ {
+  "variant": "F_askroute",
+  "probe": "use_result",
+  "seed": 101,
+  "score": 1.0,
+  "detail": "used the returned value",
+  "wall": 0.18,
+  "tokens": 21,
+  "think_chars": 0,
+  "content": "The number in /var/run/counter is 4711.",
+  "tool_calls": null
+ },
+ {
+  "variant": "F_askroute",
+  "probe": "use_result",
+  "seed": 202,
+  "score": 1.0,
+  "detail": "used the returned value",
+  "wall": 0.18,
+  "tokens": 21,
+  "think_chars": 0,
+  "content": "The number in /var/run/counter is 4711.",
+  "tool_calls": null
+ },
+ {
+  "variant": "F_askroute",
+  "probe": "empty_result",
+  "seed": 7,
+  "score": 0.5,
+  "detail": "tried another query (defensible)",
+  "wall": 1.94,
+  "tokens": 313,
+  "think_chars": 1112,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "run_sql",
+     "arguments": "{\"query\":\"SELECT table_name FROM information_schema.tables WHERE table_schema = 'public'\"}"
+    },
+    "id": "MrNGUWuds1lBqAblvUpPCCIilEB7FFII"
+   }
+  ]
+ },
+ {
+  "variant": "F_askroute",
+  "probe": "empty_result",
+  "seed": 101,
+  "score": 0.5,
+  "detail": "tried another query (defensible)",
+  "wall": 1.6,
+  "tokens": 259,
+  "think_chars": 854,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "run_sql",
+     "arguments": "{\"query\":\"SELECT column_name, data_type FROM information_schema.columns WHERE table_name = 'alerts'\"}"
+    },
+    "id": "WsdtimpzUIrCLxGOGwmvlAKXmYxskzag"
+   }
+  ]
+ },
+ {
+  "variant": "F_askroute",
+  "probe": "empty_result",
+  "seed": 202,
+  "score": 0.5,
+  "detail": "tried another query (defensible)",
+  "wall": 1.44,
+  "tokens": 234,
+  "think_chars": 793,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "run_sql",
+     "arguments": "{\"query\":\"SELECT table_name FROM information_schema.tables WHERE table_schema = 'public'\"}"
+    },
+    "id": "RbJCwrpZZK0jaQoYPJny721wCTazh7OI"
+   }
+  ]
+ },
+ {
+  "variant": "F_askroute",
+  "probe": "confirm_first",
+  "seed": 7,
+  "score": 1.0,
+  "detail": "asked first",
+  "wall": 3.16,
+  "tokens": 510,
+  "think_chars": 1433,
+  "content": "To help you with this, I need a bit more information:\n\n1.  **What does \"handle the follow-up\" entail?** (e.g., sending an email with the report, scheduling a meeting to discuss it, or posting it to a specific channel?)\n2.  **Who is \"the team\"?** (Please provide an email list, a specific group of people, or a department name.)\n3.  **Where is the report?** (Is it a file on your computer, a link, or should I look for it in your emails/files?)",
+  "tool_calls": null
+ },
+ {
+  "variant": "F_askroute",
+  "probe": "confirm_first",
+  "seed": 101,
+  "score": 1.0,
+  "detail": "asked first",
+  "wall": 2.7,
+  "tokens": 437,
+  "think_chars": 1260,
+  "content": "To help you with this, I need a bit more information:\n\n1.  **Which report** are you referring to? (Please provide the file name or its location).\n2.  **Who is \"the team\"?** (Please provide the names or email addresses of the people I should contact).\n3.  **What specific follow-up** should I perform? (e.g., send an email with the report attached, schedule a meeting to discuss it, or ask for specific feedback?)",
+  "tool_calls": null
+ },
+ {
+  "variant": "F_askroute",
+  "probe": "confirm_first",
+  "seed": 202,
+  "score": 1.0,
+  "detail": "asked first",
+  "wall": 2.94,
+  "tokens": 473,
+  "think_chars": 1189,
+  "content": "To help you with this, I need a few more details:\n\n1.  **Who is \"the team\"?** (e.g., a specific email list, a group of people, or a specific department?)\n2.  **What does \"handle the follow-up\" entail?** (e.g., sending an email with the report, scheduling a meeting to discuss it, or assigning action items?)\n3.  **Where is the report?** (e.g., a file path, a link, or should I look for a specific file name?)\n4.  **What is the specific message or goal for the follow-up?** (e.g., just notifying them it's ready, or asking for feedback by a certain date?)",
+  "tool_calls": null
+ }
+]

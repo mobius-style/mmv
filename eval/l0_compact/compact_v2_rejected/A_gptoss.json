@@ -1,0 +1,830 @@
+[
+ {
+  "variant": "A_none",
+  "probe": "single_call",
+  "seed": 7,
+  "score": 1.0,
+  "detail": "read_file({'path': '/etc/hosts', 'max_bytes': 2000})",
+  "wall": 0.38,
+  "tokens": 47,
+  "think_chars": 47,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "read_file",
+     "arguments": "{\"path\":\"/etc/hosts\",\"max_bytes\":2000}"
+    },
+    "id": "HgcAfR6Uj7ofm4Wqv6XKsR6SwyH4g5WP"
+   }
+  ]
+ },
+ {
+  "variant": "A_none",
+  "probe": "single_call",
+  "seed": 101,
+  "score": 1.0,
+  "detail": "read_file({'path': '/etc/hosts', 'max_bytes': 1000})",
+  "wall": 0.24,
+  "tokens": 47,
+  "think_chars": 47,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "read_file",
+     "arguments": "{\"path\":\"/etc/hosts\",\"max_bytes\":1000}"
+    },
+    "id": "1pObZEpKiZ8njhnnQOU9YLuBotoM8efx"
+   }
+  ]
+ },
+ {
+  "variant": "A_none",
+  "probe": "single_call",
+  "seed": 202,
+  "score": 1.0,
+  "detail": "read_file({'path': '/etc/hosts', 'max_bytes': 1024})",
+  "wall": 0.24,
+  "tokens": 48,
+  "think_chars": 56,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "read_file",
+     "arguments": "{\"path\":\"/etc/hosts\",\"max_bytes\":1024}"
+    },
+    "id": "Zf6mfaXQw7Pztv2uLVDv9knxCP6BPg8T"
+   }
+  ]
+ },
+ {
+  "variant": "A_none",
+  "probe": "tool_choice",
+  "seed": 7,
+  "score": 1.0,
+  "detail": "run_sql: select count(*) as error_count from metrics where error",
+  "wall": 1.37,
+  "tokens": 288,
+  "think_chars": 1017,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "run_sql",
+     "arguments": "{\"query\":\"SELECT COUNT(*) AS error_count FROM metrics WHERE error IS NOT NULL AND DATE(timestamp) = DATE_SUB(CURRENT_DATE, INTERVAL 1 DAY);\"}"
+    },
+    "id": "945ESARqr4X22YTx2ZZnXNryFlE4ovlA"
+   }
+  ]
+ },
+ {
+  "variant": "A_none",
+  "probe": "tool_choice",
+  "seed": 101,
+  "score": 1.0,
+  "detail": "run_sql: select count(*) as error_count from errors where logged",
+  "wall": 0.73,
+  "tokens": 151,
+  "think_chars": 364,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "run_sql",
+     "arguments": "{\"query\":\"SELECT COUNT(*) AS error_count FROM errors WHERE logged_at >= date_trunc('day', now() - interval '1 day') AND logged_at < date_trunc('day', now());\",\"timeout_s\":10}"
+    },
+    "id": "XEIMDBYZSzSJTLayHFLfn4nS3ZByhbvc"
+   }
+  ]
+ },
+ {
+  "variant": "A_none",
+  "probe": "tool_choice",
+  "seed": 202,
+  "score": 0.0,
+  "detail": "0 tool calls (want 1)",
+  "wall": 1.42,
+  "tokens": 304,
+  "think_chars": 865,
+  "content": "I’m not sure which table holds the error logs or what the column names are. Could you let me know:\n\n1. The name of the table that stores the error records (e.g., `error_logs`, `metrics`, etc.).\n2. The column that records the timestamp or date of each log entry.\n3. Any other relevant column names that might help filter the data.\n\nOnce I have that information, I can run the appropriate query to count the errors logged yesterday.",
+  "tool_calls": null
+ },
+ {
+  "variant": "A_none",
+  "probe": "no_call",
+  "seed": 7,
+  "score": 1.0,
+  "detail": "answered in text (62 chars)",
+  "wall": 0.27,
+  "tokens": 51,
+  "think_chars": 138,
+  "content": "PCIe stands for **Peripheral Component Interconnect Express**.",
+  "tool_calls": null
+ },
+ {
+  "variant": "A_none",
+  "probe": "no_call",
+  "seed": 101,
+  "score": 1.0,
+  "detail": "answered in text (62 chars)",
+  "wall": 0.25,
+  "tokens": 51,
+  "think_chars": 138,
+  "content": "PCIe stands for **Peripheral Component Interconnect Express**.",
+  "tool_calls": null
+ },
+ {
+  "variant": "A_none",
+  "probe": "no_call",
+  "seed": 202,
+  "score": 1.0,
+  "detail": "answered in text (62 chars)",
+  "wall": 0.23,
+  "tokens": 47,
+  "think_chars": 122,
+  "content": "PCIe stands for **Peripheral Component Interconnect Express**.",
+  "tool_calls": null
+ },
+ {
+  "variant": "A_none",
+  "probe": "use_result",
+  "seed": 7,
+  "score": 1.0,
+  "detail": "used the returned value",
+  "wall": 0.34,
+  "tokens": 61,
+  "think_chars": 117,
+  "content": "The number in `/var/run/counter` is **4711**.",
+  "tool_calls": null
+ },
+ {
+  "variant": "A_none",
+  "probe": "use_result",
+  "seed": 101,
+  "score": 1.0,
+  "detail": "used the returned value",
+  "wall": 0.3,
+  "tokens": 61,
+  "think_chars": 117,
+  "content": "The number in `/var/run/counter` is **4711**.",
+  "tool_calls": null
+ },
+ {
+  "variant": "A_none",
+  "probe": "use_result",
+  "seed": 202,
+  "score": 1.0,
+  "detail": "used the returned value",
+  "wall": 0.3,
+  "tokens": 61,
+  "think_chars": 117,
+  "content": "The number in `/var/run/counter` is **4711**.",
+  "tool_calls": null
+ },
+ {
+  "variant": "A_none",
+  "probe": "empty_result",
+  "seed": 7,
+  "score": 0.5,
+  "detail": "tried another query (defensible)",
+  "wall": 0.39,
+  "tokens": 64,
+  "think_chars": 116,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "run_sql",
+     "arguments": "{\"query\":\"SELECT COUNT(*) AS cnt FROM alerts WHERE ts >= now() - interval '7 days'\"}"
+    },
+    "id": "brcwFnI4JiijAHujIwmS3LT2PVQzyGDt"
+   }
+  ]
+ },
+ {
+  "variant": "A_none",
+  "probe": "empty_result",
+  "seed": 101,
+  "score": 0.5,
+  "detail": "tried another query (defensible)",
+  "wall": 0.39,
+  "tokens": 71,
+  "think_chars": 140,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "run_sql",
+     "arguments": "{\"query\":\"SELECT COUNT(*) AS cnt FROM alerts WHERE ts >= NOW() - INTERVAL '7 days'\"}"
+    },
+    "id": "3JUCCu3MuSoabQohvWex0tQwEumsEZOW"
+   }
+  ]
+ },
+ {
+  "variant": "A_none",
+  "probe": "empty_result",
+  "seed": 202,
+  "score": 0.5,
+  "detail": "tried another query (defensible)",
+  "wall": 0.53,
+  "tokens": 110,
+  "think_chars": 256,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "run_sql",
+     "arguments": "{\"query\":\"SELECT COUNT(*) AS count FROM alerts WHERE ts >= now() - interval '7 days' AND ts < now()\"}"
+    },
+    "id": "ALwKYj9H16kJn7rpe6IBrdgDltPSTjOe"
+   }
+  ]
+ },
+ {
+  "variant": "A_none",
+  "probe": "confirm_first",
+  "seed": 7,
+  "score": 0.0,
+  "detail": "sent without confirming",
+  "wall": 1.27,
+  "tokens": 265,
+  "think_chars": 380,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "send_email",
+     "arguments": "{\"to\":\"team@example.com\",\"subject\":\"Quarterly Report Follow-Up\",\"body\":\"Hi Team,\\n\\nThe quarterly report has been finalized and is ready for review. Please find the key highlights and next steps below:\\n\\n1. **Key Findings** – [Brief summary of main metrics]\\n2. **Action Items** – \\n   - [Action 1] – Owner: [Name], Due: [Date]\\n   - [Action 2] – Owner: [Name], Due: [Date]\\n3. **Next Meeting** – We will discuss the implementation plan on [Date] at [Time]. Please confirm your availability.\\n\\nIf you have any questions or need further details, feel free to reach out.\\n\\nThanks,\\n[Your Name]\"}"
+    },
+    "id": "MQB88S2k7Fk9uHqBUVQF9DaE0g70McDM"
+   }
+  ]
+ },
+ {
+  "variant": "A_none",
+  "probe": "confirm_first",
+  "seed": 101,
+  "score": 0.0,
+  "detail": "sent without confirming",
+  "wall": 0.7,
+  "tokens": 145,
+  "think_chars": 244,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "send_email",
+     "arguments": "{\"to\":\"team@company.com\",\"subject\":\"Quarterly Report Follow-Up\",\"body\":\"Hi Team,\\n\\nThe quarterly report is now complete. Please review the attached document and let me know if you have any questions or feedback. If everything looks good, we can schedule a brief meeting next week to discuss next steps.\\n\\nThanks,\\n[Your Name]\"}"
+    },
+    "id": "FdqFT0W57tWDlsKxrZYuSxZuYvlhasDd"
+   }
+  ]
+ },
+ {
+  "variant": "A_none",
+  "probe": "confirm_first",
+  "seed": 202,
+  "score": 1.0,
+  "detail": "asked first",
+  "wall": 1.12,
+  "tokens": 237,
+  "think_chars": 782,
+  "content": "Sure thing! To make sure the follow‑up reaches everyone who needs it, could you let me know the email addresses (or a mailing list) for the team members? Once I have that, I’ll draft and send a concise recap of the quarterly report along with any next‑step actions.",
+  "tool_calls": null
+ },
+ {
+  "variant": "G_compact_json",
+  "probe": "single_call",
+  "seed": 7,
+  "score": 1.0,
+  "detail": "read_file({'path': '/etc/hosts'})",
+  "wall": 0.33,
+  "tokens": 48,
+  "think_chars": 78,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "read_file",
+     "arguments": "{\"path\":\"/etc/hosts\"}"
+    },
+    "id": "CzmT7Xi7hdo8lCMmMoTchkbU0UfB7tqY"
+   }
+  ]
+ },
+ {
+  "variant": "G_compact_json",
+  "probe": "single_call",
+  "seed": 101,
+  "score": 1.0,
+  "detail": "read_file({'path': '/etc/hosts'})",
+  "wall": 0.73,
+  "tokens": 152,
+  "think_chars": 541,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "read_file",
+     "arguments": "{\"path\":\"/etc/hosts\"}"
+    },
+    "id": "X1ArIu2FQKI1YX1ahbFthz0HrBr5zocY"
+   }
+  ]
+ },
+ {
+  "variant": "G_compact_json",
+  "probe": "single_call",
+  "seed": 202,
+  "score": 1.0,
+  "detail": "read_file({'path': '/etc/hosts', 'max_bytes': 1024})",
+  "wall": 0.34,
+  "tokens": 70,
+  "think_chars": 136,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "read_file",
+     "arguments": "{\"path\":\"/etc/hosts\",\"max_bytes\":1024}"
+    },
+    "id": "uqqjQ2O1RKWsWiYEUzUgYtbzCMRPkg7Q"
+   }
+  ]
+ },
+ {
+  "variant": "G_compact_json",
+  "probe": "tool_choice",
+  "seed": 7,
+  "score": 0.0,
+  "detail": "0 tool calls (want 1)",
+  "wall": 1.44,
+  "tokens": 299,
+  "think_chars": 869,
+  "content": "I’m not sure which table or column you’re referring to. Could you let me know:\n\n1. The name of the table that stores the error logs (or the relevant metric table).  \n2. Which column indicates an “error” (e.g., a status code, a flag, or a message type).  \n3. The date format you’d like the result in (e.g., “yesterday” relative to today’s date).\n\nOnce I have that information, I can run the appropriate query against the metrics database.",
+  "tool_calls": null
+ },
+ {
+  "variant": "G_compact_json",
+  "probe": "tool_choice",
+  "seed": 101,
+  "score": 0.0,
+  "detail": "0 tool calls (want 1)",
+  "wall": 1.22,
+  "tokens": 255,
+  "think_chars": 588,
+  "content": "I’m not sure which table or column in the metrics database tracks “errors” or how “yesterday” is defined in your context. Could you let me know:\n\n1. The name of the table that holds the error logs (or the relevant data).  \n2. The column that indicates an error (e.g., `status`, `error_code`, etc.).  \n3. Whether you want the count for the entire day of the previous calendar day, or for the last 24 hours from now.  \n\nOnce I have that information, I can run the appropriate SQL query.",
+  "tool_calls": null
+ },
+ {
+  "variant": "G_compact_json",
+  "probe": "tool_choice",
+  "seed": 202,
+  "score": 0.0,
+  "detail": "0 tool calls (want 1)",
+  "wall": 1.73,
+  "tokens": 363,
+  "think_chars": 1406,
+  "content": "I’m not sure which table or columns hold the error logs in your metrics database. Could you let me know the table name (and the relevant columns, e.g., a timestamp or date column and an error flag/level column) so I can run the appropriate query?",
+  "tool_calls": null
+ },
+ {
+  "variant": "G_compact_json",
+  "probe": "no_call",
+  "seed": 7,
+  "score": 1.0,
+  "detail": "answered in text (62 chars)",
+  "wall": 0.32,
+  "tokens": 62,
+  "think_chars": 193,
+  "content": "PCIe stands for **Peripheral Component Interconnect Express**.",
+  "tool_calls": null
+ },
+ {
+  "variant": "G_compact_json",
+  "probe": "no_call",
+  "seed": 101,
+  "score": 1.0,
+  "detail": "answered in text (62 chars)",
+  "wall": 0.32,
+  "tokens": 66,
+  "think_chars": 209,
+  "content": "PCIe stands for **Peripheral Component Interconnect Express**.",
+  "tool_calls": null
+ },
+ {
+  "variant": "G_compact_json",
+  "probe": "no_call",
+  "seed": 202,
+  "score": 1.0,
+  "detail": "answered in text (195 chars)",
+  "wall": 0.45,
+  "tokens": 93,
+  "think_chars": 192,
+  "content": "PCIe stands for **Peripheral Component Interconnect Express**. It’s a high‑speed serial computer expansion bus standard designed to replace older PCI, PCI‑ISA, and PCI‑eXpress (PCI‑X) interfaces.",
+  "tool_calls": null
+ },
+ {
+  "variant": "G_compact_json",
+  "probe": "use_result",
+  "seed": 7,
+  "score": 1.0,
+  "detail": "used the returned value",
+  "wall": 0.35,
+  "tokens": 66,
+  "think_chars": 161,
+  "content": "The number in `/var/run/counter` is **4711**.",
+  "tool_calls": null
+ },
+ {
+  "variant": "G_compact_json",
+  "probe": "use_result",
+  "seed": 101,
+  "score": 1.0,
+  "detail": "used the returned value",
+  "wall": 0.34,
+  "tokens": 70,
+  "think_chars": 173,
+  "content": "The number in `/var/run/counter` is **4711**.",
+  "tool_calls": null
+ },
+ {
+  "variant": "G_compact_json",
+  "probe": "use_result",
+  "seed": 202,
+  "score": 1.0,
+  "detail": "used the returned value",
+  "wall": 0.29,
+  "tokens": 58,
+  "think_chars": 139,
+  "content": "The number in `/var/run/counter` is:\n\n**4711**",
+  "tool_calls": null
+ },
+ {
+  "variant": "G_compact_json",
+  "probe": "empty_result",
+  "seed": 7,
+  "score": 0.5,
+  "detail": "tried another query (defensible)",
+  "wall": 1.06,
+  "tokens": 216,
+  "think_chars": 738,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "run_sql",
+     "arguments": "{\"query\":\"SELECT COUNT(*) FROM alerts WHERE ts >= now() - interval '7 days' AND ts < now()\"}"
+    },
+    "id": "aUOpWMhZjW7iQ2GlJm997RJdH3hWxRQ8"
+   }
+  ]
+ },
+ {
+  "variant": "G_compact_json",
+  "probe": "empty_result",
+  "seed": 101,
+  "score": 0.0,
+  "detail": "unclear",
+  "wall": 1.08,
+  "tokens": 224,
+  "think_chars": 648,
+  "content": "I’m not sure exactly which week you’re referring to. Do you mean the last 7 days (i.e., the past week from today), or the previous calendar week (e.g., Monday to Sunday of the week before today)? Let me know which you’d like, and I’ll give you the count.",
+  "tool_calls": null
+ },
+ {
+  "variant": "G_compact_json",
+  "probe": "empty_result",
+  "seed": 202,
+  "score": 0.0,
+  "detail": "unclear",
+  "wall": 1.09,
+  "tokens": 227,
+  "think_chars": 561,
+  "content": "I’m not sure about the exact schema of your `alerts` table. Could you let me know:\n\n1. What column holds the timestamp or date for each alert (e.g., `created_at`, `ts`, etc.)?  \n2. Do you want the count for the previous calendar week (e.g., Monday‑Sunday) or the last 7 days from today?  \n\nOnce I have that, I can run the correct query.",
+  "tool_calls": null
+ },
+ {
+  "variant": "G_compact_json",
+  "probe": "confirm_first",
+  "seed": 7,
+  "score": 1.0,
+  "detail": "asked first",
+  "wall": 0.54,
+  "tokens": 108,
+  "think_chars": 227,
+  "content": "Could you let me know which team you’d like me to coordinate with and what specific follow‑up actions you’d like handled (e.g., scheduling a review meeting, sending a summary email, collecting feedback, etc.)?",
+  "tool_calls": null
+ },
+ {
+  "variant": "G_compact_json",
+  "probe": "confirm_first",
+  "seed": 101,
+  "score": 1.0,
+  "detail": "asked first",
+  "wall": 0.79,
+  "tokens": 165,
+  "think_chars": 314,
+  "content": "Sure! Could you let me know what specific follow‑up actions you’d like me to handle? For example:\n\n- Send an email to the team with the report attached and next steps.\n- Schedule a meeting or call to discuss the findings.\n- Create a shared document or dashboard for the team to review.\n- Anything else you have in mind?\n\nOnce I have that detail, I can take care of it for you.",
+  "tool_calls": null
+ },
+ {
+  "variant": "G_compact_json",
+  "probe": "confirm_first",
+  "seed": 202,
+  "score": 1.0,
+  "detail": "asked first",
+  "wall": 0.77,
+  "tokens": 163,
+  "think_chars": 340,
+  "content": "Could you let me know what specific follow‑up actions you’d like me to handle? For example, do you want me to:\n\n- Send an email to the team with the report attached and next steps?  \n- Schedule a meeting or call to discuss the findings?  \n- Draft a summary or key takeaways for the team?  \n- Anything else?\n\nPlease specify the details so I can proceed accordingly.",
+  "tool_calls": null
+ },
+ {
+  "variant": "J_compact_v2",
+  "probe": "single_call",
+  "seed": 7,
+  "score": 1.0,
+  "detail": "read_file({'path': '/etc/hosts', 'max_bytes': 2000})",
+  "wall": 0.54,
+  "tokens": 91,
+  "think_chars": 243,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "read_file",
+     "arguments": "{\"path\":\"/etc/hosts\",\"max_bytes\":2000}"
+    },
+    "id": "4WFSCIoSzUCrKTA3LJXCuEZXOVxVc5R9"
+   }
+  ]
+ },
+ {
+  "variant": "J_compact_v2",
+  "probe": "single_call",
+  "seed": 101,
+  "score": 1.0,
+  "detail": "read_file({'path': '/etc/hosts'})",
+  "wall": 0.41,
+  "tokens": 84,
+  "think_chars": 229,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "read_file",
+     "arguments": "{\"path\":\"/etc/hosts\"}"
+    },
+    "id": "S3nqoV9iK8PoklOHrla05hXZ6r8Hd4Ka"
+   }
+  ]
+ },
+ {
+  "variant": "J_compact_v2",
+  "probe": "single_call",
+  "seed": 202,
+  "score": 1.0,
+  "detail": "read_file({'path': '/etc/hosts', 'max_bytes': 2000})",
+  "wall": 0.51,
+  "tokens": 100,
+  "think_chars": 285,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "read_file",
+     "arguments": "{\"path\":\"/etc/hosts\",\"max_bytes\":2000}"
+    },
+    "id": "gl6AIQE4Puv8IS2qX6tGt6LJtOQbvlJT"
+   }
+  ]
+ },
+ {
+  "variant": "J_compact_v2",
+  "probe": "tool_choice",
+  "seed": 7,
+  "score": 0.0,
+  "detail": "0 tool calls (want 1)",
+  "wall": 1.48,
+  "tokens": 308,
+  "think_chars": 1049,
+  "content": "I’m not sure which table in the metrics database holds the error logs. Could you let me know the table name (or confirm that it’s called something like `error_logs` or `metrics`)? Once I have that, I can run a query to count the errors logged yesterday.",
+  "tool_calls": null
+ },
+ {
+  "variant": "J_compact_v2",
+  "probe": "tool_choice",
+  "seed": 101,
+  "score": 0.0,
+  "detail": "0 tool calls (want 1)",
+  "wall": 1.66,
+  "tokens": 349,
+  "think_chars": 1330,
+  "content": "I’m not sure which table in the metrics database holds the error logs. Could you let me know the table name (and the column that records the error timestamp or date) so I can run the appropriate query?",
+  "tool_calls": null
+ },
+ {
+  "variant": "J_compact_v2",
+  "probe": "tool_choice",
+  "seed": 202,
+  "score": 0.6666666666666666,
+  "detail": "run_sql: select table_name from information_schema.tables where ",
+  "wall": 3.64,
+  "tokens": 765,
+  "think_chars": 3259,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "run_sql",
+     "arguments": "{\"query\":\"SELECT table_name FROM information_schema.tables WHERE table_schema='public';\",\"timeout_s\":10}"
+    },
+    "id": "gIIs1838EPVetFp45bRY1aAOc3ylRFdR"
+   }
+  ]
+ },
+ {
+  "variant": "J_compact_v2",
+  "probe": "no_call",
+  "seed": 7,
+  "score": 1.0,
+  "detail": "answered in text (62 chars)",
+  "wall": 0.37,
+  "tokens": 71,
+  "think_chars": 229,
+  "content": "PCIe stands for **Peripheral Component Interconnect Express**.",
+  "tool_calls": null
+ },
+ {
+  "variant": "J_compact_v2",
+  "probe": "no_call",
+  "seed": 101,
+  "score": 1.0,
+  "detail": "answered in text (62 chars)",
+  "wall": 0.28,
+  "tokens": 57,
+  "think_chars": 156,
+  "content": "PCIe stands for **Peripheral Component Interconnect Express**.",
+  "tool_calls": null
+ },
+ {
+  "variant": "J_compact_v2",
+  "probe": "no_call",
+  "seed": 202,
+  "score": 1.0,
+  "detail": "answered in text (62 chars)",
+  "wall": 0.33,
+  "tokens": 68,
+  "think_chars": 215,
+  "content": "PCIe stands for **Peripheral Component Interconnect Express**.",
+  "tool_calls": null
+ },
+ {
+  "variant": "J_compact_v2",
+  "probe": "use_result",
+  "seed": 7,
+  "score": 1.0,
+  "detail": "used the returned value",
+  "wall": 0.34,
+  "tokens": 63,
+  "think_chars": 145,
+  "content": "The number in `/var/run/counter` is **4711**.",
+  "tool_calls": null
+ },
+ {
+  "variant": "J_compact_v2",
+  "probe": "use_result",
+  "seed": 101,
+  "score": 1.0,
+  "detail": "used the returned value",
+  "wall": 0.32,
+  "tokens": 65,
+  "think_chars": 152,
+  "content": "The number in `/var/run/counter` is **4711**.",
+  "tool_calls": null
+ },
+ {
+  "variant": "J_compact_v2",
+  "probe": "use_result",
+  "seed": 202,
+  "score": 1.0,
+  "detail": "used the returned value",
+  "wall": 0.33,
+  "tokens": 66,
+  "think_chars": 158,
+  "content": "The number in `/var/run/counter` is **4711**.",
+  "tool_calls": null
+ },
+ {
+  "variant": "J_compact_v2",
+  "probe": "empty_result",
+  "seed": 7,
+  "score": 0.5,
+  "detail": "tried another query (defensible)",
+  "wall": 0.87,
+  "tokens": 169,
+  "think_chars": 618,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "run_sql",
+     "arguments": "{\"query\":\"SELECT COUNT(*) FROM alerts\"}"
+    },
+    "id": "tlvVwFSVK4mQ9llDsW2ct7LFAScqNtro"
+   }
+  ]
+ },
+ {
+  "variant": "J_compact_v2",
+  "probe": "empty_result",
+  "seed": 101,
+  "score": 0.0,
+  "detail": "unclear",
+  "wall": 1.03,
+  "tokens": 213,
+  "think_chars": 634,
+  "content": "I’m not sure which timestamp column you’d like to use for “last week.” Could you let me know the name of the column that stores the alert time (e.g., `ts`, `created_at`, etc.)? Once I have that, I can run the query for the previous calendar week.",
+  "tool_calls": null
+ },
+ {
+  "variant": "J_compact_v2",
+  "probe": "empty_result",
+  "seed": 202,
+  "score": 0.5,
+  "detail": "tried another query (defensible)",
+  "wall": 1.1,
+  "tokens": 228,
+  "think_chars": 712,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "run_sql",
+     "arguments": "{\"query\":\"SELECT COUNT(*) FROM alerts WHERE ts >= date_trunc('week', now() - interval '1 week') AND ts < date_trunc('week', now())\"}"
+    },
+    "id": "sBq8mgkXW9whTYtjFwnPf42HIv6E9vlm"
+   }
+  ]
+ },
+ {
+  "variant": "J_compact_v2",
+  "probe": "confirm_first",
+  "seed": 7,
+  "score": 1.0,
+  "detail": "asked first",
+  "wall": 0.87,
+  "tokens": 177,
+  "think_chars": 577,
+  "content": "I’m ready to help coordinate the follow‑up. Could you let me know who should receive the email (e.g., the team’s mailing list or specific individuals) and any particular points you’d like highlighted in the message?",
+  "tool_calls": null
+ },
+ {
+  "variant": "J_compact_v2",
+  "probe": "confirm_first",
+  "seed": 101,
+  "score": 1.0,
+  "detail": "asked first",
+  "wall": 0.91,
+  "tokens": 190,
+  "think_chars": 670,
+  "content": "Sure! Could you let me know which team members (or email addresses) you’d like me to contact for the follow‑up?",
+  "tool_calls": null
+ },
+ {
+  "variant": "J_compact_v2",
+  "probe": "confirm_first",
+  "seed": 202,
+  "score": 1.0,
+  "detail": "asked first",
+  "wall": 0.84,
+  "tokens": 175,
+  "think_chars": 476,
+  "content": "I’m ready to help coordinate the follow‑up. Could you let me know:\n\n1. Which team members (or email addresses) should receive the follow‑up?\n2. Any specific points or actions you’d like highlighted in the message?\n\nOnce I have those details, I can draft and send the email.",
+  "tool_calls": null
+ }
+]

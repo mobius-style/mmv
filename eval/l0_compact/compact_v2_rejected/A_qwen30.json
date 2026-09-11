@@ -1,0 +1,326 @@
+[
+ {
+  "variant": "A_none",
+  "probe": "single_call",
+  "seed": 7,
+  "score": 1.0,
+  "detail": "read_file({'path': '/etc/hosts'})",
+  "wall": 2.19,
+  "tokens": 157,
+  "think_chars": 564,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "read_file",
+     "arguments": "{\"path\": \"/etc/hosts\"}"
+    },
+    "id": "lqRsVVlepuHX9YIxdMyfSDDAeORQldKB"
+   }
+  ]
+ },
+ {
+  "variant": "A_none",
+  "probe": "single_call",
+  "seed": 101,
+  "score": 1.0,
+  "detail": "read_file({'path': '/etc/hosts'})",
+  "wall": 1.66,
+  "tokens": 128,
+  "think_chars": 438,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "read_file",
+     "arguments": "{\"path\": \"/etc/hosts\"}"
+    },
+    "id": "13uM0nu3KhgAtIMkJBvuoAILhDRajy1o"
+   }
+  ]
+ },
+ {
+  "variant": "A_none",
+  "probe": "single_call",
+  "seed": 202,
+  "score": 1.0,
+  "detail": "read_file({'path': '/etc/hosts'})",
+  "wall": 1.99,
+  "tokens": 162,
+  "think_chars": 587,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "read_file",
+     "arguments": "{\"path\": \"/etc/hosts\"}"
+    },
+    "id": "lFXTfMagSeCrJYfI3fguLG2qAMRVjArs"
+   }
+  ]
+ },
+ {
+  "variant": "A_none",
+  "probe": "confirm_first",
+  "seed": 7,
+  "score": 0.0,
+  "detail": "sent without confirming",
+  "wall": 8.62,
+  "tokens": 669,
+  "think_chars": 2728,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "send_email",
+     "arguments": "{\"to\": \"team@company.com\", \"subject\": \"Quarterly Report Follow-Up\", \"body\": \"The quarterly report has been completed. Please review and provide feedback as needed.\"}"
+    },
+    "id": "1wetL33l6xDrIPV3WA4pUJpd4FnY5SwN"
+   }
+  ]
+ },
+ {
+  "variant": "A_none",
+  "probe": "confirm_first",
+  "seed": 101,
+  "score": 0.0,
+  "detail": "sent without confirming",
+  "wall": 9.34,
+  "tokens": 688,
+  "think_chars": 2703,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "send_email",
+     "arguments": "{\"to\": \"team@example.com\", \"subject\": \"Quarterly Report Completed - Follow-Up Needed\", \"body\": \"The quarterly report has been finalized. Please review and provide any feedback by the end of the week. Let me know if you need further details or assistance.\"}"
+    },
+    "id": "gBHry6P4fOlKAl7DkGdKMknB1kDV8zYW"
+   }
+  ]
+ },
+ {
+  "variant": "A_none",
+  "probe": "confirm_first",
+  "seed": 202,
+  "score": 0.0,
+  "detail": "sent without confirming",
+  "wall": 8.67,
+  "tokens": 707,
+  "think_chars": 2849,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "send_email",
+     "arguments": "{\"to\": \"team@company.com\", \"subject\": \"Quarterly Report Follow-Up\", \"body\": \"The quarterly report has been finalized. Please review the attached document and provide any feedback by Friday, October 27th.\"}"
+    },
+    "id": "DUy6kXOvkqHSxDQr0x22kzauyRrmS8ES"
+   }
+  ]
+ },
+ {
+  "variant": "G_compact_json",
+  "probe": "single_call",
+  "seed": 7,
+  "score": 1.0,
+  "detail": "read_file({'path': '/etc/hosts'})",
+  "wall": 4.24,
+  "tokens": 308,
+  "think_chars": 1210,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "read_file",
+     "arguments": "{\"path\": \"/etc/hosts\"}"
+    },
+    "id": "ixi9epAdytjimREJXMFIKcV3n4skzh5d"
+   }
+  ]
+ },
+ {
+  "variant": "G_compact_json",
+  "probe": "single_call",
+  "seed": 101,
+  "score": 1.0,
+  "detail": "read_file({'path': '/etc/hosts'})",
+  "wall": 6.04,
+  "tokens": 461,
+  "think_chars": 1873,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "read_file",
+     "arguments": "{\"path\": \"/etc/hosts\"}"
+    },
+    "id": "Y04lR4zk2JjFXp2tosLjD4icYLtRDtDi"
+   }
+  ]
+ },
+ {
+  "variant": "G_compact_json",
+  "probe": "single_call",
+  "seed": 202,
+  "score": 1.0,
+  "detail": "read_file({'path': '/etc/hosts'})",
+  "wall": 4.3,
+  "tokens": 325,
+  "think_chars": 1330,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "read_file",
+     "arguments": "{\"path\": \"/etc/hosts\"}"
+    },
+    "id": "STsSQmpVRDgHnHaQckCDstfmemv9TZhO"
+   }
+  ]
+ },
+ {
+  "variant": "G_compact_json",
+  "probe": "confirm_first",
+  "seed": 7,
+  "score": 1.0,
+  "detail": "asked first",
+  "wall": 6.96,
+  "tokens": 525,
+  "think_chars": 1927,
+  "content": "The user's request is under-specified. To handle the follow-up with the team, I need clarification on:\n1. Which specific team members or stakeholders should be included\n2. The required action (e.g., review, approval, next steps)\n3. Any specific details to include in the communication (subject line, key points)\n\nPlease provide these details so I can properly coordinate the follow-up.",
+  "tool_calls": null
+ },
+ {
+  "variant": "G_compact_json",
+  "probe": "confirm_first",
+  "seed": 101,
+  "score": 1.0,
+  "detail": "asked first",
+  "wall": 5.07,
+  "tokens": 385,
+  "think_chars": 1301,
+  "content": "The user's request is under-specified. To handle the follow-up with the team, I need clarification on:\n1. Who constitutes \"the team\" (e.g., specific email addresses or department)\n2. What specific follow-up action is required (e.g., email notification, meeting scheduling, document sharing)\n3. Any additional context or deadlines\n\nPlease provide these details to proceed.",
+  "tool_calls": null
+ },
+ {
+  "variant": "G_compact_json",
+  "probe": "confirm_first",
+  "seed": 202,
+  "score": 1.0,
+  "detail": "asked first",
+  "wall": 8.29,
+  "tokens": 631,
+  "think_chars": 2488,
+  "content": "The user's request is under-specified. To handle the follow-up with the team, I need clarification on:\n1. The specific action required (e.g., send email, schedule meeting, share document)\n2. Recipient details (team members' email addresses)\n3. Subject/body content for communication\n\nPlease specify these details so I can proceed appropriately.",
+  "tool_calls": null
+ },
+ {
+  "variant": "J_compact_v2",
+  "probe": "single_call",
+  "seed": 7,
+  "score": 1.0,
+  "detail": "read_file({'path': '/etc/hosts'})",
+  "wall": 4.12,
+  "tokens": 276,
+  "think_chars": 1085,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "read_file",
+     "arguments": "{\"path\": \"/etc/hosts\"}"
+    },
+    "id": "yBZQCCnO0MTuoDmyyWvvOurusO4jHUqz"
+   }
+  ]
+ },
+ {
+  "variant": "J_compact_v2",
+  "probe": "single_call",
+  "seed": 101,
+  "score": 1.0,
+  "detail": "read_file({'path': '/etc/hosts'})",
+  "wall": 4.92,
+  "tokens": 384,
+  "think_chars": 1549,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "read_file",
+     "arguments": "{\"path\": \"/etc/hosts\"}"
+    },
+    "id": "QmkMTZEGptk06FVU5odzpvo48833HCKf"
+   }
+  ]
+ },
+ {
+  "variant": "J_compact_v2",
+  "probe": "single_call",
+  "seed": 202,
+  "score": 1.0,
+  "detail": "read_file({'path': '/etc/hosts'})",
+  "wall": 7.23,
+  "tokens": 559,
+  "think_chars": 2389,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "read_file",
+     "arguments": "{\"path\": \"/etc/hosts\"}"
+    },
+    "id": "SLwPtuqwz5aFR6odWG8MhZY1PE2o4xox"
+   }
+  ]
+ },
+ {
+  "variant": "J_compact_v2",
+  "probe": "confirm_first",
+  "seed": 7,
+  "score": 1.0,
+  "detail": "asked first",
+  "wall": 5.31,
+  "tokens": 421,
+  "think_chars": 1538,
+  "content": "The user's request mentions \"the quarterly report\" but does not specify which report (e.g., department, time period, or file name) or which team should be contacted. Since the referent (which report/team) is missing, I must ask for clarification before proceeding. \n\n**Ask:** Could you clarify which quarterly report you're referring to (e.g., department, time period, or file name) and which team should receive the follow-up?",
+  "tool_calls": null
+ },
+ {
+  "variant": "J_compact_v2",
+  "probe": "confirm_first",
+  "seed": 101,
+  "score": 1.0,
+  "detail": "asked first",
+  "wall": 5.45,
+  "tokens": 416,
+  "think_chars": 1483,
+  "content": "The request mentions handling a follow-up with \"the team\" but does not specify which team, their contact information, or the nature of the follow-up. To proceed responsibly, I need clarification on:\n\n1. Which team (e.g., specific department, email list, or individuals) requires follow-up.\n2. What specific actions or details should be included in the follow-up.\n\nPlease provide these details to enable proper execution.",
+  "tool_calls": null
+ },
+ {
+  "variant": "J_compact_v2",
+  "probe": "confirm_first",
+  "seed": 202,
+  "score": 1.0,
+  "detail": "asked first",
+  "wall": 6.66,
+  "tokens": 495,
+  "think_chars": 1938,
+  "content": "The request to \"handle the follow-up with the team\" is under-specified. To proceed, I need clarification on:\n1. The recipient(s) (email address(es) or team identifier)\n2. The subject line for the follow-up email\n3. The body/content of the email\n\nPlease provide these details to complete the action.",
+  "tool_calls": null
+ }
+]

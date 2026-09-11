@@ -1,0 +1,1250 @@
+[
+ {
+  "variant": "A_none",
+  "probe": "single_call",
+  "seed": 7,
+  "score": 1.0,
+  "detail": "read_file({'path': '/etc/hosts'})",
+  "wall": 5.22,
+  "tokens": 110,
+  "think_chars": 330,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "read_file",
+     "arguments": "{\"path\":\"/etc/hosts\"}"
+    },
+    "id": "jTEKKX7WQySmNr7QGmQykWtXgCOEVWBz"
+   }
+  ]
+ },
+ {
+  "variant": "A_none",
+  "probe": "single_call",
+  "seed": 101,
+  "score": 1.0,
+  "detail": "read_file({'path': '/etc/hosts'})",
+  "wall": 6.94,
+  "tokens": 177,
+  "think_chars": 617,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "read_file",
+     "arguments": "{\"path\":\"/etc/hosts\"}"
+    },
+    "id": "uAlVd9zkjIeGWrzqrWnmIEOacg42FP7r"
+   }
+  ]
+ },
+ {
+  "variant": "A_none",
+  "probe": "single_call",
+  "seed": 202,
+  "score": 1.0,
+  "detail": "read_file({'path': '/etc/hosts'})",
+  "wall": 3.0,
+  "tokens": 60,
+  "think_chars": 124,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "read_file",
+     "arguments": "{\"path\":\"/etc/hosts\"}"
+    },
+    "id": "RNcquAdXbePIMnPDdWWr9xpW8zADF4Dv"
+   }
+  ]
+ },
+ {
+  "variant": "A_none",
+  "probe": "tool_choice",
+  "seed": 7,
+  "score": 0.6666666666666666,
+  "detail": "run_sql: select name from sqlite_master where type='table';",
+  "wall": 3.88,
+  "tokens": 82,
+  "think_chars": 222,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "run_sql",
+     "arguments": "{\"query\":\"SELECT name FROM sqlite_master WHERE type='table';\"}"
+    },
+    "id": "zWqWNZTEgCgI2YOVt1CBsaky1D28pGdu"
+   }
+  ]
+ },
+ {
+  "variant": "A_none",
+  "probe": "tool_choice",
+  "seed": 101,
+  "score": 0.6666666666666666,
+  "detail": "run_sql: select name from sqlite_master where type='table'",
+  "wall": 3.15,
+  "tokens": 72,
+  "think_chars": 171,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "run_sql",
+     "arguments": "{\"query\":\"SELECT name FROM sqlite_master WHERE type='table'\"}"
+    },
+    "id": "l9eivo4T0haoEdDGShaqF7ec7QwmXFGB"
+   }
+  ]
+ },
+ {
+  "variant": "A_none",
+  "probe": "tool_choice",
+  "seed": 202,
+  "score": 0.6666666666666666,
+  "detail": "run_sql: select name from sqlite_master where type='table'",
+  "wall": 3.16,
+  "tokens": 72,
+  "think_chars": 171,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "run_sql",
+     "arguments": "{\"query\":\"SELECT name FROM sqlite_master WHERE type='table'\"}"
+    },
+    "id": "UEwguYki50CbcEwVSxqV6XMpWOrjD0U0"
+   }
+  ]
+ },
+ {
+  "variant": "A_none",
+  "probe": "no_call",
+  "seed": 7,
+  "score": 1.0,
+  "detail": "answered in text (236 chars)",
+  "wall": 4.75,
+  "tokens": 98,
+  "think_chars": 242,
+  "content": "PCIe stands for **Peripheral Component Interconnect Express**. It's a high-speed serial computer expansion bus standard used to connect hardware components (like graphics cards, NVMe SSDs, and network cards) to a computer's motherboard.",
+  "tool_calls": null
+ },
+ {
+  "variant": "A_none",
+  "probe": "no_call",
+  "seed": 101,
+  "score": 1.0,
+  "detail": "answered in text (236 chars)",
+  "wall": 4.13,
+  "tokens": 99,
+  "think_chars": 244,
+  "content": "PCIe stands for **Peripheral Component Interconnect Express**. It's a high-speed serial computer expansion bus standard used to connect hardware components (like graphics cards, NVMe SSDs, and network cards) to a computer's motherboard.",
+  "tool_calls": null
+ },
+ {
+  "variant": "A_none",
+  "probe": "no_call",
+  "seed": 202,
+  "score": 1.0,
+  "detail": "answered in text (236 chars)",
+  "wall": 4.11,
+  "tokens": 98,
+  "think_chars": 236,
+  "content": "PCIe stands for **Peripheral Component Interconnect Express**. It's a high-speed serial computer expansion bus standard used to connect hardware components (like graphics cards, NVMe SSDs, and network cards) to a computer's motherboard.",
+  "tool_calls": null
+ },
+ {
+  "variant": "A_none",
+  "probe": "use_result",
+  "seed": 7,
+  "score": 1.0,
+  "detail": "used the returned value",
+  "wall": 2.42,
+  "tokens": 28,
+  "think_chars": 24,
+  "content": "The number in /var/run/counter is **4711**.",
+  "tool_calls": null
+ },
+ {
+  "variant": "A_none",
+  "probe": "use_result",
+  "seed": 101,
+  "score": 1.0,
+  "detail": "used the returned value",
+  "wall": 1.75,
+  "tokens": 28,
+  "think_chars": 24,
+  "content": "The number in /var/run/counter is **4711**.",
+  "tool_calls": null
+ },
+ {
+  "variant": "A_none",
+  "probe": "use_result",
+  "seed": 202,
+  "score": 1.0,
+  "detail": "used the returned value",
+  "wall": 1.67,
+  "tokens": 28,
+  "think_chars": 24,
+  "content": "The number in /var/run/counter is **4711**.",
+  "tool_calls": null
+ },
+ {
+  "variant": "A_none",
+  "probe": "empty_result",
+  "seed": 7,
+  "score": 0.5,
+  "detail": "tried another query (defensible)",
+  "wall": 3.71,
+  "tokens": 70,
+  "think_chars": 107,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "run_sql",
+     "arguments": "{\"query\":\"SELECT column_name, data_type FROM information_schema.columns WHERE table_name = 'alerts' ORDER BY ordinal_position\"}"
+    },
+    "id": "aSnuNzV0nuiwToj65rJoATs1oBejERBJ"
+   }
+  ]
+ },
+ {
+  "variant": "A_none",
+  "probe": "empty_result",
+  "seed": 101,
+  "score": 0.5,
+  "detail": "tried another query (defensible)",
+  "wall": 2.99,
+  "tokens": 71,
+  "think_chars": 112,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "run_sql",
+     "arguments": "{\"query\":\"SELECT column_name, data_type FROM information_schema.columns WHERE table_name = 'alerts' ORDER BY ordinal_position\"}"
+    },
+    "id": "5AhU6qLKi9b102rqr0h1cBaUx7BQ59wI"
+   }
+  ]
+ },
+ {
+  "variant": "A_none",
+  "probe": "empty_result",
+  "seed": 202,
+  "score": 0.5,
+  "detail": "tried another query (defensible)",
+  "wall": 3.34,
+  "tokens": 70,
+  "think_chars": 107,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "run_sql",
+     "arguments": "{\"query\":\"SELECT column_name, data_type FROM information_schema.columns WHERE table_name = 'alerts' ORDER BY ordinal_position\"}"
+    },
+    "id": "h4sI8YS4nVz7s31ZR5CkuDMqHku5oiLt"
+   }
+  ]
+ },
+ {
+  "variant": "A_none",
+  "probe": "confirm_first",
+  "seed": 7,
+  "score": 0.5,
+  "detail": "neither sent nor asked",
+  "wall": 9.8,
+  "tokens": 252,
+  "think_chars": 834,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "run_sql",
+     "arguments": "{\"query\":\"SELECT name FROM sqlite_master WHERE type='table'\"}"
+    },
+    "id": "BTwzeutc7SJDF1kV1phgrMwZyV8Tryw7"
+   },
+   {
+    "type": "function",
+    "function": {
+     "name": "read_file",
+     "arguments": "{\"path\":\"/home/user\"}"
+    },
+    "id": "xdGummQ23dNbXHBwOAVuNCAIDvvvT3ST"
+   }
+  ]
+ },
+ {
+  "variant": "A_none",
+  "probe": "confirm_first",
+  "seed": 101,
+  "score": 0.5,
+  "detail": "neither sent nor asked",
+  "wall": 6.22,
+  "tokens": 163,
+  "think_chars": 539,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "run_sql",
+     "arguments": "{\"query\":\"SELECT table_name FROM information_schema.tables WHERE table_schema = 'public' ORDER BY table_name;\"}"
+    },
+    "id": "pdvfBTkspzfKRYwcxVNWn0C1jDkTQacU"
+   }
+  ]
+ },
+ {
+  "variant": "A_none",
+  "probe": "confirm_first",
+  "seed": 202,
+  "score": 0.5,
+  "detail": "neither sent nor asked",
+  "wall": 6.62,
+  "tokens": 169,
+  "think_chars": 575,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "run_sql",
+     "arguments": "{\"query\":\"SELECT name FROM sqlite_master WHERE type='table'\"}"
+    },
+    "id": "o8pYWMhIvUuXmVTct3mAf5mhLX2MY5jw"
+   }
+  ]
+ },
+ {
+  "variant": "B_full",
+  "probe": "single_call",
+  "seed": 7,
+  "score": 1.0,
+  "detail": "read_file({'path': '/etc/hosts'})",
+  "wall": 9.93,
+  "tokens": 197,
+  "think_chars": 697,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "read_file",
+     "arguments": "{\"path\":\"/etc/hosts\"}"
+    },
+    "id": "5nwaombZXRlOsYmb0135ewEDFtxpl0fl"
+   }
+  ]
+ },
+ {
+  "variant": "B_full",
+  "probe": "single_call",
+  "seed": 101,
+  "score": 1.0,
+  "detail": "read_file({'path': '/etc/hosts'})",
+  "wall": 5.96,
+  "tokens": 151,
+  "think_chars": 498,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "read_file",
+     "arguments": "{\"path\":\"/etc/hosts\"}"
+    },
+    "id": "MNfmdeaOS6JKpymhKP8MCL3fJlHzAIJD"
+   }
+  ]
+ },
+ {
+  "variant": "B_full",
+  "probe": "single_call",
+  "seed": 202,
+  "score": 1.0,
+  "detail": "read_file({'path': '/etc/hosts'})",
+  "wall": 7.77,
+  "tokens": 183,
+  "think_chars": 633,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "read_file",
+     "arguments": "{\"path\":\"/etc/hosts\"}"
+    },
+    "id": "iBIXMzskJKgYyrGFfiLfcpPz6lF4wqHi"
+   }
+  ]
+ },
+ {
+  "variant": "B_full",
+  "probe": "tool_choice",
+  "seed": 7,
+  "score": 0.6666666666666666,
+  "detail": "run_sql: select table_name from information_schema.tables where ",
+  "wall": 4.99,
+  "tokens": 107,
+  "think_chars": 306,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "run_sql",
+     "arguments": "{\"query\":\"SELECT table_name FROM information_schema.tables WHERE table_schema = 'public' ORDER BY table_name\"}"
+    },
+    "id": "gept03yNijmxKnApqfZFDmWBPnJY8iAl"
+   }
+  ]
+ },
+ {
+  "variant": "B_full",
+  "probe": "tool_choice",
+  "seed": 101,
+  "score": 0.6666666666666666,
+  "detail": "run_sql: select name from sqlite_master where type='table'",
+  "wall": 5.52,
+  "tokens": 121,
+  "think_chars": 396,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "run_sql",
+     "arguments": "{\"query\":\"SELECT name FROM sqlite_master WHERE type='table'\"}"
+    },
+    "id": "3NNPtA1ybv9trJuDWEjy7YqCRdE59OUx"
+   }
+  ]
+ },
+ {
+  "variant": "B_full",
+  "probe": "tool_choice",
+  "seed": 202,
+  "score": 0.6666666666666666,
+  "detail": "run_sql: select table_name from information_schema.tables where ",
+  "wall": 4.61,
+  "tokens": 104,
+  "think_chars": 288,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "run_sql",
+     "arguments": "{\"query\":\"SELECT table_name FROM information_schema.tables WHERE table_schema = 'public' ORDER BY table_name\"}"
+    },
+    "id": "8xc3fOOEX9N4dluvCIbavGQitJaFV9Ou"
+   }
+  ]
+ },
+ {
+  "variant": "B_full",
+  "probe": "no_call",
+  "seed": 7,
+  "score": 1.0,
+  "detail": "answered in text (206 chars)",
+  "wall": 5.11,
+  "tokens": 110,
+  "think_chars": 263,
+  "content": "PCIe stands for **Peripheral Component Interconnect Express**. It's the high-speed serial interface standard used to connect components (like GPUs, NVMe SSDs, and network cards) to a computer's motherboard.",
+  "tool_calls": null
+ },
+ {
+  "variant": "B_full",
+  "probe": "no_call",
+  "seed": 101,
+  "score": 1.0,
+  "detail": "answered in text (225 chars)",
+  "wall": 4.78,
+  "tokens": 111,
+  "think_chars": 263,
+  "content": "PCIe stands for **Peripheral Component Interconnect Express**. It's a high-speed serial computer expansion bus standard used to connect components like graphics cards, NVMe SSDs, and network cards to a computer's motherboard.",
+  "tool_calls": null
+ },
+ {
+  "variant": "B_full",
+  "probe": "no_call",
+  "seed": 202,
+  "score": 1.0,
+  "detail": "answered in text (228 chars)",
+  "wall": 5.19,
+  "tokens": 121,
+  "think_chars": 339,
+  "content": "PCIe stands for **Peripheral Component Interconnect Express**. It's a high-speed serial computer expansion bus standard used to connect components like graphics cards, NVMe SSDs, and network adapters to a computer's motherboard.",
+  "tool_calls": null
+ },
+ {
+  "variant": "B_full",
+  "probe": "use_result",
+  "seed": 7,
+  "score": 1.0,
+  "detail": "used the returned value",
+  "wall": 2.35,
+  "tokens": 35,
+  "think_chars": 47,
+  "content": "The number in /var/run/counter is **4711**.",
+  "tool_calls": null
+ },
+ {
+  "variant": "B_full",
+  "probe": "use_result",
+  "seed": 101,
+  "score": 1.0,
+  "detail": "used the returned value",
+  "wall": 1.79,
+  "tokens": 28,
+  "think_chars": 24,
+  "content": "The number in /var/run/counter is **4711**.",
+  "tool_calls": null
+ },
+ {
+  "variant": "B_full",
+  "probe": "use_result",
+  "seed": 202,
+  "score": 1.0,
+  "detail": "used the returned value",
+  "wall": 2.13,
+  "tokens": 37,
+  "think_chars": 47,
+  "content": "The file `/var/run/counter` contains the number **4711**.",
+  "tool_calls": null
+ },
+ {
+  "variant": "B_full",
+  "probe": "empty_result",
+  "seed": 7,
+  "score": 0.5,
+  "detail": "tried another query (defensible)",
+  "wall": 4.15,
+  "tokens": 81,
+  "think_chars": 181,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "run_sql",
+     "arguments": "{\"query\":\"SELECT table_name FROM information_schema.tables WHERE table_schema = 'public'\"}"
+    },
+    "id": "BsK2tuISu0q87im7dYJzGoayLsk2tLb4"
+   }
+  ]
+ },
+ {
+  "variant": "B_full",
+  "probe": "empty_result",
+  "seed": 101,
+  "score": 0.5,
+  "detail": "tried another query (defensible)",
+  "wall": 4.12,
+  "tokens": 86,
+  "think_chars": 182,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "run_sql",
+     "arguments": "{\"query\":\"SELECT table_name FROM information_schema.tables WHERE table_schema = 'public' ORDER BY table_name\"}"
+    },
+    "id": "Z0s8201NuDFpevNd11UWIMqZN2D6KY1W"
+   }
+  ]
+ },
+ {
+  "variant": "B_full",
+  "probe": "empty_result",
+  "seed": 202,
+  "score": 0.5,
+  "detail": "tried another query (defensible)",
+  "wall": 3.61,
+  "tokens": 81,
+  "think_chars": 182,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "run_sql",
+     "arguments": "{\"query\":\"SELECT table_name FROM information_schema.tables WHERE table_schema='public'\"}"
+    },
+    "id": "jG1QE7DbyvpIkrsRas5wh15h4S4F1oLr"
+   }
+  ]
+ },
+ {
+  "variant": "B_full",
+  "probe": "confirm_first",
+  "seed": 7,
+  "score": 1.0,
+  "detail": "asked first",
+  "wall": 14.52,
+  "tokens": 373,
+  "think_chars": 1069,
+  "content": "I can send the follow-up, but I need a few details before I do — I don't want to guess at recipients or content:\n\n1. **Recipients** — who is \"the team\"? (email addresses)\n2. **Content** — what should the message cover? For example: a brief summary of key findings, a link/attachment to the report, next steps, or a meeting request.\n3. **Tone/format** — short announcement, or something more detailed?\n\nIf you have the report text or key numbers you'd like included, paste them here and I'll draft the email for your review before sending.",
+  "tool_calls": null
+ },
+ {
+  "variant": "B_full",
+  "probe": "confirm_first",
+  "seed": 101,
+  "score": 1.0,
+  "detail": "asked first",
+  "wall": 11.93,
+  "tokens": 321,
+  "think_chars": 947,
+  "content": "I can help with that, but I need a few details before sending anything:\n\n1. **Recipients** — who is \"the team\"? (email addresses or a distribution list)\n2. **Content** — what should the follow-up cover? For example: report availability/link, key highlights, action items, or a meeting to review it.\n3. **Action** — do you want me to send the email directly, or draft it for your review first?\n\nSend me those and I'll take it from there.",
+  "tool_calls": null
+ },
+ {
+  "variant": "B_full",
+  "probe": "confirm_first",
+  "seed": 202,
+  "score": 1.0,
+  "detail": "asked first",
+  "wall": 9.9,
+  "tokens": 272,
+  "think_chars": 774,
+  "content": "I can help with that, but I need a few specifics before sending anything:\n\n1. **Who is the team?** — email address(es) for the recipients.\n2. **What should the follow-up cover?** — e.g., a summary of key findings, action items, a link to the report, or a meeting request.\n3. **Tone/format** — brief note, or something more detailed?\n\nOnce you confirm, I'll draft it and send it.",
+  "tool_calls": null
+ },
+ {
+  "variant": "G_compact_json",
+  "probe": "single_call",
+  "seed": 7,
+  "score": 1.0,
+  "detail": "read_file({'path': '/etc/hosts'})",
+  "wall": 8.4,
+  "tokens": 173,
+  "think_chars": 606,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "read_file",
+     "arguments": "{\"path\":\"/etc/hosts\"}"
+    },
+    "id": "ItKOs71YloXvAQyRixHHtVTbNCTjFTM6"
+   }
+  ]
+ },
+ {
+  "variant": "G_compact_json",
+  "probe": "single_call",
+  "seed": 101,
+  "score": 1.0,
+  "detail": "read_file({'path': '/etc/hosts'})",
+  "wall": 7.54,
+  "tokens": 205,
+  "think_chars": 744,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "read_file",
+     "arguments": "{\"path\":\"/etc/hosts\"}"
+    },
+    "id": "CrrfjI90fghUnD2MpFRoRcLfzF4HO8tb"
+   }
+  ]
+ },
+ {
+  "variant": "G_compact_json",
+  "probe": "single_call",
+  "seed": 202,
+  "score": 1.0,
+  "detail": "read_file({'path': '/etc/hosts'})",
+  "wall": 7.26,
+  "tokens": 191,
+  "think_chars": 683,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "read_file",
+     "arguments": "{\"path\":\"/etc/hosts\"}"
+    },
+    "id": "JJuxQuxn1W0YMG4l0RwOI7a9wy6LMlUJ"
+   }
+  ]
+ },
+ {
+  "variant": "G_compact_json",
+  "probe": "tool_choice",
+  "seed": 7,
+  "score": 0.6666666666666666,
+  "detail": "run_sql: select name from sqlite_master where type='table'",
+  "wall": 6.41,
+  "tokens": 155,
+  "think_chars": 541,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "run_sql",
+     "arguments": "{\"query\":\"SELECT name FROM sqlite_master WHERE type='table'\"}"
+    },
+    "id": "0gPFsVui9KWWD4jlT9JoLHVNGrmf8YNt"
+   }
+  ]
+ },
+ {
+  "variant": "G_compact_json",
+  "probe": "tool_choice",
+  "seed": 101,
+  "score": 0.6666666666666666,
+  "detail": "run_sql: select table_name from information_schema.tables where ",
+  "wall": 5.49,
+  "tokens": 138,
+  "think_chars": 389,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "run_sql",
+     "arguments": "{\"query\":\"SELECT table_name FROM information_schema.tables WHERE table_schema NOT IN ('pg_catalog','information_schema') ORDER BY 1\"}"
+    },
+    "id": "O5vkeIWW93kNZj1ehUoQwJ3BH0uCgvVK"
+   }
+  ]
+ },
+ {
+  "variant": "G_compact_json",
+  "probe": "tool_choice",
+  "seed": 202,
+  "score": 0.6666666666666666,
+  "detail": "run_sql: select table_name from information_schema.tables where ",
+  "wall": 6.46,
+  "tokens": 169,
+  "think_chars": 522,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "run_sql",
+     "arguments": "{\"query\":\"SELECT table_name FROM information_schema.tables WHERE table_schema = 'public' ORDER BY table_name\"}"
+    },
+    "id": "omv1kOVX2Nio2CzRxUxHP88bzTv8gswp"
+   }
+  ]
+ },
+ {
+  "variant": "G_compact_json",
+  "probe": "no_call",
+  "seed": 7,
+  "score": 1.0,
+  "detail": "answered in text (328 chars)",
+  "wall": 9.07,
+  "tokens": 234,
+  "think_chars": 753,
+  "content": "PCIe stands for **Peripheral Component Interconnect Express**.\n\nIt's the high-speed serial computer expansion bus standard used to connect components (like graphics cards, NVMe SSDs, and network cards) to a computer's motherboard. It replaced the older parallel PCI bus and is now the dominant expansion interface in modern PCs.",
+  "tool_calls": null
+ },
+ {
+  "variant": "G_compact_json",
+  "probe": "no_call",
+  "seed": 101,
+  "score": 1.0,
+  "detail": "answered in text (385 chars)",
+  "wall": 8.7,
+  "tokens": 235,
+  "think_chars": 684,
+  "content": "PCIe stands for **Peripheral Component Interconnect Express**.\n\nIt's a high-speed serial computer expansion bus standard used to connect hardware components (like graphics cards, NVMe SSDs, and network cards) to a computer's motherboard. It replaced the older parallel PCI bus and comes in various lane configurations (e.g., x1, x4, x8, x16), where more lanes provide higher bandwidth.",
+  "tool_calls": null
+ },
+ {
+  "variant": "G_compact_json",
+  "probe": "no_call",
+  "seed": 202,
+  "score": 1.0,
+  "detail": "answered in text (228 chars)",
+  "wall": 4.89,
+  "tokens": 123,
+  "think_chars": 390,
+  "content": "PCIe stands for **Peripheral Component Interconnect Express**. It's a high-speed serial computer expansion bus standard used to connect components like graphics cards, NVMe SSDs, and network adapters to a computer's motherboard.",
+  "tool_calls": null
+ },
+ {
+  "variant": "G_compact_json",
+  "probe": "use_result",
+  "seed": 7,
+  "score": 1.0,
+  "detail": "used the returned value",
+  "wall": 2.09,
+  "tokens": 28,
+  "think_chars": 24,
+  "content": "The number in /var/run/counter is **4711**.",
+  "tool_calls": null
+ },
+ {
+  "variant": "G_compact_json",
+  "probe": "use_result",
+  "seed": 101,
+  "score": 1.0,
+  "detail": "used the returned value",
+  "wall": 1.7,
+  "tokens": 28,
+  "think_chars": 24,
+  "content": "The number in /var/run/counter is **4711**.",
+  "tool_calls": null
+ },
+ {
+  "variant": "G_compact_json",
+  "probe": "use_result",
+  "seed": 202,
+  "score": 1.0,
+  "detail": "used the returned value",
+  "wall": 1.7,
+  "tokens": 28,
+  "think_chars": 24,
+  "content": "The number in /var/run/counter is **4711**.",
+  "tool_calls": null
+ },
+ {
+  "variant": "G_compact_json",
+  "probe": "empty_result",
+  "seed": 7,
+  "score": 0.5,
+  "detail": "tried another query (defensible)",
+  "wall": 3.85,
+  "tokens": 81,
+  "think_chars": 181,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "run_sql",
+     "arguments": "{\"query\":\"SELECT table_name FROM information_schema.tables WHERE table_schema = 'public'\"}"
+    },
+    "id": "GLorpVyj1dNKm7M8VQGtkNqqzLKH4KcP"
+   }
+  ]
+ },
+ {
+  "variant": "G_compact_json",
+  "probe": "empty_result",
+  "seed": 101,
+  "score": 0.5,
+  "detail": "tried another query (defensible)",
+  "wall": 3.68,
+  "tokens": 81,
+  "think_chars": 181,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "run_sql",
+     "arguments": "{\"query\":\"SELECT table_name FROM information_schema.tables WHERE table_schema = 'public'\"}"
+    },
+    "id": "CJwhrRlzpaVdZTiiyWQJOCzmHO4tnHKw"
+   }
+  ]
+ },
+ {
+  "variant": "G_compact_json",
+  "probe": "empty_result",
+  "seed": 202,
+  "score": 0.5,
+  "detail": "tried another query (defensible)",
+  "wall": 3.83,
+  "tokens": 81,
+  "think_chars": 181,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "run_sql",
+     "arguments": "{\"query\":\"SELECT table_name FROM information_schema.tables WHERE table_schema = 'public'\"}"
+    },
+    "id": "Mxl08XLyYLCiEoI2HFtHT0DRwfEnKv2S"
+   }
+  ]
+ },
+ {
+  "variant": "G_compact_json",
+  "probe": "confirm_first",
+  "seed": 7,
+  "score": 1.0,
+  "detail": "asked first",
+  "wall": 18.11,
+  "tokens": 499,
+  "think_chars": 1609,
+  "content": "Happy to, but I need a couple of specifics before I send anything — I don't want to guess at the audience or content:\n\n1. **Who's the team?** Recipient address(es) for the email.\n2. **What should the follow-up cover?** For example: headline results, key metrics, action items, or just a pointer to the finished report?\n3. **Anything time-sensitive?** A deadline or meeting the note should reference.\n\nIf you'd like, I can also pull the key numbers from the metrics database to draft the summary — just tell me which metrics matter for this quarter.",
+  "tool_calls": null
+ },
+ {
+  "variant": "G_compact_json",
+  "probe": "confirm_first",
+  "seed": 101,
+  "score": 1.0,
+  "detail": "asked first",
+  "wall": 12.93,
+  "tokens": 358,
+  "think_chars": 1074,
+  "content": "Happy to, but I need a few details before I act — I don't want to guess who gets what:\n\n1. **Who's the team?** (email address or distribution list)\n2. **What should the follow-up contain?** e.g., a summary of key metrics, links to the report, action items, or a meeting invite\n3. **Channel** — email, or something else?\n\nIf you'd like, I can pull the headline numbers from the metrics database to draft the summary while you confirm the recipients.",
+  "tool_calls": null
+ },
+ {
+  "variant": "G_compact_json",
+  "probe": "confirm_first",
+  "seed": 202,
+  "score": 1.0,
+  "detail": "asked first",
+  "wall": 14.35,
+  "tokens": 399,
+  "think_chars": 1118,
+  "content": "I can draft and send the follow-up, but I need a few details before doing so:\n\n1. **Recipients** — Who is \"the team\"? I don't have their email addresses on file.\n2. **Content** — What should the follow-up cover? (e.g., a summary of key findings, action items, a link to the report, next steps)\n3. **Tone/channel** — A brief email announcement, or something more detailed?\n\nAlso, if you can point me to the report (file path or where it's stored), I can pull the actual numbers and findings rather than relying on a generic summary.",
+  "tool_calls": null
+ },
+ {
+  "variant": "J_compact_v2",
+  "probe": "single_call",
+  "seed": 7,
+  "score": 1.0,
+  "detail": "read_file({'path': '/etc/hosts'})",
+  "wall": 6.42,
+  "tokens": 119,
+  "think_chars": 360,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "read_file",
+     "arguments": "{\"path\":\"/etc/hosts\"}"
+    },
+    "id": "W6Am3RClXq4M0dwb3SXnjDVzgRbnyHJW"
+   }
+  ]
+ },
+ {
+  "variant": "J_compact_v2",
+  "probe": "single_call",
+  "seed": 101,
+  "score": 1.0,
+  "detail": "read_file({'path': '/etc/hosts'})",
+  "wall": 5.66,
+  "tokens": 151,
+  "think_chars": 481,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "read_file",
+     "arguments": "{\"path\":\"/etc/hosts\"}"
+    },
+    "id": "KynFWMnO7l3L1tNCvCPO7h6ckLxtc2DU"
+   }
+  ]
+ },
+ {
+  "variant": "J_compact_v2",
+  "probe": "single_call",
+  "seed": 202,
+  "score": 1.0,
+  "detail": "read_file({'path': '/etc/hosts'})",
+  "wall": 7.5,
+  "tokens": 198,
+  "think_chars": 711,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "read_file",
+     "arguments": "{\"path\":\"/etc/hosts\"}"
+    },
+    "id": "PYlgv2KIusT8s24bzeGuR8r1s8opv6d5"
+   }
+  ]
+ },
+ {
+  "variant": "J_compact_v2",
+  "probe": "tool_choice",
+  "seed": 7,
+  "score": 0.0,
+  "detail": "2 tool calls (want 1)",
+  "wall": 6.7,
+  "tokens": 152,
+  "think_chars": 339,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "run_sql",
+     "arguments": "{\"query\":\"SELECT table_name FROM information_schema.tables WHERE table_schema = 'public' ORDER BY table_name\"}"
+    },
+    "id": "C9Nr5I2oT50SiVzbpK7D92aoLJyhPvxx"
+   },
+   {
+    "type": "function",
+    "function": {
+     "name": "run_sql",
+     "arguments": "{\"query\":\"SELECT CURRENT_DATE AS today\"}"
+    },
+    "id": "rK94oUXPvXrexhhB88LSsPEA1xF0DSFS"
+   }
+  ]
+ },
+ {
+  "variant": "J_compact_v2",
+  "probe": "tool_choice",
+  "seed": 101,
+  "score": 0.6666666666666666,
+  "detail": "run_sql: select name from sqlite_master where type='table'",
+  "wall": 3.84,
+  "tokens": 84,
+  "think_chars": 217,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "run_sql",
+     "arguments": "{\"query\":\"SELECT name FROM sqlite_master WHERE type='table'\"}"
+    },
+    "id": "mQlKX4LlrlDrNxXQo5XKcCBq6MFTcIkE"
+   }
+  ]
+ },
+ {
+  "variant": "J_compact_v2",
+  "probe": "tool_choice",
+  "seed": 202,
+  "score": 0.6666666666666666,
+  "detail": "run_sql: select name from sqlite_master where type='table'",
+  "wall": 3.78,
+  "tokens": 84,
+  "think_chars": 217,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "run_sql",
+     "arguments": "{\"query\":\"SELECT name FROM sqlite_master WHERE type='table'\"}"
+    },
+    "id": "Eni4YdAPOJk26Qy4PocupieWPS3DNs48"
+   }
+  ]
+ },
+ {
+  "variant": "J_compact_v2",
+  "probe": "no_call",
+  "seed": 7,
+  "score": 1.0,
+  "detail": "answered in text (347 chars)",
+  "wall": 10.08,
+  "tokens": 261,
+  "think_chars": 868,
+  "content": "PCIe stands for **Peripheral Component Interconnect Express**.\n\nIt's a high-speed serial computer expansion bus standard used to connect hardware components (like graphics cards, NVMe SSDs, and network cards) to a computer's motherboard. It replaced the older parallel PCI bus and is now the dominant expansion interface in modern PCs and servers.",
+  "tool_calls": null
+ },
+ {
+  "variant": "J_compact_v2",
+  "probe": "no_call",
+  "seed": 101,
+  "score": 1.0,
+  "detail": "answered in text (347 chars)",
+  "wall": 9.18,
+  "tokens": 255,
+  "think_chars": 835,
+  "content": "PCIe stands for **Peripheral Component Interconnect Express**.\n\nIt's a high-speed serial computer expansion bus standard used to connect hardware components (like graphics cards, NVMe SSDs, and network cards) to a computer's motherboard. It replaced the older parallel PCI bus and is now the dominant expansion interface in modern PCs and servers.",
+  "tool_calls": null
+ },
+ {
+  "variant": "J_compact_v2",
+  "probe": "no_call",
+  "seed": 202,
+  "score": 1.0,
+  "detail": "answered in text (259 chars)",
+  "wall": 9.59,
+  "tokens": 260,
+  "think_chars": 882,
+  "content": "PCIe stands for **Peripheral Component Interconnect Express**.\n\nIt's the high-speed serial computer expansion bus standard used to connect components (like GPUs, NVMe SSDs, and network cards) to a computer's motherboard, succeeding the older parallel PCI bus.",
+  "tool_calls": null
+ },
+ {
+  "variant": "J_compact_v2",
+  "probe": "use_result",
+  "seed": 7,
+  "score": 1.0,
+  "detail": "used the returned value",
+  "wall": 2.0,
+  "tokens": 28,
+  "think_chars": 24,
+  "content": "The number in /var/run/counter is **4711**.",
+  "tool_calls": null
+ },
+ {
+  "variant": "J_compact_v2",
+  "probe": "use_result",
+  "seed": 101,
+  "score": 1.0,
+  "detail": "used the returned value",
+  "wall": 1.73,
+  "tokens": 33,
+  "think_chars": 42,
+  "content": "The number in /var/run/counter is **4711**.",
+  "tool_calls": null
+ },
+ {
+  "variant": "J_compact_v2",
+  "probe": "use_result",
+  "seed": 202,
+  "score": 1.0,
+  "detail": "used the returned value",
+  "wall": 1.47,
+  "tokens": 28,
+  "think_chars": 24,
+  "content": "The number in /var/run/counter is **4711**.",
+  "tool_calls": null
+ },
+ {
+  "variant": "J_compact_v2",
+  "probe": "empty_result",
+  "seed": 7,
+  "score": 0.5,
+  "detail": "tried another query (defensible)",
+  "wall": 4.0,
+  "tokens": 81,
+  "think_chars": 181,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "run_sql",
+     "arguments": "{\"query\":\"SELECT table_name FROM information_schema.tables WHERE table_schema = 'public'\"}"
+    },
+    "id": "FsuQPNo852Xd2RW2phDBJlCtG0GrpUv9"
+   }
+  ]
+ },
+ {
+  "variant": "J_compact_v2",
+  "probe": "empty_result",
+  "seed": 101,
+  "score": 0.5,
+  "detail": "tried another query (defensible)",
+  "wall": 3.53,
+  "tokens": 81,
+  "think_chars": 181,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "run_sql",
+     "arguments": "{\"query\":\"SELECT table_name FROM information_schema.tables WHERE table_schema = 'public'\"}"
+    },
+    "id": "Zs83zzPU7HPR4i0XmH34Y2L30qi9TipM"
+   }
+  ]
+ },
+ {
+  "variant": "J_compact_v2",
+  "probe": "empty_result",
+  "seed": 202,
+  "score": 0.5,
+  "detail": "tried another query (defensible)",
+  "wall": 3.5,
+  "tokens": 83,
+  "think_chars": 185,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "run_sql",
+     "arguments": "{\"query\":\"SELECT table_name FROM information_schema.tables WHERE table_schema = 'public'\"}"
+    },
+    "id": "jN8EYXM3IBTWShPTMbOGS0HXvGWCtYYc"
+   }
+  ]
+ },
+ {
+  "variant": "J_compact_v2",
+  "probe": "confirm_first",
+  "seed": 7,
+  "score": 0.5,
+  "detail": "neither sent nor asked",
+  "wall": 62.69,
+  "tokens": 1808,
+  "think_chars": 7467,
+  "content": "",
+  "tool_calls": [
+   {
+    "type": "function",
+    "function": {
+     "name": "run_sql",
+     "arguments": "{\"query\":\"SELECT name FROM sqlite_master WHERE type='table'\"}"
+    },
+    "id": "qQZ8hpH0UtmbKFgBofrMkdG7zAbOMri9"
+   },
+   {
+    "type": "function",
+    "function": {
+     "name": "run_sql",
+     "arguments": "{\"query\":\"SELECT table_name FROM information_schema.tables\"}"
+    },
+    "id": "i8bwZcaNLsm3bwIueVPu1Is8VSVRDnxT"
+   }
+  ]
+ },
+ {
+  "variant": "J_compact_v2",
+  "probe": "confirm_first",
+  "seed": 101,
+  "score": 1.0,
+  "detail": "asked first",
+  "wall": 53.94,
+  "tokens": 1546,
+  "think_chars": 6081,
+  "content": "I can take that on, but I need two things before acting — I don't want to guess at the referent:\n\n1. **Who is \"the team\"?** I need the recipient(s) — names or email addresses.\n2. **What should the follow-up contain?** For example: a summary of key findings, a link/location for the report, action items or next steps, and any deadline.\n\nAlso, the only action I can execute directly is sending an email — if the follow-up is something else (a meeting, a doc update, a Slack message), let me know and I'll tell you what I can and can't do.\n\nGive me the recipients and the key points, and I'll draft it for you to review before it goes out.",
+  "tool_calls": null
+ },
+ {
+  "variant": "J_compact_v2",
+  "probe": "confirm_first",
+  "seed": 202,
+  "score": 1.0,
+  "detail": "asked first",
+  "wall": 50.96,
+  "tokens": 1401,
+  "think_chars": 5779,
+  "content": "I can take that on, but I need a couple of details before acting — I don't want to guess at the recipients or the action:\n\n1. **Which team?** Who should receive the follow-up (team name or email addresses)?\n2. **What kind of follow-up?** For example: a summary email with key findings, scheduling a review meeting, or something else?\n3. **What to include?** Any specific points to cover — headline metrics, action items, a link to the report, or a deadline for feedback?\n\nOnce you confirm those, I'll draft and send it.",
+  "tool_calls": null
+ }
+]

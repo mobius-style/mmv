@@ -134,5 +134,11 @@ adds or removes anything measurable. Rows: `eval/l0_compact/compact_v1_1/addback
 
 ## Reproduce
 
+The same rows are also published as a Hugging Face dataset:
+https://huggingface.co/datasets/moebiusT7/l0-essentials-compact-ablation
+
+The compact layer shipped as a model wrapper (Gemma-4 12B, Google QAT q4_0 GGUF, llama.cpp):
+https://huggingface.co/moebiusT7/gemma-4-12b-mobius-custom-c1
+
 `eval/l0_compact/` contains the row files (every prompt, system layer, seed,
 raw output, score), the scorer sources, and the launch flags.

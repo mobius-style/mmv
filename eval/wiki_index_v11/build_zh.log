@@ -1,0 +1,130 @@
+/home/happy/デスクトップ/mobius_ai/venv313/lib/python3.13/site-packages/transformers/utils/hub.py:110: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+No stemming for language 'zh'
+================================================================
+ MOBIUS Phase C — Box B: Wikipedia Index Builder v10
+================================================================
+ ZIM:         /home/happy/デスクトップ/mobius_ai/kiwix/wikipedia_zh_all_mini_2026-05.zim
+ Out:         /home/happy/デスクトップ/mobius_ai/MOBIUS_MMV/data/wiki_zh_me5_2026-05_v11b/
+ Batch:       512
+ Max:         ALL
+ Workers:     14 / 16 cores
+ RAM:         108.4GB avail / 134.8GB total
+ Buffer:      8,000,000 chunks (25.6GB)
+ Skip Stage1: False
+ Parts:       4（チェックポイント方式）
+
+[Stage 1] ZIM → chunks.jsonl.gz  workers=14
+  entry_count=2,991,552  article_count=2,976,703
+  Launching 14 workers...
+No stemming for language 'zh'
+No stemming for language 'zh'
+No stemming for language 'zh'
+No stemming for language 'zh'
+No stemming for language 'zh'
+No stemming for language 'zh'
+No stemming for language 'zh'
+No stemming for language 'zh'
+No stemming for language 'zh'
+No stemming for language 'zh'
+No stemming for language 'zh'
+No stemming for language 'zh'
+No stemming for language 'zh'
+No stemming for language 'zh'
+Token indices sequence length is longer than the specified maximum sequence length for this model (755 > 512). Running this sequence through the model will result in indexing errors
+Token indices sequence length is longer than the specified maximum sequence length for this model (792 > 512). Running this sequence through the model will result in indexing errors
+Token indices sequence length is longer than the specified maximum sequence length for this model (862 > 512). Running this sequence through the model will result in indexing errors
+Token indices sequence length is longer than the specified maximum sequence length for this model (589 > 512). Running this sequence through the model will result in indexing errors
+Token indices sequence length is longer than the specified maximum sequence length for this model (776 > 512). Running this sequence through the model will result in indexing errors
+Token indices sequence length is longer than the specified maximum sequence length for this model (759 > 512). Running this sequence through the model will result in indexing errors
+Token indices sequence length is longer than the specified maximum sequence length for this model (790 > 512). Running this sequence through the model will result in indexing errors
+Token indices sequence length is longer than the specified maximum sequence length for this model (517 > 512). Running this sequence through the model will result in indexing errors
+Token indices sequence length is longer than the specified maximum sequence length for this model (956 > 512). Running this sequence through the model will result in indexing errors
+Token indices sequence length is longer than the specified maximum sequence length for this model (1013 > 512). Running this sequence through the model will result in indexing errors
+Token indices sequence length is longer than the specified maximum sequence length for this model (676 > 512). Running this sequence through the model will result in indexing errors
+Token indices sequence length is longer than the specified maximum sequence length for this model (697 > 512). Running this sequence through the model will result in indexing errors
+Token indices sequence length is longer than the specified maximum sequence length for this model (540 > 512). Running this sequence through the model will result in indexing errors
+Token indices sequence length is longer than the specified maximum sequence length for this model (6596 > 512). Running this sequence through the model will result in indexing errors
+  [worker 1] done: 41,742 articles 93,925 chunks
+  [worker 0] done: 64,673 articles 150,342 chunks
+  [worker 2] done: 91,475 articles 203,895 chunks
+  [worker 13] done: 112,544 articles 235,492 chunks
+  [worker 4] done: 118,998 articles 253,712 chunks
+  [worker 8] done: 123,370 articles 259,206 chunks
+  [worker 11] done: 116,643 articles 245,188 chunks
+  [worker 10] done: 117,342 articles 248,820 chunks
+  [worker 3] done: 119,426 articles 250,398 chunks
+  [worker 9] done: 119,803 articles 249,658 chunks
+  [worker 12] done: 116,691 articles 246,993 chunks
+  [worker 6] done: 124,589 articles 258,399 chunks
+  [worker 7] done: 123,726 articles 252,764 chunks
+  [worker 5] done: 131,405 articles 418,945 chunks
+`torch_dtype` is deprecated! Use `dtype` instead!
+  Workers done: 1,522,427 articles 3,367,737 chunks (509s)
+  Merging 14 tmp files (content-hash ids, exact dedup)...
+  Merge done: 3,367,718 chunks (19 exact duplicates dropped)
+
+[Loading embedding model...]
+  device=cuda  GPUs=2
+  fp16 enabled (model.half())
+  batch_size=512 OK
+
+[Stage 2] チェックポイント方式パイプライン
+  RAM available:  106.8GB
+  Buffer size:    8,000,000 chunks (25.6GB)
+  GPU:            2
+  Total chunks:   3,367,718
+  Parts:          4
+/home/happy/デスクトップ/mobius_ai/venv313/lib/python3.13/site-packages/transformers/utils/hub.py:110: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+/home/happy/デスクトップ/mobius_ai/venv313/lib/python3.13/site-packages/transformers/utils/hub.py:110: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+  Multi-GPU pool: cuda:0 + cuda:1
+
+  [FAISS Training] 262,144 samples...
+Chunks:   0%|          | 0/53 [00:00<?, ?it/s]Chunks:   2%|▏         | 1/53 [00:09<08:38,  9.96s/it]Chunks:   4%|▍         | 2/53 [00:12<04:55,  5.79s/it]Chunks:   6%|▌         | 3/53 [00:19<05:01,  6.02s/it]Chunks:   8%|▊         | 4/53 [00:22<04:00,  4.92s/it]Chunks:   9%|▉         | 5/53 [00:28<04:12,  5.27s/it]Chunks:  11%|█▏        | 6/53 [00:31<03:42,  4.73s/it]Chunks:  13%|█▎        | 7/53 [00:37<03:46,  4.92s/it]Chunks:  15%|█▌        | 8/53 [00:41<03:34,  4.78s/it]Chunks:  17%|█▋        | 9/53 [00:45<03:21,  4.59s/it]Chunks:  19%|█▉        | 10/53 [00:51<03:27,  4.82s/it]Chunks:  21%|██        | 11/53 [00:54<03:04,  4.39s/it]Chunks:  23%|██▎       | 12/53 [01:00<03:22,  4.93s/it]Chunks:  25%|██▍       | 13/53 [01:03<02:53,  4.33s/it]Chunks:  26%|██▋       | 14/53 [01:10<03:12,  4.94s/it]Chunks:  28%|██▊       | 15/53 [01:12<02:42,  4.27s/it]Chunks:  30%|███       | 16/53 [01:20<03:12,  5.19s/it]Chunks:  32%|███▏      | 17/53 [01:21<02:29,  4.15s/it]Chunks:  34%|███▍      | 18/53 [01:29<03:07,  5.34s/it]Chunks:  36%|███▌      | 19/53 [01:30<02:15,  3.99s/it]Chunks:  38%|███▊      | 20/53 [01:39<02:55,  5.32s/it]Chunks:  40%|███▉      | 21/53 [01:41<02:20,  4.39s/it]Chunks:  42%|████▏     | 22/53 [01:51<03:11,  6.19s/it]Chunks:  43%|████▎     | 23/53 [01:52<02:18,  4.62s/it]Chunks:  45%|████▌     | 24/53 [02:01<02:48,  5.81s/it]Chunks:  47%|████▋     | 25/53 [02:01<01:58,  4.24s/it]Chunks:  49%|████▉     | 26/53 [02:10<02:28,  5.50s/it]Chunks:  51%|█████     | 27/53 [02:10<01:43,  4.00s/it]Chunks:  53%|█████▎    | 28/53 [02:20<02:18,  5.55s/it]Chunks:  55%|█████▍    | 29/53 [02:20<01:34,  3.92s/it]Chunks:  57%|█████▋    | 30/53 [02:29<02:05,  5.46s/it]Chunks:  60%|██████    | 32/53 [02:37<01:42,  4.87s/it]Chunks:  62%|██████▏   | 33/53 [02:38<01:19,  3.96s/it]Chunks:  64%|██████▍   | 34/53 [02:46<01:35,  5.04s/it]Chunks:  66%|██████▌   | 35/53 [02:48<01:12,  4.03s/it]Chunks:  68%|██████▊   | 36/53 [02:55<01:25,  5.04s/it]Chunks:  70%|██████▉   | 37/53 [02:57<01:06,  4.14s/it]Chunks:  72%|███████▏  | 38/53 [03:04<01:12,  4.86s/it]Chunks:  74%|███████▎  | 39/53 [03:07<00:59,  4.28s/it]Chunks:  75%|███████▌  | 40/53 [03:13<01:02,  4.77s/it]Chunks:  77%|███████▋  | 41/53 [03:16<00:53,  4.45s/it]Chunks:  79%|███████▉  | 42/53 [03:22<00:52,  4.73s/it]Chunks:  81%|████████  | 43/53 [03:26<00:46,  4.63s/it]Chunks:  83%|████████▎ | 44/53 [03:31<00:41,  4.61s/it]Chunks:  85%|████████▍ | 45/53 [03:36<00:38,  4.77s/it]Chunks:  87%|████████▋ | 46/53 [03:40<00:31,  4.54s/it]Chunks:  89%|████████▊ | 47/53 [03:45<00:28,  4.77s/it]Chunks:  91%|█████████ | 48/53 [03:49<00:22,  4.43s/it]Chunks:  92%|█████████▏| 49/53 [03:55<00:19,  4.84s/it]Chunks:  94%|█████████▍| 50/53 [03:58<00:12,  4.30s/it]Chunks:  96%|█████████▌| 51/53 [04:04<00:09,  4.99s/it]Chunks:  98%|█████████▊| 52/53 [04:07<00:04,  4.25s/it]Chunks: 100%|██████████| 53/53 [04:08<00:00,  3.44s/it]Chunks: 100%|██████████| 53/53 [04:08<00:00,  4.70s/it]
+  Training saved: wiki_index_trained.faiss
+[Total]:   0%|                    | 0/3367718 ?chunks/s ETA ?
+  [Part 1/4] 0 〜 841,929 (841,929 chunks)
+
+[Part 1/4]:   0%|                    | 0/841929 ?chunks/s ETA ?[A
+[Part 1/4]: 100%|████████████████████| 841929/841929 1004.04chunks/s ETA 00:00[A[Total]:  25%|████▉               | 841929/3367718 1004.04chunks/s ETA 41:55
+                                                                              [A
+  [Part 1] 保存完了: faiss_part1.faiss (841,929 vectors, 839s)
+
+  [Part 2/4] 841,929 〜 1,683,858 (841,929 chunks)
+
+[Part 2/4]:   0%|                    | 0/841929 ?chunks/s ETA ?[A[Total]:  25%|████▉               | 841929/3367718 1004.04chunks/s ETA 41:55
+[Part 2/4]: 100%|████████████████████| 841929/841929 954.26chunks/s ETA 00:00[A[Total]:  50%|█████████▉          | 1683858/3367718 974.08chunks/s ETA 28:48
+                                                                             [A
+  [Part 2] 保存完了: faiss_part2.faiss (841,929 vectors, 882s)
+
+  [Part 3/4] 1,683,858 〜 2,525,787 (841,929 chunks)
+
+[Part 3/4]:   0%|                    | 0/841929 ?chunks/s ETA ?[A[Total]:  50%|█████████▉          | 1683858/3367718 974.08chunks/s ETA 28:48
+[Part 3/4]: 100%|████████████████████| 841929/841929 1007.21chunks/s ETA 00:00[A[Total]:  75%|██████████████▉     | 2525787/3367718 988.88chunks/s ETA 14:11
+                                                                              [A
+  [Part 3] 保存完了: faiss_part3.faiss (841,929 vectors, 836s)
+
+  [Part 4/4] 2,525,787 〜 3,367,718 (841,931 chunks)
+
+[Part 4/4]:   0%|                    | 0/841931 ?chunks/s ETA ?[A[Total]:  75%|██████████████▉     | 2525787/3367718 988.88chunks/s ETA 14:11
+[Part 4/4]: 100%|████████████████████| 841931/841931 997.45chunks/s ETA 00:00[A[Total]: 100%|████████████████████| 3367718/3367718 992.20chunks/s ETA 00:00
+                                                                             [A[Total]: 100%|████████████████████| 3367718/3367718 990.15chunks/s ETA 00:00
+
+  [Part 4] 保存完了: faiss_part4.faiss (841,931 vectors, 844s)
+
+[Stage 3] 4パートをマージ...
+  merged: faiss_part2.faiss → total 1,683,858
+  merged: faiss_part3.faiss → total 2,525,787
+  merged: faiss_part4.faiss → total 3,367,718
+  wiki_index_ivfpq.faiss: 1.77GB (~1.72GB in memory)
+  チェックポイントファイル削除完了
+
+=== Build complete ===
+  Total vectors: 3,367,718
+  Index:         1.77GB
+  Memory:        ~1.72GB
+  Total time:    0.9h
+/usr/lib/python3.13/multiprocessing/resource_tracker.py:479: UserWarning: resource_tracker: There appear to be 2 leaked semaphore objects to clean up at shutdown: {'/loky-1178516-qmi_gp4_', '/loky-1178580-wno44s1g'}
+  warnings.warn(

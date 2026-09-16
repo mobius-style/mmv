@@ -1,0 +1,8 @@
+/home/happy/デスクトップ/mobius_ai/venv313/lib/python3.13/site-packages/transformers/utils/hub.py:110: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+`torch_dtype` is deprecated! Use `dtype` instead!
+en: new store 15,648,632 chunks
+
+[A] questions from the new extractor: 400 questions, full corpus
+    v11b nprobe= 32  recall@1= 51.0 recall@5= 68.8 MRR= 58.4
+    v11b nprobe=128  recall@1= 53.5 recall@5= 71.8 MRR= 60.9

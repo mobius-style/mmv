@@ -1,0 +1,7 @@
+/home/happy/デスクトップ/mobius_ai/venv313/lib/python3.13/site-packages/transformers/utils/hub.py:110: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+embedded 150000 in 1510s
+PQ m=64, head-trained      bytes/vec=64  recall@10 vs exact -> nprobe 8:  44.3% | nprobe 32:  45.3% | nprobe 64:  45.4% | nprobe 128:  45.4%
+PQ m=64, uniform-trained   bytes/vec=64  recall@10 vs exact -> nprobe 8:  45.5% | nprobe 32:  46.7% | nprobe 64:  47.0% | nprobe 128:  47.1%
+PQ m=128, uniform-trained  bytes/vec=128  recall@10 vs exact -> nprobe 8:  57.2% | nprobe 32:  60.4% | nprobe 64:  61.3% | nprobe 128:  61.6%
+SQ8 (1024 B/vec), uniform  bytes/vec=1024 recall@10 vs exact -> nprobe 8:  81.2% | nprobe 32:  92.4% | nprobe 64:  96.2% | nprobe 128:  98.2%

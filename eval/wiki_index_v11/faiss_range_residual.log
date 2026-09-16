@@ -1,0 +1,5 @@
+IVF4096,SQ4, 205,789 vectors, nprobe 128
+  stock RS_minmax (shipped)                fidelity  81.6%  recall@1  62.4  MRR  66.2   [by_residual=True]
+  stock RS_optim                           fidelity  81.6%  recall@1  62.4  MRR  66.2   [by_residual=True]
+  clip 0.1-99.9 pct on residuals           fidelity  85.2%  recall@1  63.4  MRR  66.9   [by_residual=True | clip on residuals]
+  clip 1-99 pct on residuals               fidelity  84.6%  recall@1  63.4  MRR  66.9   [by_residual=True | clip on residuals]

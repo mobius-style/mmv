@@ -1,0 +1,32 @@
+{
+ "current": {
+  "chunks": 1515,
+  "tok_p50": 278,
+  "tok_p95": 482,
+  "over512": 0.0,
+  "recall1": 99.91666666666667,
+  "mrr": 99.95833333333334,
+  "mean_pair_cos": 0.752,
+  "footer": 79.2
+ },
+ "v2": {
+  "chunks": 1301,
+  "tok_p50": 240,
+  "tok_p95": 479,
+  "over512": 0.0,
+  "recall1": 93.91666666666667,
+  "mrr": 93.95833333333333,
+  "mean_pair_cos": 0.736,
+  "footer": 0.0
+ },
+ "v2+title": {
+  "chunks": 1301,
+  "tok_p50": 247,
+  "tok_p95": 487,
+  "over512": 0.0,
+  "recall1": 94.0,
+  "mrr": 94.0,
+  "mean_pair_cos": 0.7318,
+  "footer": 0.0
+ }
+}

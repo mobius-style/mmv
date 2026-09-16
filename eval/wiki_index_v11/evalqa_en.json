@@ -1,0 +1,47 @@
+{
+ "questions": [
+  "What are the substrates and products of the enzyme that catalyzes the conversion of 1,5-anhydro-D-mannitol into 1,5-anhydro-D-fructose?",
+  "Who was the captain of the 1904 Michigan State Normal Normalites football team?",
+  "What was the peak intensity and impact of the most powerful storm during the 1908 Atlantic hurricane season?",
+  "Who won the women's singles tennis title at the 1918 U.S. National Championships?",
+  "What was the win-loss record of the football team representing the Haskell Institute during the 1921 season?",
+  "Who won the 1929 All-Ireland Minor Hurling Championship?",
+  "Who was the individual credited with submitting the winning name for the University of Colorado's football team in 1934?",
+  "What was the outcome of the 1944 presidential election in Massachusetts?",
+  "Which football club won the 30th edition of the Turkish Cup by defeating Bursaspor in the finals?",
+  "What was the lowest home attendance recorded by the club during the 1997–98 season?",
+  "How many cyclists finished the 1999 Amstel Gold Race?",
+  "What was the military history and ultimate fate of the Confederate unit from Mississippi that used the M1857 12-pounder Napoleon gun?",
+  "What is the chemical reaction catalyzed by the enzyme that converts o-coumaric acid and UDP-glucose into melilotoside and uridine diphosphate?",
+  "What was the outcome of the 2005 vote regarding the constitutional amendment in Kansas that prohibited same-sex marriage and civil unions?",
+  "What was the final win-loss record of the Wake Forest football team during the 2008 season?",
+  "What was the club's highest home attendance during the 2010–11 season?",
+  "What event triggered the 2011 Macedonian protests?",
+  "Where was the 2011 Women's Ford National Hockey League held?",
+  "Who won the 2013 mayoral election in Kansas City, Kansas?",
+  "How many ties did the Chicago soccer club set a record for during the 2014 season?"
+ ],
+ "res": {
+  "current": {
+   "chunks": 515,
+   "tok_p50": 294,
+   "tok_sum": 151814,
+   "recall1": 97.8,
+   "mrr": 98.4
+  },
+  "v2": {
+   "chunks": 482,
+   "tok_p50": 254,
+   "tok_sum": 127604,
+   "recall1": 97.2,
+   "mrr": 98.3
+  },
+  "v2+title": {
+   "chunks": 482,
+   "tok_p50": 260,
+   "tok_sum": 130419,
+   "recall1": 97.5,
+   "mrr": 98.2
+  }
+ }
+}

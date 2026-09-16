@@ -2,7 +2,7 @@
 title: "What a Retrieval Index Loses Before Anyone Notices"
 subtitle: "Three silent defects in three published Wikipedia embedding indexes, the benchmark that rewarded one of them, and what three rounds of refutation found in the write-up"
 author: "Taiko Toeda (MOBIUS LLC)"
-ai_co_observer: "Claude Opus 5 (Anthropic) — working method only; the forensic measurements, the rebuild and the draft were produced under human direction; three commissioned model-instance reviewers rejected the first rebuild (§7.1), an audit of the draft release note found sixteen unsupported statements (§7.2), and a third round of three refuters returned FAILS on this paper and found one defect in the release itself (§7.3); the registered author is the human author alone"
+ai_co_observer: "Claude Opus 5 (Anthropic) — working method only; the forensic measurements, the rebuild and the draft were produced under human direction; three commissioned model-instance reviewers rejected the first rebuild (§8.1), an audit of the draft release note found sixteen unsupported statements (§8.2), and a third round of three refuters returned FAILS on this paper and found one defect in the release itself (§8.3); the registered author is the human author alone"
 version: "1.0 (owner review pending before deposit)"
 date: "2026-09-16"
 license: "CC BY-NC-SA 4.0 (text); build pipeline, evaluation harness and analysis code AGPL-3.0-or-later; the indexes themselves CC BY-SA 4.0 as derivatives of Wikipedia"
@@ -41,9 +41,9 @@ scope_firewall: >
 **Version:** 1.0 (release candidate; owner review pending before deposit).
 **Date:** September 2026.
 **License:** CC BY-NC-SA 4.0 (text); build pipeline, evaluation harness and analysis code AGPL-3.0-or-later.
-**DOI:** 10.5281/zenodo.22782085 (reserved; live on Zenodo publication).
+**DOI:** 10.5281/zenodo.22782085 (published 2026-09-16; concept DOI 10.5281/zenodo.22782084).
 
-*Release type: Empirical failure report on the author's own published artifacts, with every claim traced to a shipped log, and with three rounds of adversarial review reported at equal prominence with the results — including the round that rejected the first rebuild, the audit that found sixteen unsupported statements in the draft of this document, and the round that found a release defect two rounds of review had missed. AI co-observer: Claude Opus 5 (Anthropic), working method only; the registered author is the human author alone.*
+*Release type: Empirical failure report on the author's own published artifacts, with every claim traced to a shipped log, and with three rounds of adversarial review reported at equal prominence with the results — including the round that rejected the first rebuild, the audit that found sixteen unsupported statements in the draft release note, and the round that found a release defect two rounds of review had missed. AI co-observer: Claude Opus 5 (Anthropic), working method only; the registered author is the human author alone.*
 
 ---
 
@@ -80,10 +80,51 @@ this benchmark's noise, and a stock FAISS option reaches the same downstream num
 four runs. Our first attempt at the same idea computed the quantiles on raw vectors and made the
 index substantially worse (59.6 %), because an IVF index encodes residuals.
 
-Three rounds of adversarial review are reported in §7, in the same detail as the results. The third
+Three rounds of adversarial review are reported in §8, in the same detail as the results. The third
 round found that two of the three shipped indexes had never been re-verified after being
 re-encoded — the same defect the first round had raised and this document had already reported as
 fixed.
+
+---
+
+## What a reader can take from this
+
+Three things, in decreasing order of how confident we are that they travel.
+
+**A checkable defect list.** If you serve a retrieval index over multilingual text with a sentence
+encoder, the three defects in §3–§5 are things you can test for this afternoon on your own store,
+with the scripts we ship: the token-length distribution of your chunks under the encoder's own
+tokenizer, the rate at which a fixed boilerplate string appears in your chunk bodies, and your
+index type's top-10 agreement with exact search on a sample of your own vectors. Each of ours was
+invisible until measured, each was cheap to measure, and each had been in production for months.
+Our scripts hard-code our own paths, so you will edit them before you run them; what they give you
+is the shape of the check, not a turnkey tool.
+
+**A benchmark you should distrust, with the reason.** §6 reports a retrieval benchmark of ours that
+ranked the *defective* artifact six to seven points higher in Japanese and Chinese. The general form
+of the mistake — a benchmark whose query is derived from a field the index also stores — covers
+title self-retrieval, chunk-to-chunk nearest neighbour, and query-generated-from-the-passage
+designs, which between them account for a large share of the retrieval evaluations that get written
+in an afternoon. The check costs one sentence of thought and is in §9.
+
+**A quantiser change that is free at query time.** §7 gives a one-line change to how FAISS fits a
+scalar quantiser's range that raises top-10 agreement with exact search from 81.6 % to 85.2 % at
+identical bits, decode path and file format — together with the reason our first attempt at it made
+the index substantially worse, and the honest statement that its downstream effect on our own
+benchmark is inside the noise.
+
+We also report, in §8 and at the same level of detail as the results, what three rounds of
+adversarial review found in this work — including in the drafts of this document, and including a
+defect in the released artifacts that two rounds of review had already passed. That section is the
+one we would keep if we could keep only one. Its claim is not that we are careful. Its claim is
+that a single pass of review over your own work has a measurable failure rate, that we measured
+ours, and that it did not reach zero.
+
+Every number in this paper resolves to an evidence file we ship (§11) — a log, a question set, or
+a result JSON — with two declared exceptions, both in §2: the previous English index's type, which
+we infer from its file size because no manifest for it survives, and the previous stores' dump
+dates, which come from manifests that are not part of this release. Where two of our own evidence
+files disagree, we say so and do not pick a winner.
 
 ---
 
@@ -100,7 +141,11 @@ top-10 still returns ten results, ranked, with plausible scores. The system degr
 dimension nobody was watching, and the degradation was largest in the two languages we were least
 equipped to spot-check by eye.
 
-We report the measurements in the order we made them, including the ones that pointed the wrong way.
+We report the measurements broadly in the order we made them, including the ones that pointed the
+wrong way. Including them is the argument. A report that presents only the measurements that survived
+tells a reader what we believe; a report that also presents the two that reversed under scrutiny —
+the benchmark that preferred the broken extractor (§6), and the quantiser fix that made the index
+worse before it made it better (§7) — tells them how much our belief is worth.
 
 ## 2. The artifacts
 
@@ -155,9 +200,11 @@ The budget was chosen by sweep, on pools of 6,303 (ja), 6,316 (zh) and 6,400 (en
 | 360 | 79.8 | 83.0 | 92.8 |
 | 480 | 78.9 | 82.9 | 92.5 |
 
-A 160-token budget scored 2.7 MRR higher for English at roughly 1.5 times the chunk count. The
-Chinese and Japanese differences across the sweep, 1.4 and 1.7 points, are inside this benchmark's
-noise (§6.2). We chose 256 as a compromise across three languages and one storage budget, not
+A 160-token budget scored higher than 256 for **both English and Chinese** — by 2.7 and 1.4 MRR —
+at roughly 1.5 times the chunk count. The full spread across the four budgets is 3.1 points in
+English, 2.8 in Chinese and 2.6 in Japanese, which straddles this benchmark's noise scale of 2.2 to
+2.9 points (§6.2): the sweep separates 160 from 480, and does not reliably separate adjacent
+settings. We chose 256 as a compromise across three languages and one storage budget, not
 because the sweep chose it.
 
 ## 4. Defect 2 — boilerplate inside the unit of evidence
@@ -186,7 +233,7 @@ boxes **as markup** rather than by keyword, unescapes entities, removes inline t
 separator, and linearises infobox table rows to `key: value`. The navbox decision matters: our own
 first rebuild filtered navigation by keyword, and two of the keywords it matched — `編集` and `解説`
 — are also ordinary Japanese infobox keys meaning "film editing" and "commentary". That filter
-deleted real content. §7.1 gives the count.
+deleted real content. §8.1 gives the count.
 
 ## 5. Defect 3 — the quantiser that discarded half the search
 
@@ -224,8 +271,8 @@ cone: over 20,000 disjoint random pairs drawn from the whole shipped vector set 
 mean cosine is **0.695 (en), 0.715 (ja) and 0.753 (zh)**, with a standard deviation of 0.03
 (`remeasure_v2.log` §B). But the deficit is not intrinsic to a 64-byte budget, and our own data say
 so: `OPQ64,IVF,PQ64` returns **64.3 %** of the exact top-10 at the identical 64 bytes per vector
-where `IVF,PQ64` returns 47.1 % (`index_types.log`). A learned rotation alone recovers most of the
-loss without the five-fold storage increase we chose. We did not run that variant end to end, which
+where `IVF,PQ64` returns 47.1 % (`index_types.log`). A learned rotation alone closes about two fifths
+of the gap between the published index and the SQ4 we shipped, at no extra storage. We did not run that variant end to end, which
 is why it has no MRR row above; a reader weighing storage should treat it as the cheapest
 counterfactual we measured and did not pursue.
 
@@ -342,7 +389,7 @@ extractor in two of three languages: **ja 94.8 % → 94.2 %, zh 97.0 % → 95.8 
 articles that the old extractor's boilerplate padding used to carry over the line. We did not measure
 which articles are lost.
 
-Against the rebuild our own reviewers rejected (§7.1), on the same question sets and the whole
+Against the rebuild our own reviewers rejected (§8.1), on the same question sets and the whole
 corpus at nprobe 128, Japanese rises 54.3 → 56.3 and Chinese 54.8 → 55.5 MRR, but **English falls
 62.7 → 60.9** (`acceptance_full_corpus_v11a.log` against `final_eval_*.log`). All three moves are
 inside the noise of §6.2, so the honest statement is that the round-1 fixes changed retrieval
@@ -350,95 +397,7 @@ measurably in no language. They were verified as defect counts, not as retrieval
 comparison because it is the only retrieval evidence we have about that round and it does not point
 uniformly in our favour.
 
-## 7. Three rounds of review
-
-### 7.1 Round one: three commissioned reviewers rejected the first rebuild
-
-Three reviewers — separate model instances, separately prompted and given a brief to refute rather
-than to assess — were commissioned before publication. All three returned NO-GO. The upload was
-stopped before any commit landed and the three indexes were rebuilt a second time.
-
-**Their reports were not retained verbatim.** The table below is the author's record of their
-findings, written as each was acted on. It is the author's paraphrase of criticism of the author's
-work and should be read as such.
-
-| finding | disposition and verification |
-|---|---|
-| The navigation filter matched `編集` and `解説`, which are also ordinary infobox keys | Japanese `編集:` rows 106 → 21,059 and `解説:` 7 → 63, against an unchanged control (`撮影:` 22,836 → 22,840) |
-| Sentence splitting fired on abbreviations, cutting English chunks after "U.S.", "No.", "St." | English chunks ending on a known abbreviation 136,149 → 10,709 (0.87 % → 0.07 %) |
-| The infobox stream has no sentence terminators, so infoboxes were cut mid-token | infobox rows made atomic; Japanese chunks whose body starts mid-token 12,670 → 2,852 |
-| The CJK space rule deleted legitimate spaces | rule removed; the count of affected chunks was taken on a store that has since been replaced and is not reproducible |
-| `chunk_id` was a 48-bit hash, and duplicates are dropped silently | at 15.6 M chunks the birthday bound gives 0.44 expected collisions, a 35 % chance of at least one; widened to 80 bits |
-| Stage 2 skipped unparsable lines while advancing the vector counter, which would misalign every later vector | code change only; no misalignment was ever observed, so there is no before-and-after count |
-| The acceptance script could not fail, and had validated an index that was later overwritten | rewritten with seven assertions and a non-zero exit — see §7.3, where this fix turned out to be incompletely applied |
-| The build scripts were excluded from the repository by a blanket ignore rule | committed under `scripts/` |
-| No gzip seek index shipped | `indexed_gzip` seek index now ships: reading the 99th-percentile line takes 0.07 s (ja) / 0.13 s (en) instead of 5.7 s / 28.1 s |
-
-### 7.2 Round two: an audit of the draft found sixteen unsupported statements
-
-We then audited the draft release note against its own logs. Sixteen statements did not survive.
-Three were numbers no log contained (embedding throughput and the dual-GPU and `float16` speed-ups,
-`float16` retrieval equivalence, mean pairwise cosine). One was a 16-fold overstatement of a pool
-size. One misattributed the index-type gain, quoting the full loss against exact search (7.8) for a
-change that actually delivered +7.2. Two cited files that did not exist. Three reported a result
-only in the languages where it was favourable. The rest were wrong numerals.
-
-Thirteen of the sixteen pointed in the flattering direction. Three did not: the draft understated
-Japanese coverage (94.1 against an actual 94.2), understated absolute embedding throughput by nearly
-half, and overstated the offsets download at 126 MB against an actual 125. "Not randomly signed" is
-what sixteen errors in one document support; "every one" is not, and an earlier draft of this paper
-said "every one".
-
-The same pass found that the upload staging directory was hard-linked to the pre-fix build. Had the
-upload run when it was first staged, it would have published the artifacts the reviewers rejected.
-
-### 7.3 Round three: what two rounds of review had missed
-
-Three further refuters — statistics, consistency, and scope — were run against the draft of **this
-paper**. All three returned FAILS. Four of their findings changed measurements rather than wording,
-and one of them is a defect in the release, not in the write-up.
-
-**The release defect.** `verify_ja.log` and `verify_zh.log` were written at 13:25 and 14:30 on
-2026-09-15. The Japanese and Chinese indexes were re-encoded with the residual-quantile range at
-15:16 and 15:22 that afternoon. The acceptance evidence for two of the three shipped artifacts
-therefore described files that no longer existed — which is verbatim the round-one finding
-"validated an index that was subsequently overwritten", reported one section above as fixed. It
-recurred because the release note said only English had been re-encoded, when in fact all three
-were. The acceptance script was re-run on the shipped Japanese and Chinese files on 2026-09-16;
-both PASSED (`verify_ja_final.log`, `verify_zh_final.log`), so the artifacts were sound and the
-evidence was missing, but the gate had not held.
-
-**Three measurements were wrong.** The licence footer's length was reported as 158 characters,
-which was `len()` of a string hard-coded in the measurement script and present in no artifact; the
-real string is 184 characters. The "narrow cone" evidence was described as 4,000 random pairs of
-shipped chunks and was in fact 2,000 pairs drawn from the first 4,000 vectors of one embedding
-file, with self-pairs admitted; re-measured over 20,000 disjoint random pairs from the whole vector
-set, mean cosine is 0.695 / 0.715 / 0.753 rather than 0.72 / 0.78 / 0.79. And the paper stated that
-the Chinese dump had moved **backwards**, offering it as a caveat against our own result; the
-previous Chinese store was built from the 2025-09 ZIM, so the dump moved forward by eight months
-and the confound runs in our favour, not against us.
-
-**One conclusion was contradicted by our own logs.** An earlier draft advised readers that set
-fidelity and downstream MRR "do not rank index types identically". Across every type measured by
-both, they rank identically; what differs is magnitude. That advice is corrected in §9.
-
-Round three also produced most of the disclosures now in §5, §6 and §6.3: the `OPQ64` counterfactual
-at the same 64 bytes, the coverage regression, the English retrieval fall against the rejected
-build, the Chinese control's dump mismatch, the noise floor reconstruction, and the fact that the
-round-one reviewers' reports were not retained.
-
-### 7.4 What the three rounds say about the process
-
-The reviewers caught defects in the artifact. The second round caught defects in the description of
-the artifact, in a document the same author had already checked once. The third round caught a
-defect in the release that the first two had both looked at and passed, and three measurements that
-the second round had itself introduced while correcting other numbers.
-
-We report this at equal prominence with the results because it is the more generalisable finding.
-Each round's output was the input to the next round's error. The rate did not fall to zero, and we
-have no reason to believe a fourth round would find nothing.
-
-## 8. One idea that transferred from neural texture compression
+## 7. One idea that transferred from neural texture compression
 
 Neural texture compression wins on two mechanisms: it adapts code allocation to the data
 distribution, and it compresses correlated channels jointly through a learned decoder. We tried
@@ -449,8 +408,12 @@ without decoding — an argument for not trying it, not a measurement that it fa
 FAISS fits a scalar quantiser's per-dimension range to the min and max of the values it is given,
 which a few outliers stretch, wasting code levels on empty space. Clipping that range to the
 0.1–99.9 percentile should cost nothing at query time — same 4 bits, same lookup-table decode, same
-file format, same `read_index` compatibility — though we did not time it. Build time rose by about
-8 % in the one comparison that recorded it.
+file format, same `read_index` compatibility — though we did not time it. Index construction is a
+different matter and we did measure it, at shipping scale: re-encoding from the retained fp16
+vectors took 406 s (ja), 515 s (zh) and 1,268 s (en) with the clipped range against 392 s, 401 s and
+1,250 s with FAISS's min/max, i.e. +3.6 %, +28 % and +1.4 % (`reindex_sq4.log`, `reindex_clip.log`,
+`reindex_clip_en.log`). We cannot explain why Chinese cost so much more than the other two and did
+not investigate.
 
 The first implementation made the index **worse**: top-10 agreement with exact search fell from
 81.6 % to 59.6 %. The cause is that `IndexIVFScalarQuantizer` with `by_residual=True` does not
@@ -485,6 +448,113 @@ per-dimension variance, so we cannot say whether the rotation failed because the
 already near equal-variance or because a random rotation is the wrong rotation — a *learned*
 rotation helps the PQ variants substantially (§5).
 
+## 8. Three rounds of review
+
+### 8.1 Round one: three commissioned reviewers rejected the first rebuild
+
+Three reviewers — separate model instances, separately prompted and given a brief to refute rather
+than to assess — were commissioned before publication. All three returned NO-GO. The upload was
+stopped before any commit landed and the three indexes were rebuilt a second time.
+
+**Their reports were not retained verbatim.** The table below is the author's record of their
+findings, written as each was acted on. It is the author's paraphrase of criticism of the author's
+work and should be read as such.
+
+| finding | disposition and verification |
+|---|---|
+| The navigation filter matched `編集` and `解説`, which are also ordinary infobox keys | Japanese `編集:` rows 106 → 21,059 and `解説:` 7 → 63, against an unchanged control (`撮影:` 22,836 → 22,840) |
+| Sentence splitting fired on abbreviations, cutting English chunks after "U.S.", "No.", "St." | English chunks ending on a known abbreviation 136,149 → 10,709 (0.87 % → 0.07 %) |
+| The infobox stream has no sentence terminators, so infoboxes were cut mid-token | infobox rows made atomic; Japanese chunks whose body starts mid-token 12,670 → 2,852 |
+| The CJK space rule deleted legitimate spaces | rule removed; the count of affected chunks was taken on a store that has since been replaced and is not reproducible |
+| `chunk_id` was a 48-bit hash, and duplicates are dropped silently | at 15.6 M chunks the birthday bound gives 0.44 expected collisions, a 35 % chance of at least one; widened to 80 bits |
+| Stage 2 skipped unparsable lines while advancing the vector counter, which would misalign every later vector | code change only; no misalignment was ever observed, so there is no before-and-after count |
+| The acceptance script could not fail, and had validated an index that was later overwritten | rewritten with seven assertions and a non-zero exit — see §8.3, where this fix turned out to be incompletely applied |
+| The build scripts were excluded from the repository by a blanket ignore rule | committed under `scripts/` |
+| No gzip seek index shipped | `indexed_gzip` seek index now ships: reading the 99th-percentile line takes 0.07 s (ja) / 0.13 s (en) instead of 5.7 s / 28.1 s |
+
+### 8.2 Round two: an audit of the draft found sixteen unsupported statements
+
+We then audited the draft release note against its own logs. Sixteen statements did not survive.
+Three were numbers no log contained (embedding throughput and the dual-GPU and `float16` speed-ups,
+`float16` retrieval equivalence, mean pairwise cosine). One was a 16-fold overstatement of a pool
+size. One misattributed the index-type gain, quoting the full loss against exact search (7.8) for a
+change that actually delivered +7.2. Two cited files that did not exist. Three reported a result
+only in the languages where it was favourable. The rest were wrong numerals.
+
+Thirteen of the sixteen pointed in the flattering direction. Three did not: the draft understated
+Japanese coverage (94.1 against an actual 94.2), understated absolute embedding throughput by nearly
+half, and overstated the offsets download at 126 MB against an actual 125. "Not randomly signed" is
+what sixteen errors in one document support; "every one" is not, and an earlier draft of this paper
+said "every one".
+
+The same pass found that the upload staging directory was hard-linked to the pre-fix build. Had the
+upload run when it was first staged, it would have published the artifacts the reviewers rejected.
+
+### 8.3 Round three: what two rounds of review had missed
+
+Three further refuters — statistics, consistency, and scope — were run against the draft of **this
+paper**. All three returned FAILS. `REVIEW.md` groups what they found into four kinds: a defect in the
+release itself, three measurements that were simply wrong, two results still reported only where
+they were favourable, and a conclusion our own logs contradicted. Only the first of the four is a
+defect in the artifacts rather than in the write-up.
+
+**The release defect.** `verify_ja.log` was written at 14:30 and `verify_zh.log` at 13:25 on
+2026-09-15. The Japanese and Chinese indexes were then re-encoded with the residual-quantile range
+at 15:22 and 15:16 that afternoon. The acceptance evidence for two of the three shipped artifacts
+therefore described files that no longer existed — which is verbatim the round-one finding
+"validated an index that was subsequently overwritten", reported one section above as fixed. It
+recurred because the release note said only English had been re-encoded, when in fact all three
+were. The acceptance script was re-run on the shipped Japanese and Chinese files on 2026-09-16;
+both PASSED (`verify_ja_final.log`, `verify_zh_final.log`), so the artifacts were sound and the
+evidence was missing, but the gate had not held.
+
+**Three measurements were wrong.** The licence footer's length was reported as 158 characters,
+which was `len()` of a string hard-coded in the measurement script and present in no artifact; the
+real string is 184 characters. The "narrow cone" evidence was described as 4,000 random pairs of
+shipped chunks and was in fact 2,000 pairs drawn from the first 4,000 vectors of one embedding
+file, with self-pairs admitted; re-measured over 20,000 disjoint random pairs from the whole vector
+set, mean cosine is 0.695 / 0.715 / 0.753 rather than 0.72 / 0.78 / 0.79. And the paper stated that
+the Chinese dump had moved **backwards**, offering it as a caveat against our own result; the
+previous Chinese store was built from the 2025-09 ZIM, so the dump moved forward by eight months
+and the confound runs in our favour, not against us.
+
+**One conclusion was contradicted by our own logs.** An earlier draft advised readers that set
+fidelity and downstream MRR "do not rank index types identically". Across every type measured by
+both, they rank identically; what differs is magnitude. That advice is corrected in §9.
+
+Round three also produced most of the disclosures now in §5, §6 and §6.3: the `OPQ64` counterfactual
+at the same 64 bytes, the coverage regression, the English retrieval fall against the rejected
+build, the Chinese control's dump mismatch, the noise floor reconstruction, and the fact that the
+round-one reviewers' reports were not retained.
+
+### 8.4 What the three rounds say about the process
+
+The reviewers caught defects in the artifact. The second round caught defects in the description of
+the artifact, in a document the same author had already checked once. The third round caught a
+defect in the release that the first two had both looked at and passed, and three measurements that
+the second round had itself introduced while correcting other numbers.
+
+We report this at equal prominence with the results because it is the more generalisable finding,
+and because it is the part a reader can act on without owning our artifacts.
+
+Three observations follow from it. **The error rate of a review pass is itself a measurable
+quantity**, and ours was not small: sixteen unsupported statements in a release note its author had
+already checked, then four further kinds of finding when the corrected release note and this paper
+were reviewed together — one of them a defect in the released artifacts that the first two rounds
+had both looked at and passed. **Review rounds introduce errors as well as removing them** — two of the three
+measurements round three overturned had been *created* by round two while it was fixing other
+numbers, which means the naive model of review as monotonic improvement is wrong for this kind of
+work. And **the errors were not randomly signed**: thirteen of the sixteen flattered the artifact.
+A process that corrects in one direction more often than the other is not noise; it is a bias with
+a measurable magnitude, and reporting the magnitude is the only thing that lets a reader discount
+this paper by the right amount.
+
+What we cannot claim is that the process converged. The rate did not fall to zero across three
+rounds, and we have no evidence that a fourth would find nothing. The honest position is that this
+document is the third draft of something whose first two drafts were wrong in ways we can
+enumerate, and that a reader should treat its remaining claims with whatever confidence that
+history warrants.
+
 ## 9. What we would tell someone building the same thing
 
 1. **Measure chunk length in the encoder's units, not in characters.** With this tokenizer the
@@ -504,7 +574,7 @@ rotation helps the PQ variants substantially (§5).
    downstream.
 6. **Make the acceptance script capable of failing, and re-run it on the files you actually upload
    — after the last time you touch them.** Ours could not fail, and when it could, we ran it before
-   a re-encoding step and did not notice for a day (§7.3).
+   a re-encoding step and did not notice for a day (§8.3).
 7. **Audit the write-up separately from the artifact, and then audit the audit.** Clearing the
    artifact does not clear the document, errors in documents are not randomly signed, and each of
    our three review rounds found errors the previous round had introduced or passed over.
@@ -531,7 +601,7 @@ content. The `url` field is not percent-encoded, so titles containing a slash pr
 About 1,000 Japanese chunks have bodies containing no letters at all, a class the rebuild did not
 change (994 → 1,012). Indexed-article coverage fell in two of three languages (§6.3).
 
-Every reviewer in §7 was a model instance commissioned by the author. Our own standard for a
+Every reviewer in §8 was a model instance commissioned by the author. Our own standard for a
 correctness claim is agreement from at least two of three independent judges, and that standard is
 not met here. No claim in this paper has been peer reviewed, certified, or independently replicated.
 
@@ -557,5 +627,5 @@ published; every index type reported here can be rebuilt from them without re-em
 
 The forensic measurements, the rebuild, the three review rounds and the drafting of this document
 were carried out with Claude Opus 5 (Anthropic) as a working instrument under human direction. Every
-reviewer described in §7 was a separate model instance given a refutation brief. The registered
+reviewer described in §8 was a separate model instance given a refutation brief. The registered
 author is the human author alone, and responsibility for every claim here rests with him.

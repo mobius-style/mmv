@@ -1,0 +1,21 @@
+wiki_zh_me5_2026-05_bplus: 3,360,260 chunks, 4 embedding parts
+  training on 262,144 vectors (stride 12)
+  added 840,065/3,360,260
+  added 1,680,130/3,360,260
+  added 2,520,195/3,360,260
+  added 3,360,260/3,360,260
+  wrote 1.76 GB (525 B/vector) in 401s
+wiki_ja_me5_2026-06_bplus: 3,008,848 chunks, 4 embedding parts
+  training on 262,144 vectors (stride 11)
+  added 752,212/3,008,848
+  added 1,504,424/3,008,848
+  added 2,256,636/3,008,848
+  added 3,008,848/3,008,848
+  wrote 1.58 GB (526 B/vector) in 392s
+wiki_en_me5_2026-06_bplus: 15,696,612 chunks, 4 embedding parts
+  training on 262,144 vectors (stride 59)
+  added 3,924,153/15,696,612
+  added 7,848,306/15,696,612
+  added 11,772,459/15,696,612
+  added 15,696,612/15,696,612
+  wrote 8.18 GB (521 B/vector) in 1250s

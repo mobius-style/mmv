@@ -13,7 +13,8 @@ here. Two builds are represented, and the distinction matters:
 | file | what it is |
 |---|---|
 | `WIKI_INDEX_V11.md` | the release note: what was wrong, what changed, what was measured |
-| `REVIEW.md` | both review rounds, their findings, and what was done about each |
+| `WIKI_INDEX_FORENSICS_PAPER_v1_0_rc.md` | the working paper, with the three review rounds reported at the same level of detail as the results |
+| `REVIEW.md` | all three review rounds, their findings, and what was done about each |
 
 ## Acceptance — the shipped artifacts
 
@@ -22,6 +23,8 @@ here. Two builds are represented, and the distinction matters:
 | `verify_en_final.log`, `verify_ja_final.log`, `verify_zh_final.log` | **the acceptance evidence for the shipped artifacts.** `verify_wiki_index.py`: row count = FAISS `ntotal` = offsets length = manifest count, `chunk_id` unique, token distribution, two live queries. Exits non-zero on failure. All three PASSED |
 | `verify_en.log`, `verify_ja.log`, `verify_zh.log` | **superseded.** These ran before the indexes were re-encoded with the residual-quantile range, so they describe files that were then overwritten. Round 3 of the review caught this; see `REVIEW.md` |
 | `build_en.log`, `build_ja.log`, `build_zh.log` | the shipped build runs, including end-to-end throughput |
+| `offsets_{en,ja,zh}.log` | the offset table and gzip seek index builds, with their file sizes |
+| `reindex_sq4.log`, `reindex_clip.log`, `reindex_clip_en.log` | the two re-encodings of all three indexes from the retained fp16 vectors: FAISS min/max first, then the residual-quantile range that ships |
 
 ## Retrieval
 
@@ -29,6 +32,9 @@ here. Two builds are represented, and the distinction matters:
 |---|---|
 | `final_eval_en.log`, `final_eval_ja.log`, `final_eval_zh.log` | the numbers in the cards: whole corpus at nprobe 32 and 128, plus the head-to-head against the previously published store on both question sets |
 | `questions_*.json` | the question sets themselves, including the `_oldextract` controls |
+| `eval_{en,ja,zh}.json` | the title-query A/B of §6: the benchmark that ranked the defective extractor higher, with chunk counts and footer rates per arm |
+| `evalscale_{en,ja,zh}.json` | the same three extractor arms scored with generated questions instead of the title, on ~7,000–8,800-chunk pools |
+| `evalqa_{en,ja,zh}.json` | the small-pool question sets those two used |
 | `old_vs_new_v11a.log` | the same head-to-head run against **v11a**. Superseded by `final_eval_{ja,zh}.log` |
 | `acceptance_full_corpus_v11a.log` | whole-corpus retrieval on **v11a**. Superseded by `final_eval_*.log` |
 
@@ -55,6 +61,9 @@ here. Two builds are represented, and the distinction matters:
 | `remeasure_v2.log` | the corrected licence-footer length (184 characters, as it appears in the stores) and the corrected mean pairwise cosine over 20,000 disjoint random pairs of the whole shipped vector set |
 | `noise_floor.log` | the standard error of one MRR figure on these question sets, reconstructed from the reported rates because per-question ranks were not retained |
 | `forensics.log` | the first pass over the published artifacts, which started all of this |
+
+`WIKI_INDEX_V11.md` (the release note) and `WIKI_INDEX_FORENSICS_PAPER_v1_0_rc.md` (the working
+paper) also ship here, so the evidence and the documents that cite it travel together.
 
 The `.py` files beside the logs are the scripts that produced them. In the GitHub repository the
 build pipeline itself — `build_wiki_index_me5_bplus.py`, `build_offsets.py`, `reindex_sq4.py` and

@@ -1,0 +1,20 @@
+{
+ "current": {
+  "pool_chunks": 8012,
+  "recall1": 75.9,
+  "recall5": 84.2,
+  "mrr": 79.1
+ },
+ "v2": {
+  "pool_chunks": 6900,
+  "recall1": 75.2,
+  "recall5": 83.2,
+  "mrr": 78.7
+ },
+ "v2+title": {
+  "pool_chunks": 6900,
+  "recall1": 75.2,
+  "recall5": 84.2,
+  "mrr": 79.0
+ }
+}

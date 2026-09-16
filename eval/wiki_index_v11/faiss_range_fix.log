@@ -1,0 +1,5 @@
+IVF4096,SQ4, 205,789 vectors, nprobe 128
+  stock (RS_minmax) = shipped          fidelity  81.6%  recall@1  62.4  MRR  66.2   [trained=2048 floats]
+  RS_optim                             fidelity  84.5%  recall@1  63.4  MRR  66.9   [trained=2048 floats]
+  clip 0.1-99.9 pct (in-place write)   fidelity  59.6%  recall@1  62.4  MRR  65.0   [trained=2048 floats | write round-trip OK | range shrink 0.831x]
+  clip 0.5-99.5 pct (in-place write)   fidelity  52.1%  recall@1  62.0  MRR  64.6   [trained=2048 floats | write round-trip OK | range shrink 0.693x]

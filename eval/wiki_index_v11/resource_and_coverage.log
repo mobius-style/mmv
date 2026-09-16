@@ -1,0 +1,37 @@
+/home/happy/デスクトップ/mobius_ai/venv313/lib/python3.13/site-packages/transformers/utils/hub.py:110: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+== A. embedding throughput (6,000 ja chunks, batch 128)
+   GPU0 fp32          192.5 chunks/s
+   GPU1 fp32          171.8 chunks/s
+`torch_dtype` is deprecated! Use `dtype` instead!
+   GPU0 fp16          590.9 chunks/s
+/home/happy/デスクトップ/mobius_ai/venv313/lib/python3.13/site-packages/transformers/utils/hub.py:110: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+== A. embedding throughput (6,000 ja chunks, batch 128)
+/home/happy/デスクトップ/mobius_ai/venv313/lib/python3.13/site-packages/transformers/utils/hub.py:110: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+== A. embedding throughput (6,000 ja chunks, batch 128)
+   both GPUs fp32     294.0 chunks/s
+/home/happy/デスクトップ/mobius_ai/venv313/lib/python3.13/site-packages/transformers/utils/hub.py:110: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+== A. embedding throughput (6,000 ja chunks, batch 128)
+/home/happy/デスクトップ/mobius_ai/venv313/lib/python3.13/site-packages/transformers/utils/hub.py:110: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+== A. embedding throughput (6,000 ja chunks, batch 128)
+   both GPUs fp16     889.3 chunks/s
+   dual-GPU speed-up (fp32) 1.53x | fp16 speed-up (GPU0) 3.07x | combined 4.62x
+== B. fp16 vs fp32 embeddings, same texts (3,000 ja chunks)
+   same-text cosine: mean 1.000044 min 0.999756
+   top-1 agreement 100.0%  top-10 agreement 99.5%
+== C. mean pairwise cosine of shipped chunks (4,000 random pairs per language)
+   en: mean pairwise cosine 0.7200
+   ja: mean pairwise cosine 0.7823
+   zh: mean pairwise cosine 0.7881
+== D. indexed-article coverage, v11b extractor vs the previous one, 2,000 sampled articles
+No stemming for language 'ja'
+   ja: previous rule 94.8% of 2000 sampled articles indexed | v11b 94.2%
+No stemming for language 'zh'
+   zh: previous rule 97.0% of 2000 sampled articles indexed | v11b 95.8%
+   en: previous rule 88.2% of 2000 sampled articles indexed | v11b 91.3%
+/usr/lib/python3.13/multiprocessing/resource_tracker.py:479: UserWarning: resource_tracker: There appear to be 4 leaked semaphore objects to clean up at shutdown: {'/loky-2125535-n7lkst46', '/loky-2125473-g7luyiz9', '/loky-2125987-sj6ant5b', '/loky-2125920-djgieukw'}
+  warnings.warn(

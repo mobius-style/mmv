@@ -1,0 +1,25 @@
+/home/happy/デスクトップ/mobius_ai/venv313/lib/python3.13/site-packages/transformers/utils/hub.py:110: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+ja: 205789 vectors, 303 questions
+  exact (ceiling)                      —  recall@1= 65.3 recall@5= 74.6 MRR= 69.2
+  IVF,PQ64 (shipped type)         0.7 GB@EN  np32: r@1= 56.4 r@5= 64.7 MRR= 60.2 (0.1ms) | np128: r@1= 57.8 r@5= 66.0 MRR= 61.4 (0.2ms)
+  OPQ256,IVF,PQ256                2.8 GB@EN  np32: r@1= 63.0 r@5= 70.0 MRR= 66.6 (0.1ms) | np128: r@1= 64.0 r@5= 72.3 MRR= 67.9 (0.4ms)
+  PCA256,IVF,SQ8                  2.8 GB@EN  np32: r@1= 58.1 r@5= 66.3 MRR= 61.3 (0.0ms) | np128: r@1= 59.7 r@5= 68.3 MRR= 63.4 (0.1ms)
+  PCA512,IVF,SQ8                  5.6 GB@EN  np32: r@1= 60.4 r@5= 67.7 MRR= 63.3 (0.1ms) | np128: r@1= 62.4 r@5= 69.6 MRR= 65.1 (0.2ms)
+  IVF,SQ4                         5.6 GB@EN  np32: r@1= 63.7 r@5= 71.3 MRR= 66.8 (0.1ms) | np128: r@1= 65.3 r@5= 72.9 MRR= 68.6 (0.3ms)
+  IVF,SQ8 (v11 default)          11.3 GB@EN  np32: r@1= 64.0 r@5= 71.0 MRR= 67.1 (0.1ms) | np128: r@1= 65.3 r@5= 72.9 MRR= 68.7 (0.4ms)
+/home/happy/デスクトップ/mobius_ai/venv313/lib/python3.13/site-packages/transformers/utils/hub.py:110: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+en: 75588 articles (400 gold)
+Token indices sequence length is longer than the specified maximum sequence length for this model (922 > 512). Running this sequence through the model will result in indexing errors
+  158200 chunks (2.09/article)
+`torch_dtype` is deprecated! Use `dtype` instead!
+  embedded in 302s (single GPU fp16)
+en: 158200 vectors, 400 questions
+  exact (ceiling)                      —  recall@1= 87.2 recall@5= 92.2 MRR= 89.4
+  IVF,PQ64 (shipped type)         0.7 GB@EN  np32: r@1= 72.2 r@5= 84.5 MRR= 77.4 (0.0ms) | np128: r@1= 73.5 r@5= 85.8 MRR= 78.7 (0.1ms)
+  OPQ256,IVF,PQ256                2.8 GB@EN  np32: r@1= 81.8 r@5= 89.8 MRR= 85.2 (0.1ms) | np128: r@1= 84.0 r@5= 92.5 MRR= 87.5 (0.3ms)
+  PCA256,IVF,SQ8                  2.8 GB@EN  np32: r@1= 75.8 r@5= 85.8 MRR= 79.9 (0.0ms) | np128: r@1= 77.8 r@5= 88.8 MRR= 82.2 (0.1ms)
+  PCA512,IVF,SQ8                  5.6 GB@EN  np32: r@1= 80.8 r@5= 89.0 MRR= 84.3 (0.0ms) | np128: r@1= 83.0 r@5= 91.5 MRR= 86.8 (0.1ms)
+  IVF,SQ4                         5.6 GB@EN  np32: r@1= 83.2 r@5= 89.8 MRR= 86.2 (0.1ms) | np128: r@1= 85.8 r@5= 92.2 MRR= 88.6 (0.3ms)
+  IVF,SQ8 (v11 default)          11.3 GB@EN  np32: r@1= 84.2 r@5= 89.5 MRR= 86.5 (0.1ms) | np128: r@1= 86.5 r@5= 92.0 MRR= 88.9 (0.4ms)

@@ -1,0 +1,5 @@
+IVF4096,SQ4 on 205,789 vectors — nprobe 128
+  RS_minmax (FAISS default)    top-10 fidelity  81.6%   QA recall@1  62.4  MRR  66.2   (train+add 131s)
+  RS_meanstd                   top-10 fidelity  10.7%   QA recall@1   0.3  MRR   5.6   (train+add 131s)
+  RS_quantiles                 top-10 fidelity  80.8%   QA recall@1  62.4  MRR  66.6   (train+add 132s)
+  RS_optim                     top-10 fidelity  84.6%   QA recall@1  63.4  MRR  66.8   (train+add 142s)

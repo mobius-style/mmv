@@ -1,0 +1,11 @@
+/home/happy/デスクトップ/mobius_ai/venv313/lib/python3.13/site-packages/transformers/utils/hub.py:110: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+manifest: {"stage1_done": true, "chunk_count": 15648632, "zim_source": "wikipedia_en_all_mini_2026-06.zim", "n_workers": 14, "extractor": "render_faithful_v3 (zim-footer, head/h1 title, HTML entities, inline-tag spacing; navbox by markup; no CJK-space rule)", "title_prefix": true, "prose_facts_split": true, "chunker": "bplus_sentence_token_budget", "token_budget": 256, "min_chunk_chars": 25, "min_article_chars": 25, "overlap": 0, "dedup": "exact sha1-20 over chunk text", "dropped_duplicates": 391, "stage2_done": true, "model": "intfloat/multilingual-e5-large", "passage_prefix": "passage: ", "metric": "INNER_PRODUCT", "wiki_url_base": "https://en.wikipedia.org/wiki/", "dim": 1024, "index_type": "IndexIVFScalarQuantizer", "quantizer": "QT_4bit", "index_kind": "IVF,SQ4", "nlist": 4096, "bytes_per_vector": 512, "recommended_nprobe": 64, "embeddings_fp16": "emb_part{1..N}.f16 — raw float16, 1024 dims, row-major, index-aligned (re-index without re-embedding)", "buffer_size_chunks": 8000000, "index_size_gb": 8.154, "chunks_size_gb": 2.718, "index_memory_gb": 8.012, "gpu_count": 2, "batch_size_used": 512, "n_parts": 4}
+faiss ntotal 15648632 d 1024
+chunk lines 15648632 ALIGNED
+unique chunk_id True
+tokens p50=101 p95=251 max=257  >512: 0.00%
+  query: What causes auroras? -> [('Aurora', 0.896), ('Aurora', 0.882), ('Portal:Energy/Selected picture/7', 0.879), ('Aurora Max', 0.863), ('Auroral chorus', 0.859)]
+  query: 量子力学の基本原理 -> [('Principles of Physical Science', 0.831), ('Schrödinger equation', 0.83), ('Quantum field theory', 0.829), ('Fundamental assumption of statistical me', 0.829), ('Quantum vacuum state', 0.828)]
+
+ACCEPTANCE PASSED

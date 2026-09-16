@@ -1,0 +1,11 @@
+/home/happy/デスクトップ/mobius_ai/venv313/lib/python3.13/site-packages/transformers/utils/hub.py:110: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+vectors 150000
+IVF,PQ64 (current)        64 B/vec  EN@9.6M≈  0.6 GB | np32:  46.7% (0.04 ms/q) | np64:  47.0% (0.06 ms/q) | np128:  47.1% (0.09 ms/q) | build 73s
+OPQ64,IVF,PQ64            64 B/vec  EN@9.6M≈  0.6 GB | np32:  62.9% (0.05 ms/q) | np64:  63.9% (0.06 ms/q) | np128:  64.3% (0.09 ms/q) | build 470s
+OPQ128,IVF,PQ128         128 B/vec  EN@9.6M≈  1.2 GB | np32:  72.1% (0.07 ms/q) | np64:  73.6% (0.11 ms/q) | np128:  74.2% (0.17 ms/q) | build 329s
+IVF,PQ256                256 B/vec  EN@9.6M≈  2.5 GB | np32:  76.1% (0.14 ms/q) | np64:  77.8% (0.26 ms/q) | np128:  78.7% (0.69 ms/q) | build 150s
+OPQ256,IVF,PQ256         256 B/vec  EN@9.6M≈  2.5 GB | np32:  82.3% (0.14 ms/q) | np64:  84.6% (0.27 ms/q) | np128:  85.6% (0.52 ms/q) | build 469s
+IVF,SQ4                  512 B/vec  EN@9.6M≈  4.9 GB | np32:  83.9% (0.13 ms/q) | np64:  86.4% (0.22 ms/q) | np128:  87.6% (0.42 ms/q) | build 14s
+IVF,SQ8                 1024 B/vec  EN@9.6M≈  9.8 GB | np32:  92.4% (0.18 ms/q) | np64:  96.2% (0.32 ms/q) | np128:  98.2% (0.58 ms/q) | build 15s
+IVF,SQfp16              2048 B/vec  EN@9.6M≈ 19.7 GB | np32:  92.8% (0.32 ms/q) | np64:  96.7% (0.64 ms/q) | np128:  98.8% (1.23 ms/q) | build 14s

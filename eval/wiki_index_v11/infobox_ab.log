@@ -1,0 +1,20 @@
+/home/happy/デスクトップ/mobius_ai/venv313/lib/python3.13/site-packages/transformers/utils/hub.py:110: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+No stemming for language 'ja'
+ja: pool 6303, questions 303
+Token indices sequence length is longer than the specified maximum sequence length for this model (623 > 512). Running this sequence through the model will result in indexing errors
+  prose+infobox  chunks= 11544 tokens= 1905208  recall@1= 76.6  recall@5= 87.8  MRR= 80.7
+  prose-only     chunks=  8086 tokens= 1147367  recall@1= 77.6  recall@5= 86.8  MRR= 81.4
+/home/happy/デスクトップ/mobius_ai/venv313/lib/python3.13/site-packages/transformers/utils/hub.py:110: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+No stemming for language 'zh'
+zh: pool 6316, questions 310
+Token indices sequence length is longer than the specified maximum sequence length for this model (930 > 512). Running this sequence through the model will result in indexing errors
+  prose+infobox  chunks= 12819 tokens= 2214389  recall@1= 81.0  recall@5= 90.6  MRR= 84.8
+  prose-only     chunks=  8272 tokens= 1237243  recall@1= 81.0  recall@5= 91.0  MRR= 85.0
+/home/happy/デスクトップ/mobius_ai/venv313/lib/python3.13/site-packages/transformers/utils/hub.py:110: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+en: pool 6400, questions 400
+Token indices sequence length is longer than the specified maximum sequence length for this model (953 > 512). Running this sequence through the model will result in indexing errors
+  prose+infobox  chunks= 10139 tokens= 1595870  recall@1= 90.8  recall@5= 96.8  MRR= 93.3
+  prose-only     chunks=  7798 tokens= 1020737  recall@1= 94.5  recall@5= 97.5  MRR= 95.9

@@ -12,14 +12,15 @@ Design principles (phase_c_spec_v2_2.docx §1):
                available.
 
 Technical specifications:
-  Index             : Wiki/wiki_index_ivfpq_me5.faiss (IndexIVFPQ, nlist=4096, m=64, nbits=8, INNER_PRODUCT)
+  Index             : Wiki/wiki_index_ivfpq_me5.faiss (v11: IndexIVFScalarQuantizer QT_4bit,
+                      nlist=4096, INNER_PRODUCT; the file name is kept for compatibility)
   Chunk access      : indexed_gzip + line offset array
   Offset array      : Wiki/line_offsets.npy (~44 MB, built once on first run)
   Manifest          : Wiki/wiki_manifest.json
   Embedding model   : intfloat/multilingual-e5-large (DIM=1024, cross-lingual)
   Vectors           : 5,458,524
   RAM resident      : ~0.4 GB (index) + ~1.2 GB (model) + ~44 MB (offsets) ≈ 1.6 GB
-  nprobe            : 32 (0.8% of nlist=4096)
+  nprobe            : 128 (3.1% of nlist=4096) — see docs/WIKI_INDEX_V11.md
   Query prefix      : "query: " (required by E5 architecture)
 
 Chunk access method (indexed_gzip):
@@ -53,7 +54,7 @@ logger = logging.getLogger(__name__)
 # -- Constants ---------------------------------------------------------------
 MODEL_NAME    = "intfloat/multilingual-e5-large"
 DIM           = 1024
-NPROBE        = 32      # 0.8% of nlist=4096
+NPROBE = 128   # v11: nprobe 32 costs 1.3-2.4 MRR on the SQ4 index (measured 2026-09-14); 3.1% of nlist=4096
 QUERY_PREFIX  = "query: "  # Required by E5 architecture
 DEFAULT_TOP_K = 5
 MAX_TOP_K     = 20
@@ -135,7 +136,7 @@ class RetrievalAdapter:
 
 class _GzChunkStore:
     """
-    Chunk store providing random access to wiki_chunks_clean.jsonl.gz.
+    Chunk store providing random access to wiki_chunks.jsonl.gz (v11; wiki_chunks_clean.jsonl.gz in older revisions).
 
     Approach:
       1. line_offsets.npy: uncompressed byte offset for each line (5.5M x 8B ~ 44 MB)
@@ -321,7 +322,7 @@ class WikiAdapter(RetrievalAdapter):
     Usage:
         adapter = WikiAdapter(
             index_path  = "Wiki/wiki_index_ivfpq_me5.faiss",
-            chunks_path = "Wiki/wiki_chunks_clean.jsonl.gz",
+            chunks_path = "Wiki/wiki_chunks.jsonl.gz",
         )
         adapter.load()
         result = adapter.retrieve("量子コンピュータとは何か")
@@ -408,7 +409,12 @@ class WikiAdapter(RetrievalAdapter):
         if not self.index_path.exists():
             raise FileNotFoundError(f"FAISS index not found: {self.index_path}")
         logger.info(f"  Loading FAISS index: {self.index_path} ...")
-        self._index = faiss.read_index(str(self.index_path))
+        # v11 indexes are IVF,SQ4 (1.6-8 GB). mmap keeps resident memory flat; the pages the
+        # search touches are served from the page cache (measured: 0.28 -> 0.41 ms/query).
+        try:
+            self._index = faiss.read_index(str(self.index_path), faiss.IO_FLAG_MMAP)
+        except Exception:
+            self._index = faiss.read_index(str(self.index_path))
         self._index.nprobe = self.nprobe
         logger.info(
             f"  FAISS: {self._index.ntotal:,} vectors, nprobe={self.nprobe}"
@@ -757,7 +763,7 @@ def _cli():
         description="WikiAdapter CLI — Box W search test / offset building"
     )
     parser.add_argument("--index",   default="Wiki/wiki_index_ivfpq_me5.faiss")
-    parser.add_argument("--chunks",  default="Wiki/wiki_chunks_clean.jsonl.gz")
+    parser.add_argument("--chunks",  default="Wiki/wiki_chunks.jsonl.gz")
     parser.add_argument("--offsets", default="Wiki/line_offsets.npy")
     parser.add_argument("--top-k",   type=int, default=5)
     parser.add_argument("--nprobe",  type=int, default=NPROBE)

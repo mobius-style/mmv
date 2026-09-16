@@ -1,0 +1,16 @@
+== A. footer boilerplate length (the string the extractor strips)
+   en footer: 158 characters
+== B. deep read of the shipped chunk store (seek to the 99th-percentile line)
+   ja: 0.58 GB compressed, 3,009,820 lines — python gzip 5.7 s | indexed_gzip + .gzidx 0.07 s
+   en: 2.72 GB compressed, 15,648,632 lines — python gzip 28.1 s | indexed_gzip + .gzidx 0.13 s
+== C. 60-char prose/facts rule: lines that look like infobox rows but are ≥60 chars
+   en: 34,032 of 202,491 lines ≥60 chars (16.8 %) still read as 'key: value' — first 300,000 shipped chunks
+   ja: 49,132 of 214,126 lines ≥60 chars (22.9 %) still read as 'key: value' — first 300,000 shipped chunks
+   zh: 66,481 of 224,006 lines ≥60 chars (29.7 %) still read as 'key: value' — first 300,000 shipped chunks
+== D. 48-bit chunk_id collision probability, analytic (birthday bound)
+   en n=15,648,632 at 48 bits: expected collisions 0.435, P(at least one) 35.273%
+   en n=15,648,632 at 80 bits: expected collisions 1.01e-10, P(at least one) 0.000%
+   ja n=3,009,820 at 48 bits: expected collisions 0.0161, P(at least one) 1.596%
+   ja n=3,009,820 at 80 bits: expected collisions 3.75e-12, P(at least one) 0.000%
+   zh n=3,367,718 at 48 bits: expected collisions 0.0201, P(at least one) 1.995%
+   zh n=3,367,718 at 80 bits: expected collisions 4.69e-12, P(at least one) 0.000%

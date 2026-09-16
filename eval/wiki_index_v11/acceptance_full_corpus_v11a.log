@@ -1,0 +1,15 @@
+/home/happy/デスクトップ/mobius_ai/venv313/lib/python3.13/site-packages/transformers/utils/hub.py:110: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+`torch_dtype` is deprecated! Use `dtype` instead!
+ja nprobe= 32  recall@1= 45.2  recall@5= 59.4  MRR= 51.2  (gold article must be found among 3,008,848 chunks)
+ja nprobe=128  recall@1= 48.5  recall@5= 62.7  MRR= 54.3  (gold article must be found among 3,008,848 chunks)
+/home/happy/デスクトップ/mobius_ai/venv313/lib/python3.13/site-packages/transformers/utils/hub.py:110: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+`torch_dtype` is deprecated! Use `dtype` instead!
+zh nprobe= 32  recall@1= 48.1  recall@5= 62.3  MRR= 53.9  (gold article must be found among 3,360,260 chunks)
+zh nprobe=128  recall@1= 48.4  recall@5= 63.2  MRR= 54.8  (gold article must be found among 3,360,260 chunks)
+/home/happy/デスクトップ/mobius_ai/venv313/lib/python3.13/site-packages/transformers/utils/hub.py:110: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+`torch_dtype` is deprecated! Use `dtype` instead!
+en nprobe= 32  recall@1= 54.5  recall@5= 68.5  MRR= 60.7  (gold article must be found among 15,696,612 chunks)
+en nprobe=128  recall@1= 56.2  recall@5= 71.0  MRR= 62.7  (gold article must be found among 15,696,612 chunks)

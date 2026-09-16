@@ -1,0 +1,32 @@
+[    54s] CLEAN lines 5458524 titles 5351447 dup chunk_ids 1
+[    55s] CLEAN len p5/p50/p95/max 201 450 1723 5501
+[    55s] CLEAN chunks/title hist [(1, 5256686), (2, 88628), (3, 4768), (4, 655), (5, 234), (6, 106), (7, 84), (8, 63)]
+[    55s] CLEAN chunk_index top [('0', 5351448), ('1', 94760), ('2', 6133), ('3', 1365), ('4', 710), ('5', 476)]
+[    55s] CLEAN css-ish in sample 0 / 4000
+[    55s] CLEAN last-char top [('.', 3620), ('r', 55), ('s', 43), ('n', 31), ('"', 31), ('e', 30), ('t', 23), (')', 18)]
+[    86s]   raw 5000000
+[   117s]   raw 10000000
+[   149s]   raw 15000000
+[   180s]   raw 20000000
+[   192s] RAW lines 21979495 titles 7375017
+[   192s] RAW len p5/p50/p95/max 266 1536 1536 1536
+[   192s] RAW chunks/title hist [(2, 2226456), (1, 1595313), (3, 1324173), (4, 981415), (5, 574775), (6, 290226), (7, 149232), (8, 84780)]
+[   192s] RAW css-ish in sample 2940 / 4000
+[   196s] TITLES raw 7375017 clean 5351447 kept 5349013 dropped 2026004 clean-only 2434
+[   198s] DROPPED sample: ['Garrett McLaughlin', 'Xylota auronitens', 'Boraszyn', 'Ina Justh', 'Paramphisile', '2nd Madras Native Infantry', 'Alberta Liberal Party leadership election, 2001', 'Special edition', 'Léon Lippens', 'Anjali Sivaraman', 'Heeswijk (disambiguation)', 'Minuscule 856', 'Acanthiophilus lugubris', 'Venktapur', 'List of beaches in the Azores', 'Copromorpha efflorescens', "2015 European Ladies' Team Championship", 'Amphasia', 'Josef du Jardin', 'Jeff Sluman', 'Al Madiq, Makkah', 'Deadly Awards 2009', 'Andrew Taylor (Australian footballer, born 1980)', 'Maricao Afuera', 'Johann Bezzina']
+[   198s] CLEAN-ONLY sample: ['13th Artillery Regiment "Granatieri di Sardegna"', 'Translating "law" to other European languages', '48th Infantry Division "Taro"', 'Cool "Disco" Dan', 'William "Bill" Dannelly Reservoir', '14th Transport Battalion "Flavia"', 'Walter "Babe" Woollett', 'William "Jock" Ross', 'Margarita "Tata" Cepeda', '/\\']
+[   207s] kept titles: mean clean chunks 1.02, mean raw chunks 3.16
+[   207s] clean==1 chunk share 0.982 ; raw==1 chunk share 0.173
+[   207s] ---- title: 1,1-Dichlorotetrafluoroethane
+[   207s]    RAW  : sp;°C [77&nbsp;°F], 100&nbsp;kPa). Infobox references 1,1-Dichlorotetrafluoroethane is a chlorofluorocarbon also known as CFC-114a or R114a by American Society of Heating, Refrigerating, and Air Conditioning Engineers . 
+[   207s]    CLEAN: 1,1-Dichlorotetrafluoroethane is a chlorofluorocarbon also known as CFC-114a or R114a by American Society of Heating, Refrigerating, and Air Conditioning Engineers. It has two chlorine atoms on one carbon atom and none o
+[   207s] ---- title: 1060s
+[   207s]    RAW  : :" ]"}.mw-parser-output .navbar li{word-spacing:-0.125em}.mw-parser-output .navbar a>span,.mw-parser-output .navbar a>abbr{text-decoration:inherit}.mw-parser-output .navbar-mini abbr{font-variant:small-caps;border-bottom
+[   207s]    CLEAN: provinces of Georgia. China Sima Guang, chancellor of the Song dynasty, heads a team of scholars in initiating the compilation of an enormous written universal history of China, known as the Zizhi Tongjian. By topic Reli
+[   207s] ---- title: 1210s
+[   207s]    RAW  : :" ]"}.mw-parser-output .navbar li{word-spacing:-0.125em}.mw-parser-output .navbar a>span,.mw-parser-output .navbar a>abbr{text-decoration:inherit}.mw-parser-output .navbar-mini abbr{font-variant:small-caps;border-bottom
+[   207s]    CLEAN: Estonia. Twenty-four Lithuanian dukes and nobles purportedly sign a peace treaty with Halych-Volhynia, stating a common cause against invading Christian Crusaders. Asia May 2 – King Leo II (or Levon) of Armenian Cilicia 
+[   207s] ---- title: 1410s
+[   207s]    RAW  : The English Parliament is opened by King Henry V. The House of Commons elects Roger Flower as its Speaker. November 8 – Admiral Pietro Loredan is hailed as a hero upon his return to Venice after the Battle of Gallipoli. 
+[   207s]    CLEAN: by the House of Hohenzollern elector Friedrich I December 28 – The Dauphin Charles, crown prince of France, reclaims the city of Tours from the Burgundians after a month-long siege. December 30 – The Ming Chinese explore
+[   207s] DONE

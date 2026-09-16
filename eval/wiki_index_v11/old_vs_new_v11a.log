@@ -1,0 +1,12 @@
+ja: 300 questions whose gold article exists in both stores (old 1,550,503 chunks / new 3,008,848 chunks)
+/home/happy/デスクトップ/mobius_ai/venv313/lib/python3.13/site-packages/transformers/utils/hub.py:110: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+`torch_dtype` is deprecated! Use `dtype` instead!
+  old (published)    nprobe=128  recall@1= 32.0  recall@5= 45.0  MRR= 37.2
+  new (v11, SQ4)     nprobe=128  recall@1= 48.0  recall@5= 62.3  MRR= 53.9
+zh: 299 questions whose gold article exists in both stores (old 1,638,042 chunks / new 3,360,260 chunks)
+/home/happy/デスクトップ/mobius_ai/venv313/lib/python3.13/site-packages/transformers/utils/hub.py:110: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+`torch_dtype` is deprecated! Use `dtype` instead!
+  old (published)    nprobe=128  recall@1= 28.1  recall@5= 39.5  MRR= 33.1
+  new (v11, SQ4)     nprobe=128  recall@1= 48.2  recall@5= 63.2  MRR= 54.5

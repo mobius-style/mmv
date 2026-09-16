@@ -6,7 +6,7 @@ ai_co_observer: "Claude Opus 5 (Anthropic) — working method only; the forensic
 version: "1.0 (owner review pending before deposit)"
 date: "2026-09-16"
 license: "CC BY-NC-SA 4.0 (text); build pipeline, evaluation harness and analysis code AGPL-3.0-or-later; the indexes themselves CC BY-SA 4.0 as derivatives of Wikipedia"
-keywords: "retrieval augmented generation, embedding index, FAISS, scalar quantisation, product quantisation, text extraction, chunking, multilingual-e5, tokenisation, CJK, benchmark validity, silent failure, dataset forensics, adversarial review, neural texture compression"
+keywords: "retrieval augmented generation, embedding index, FAISS, scalar quantisation, product quantisation, text extraction, chunking, multilingual-e5, CJK tokenisation, benchmark validity, silent failure, dataset forensics, adversarial review"
 zenodo_role: "Empirical failure report — three defects in retrieval indexes the author had published and was using, each measured before and after the fix, together with the benchmark design error that had hidden one of them and a full account of what three rounds of adversarial review found in the artifact and in this document"
 planned_related_records:
   - "isSupplementTo: https://github.com/mobius-style/mmv"
@@ -41,7 +41,7 @@ scope_firewall: >
 **Version:** 1.0 (release candidate; owner review pending before deposit).
 **Date:** September 2026.
 **License:** CC BY-NC-SA 4.0 (text); build pipeline, evaluation harness and analysis code AGPL-3.0-or-later.
-**DOI:** TBD (assigned on Zenodo deposit).
+**DOI:** 10.5281/zenodo.22782085 (reserved; live on Zenodo publication).
 
 *Release type: Empirical failure report on the author's own published artifacts, with every claim traced to a shipped log, and with three rounds of adversarial review reported at equal prominence with the results — including the round that rejected the first rebuild, the audit that found sixteen unsupported statements in the draft of this document, and the round that found a release defect two rounds of review had missed. AI co-observer: Claude Opus 5 (Anthropic), working method only; the registered author is the human author alone.*
 

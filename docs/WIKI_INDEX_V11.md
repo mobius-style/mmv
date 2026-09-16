@@ -57,12 +57,13 @@ the old extractor's own output (`final_eval_{ja,zh}.log` block [B]); the gap nar
 extractor contains CSS and boilerplate and the questions drawn from it are noisier.
 
 **This is an artifact-vs-artifact comparison, not an ablation.** The dump date, the extractor, the
-chunker and the index type all changed at once (for Chinese the dump moved *backwards*: the v11b
-store is built from the 2026-05 ZIM and the store it is compared against from a 2026-06 build),
+chunker and the index type all changed at once (and the dump change favours v11b in both
+languages: the Japanese comparison is a 2026-06 store against a 2026-02 one, and the Chinese a
+2026-05 store against a **2025-09** one, eight months older),
 and two of those can be priced separately from the same data: the index-type change actually made
 (`IVF,PQ64` → `IVF,SQ4`) is worth **+7.2** MRR on a 206 k-vector ja pool (`index_e2e.log`; PQ64's
 full loss against exact search is 7.8), and the new store holds 3.21 chunks per gold article
-against the old store's 1.26 (`fix_verification.log` §F), which helps a metric that scores
+against the old store's 1.26 in Japanese, 3.08 against 1.30 in Chinese (`fix_verification.log` §F), which helps a metric that scores
 article-level containment. English has no head-to-head because its previous revision came from a
 different (undocumented) cleaning pass.
 
@@ -100,7 +101,7 @@ are inside the standard error of this question set (n ≈ 300–400).
 ## 2. Extraction: boilerplate inside the unit of evidence
 
 The Kiwix licence footer — "This article is issued from Wikipedia … Creative Commons
-Attribution-Share Alike 4.0 …", the 158-character English licence string (`misc_measure.log` §A) —
+Attribution-Share Alike 4.0 …", the 184-character English licence string as it appears in the published stores (`remeasure_v2.log` §A) —
 was inside **97.1 % of the published Japanese chunks (1,505,103 of 1,550,503) and 92.9 % of the
 Chinese ones**, against a mean chunk length of 635 and 707 characters. The published English store
 did not carry it (0 of 5,458,524): it went through a cleaning pass whose script no longer exists.
@@ -123,13 +124,14 @@ because retrieval asked for them (`infobox_ab_gpu1.log`).
 
 ## 3. Index type: the largest single lever
 
-The previous revision used `IndexIVFPQ(m=64)`. On 150 k Japanese vectors from the previous store
-it returned **47 % of the exact top-10** under near-duplicate probe queries (each query is an
-indexed vector plus Gaussian noise, σ = 0.02, renormalised; uniform-trained variant, the more
-favourable of the two in `pq_loss.log` — the head-trained variant scores 45.4 %); end to end on
+The previous revision used `IndexIVFPQ(m=64)`. On 150 k Japanese vectors at `nlist=1024`
+it returned **45.4 %** (head-trained, the arm that reproduces how the published index was built) to
+**47.1 %** (uniform-trained) of the exact top-10 under near-duplicate probe queries — each query is
+an indexed vector plus Gaussian noise, σ = 0.02, renormalised (`pq_loss.log`); end to end on
 generated questions it cost **7.8 MRR in Japanese and 10.7 in English** against exact search
-(`index_e2e.log`). These vectors sit in a narrow cone — mean pairwise cosine 0.72 (en), 0.78 (ja),
-0.79 (zh) over 4,000 random pairs of shipped chunks per language (`resource_and_coverage.log` §C)
+(`index_e2e.log`). These vectors sit in a narrow cone — mean cosine 0.695 (en), 0.715 (ja), 0.753
+(zh) over 20,000 disjoint random pairs from the whole shipped vector set of each language
+(`remeasure_v2.log` §B)
 — so 64-byte product-quantisation codes cannot resolve the margins that decide ranking.
 
 | index | bytes/vector (measured) | ja MRR | en MRR |
@@ -141,13 +143,20 @@ generated questions it cost **7.8 MRR in Japanese and 10.7 in English** against 
 | PCA256,IVF,SQ8 | 306 | 63.4 | 82.2 |
 | IVF,PQ64 (previous) | 107 | 61.4 | 78.7 |
 
+The deficit is not intrinsic to a 64-byte budget. `OPQ64,IVF,PQ64` returns **64.3 %** of the exact
+top-10 at the identical 64 bytes per vector where `IVF,PQ64` returns 47.1 % (`index_types.log`); a
+learned rotation alone recovers most of the loss without the five-fold storage increase we chose.
+We did not run it end to end, which is why it has no MRR row. `PCA512,IVF,SQ8` was run end to end
+and loses to SQ4 at the same 512 bytes of payload (ja 65.1 / en 86.8).
+
 SQ4 was not measurably worse than SQ8 on these pools — the difference of point estimates is 0.1
 (ja) and 0.3 (en) MRR, and no paired significance test was run — while returning 87.6 % of the
 exact top-10 against SQ8's 98.2 % (`index_types.log`). We chose the end-to-end metric because it
 is what the runtime uses; a consumer who needs top-k set fidelity can rebuild SQ8 from the shipped
 fp16 vectors in minutes. **No SQ4-vs-SQ8 comparison was run at shipping scale** (3–15.6 M vectors,
-nlist 4096); the pools above are 150 k–206 k vectors with nlist ≈ 1,600–1,800, a more generous
-partition than the one that ships. The bytes/vector column is measured on those pool index files;
+nlist 4096); the pools above are 150 k–206 k vectors, and not at one setting: `index_e2e.py` uses
+`nlist = 4√N` (1,590 and 1,814), `index_types.py` and `pq_loss.py` hard-code `nlist = 1024`, the
+range-fit runs use the shipped `nlist = 4096`, and `quantizer_lab.py` uses no IVF at all. The bytes/vector column is measured on those pool index files;
 at shipping scale the same type measures 521–526 B/vector, because the coarse quantiser is
 amortised over more vectors.
 
@@ -170,20 +179,31 @@ measured on 205,789 ja vectors at the shipped `nlist=4096`, nprobe 128
 | range | top-10 agreement with exact | recall@1 | MRR |
 |---|---|---|---|
 | FAISS min/max (default) | 81.6 % | 62.4 | 66.2 |
-| FAISS `RS_optim` | 81.6 % / 84.5 % / 84.6 % | 62.4 / 63.4 | 66.2 / 66.9 |
+| FAISS `RS_optim` | 84.6 / 84.5 / 81.6 / 81.6 % (four runs) | 63.4 or 62.4 | 66.8, 66.9, 66.2, 66.2 |
 | **residual quantiles 0.1–99.9 % (v11b)** | **85.2 %** | **63.4** | **66.9** |
 
-The `RS_optim` row is not reproducible across our own runs. Three runs on the same 205,789 vectors
-recorded 84.5 % (`faiss_range_fix.log`), 84.6 % (`faiss_rangestat.log`) and 81.6 %
-(`faiss_range_residual.log`, where it scored identically to `RS_minmax`, which suggests the option
-did not take effect in that run). We have not diagnosed which run is right, so `RS_optim` should
-be read as "somewhere between the default and the clipped range", not as a settled number. The
-0.1–99.9 % residual-quantile row is the one measured in the run whose settings ship.
+The `RS_optim` row is not reproducible across our own runs. Four runs on the same 205,789 vectors
+recorded 84.6 % (`faiss_rangestat.log`), 84.5 % (`faiss_range_fix.log`) and 81.6 % twice
+(`faiss_custom_range.log`, `faiss_range_residual.log`) — the last two scoring identically to
+`RS_minmax`, which suggests the option did not take effect in those runs. We have not diagnosed
+which runs are right, so `RS_optim` is an unresolved competitor to the shipped setting rather than a
+number.
 
-Two other borrowings were measured and rejected on the same data (`quantizer_lab.log`): learned
-Lloyd-Max levels (87.4 % agreement vs 88.1 % for percentile clipping under exact search) and a
-decorrelating random rotation (84.0 %, i.e. no gain — these dimensions are already close to
-equal-variance). A first attempt at the clipping wrote raw-vector quantiles into the index and
+The gain we can demonstrate is in set fidelity. Downstream, +1.0 recall@1 and +0.7 MRR on 303
+questions is four times inside this benchmark's noise scale (see Limits), and both `RS_optim` and a
+1–99 percentile clip reach the same downstream figures. If what matters is the answer the runtime
+returns rather than agreement with exact search, this change is not measurably worth anything
+here.
+
+Two other borrowings were measured and rejected — but on a **flat, non-IVF** SQ4 over the same
+vectors, where the min/max baseline is 83.7 % rather than 81.6 % (`quantizer_lab.log`): Lloyd-Max
+levels reach 87.4 % against 88.1 % for percentile clipping, and a decorrelating random rotation
+84.0 %. Both were measured before we understood that the IVF quantiser encodes residuals, and
+neither has been re-run in the residual setting where percentile clipping actually won; their
+rejection is provisional for the same reason our first attempt was wrong. We did not measure
+per-dimension variance, so we cannot say whether the rotation failed because these dimensions are
+already near equal-variance or because a random rotation is the wrong rotation — a *learned*
+rotation helps the PQ variants substantially. A first attempt at the clipping wrote raw-vector quantiles into the index and
 made it **worse** (59.6 %), because the index encodes residuals, not raw vectors.
 
 ## 4. Build
@@ -203,7 +223,9 @@ English pass, which overlaps extraction with embedding across four parts, averag
 chunks/s** end to end (`logs/wiki_rebuild/build_en.log`; Japanese 1,050). fp16 is
 retrieval-equivalent on this model: against fp32 on the same 3,000 texts, cosine 1.000044 mean /
 0.999756 min, top-1 agreement 100 %, top-10 99.5 % (§B of the same log). Wall clock on this
-machine (2× RTX 5070 Ti): zh 74 min, ja 64 min, en 295 min, plus 21 min to re-index English.
+machine (2× RTX 5070 Ti): zh 74 min, ja 64 min, en 295 min. All three indexes were then re-encoded from the retained fp16 vectors with
+the residual-quantile range: zh 515 s, ja 406 s, en 1,268 s (`reindex_clip.log`,
+`reindex_clip_en.log`).
 
 The fp16 vectors (`emb_part*.f16`, index-aligned) stay local and are not published; they let any
 other index type be rebuilt in minutes without re-embedding.
@@ -231,20 +253,52 @@ record.
 A second pass, this time the author auditing this document against the logs, found sixteen further
 statements that the logs did not support — including a 16× overstatement of a pool size, a
 misattributed index-type gain, two citations to files that did not exist, and three results
-reported only in the languages where they were favourable. All sixteen are listed with their
-corrections in `eval/wiki_index_v11/REVIEW.md`. The same pass found that the upload staging
-directory was hard-linked to the **pre-fix** builds rather than to v11b; had the upload run when it
-was first staged, it would have published the artifacts this review rejected. The staging directory
-was rebuilt and its file sizes re-checked against the table at the top of this document.
+reported only in the languages where they were favourable. Thirteen of the sixteen pointed in the
+flattering direction; three did not. All sixteen are listed with their corrections in
+`eval/wiki_index_v11/REVIEW.md`. The same pass found that the upload staging directory was
+hard-linked to the **pre-fix** builds rather than to v11b; had the upload run when it was first
+staged, it would have published the artifacts this review rejected. The staging directory was
+rebuilt and its file sizes re-checked against the table at the top of this document.
+
+A third pass ran three refuters — statistics, consistency and scope — against this document. All
+three returned FAILS, and one of their findings was a defect in the release rather than in the
+write-up:
+
+- **The acceptance gate had not held for two of three artifacts.** `verify_ja.log` and
+  `verify_zh.log` were written at 13:25 and 14:30 on 2026-09-15; the Japanese and Chinese indexes
+  were re-encoded with the residual-quantile range at 15:16 and 15:22 that afternoon. The acceptance
+  evidence therefore described files that had been overwritten — verbatim the defect listed two
+  paragraphs above as fixed. It recurred because this document said only English had been
+  re-encoded. The script was re-run on the shipped Japanese and Chinese files on 2026-09-16 and both
+  **PASSED** (`verify_ja_final.log`, `verify_zh_final.log`): the artifacts were sound, the evidence
+  was missing, and the gate had not held.
+- **Three measurements were wrong.** The licence-footer length was `len()` of a string hard-coded in
+  the measurement script and present in no artifact (158 against an actual 184). The "narrow cone"
+  figure was 2,000 pairs from the first 4,000 vectors of one embedding file with self-pairs
+  admitted, not 4,000 random pairs of shipped chunks; re-measured over 20,000 disjoint random pairs
+  it is 0.695 / 0.715 / 0.753. And this document stated that the Chinese dump had moved *backwards*
+  — the previous Chinese store is built from the 2025-09 ZIM, so it moved forward by eight months
+  and the confound runs in our favour.
+- **Two results were still reported only where they were favourable**: indexed-article coverage
+  (below) and the retrieval comparison against the rejected first rebuild. On the same question
+  sets at nprobe 128, that rebuild scores ja 54.3, zh 54.8 and **en 62.7** against the shipped
+  ja 56.3, zh 55.5 and **en 60.9** (`acceptance_full_corpus_v11a.log` against `final_eval_*.log`).
+  All three moves are inside this benchmark's noise, so the round-one fixes changed retrieval
+  measurably in no language; they were verified as defect counts, not as retrieval.
+
+All three rounds are recorded in `eval/wiki_index_v11/REVIEW.md`.
 
 ## 6. Limits
 
 - One dump per language; `all_mini` ZIMs hold lead sections, not full articles.
 - The question set is synthetic, from one model, n ≈ 300–400 per language, with no human relevance
-  judgements. Differences under ~2.4 MRR points are inside its standard error. The title-leak and
-  declarative-item rates above apply to it.
-- All index-type and quantiser numbers come from 150 k–206 k-vector pools, not from the shipped
-  3–15.6 M-vector indexes. Quantisation error grows with corpus density; the direction of the
+  judgements, and nothing checks that a generated question is answerable from its gold article.
+  Per-question ranks were not retained, so the standard error of one MRR figure is reconstructed
+  from the reported rates: **2.2–2.9 points** depending on language (`noise_floor.log`). Read "2 to
+  3 points" as a rough noise scale, not a test. The title-leak and declarative-item rates above
+  apply to this set.
+- All index-type and quantiser numbers come from 150 k–206 k-vector pools at three different
+  partition settings, not from the shipped 3–15.6 M-vector indexes. Quantisation error grows with corpus density; the direction of the
   ranking is what we rely on, not the magnitude.
 - Articles whose cleaned text is under 25 characters are not indexed. Coverage rose for English
   (88.2 → 91.3 % of sampled articles) and fell slightly for Japanese (94.8 → 94.2 %) and Chinese
@@ -255,15 +309,23 @@ was rebuilt and its file sizes re-checked against the table at the top of this d
 - Known extraction defects that remain, quantified in the review and not fixed in this release:
   the prose/infobox split is a 60-character heuristic, and of the lines it sends to the prose stream
   because they are 60 characters or longer, **16.8 % (en), 22.9 % (ja) and 29.7 % (zh)** still read
-  as `key: value` rows (`misc_measure.log` §C, first 300,000 shipped chunks per language);
+  match a `key: value` pattern (`misc_measure.log` §C) — measured on the first 300,000 chunks in
+  store order, not a random sample, and a pattern match does not by itself establish that those
+  lines are misfiled;
   reference lists and a small number of MediaWiki template errors are indexed as content; the `url`
   field is not percent-encoded, so titles containing `/` produce broken links.
 - No claim here is certified, peer reviewed, or independently replicated.
 
 ## Review status
 
-Reviewed adversarially before publication by three commissioned reviewers instructed to refute the
-claims; their findings are in `eval/wiki_index_v11/REVIEW.md` and this document was revised in
-response. That does not meet our own standard of ≥2 of 3 **independent** judges (the reviewers
-were commissioned by the author, not independent parties), and no claim here has been peer
-reviewed or externally validated.
+Reviewed adversarially in three rounds before publication. Every reviewer was a separate model
+instance, commissioned by the author and given a brief to refute rather than to assess; the
+round-one reviewers' reports were not retained verbatim, so what `eval/wiki_index_v11/REVIEW.md`
+records of them is the author's paraphrase, written as each finding was acted on. Round one rejected
+the first rebuild. Round two found sixteen unsupported statements in this document. Round three
+returned FAILS on the corrected document and found the acceptance-gate defect described in §5. Each
+round found errors the previous round had introduced or passed over, which is the strongest reason
+we have to expect that a fourth round would find more.
+
+This does not meet our own standard of at least two of three **independent** judges, and no claim
+here has been peer reviewed or externally validated.

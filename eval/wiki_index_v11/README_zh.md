@@ -19,7 +19,7 @@ record are in `eval/` in this repository. Anything not backed by a log is marked
 |---|---|---|
 | chunks | **3,367,718** | 1,638,042 |
 | source dump | wikipedia_zh_all_mini_2026-05.zim | wikipedia_zh_all_mini_2025-09.zim |
-| index | `IVF4096,SQ4` · **1.77 GB** (525 B/vector) | `IVF4096,PQ64` · 140 MB |
+| index | `IVF4096,SQ4` · **1.77 GB** (525 B/vector) | `IVF4096,PQ64` · 136 MB |
 | chunk store | 0.69 GB | — |
 | chunks past the ME5 512-token window | **0.00 %** (4,000-chunk sample) | 18.5 % |
 
@@ -48,11 +48,13 @@ v11b by construction, so the control row regenerates them from the **old** extra
 | **zh — control, questions from the old extractor (296 items)** | **26.2** | **47.5** |
 
 This is an artifact-vs-artifact comparison, not an ablation: the dump date, the extractor, the
-chunker and the index type all changed together, and for Chinese the dump moved *backwards*
-(v11b is built from the 2026-05 ZIM, the store it is compared against from a 2026-06 build).
+chunker and the index type all changed together, and the dump change favours v11b in both
+languages: the Japanese comparison is a 2026-06 store against a 2026-02 one, and the Chinese a
+2026-05 store against a **2025-09** one, eight months older.
 Two components can be priced separately from the same data: the index-type change is worth
 +7.2 MRR on a 206 k-vector Japanese pool (`index_e2e.log`), and v11b holds 3.21 chunks per gold
-article against the old store's 1.26 (`fix_verification.log` §F), which helps a metric that scores
+article against the old store's 1.26 in Japanese and 3.08 against 1.30 in Chinese
+(`fix_verification.log` §F), which helps a metric that scores
 article-level containment. English has no head-to-head: its previous revision came from a
 different, undocumented cleaning pass.
 
@@ -71,8 +73,8 @@ v11b packs whole sentences to a **256-token budget** with the title line reserve
 
 ![token window](https://huggingface.co/datasets/moebiusT7/mmv-wiki-index/resolve/main/figures/figF_tokens.png)
 
-**2. The Kiwix licence footer was inside almost every chunk.** The 158-character English licence
-string was inside **97.1 % of the published Japanese chunks (1,505,103 of 1,550,503) and 92.9 % of
+**2. The Kiwix licence footer was inside almost every chunk.** The 184-character English licence
+string (`remeasure_v2.log` §A) was inside **97.1 % of the published Japanese chunks (1,505,103 of 1,550,503) and 92.9 % of
 the Chinese ones**, against a mean chunk length of 635 and 707 characters. The English store did
 not carry it (0 of 5,458,524): it went through a cleaning pass whose script no longer exists. The
 same extractor emitted the article title two or three times, left HTML entities undecoded, and
@@ -82,12 +84,16 @@ footer and navboxes as markup, decodes entities, and deletes inline tags without
 
 ![extraction](https://huggingface.co/datasets/moebiusT7/mmv-wiki-index/resolve/main/figures/figF_extraction.png)
 
-**3. The index type threw away half of the search.** `IndexIVFPQ(m=64)` returned only 47 % of the
-exact top-10 on 150 k real vectors (`pq_loss.log`); end to end it cost **7.8 MRR in Japanese and
-10.7 in English** against exact search (`index_e2e.log`). These vectors sit in a narrow cone —
-mean pairwise cosine 0.72 (en), 0.78 (ja), 0.79 (zh) over 4,000 random pairs
-(`resource_and_coverage.log` §C) — so 64-byte codes cannot resolve the margins that decide ranking.
-v11b uses **`IVF4096,SQ4`**: 4 bits per dimension, all 1024 dimensions kept.
+**3. The index type threw away half of the search.** `IndexIVFPQ(m=64)` returned 45.4 % (trained on
+the head of the corpus, the arm that reproduces how the published index was built) to 47.1 %
+(uniform-trained) of the exact top-10 on 150 k real vectors (`pq_loss.log`); end to end it cost
+**7.8 MRR in Japanese and 10.7 in English** against exact search (`index_e2e.log`). These vectors
+sit in a narrow cone — mean cosine 0.695 (en), 0.715 (ja), 0.753 (zh) over 20,000 disjoint random
+pairs from the whole shipped vector set (`remeasure_v2.log` §B). We did not measure the mechanism,
+and the deficit is not intrinsic to a 64-byte budget: `OPQ64,IVF,PQ64` reaches **64.3 %** at the
+same 64 bytes (`index_types.log`), so a learned rotation alone recovers most of the loss without
+the five-fold storage increase v11b chose. v11b uses **`IVF4096,SQ4`**: 4 bits per dimension, all
+1024 dimensions kept.
 
 | index | bytes/vector (measured on the pool index) | ja MRR | en MRR |
 |---|---|---|---|
@@ -100,8 +106,9 @@ v11b uses **`IVF4096,SQ4`**: 4 bits per dimension, all 1024 dimensions kept.
 
 SQ4 and SQ8 differ by 0.1 (ja) and 0.3 (en) MRR on these pools, with no paired significance test
 run, while SQ4 returns 87.6 % of the exact top-10 against SQ8's 98.2 % (`index_types.log`). The
-comparison was **not** run at shipping scale: the pools are 150 k–206 k vectors with
-nlist ≈ 1,600–1,800, a more generous partition than the shipped nlist=4096. At shipping scale the
+comparison was **not** run at shipping scale: the pools are 150 k–206 k vectors at three different
+partition settings (`index_e2e.py` uses nlist = 4√N, i.e. 1,590 and 1,814; `index_types.py` and
+`pq_loss.py` hard-code 1,024; the range-fit runs use the shipped 4,096). At shipping scale the
 same type measures 525 B/vector here, because the coarse quantiser is amortised over more
 vectors.
 
@@ -115,8 +122,11 @@ residual distribution costs nothing — same 4 bits, same decode, same file form
 top-10 agreement with exact search from 81.6 % to **85.2 %** and MRR from 66.2 to 66.9 on 205,789
 Japanese vectors at the shipped `nlist=4096` (`faiss_range_residual.log`). A first attempt wrote
 raw-vector quantiles into the index and made it **worse** (59.6 %), because the index encodes
-residuals, not raw vectors. FAISS's own `RS_optim` scored 84.5 / 84.6 / 81.6 in three of our runs;
-we have not diagnosed the disagreement and do not claim a number for it.
+residuals, not raw vectors. FAISS's own `RS_optim` scored 84.6 / 84.5 / 81.6 / 81.6 across four runs,
+two of them identical to the default; we have not diagnosed the disagreement and do not claim a
+number for it. Downstream the clip is worth +1.0 recall@1 and +0.7 MRR on 303 questions, which is
+well inside this benchmark's noise: the gain we can demonstrate is in set fidelity, not in answer
+quality.
 
 ## Use
 
@@ -134,8 +144,8 @@ offs = np.load("line_offsets.npy")                # row i -> byte offset in the 
 ```
 
 Line *i* of `wiki_chunks.jsonl.gz` corresponds to FAISS vector *i*. Fields: `title, url, text,
-chunk_index, license, chunk_id`. `chunk_id` is a 12-hex content hash (19
-exact duplicates were dropped at build). Each chunk begins with the article title on its own line,
+chunk_index, license, chunk_id`. `chunk_id` is a 20-hex (80-bit) content hash (19
+exact duplicates were dropped at build; the previous revision used 48 bits). Each chunk begins with the article title on its own line,
 so a retrieved passage is self-describing; infobox rows are linearised as `key: value` and kept in
 a separate chunk stream from prose. `line_offsets.gzidx` is an `indexed_gzip` seek index: with it,
 reading the 99th-percentile line takes 0.07 s (ja) / 0.13 s (en) instead of 5.7 s / 28.1 s
@@ -145,7 +155,10 @@ reading the 99th-percentile line takes 0.07 s (ja) / 0.13 s (en) instead of 5.7 
 
 - One dump per language; `all_mini` ZIMs hold lead sections, not full articles.
 - The question set is synthetic, from one model, n ≈ 300–400 per language, with no human relevance
-  judgements. Differences under ~2.4 MRR points are inside its standard error.
+  judgements and no check that a question is answerable from its gold article. Per-question ranks
+  were not retained, so the standard error of one MRR figure is reconstructed from the reported
+  rates: 2.2–2.9 points depending on language (`noise_floor.log`). Treat "2 to 3 points" as a noise
+  scale, not a test.
 - The gold title appears verbatim inside the question in 10.8 % (en) / 17.8 % (ja) / 12.3 % (zh) of
   the question set, and every v11b chunk begins with the title line, which the old store lacks
   (`fix_verification.log` §E). 27 of the 303 Japanese items contain no question mark.
@@ -157,14 +170,23 @@ reading the 99th-percentile line takes 0.07 s (ja) / 0.13 s (en) instead of 5.7 
   articles, previous extractor to v11b: **97.0 % → 95.8 %**
   (`resource_and_coverage.log` §D).
 - The prose/infobox split is a 60-character heuristic. Of the lines it sends to the prose stream
-  because they are 60 characters or longer, **29.7 %** still read as `key: value` rows in
-  this language (`misc_measure.log` §C). Reference lists and some MediaWiki template errors are indexed
+  because they are 60 characters or longer, **29.7 %** match a `key: value` pattern in this
+  language — measured on the first 300,000 chunks in store order, not a random sample, and a pattern
+  match does not by itself establish that those lines are misfiled (`misc_measure.log` §C).
+  Reference lists and some MediaWiki template errors are indexed
   as content, and the `url` field is not percent-encoded, so titles containing `/` produce broken
   links.
-- Reviewed adversarially before publication by three **commissioned** reviewers, not independent
-  ones, and revised again after a self-audit that found sixteen unsupported statements in the
-  draft. Both rounds are recorded in `eval/REVIEW.md`. No claim here is peer reviewed, certified,
-  or independently replicated.
+- Reviewed adversarially in three rounds before publication. Every reviewer was a separate model
+  instance commissioned by the author, not an independent judge. Round 1 rejected the first rebuild;
+  round 2 found sixteen unsupported statements in the draft release note; round 3 returned FAILS on
+  the corrected document, found three measurements that round 2 had itself got wrong, and found that
+  the acceptance script had not been re-run on two of the three shipped indexes after they were
+  re-encoded (it was, on 2026-09-16, and both passed). All three rounds are in `eval/REVIEW.md`. No
+  claim here is peer reviewed, certified, or independently replicated.
+
+- The rebuild is not uniformly better. Against the first rebuild, which our own reviewers rejected,
+  the shipped artifacts score ja 54.3 → 56.3 and zh 54.8 → 55.5 MRR but **en 62.7 → 60.9** on the
+  same question sets. All three moves are inside the noise scale above.
 
 ## Migration
 

@@ -1,6 +1,6 @@
 # Review record — Wikipedia ME5 index v11b
 
-Two rounds of review ran against this release. Neither was independent: both were commissioned by
+Three rounds of review ran against this release. Neither was independent: both were commissioned by
 the author, and the second was run by the author on the author's own draft. This file records what
 was found and what was done about it, so a reader can see the failure rate of the process rather
 than only its output.
@@ -25,18 +25,20 @@ indexes were rebuilt.
 | 4 | The infobox stream has no sentence terminators, so whole infoboxes were cut on raw token counts into fragments such as `(B-V): 0.705` | blocking | infobox rows are atomic units in `chunk_lines` | ja chunks whose body starts mid-token: 12,670 → 2,852 (`fix_verification.log` §C) |
 | 5 | `chunk_id` was a 48-bit hash, and dedup drops collisions silently | blocking | widened to 80 bits | birthday bound at 15.6 M chunks: 0.44 expected collisions at 48 bits (35 % chance of at least one), 1e-10 at 80 bits (`misc_measure.log` §D — arithmetic, not a measurement) |
 | 6 | Stage 2 skipped unparsable lines while advancing the vector counter, which would misalign every later vector against the index | blocking | now raises `SystemExit` | code; no misalignment was observed in the shipped builds |
-| 7 | The acceptance script could not fail — it printed diagnostics and exited 0 — and had validated an index that was subsequently overwritten | blocking | rewritten with seven assertions and a non-zero exit; re-run on the shipped files | `acceptance_full_corpus.log`, `verify_en_final.log` |
+| 7 | The acceptance script could not fail — it printed diagnostics and exited 0 — and had validated an index that was subsequently overwritten | blocking | rewritten with seven assertions and a non-zero exit | English re-verified after its re-encoding (`verify_en_final.log`); Japanese and Chinese were **not**, which round 3 caught — see below |
 | 8 | The build scripts were excluded from the repository by a blanket `/*.py` ignore rule, so the release was not reproducible | blocking | un-ignored and committed under `scripts/` | repository contents |
 | 9 | No gzip seek index shipped, so a deep read decompressed from the start of the file | major | `line_offsets.gzidx` ships | seek to the 99th-percentile line: ja 5.7 s → 0.07 s, en 28.1 s → 0.13 s (`misc_measure.log` §B) |
 
 Findings 1–4 changed the shipped text. Findings 5–8 changed the build path. All three indexes were
-rebuilt from the ZIM after the fixes; the English index was additionally re-encoded from the
-retained fp16 vectors after the residual-range change, which took 21 minutes.
+rebuilt from the ZIM after the fixes, and **all three** were then re-encoded from the retained fp16
+vectors with the residual-quantile range: zh 515 s, ja 406 s, en 1,268 s (`reindex_clip.log`,
+`reindex_clip_en.log`). An earlier version of this file said only English was re-encoded. That error
+is what hid the round-3 finding below.
 
 ## Round 2 — the author's audit of the draft document
 
 Before publication the author re-checked every numeral in `docs/WIKI_INDEX_V11.md` against the logs.
-Twelve statements did not survive. They are listed because most of them were the author's errors,
+Sixteen statements did not survive. They are listed because most of them were the author's errors,
 not the reviewers'.
 
 | # | statement as drafted | what the logs say | action |
@@ -56,17 +58,87 @@ not the reviewers'.
 | 13 | mean pairwise cosine "0.71–0.77" | 0.7200 (en), 0.7823 (ja), 0.7881 (zh) | re-measured (§C) |
 | 14 | coverage "94.1 %" (ja) | 94.2 % | re-measured (§D) |
 | 15 | "misfiles ~17 % of English prose lines" | 16.8 % (en), and worse in the other two: 22.9 % (ja), 29.7 % (zh) | re-measured and the worse languages disclosed (`misc_measure.log` §C) |
-| 16 | footer "~160 characters" | 158 | corrected (§A) |
+| 16 | footer "~160 characters" | 158 | corrected — and wrong again; see round 3 |
 
 A separate staging error was caught in the same pass: the upload directory was hard-linked to the
 **pre-fix v11a** builds, not to v11b. Had the upload run when it was first staged, it would have
 published the artifacts this review rejected. The staging directory was rebuilt from the v11b
 sources and the file sizes re-checked against the acceptance logs.
 
+Thirteen of the sixteen pointed in the flattering direction. Three did not: #14 understated Japanese
+coverage (94.1 against an actual 94.2), #1 understated absolute embedding throughput by nearly half
+while overstating the ratios, and #5 overstated the offsets download (126 MB against 125). An
+earlier version of this file said "every one", which was false.
+
+---
+
+## Round 3 — three refuters against the corrected document
+
+Three further refuters (statistics, consistency, scope) were run against the corrected release note
+and the working paper. All three returned **FAILS**. Their findings fall into four groups.
+
+### A defect in the release, not in the write-up
+
+`verify_ja.log` was written 2026-09-15 14:30 and `verify_zh.log` 13:25. `reindex_clip.log` shows the
+Japanese and Chinese indexes re-encoded at 15:22 and 15:16 the same afternoon. The acceptance
+evidence for two of the three shipped artifacts therefore described files that had been overwritten
+— verbatim round 1's finding 7, listed above as fixed. The script was re-run on the shipped Japanese
+and Chinese files on 2026-09-16; both **ACCEPTANCE PASSED** (`verify_ja_final.log`,
+`verify_zh_final.log`). The artifacts were sound; the evidence was missing and the gate had not held.
+
+### Three measurements that were wrong
+
+| what was reported | what it actually was | now |
+|---|---|---|
+| licence footer 158 characters | `len()` of a string hard-coded in the measurement script; that string occurs in 0 of the first 200,000 chunks of either CJK store | the footer as it appears in the stores is **184** characters (`remeasure_v2.log` §A) |
+| mean pairwise cosine 0.72 / 0.78 / 0.79 over "4,000 random pairs of shipped chunks" | 2,000 pairs drawn from the **first 4,000 vectors** of embedding part 0, with self-pairs admitted | **0.695 / 0.715 / 0.753** over 20,000 disjoint random pairs from the whole shipped vector set (`remeasure_v2.log` §B) |
+| "for Chinese the dump moved *backwards*" | the previous Chinese store is built from `wikipedia_zh_all_mini_2025-09.zim`; 2026-06 was its **build** date | the dump moved **forward** eight months, so the confound favours v11b rather than working against it |
+
+The first two were introduced by round 2 while it was correcting other numbers.
+
+### Results still reported only where they were favourable
+
+- **Indexed-article coverage fell** in two of three languages: ja 94.8 → 94.2 %, zh 97.0 → 95.8 %;
+  English rose 88.2 → 91.3 % (`resource_and_coverage.log` §D). Round 2 touched the ja number but
+  only against itself, never against the previous extractor.
+- **Retrieval against the rejected first rebuild**: on the same question sets at nprobe 128 it
+  scores ja 54.3, zh 54.8 and **en 62.7** against the shipped ja 56.3, zh 55.5 and **en 60.9**. All
+  three moves are inside the benchmark's noise; the round-1 fixes were verified as defect counts,
+  not as retrieval, and English did not improve.
+- **The `OPQ64,IVF,PQ64` counterfactual**: 64.3 % of the exact top-10 at the identical 64 bytes per
+  vector where the published `IVF,PQ64` returns 47.1 %. Most of the index-type loss was recoverable
+  without the five-fold storage increase we shipped, and the table justifying that increase had
+  omitted the row.
+
+### Claims narrowed or withdrawn
+
+The advice that set fidelity and downstream MRR "do not rank index types identically" was
+**withdrawn**: across every type measured by both, they rank identically. The `nlist ≈ 1,600–1,800`
+caveat was wrong for two of the four experiment scripts (`index_types.py` and `pq_loss.py` use
+1,024; `quantizer_lab.py` uses no IVF). The "~2.4 MRR standard error" had no log behind it and was
+too tight for two of three languages; it is now a reconstructed 2.2–2.9 points (`noise_floor.log`).
+The Chinese control question set was generated from v11b's own dump, and 73.5 % of the raw text fed
+to the generator carries TemplateStyles CSS. And the causal story for the inverted first benchmark
+is **not confirmed** by its own control: adding one title line back to the clean extractor recovers
+0.04 of the 6.00-point gap.
+
+## What the three rounds establish about the process
+
+Round 1 caught defects in the artifact. Round 2 caught defects in the description, in a document
+already checked once. Round 3 caught a defect in the release that rounds 1 and 2 had both looked at
+and passed, and three measurements that round 2 had itself introduced.
+
+Each round's output was the input to the next round's error. The rate did not fall to zero. We have
+no reason to believe a fourth round would find nothing.
+
+---
+
 ## What this process does not establish
 
-- The reviewers were commissioned by the author. Our own standard for a safety or correctness claim
-  is agreement from at least two of three **independent** judges, and that standard is not met here.
-- Round 2 was self-review. It caught sixteen errors in a document the author had already checked
-  once, which is evidence about the value of re-checking, not evidence that none remain.
+- Every reviewer in all three rounds was a separate model instance commissioned by the author. Our
+  own standard for a safety or correctness claim is agreement from at least two of three
+  **independent** judges, and that standard is not met here.
+- Round 1's reports were not retained verbatim; the round-1 table above is the author's paraphrase
+  of criticism of the author's own work.
+- Rounds 2 and 3 are evidence about the value of re-checking, not evidence that nothing remains.
 - No claim in this release is peer reviewed, certified, or independently replicated.

@@ -1,0 +1,9 @@
+== A. the licence footer as it actually appears in the published stores
+   ja: 90 distinct footer string(s) in the first 20,000 chunks; most common seen 19,150 times, 184 characters
+      'This article is issued from Wikipedia . The text is available under Creative Commons Attribution-Share Alike 4.0 unless otherwise noted. Additional terms may apply for the media files.'
+   zh: 111 distinct footer string(s) in the first 20,000 chunks; most common seen 17,984 times, 184 characters
+      'This article is issued from Wikipedia . The text is available under Creative Commons Attribution-Share Alike 4.0 unless otherwise noted. Additional terms may apply for the media files.'
+== B. mean pairwise cosine, disjoint random pairs across the whole shipped vector set
+   en: 20,000 disjoint random pairs from all 15,648,632 shipped vectors — mean cosine 0.6948, sd 0.0300, p5 0.6472, p95 0.7424
+   ja: 20,000 disjoint random pairs from all 3,009,820 shipped vectors — mean cosine 0.7153, sd 0.0288, p5 0.6699, p95 0.7636
+   zh: 20,000 disjoint random pairs from all 3,367,718 shipped vectors — mean cosine 0.7533, sd 0.0283, p5 0.7098, p95 0.7997

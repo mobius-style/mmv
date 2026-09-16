@@ -1,0 +1,8 @@
+wiki_en_me5_2026-06_v11b: 15,648,632 chunks, 4 embedding parts
+  training on 262,144 vectors (stride 59)
+  range refit on residuals: mean width 0.690x of min/max
+  added 3,912,158/15,648,632
+  added 7,824,316/15,648,632
+  added 11,736,474/15,648,632
+  added 15,648,632/15,648,632
+  wrote 8.15 GB (521 B/vector) in 1268s

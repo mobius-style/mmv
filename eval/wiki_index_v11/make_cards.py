@@ -12,6 +12,10 @@ DIRS = {"en": B/"wiki_en_me5_2026-06_v11b",
         "zh": B/"wiki_zh_me5_2026-05_v11b"}
 REPO = {"en": "moebiusT7/mmv-wiki-index", "ja": "moebiusT7/mmv-wiki-index-ja", "zh": "moebiusT7/mmv-wiki-index-zh"}
 NAME = {"en": "English", "ja": "Japanese", "zh": "Chinese"}
+REPO_OF = {"en": "moebiusT7/mmv-wiki-index", "ja": "moebiusT7/mmv-wiki-index-ja",
+           "zh": "moebiusT7/mmv-wiki-index-zh"}
+# a cross-language query example that is not trivially the same language
+ASK_IN = {"en": "Japanese", "ja": "English", "zh": "English"}
 OLD  = {"en": ("5,458,524", "wikipedia_en_all_mini_2026-03.zim", "410 MB"),
         "ja": ("1,550,503", "wikipedia_ja_all_mini_2026-02.zim", "130 MB"),
         "zh": ("1,638,042", "wikipedia_zh_all_mini_2025-09.zim", "136 MB")}
@@ -63,6 +67,10 @@ def card(lang):
     oldn, oldzim, oldsize = OLD[lang]
     r1, r5, mrr, r1b, r5b, mrr32 = FULL[lang]
     h2h = HEAD2HEAD if lang in ("ja", "zh") else ""
+    total_gb = idx + chunks + (d/'line_offsets.npy').stat().st_size/1e9
+    others = [(NAME[k], REPO_OF[k]) for k in ("en", "ja", "zh") if k != lang]
+    other_links = " and ".join(
+        f"**{nm}** at [`{rp}`](https://huggingface.co/datasets/{rp})" for nm, rp in others)
     return f"""---
 license: cc-by-sa-4.0
 language: [{lang}]
@@ -74,8 +82,26 @@ pretty_name: MOBIUS MMV Wikipedia Index ({NAME[lang]}, ME5, v11b)
 
 # MOBIUS MMV — Wikipedia Index ({NAME[lang]}, multilingual-e5-large) · v11b
 
-FAISS index and cleaned chunk store over {NAME[lang]} Wikipedia, embedded with
-`intfloat/multilingual-e5-large` (1024-d). Source: `{mf['zim_source']}` (Kiwix `all_mini`).
+> ### What this is, in three lines
+> A **ready-to-query semantic search index over {NAME[lang]} Wikipedia**. Point it at a question and
+> it returns the Wikipedia passages that answer it, by meaning rather than by keyword — offline, with
+> no API key, and without running the embedding pass yourself. That pass took hours on two GPUs.
+> The usual use is the retrieval half of a RAG system, or a grounded-answer source for a local model.
+>
+> **What is in the box:** a FAISS index of {n:,} passage vectors ({idx:.2f} GB), the passages
+> themselves as line-aligned JSONL ({chunks:.2f} GB), and an offset table so that passage *i* is one
+> seek away. Vectors are `intfloat/multilingual-e5-large`, 1024-d, so **the query does not have to be
+> in {NAME[lang]}** — ask in {ASK_IN[lang]} and you still get {NAME[lang]} passages back.
+>
+> **What you need:** `faiss` and `sentence-transformers`, about {total_gb:.0f} GB of disk, and enough
+> RAM for the ME5 encoder. The index is memory-mapped, so it does not need to fit in RAM. Working
+> code is in the *Use* section below.
+>
+> **This repository is the {NAME[lang]} index.** The other two languages are {other_links}. All
+> three are built by the same pipeline from the same code and are documented identically. (The
+> English repository has no language suffix for historical reasons — it was the first one published.)
+
+Source: `{mf['zim_source']}` (Kiwix `all_mini` dump of Wikipedia).
 
 Every number in this card names the log it comes from. The logs, the build scripts and the review
 record are in `eval/` in this repository. Anything not backed by a log is marked as such.

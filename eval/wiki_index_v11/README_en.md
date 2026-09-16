@@ -9,8 +9,26 @@ pretty_name: MOBIUS MMV Wikipedia Index (English, ME5, v11b)
 
 # MOBIUS MMV — Wikipedia Index (English, multilingual-e5-large) · v11b
 
-FAISS index and cleaned chunk store over English Wikipedia, embedded with
-`intfloat/multilingual-e5-large` (1024-d). Source: `wikipedia_en_all_mini_2026-06.zim` (Kiwix `all_mini`).
+> ### What this is, in three lines
+> A **ready-to-query semantic search index over English Wikipedia**. Point it at a question and
+> it returns the Wikipedia passages that answer it, by meaning rather than by keyword — offline, with
+> no API key, and without running the embedding pass yourself. That pass took hours on two GPUs.
+> The usual use is the retrieval half of a RAG system, or a grounded-answer source for a local model.
+>
+> **What is in the box:** a FAISS index of 15,648,632 passage vectors (8.15 GB), the passages
+> themselves as line-aligned JSONL (2.72 GB), and an offset table so that passage *i* is one
+> seek away. Vectors are `intfloat/multilingual-e5-large`, 1024-d, so **the query does not have to be
+> in English** — ask in Japanese and you still get English passages back.
+>
+> **What you need:** `faiss` and `sentence-transformers`, about 11 GB of disk, and enough
+> RAM for the ME5 encoder. The index is memory-mapped, so it does not need to fit in RAM. Working
+> code is in the *Use* section below.
+>
+> **This repository is the English index.** The other two languages are **Japanese** at [`moebiusT7/mmv-wiki-index-ja`](https://huggingface.co/datasets/moebiusT7/mmv-wiki-index-ja) and **Chinese** at [`moebiusT7/mmv-wiki-index-zh`](https://huggingface.co/datasets/moebiusT7/mmv-wiki-index-zh). All
+> three are built by the same pipeline from the same code and are documented identically. (The
+> English repository has no language suffix for historical reasons — it was the first one published.)
+
+Source: `wikipedia_en_all_mini_2026-06.zim` (Kiwix `all_mini` dump of Wikipedia).
 
 Every number in this card names the log it comes from. The logs, the build scripts and the review
 record are in `eval/` in this repository. Anything not backed by a log is marked as such.

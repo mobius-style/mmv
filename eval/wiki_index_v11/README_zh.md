@@ -9,8 +9,26 @@ pretty_name: MOBIUS MMV Wikipedia Index (Chinese, ME5, v11b)
 
 # MOBIUS MMV — Wikipedia Index (Chinese, multilingual-e5-large) · v11b
 
-FAISS index and cleaned chunk store over Chinese Wikipedia, embedded with
-`intfloat/multilingual-e5-large` (1024-d). Source: `wikipedia_zh_all_mini_2026-05.zim` (Kiwix `all_mini`).
+> ### What this is, in three lines
+> A **ready-to-query semantic search index over Chinese Wikipedia**. Point it at a question and
+> it returns the Wikipedia passages that answer it, by meaning rather than by keyword — offline, with
+> no API key, and without running the embedding pass yourself. That pass took hours on two GPUs.
+> The usual use is the retrieval half of a RAG system, or a grounded-answer source for a local model.
+>
+> **What is in the box:** a FAISS index of 3,367,718 passage vectors (1.77 GB), the passages
+> themselves as line-aligned JSONL (0.69 GB), and an offset table so that passage *i* is one
+> seek away. Vectors are `intfloat/multilingual-e5-large`, 1024-d, so **the query does not have to be
+> in Chinese** — ask in English and you still get Chinese passages back.
+>
+> **What you need:** `faiss` and `sentence-transformers`, about 2 GB of disk, and enough
+> RAM for the ME5 encoder. The index is memory-mapped, so it does not need to fit in RAM. Working
+> code is in the *Use* section below.
+>
+> **This repository is the Chinese index.** The other two languages are **English** at [`moebiusT7/mmv-wiki-index`](https://huggingface.co/datasets/moebiusT7/mmv-wiki-index) and **Japanese** at [`moebiusT7/mmv-wiki-index-ja`](https://huggingface.co/datasets/moebiusT7/mmv-wiki-index-ja). All
+> three are built by the same pipeline from the same code and are documented identically. (The
+> English repository has no language suffix for historical reasons — it was the first one published.)
+
+Source: `wikipedia_zh_all_mini_2026-05.zim` (Kiwix `all_mini` dump of Wikipedia).
 
 Every number in this card names the log it comes from. The logs, the build scripts and the review
 record are in `eval/` in this repository. Anything not backed by a log is marked as such.

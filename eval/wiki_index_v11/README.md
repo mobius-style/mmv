@@ -30,7 +30,8 @@ here. Two builds are represented, and the distinction matters:
 
 | file | what it shows |
 |---|---|
-| `final_eval_en.log`, `final_eval_ja.log`, `final_eval_zh.log` | the numbers in the cards: whole corpus at nprobe 32 and 128, plus the head-to-head against the previously published store on both question sets |
+| `final_eval_en.log`, `final_eval_ja.log`, `final_eval_zh.log` | the numbers in the cards: whole corpus at nprobe 32 and 128, plus, for ja and zh, the head-to-head against the previously published store on both question sets |
+| `final_eval_en_h2h.log` | the English head-to-head, added 2026-09-18. The published English store's cleaning script no longer exists, so its control questions are generated from that store's own chunk text (`build_en_control.py`, `en_control_build.log`, `questions_en_oldstore.json`): 400 articles sampled by uniform stride from the 5,328,397 titles present in both stores |
 | `questions_*.json` | the question sets themselves, including the `_oldextract` controls |
 | `eval_{en,ja,zh}.json` | the title-query A/B of §6: the benchmark that ranked the defective extractor higher, with chunk counts and footer rates per arm |
 | `evalscale_{en,ja,zh}.json` | the same three extractor arms scored with generated questions instead of the title, on ~7,000–8,800-chunk pools |

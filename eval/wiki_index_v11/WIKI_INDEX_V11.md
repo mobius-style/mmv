@@ -51,6 +51,7 @@ The same generation procedure, restricted to the 296–300 gold articles present
 | **ja — questions generated from the OLD extractor's text (control)** | **26.6** | **43.3** |
 | zh — questions generated from the **new** extractor's text | 33.1 | 55.2 |
 | **zh — questions generated from the OLD extractor's text (control)** | **26.2** | **47.5** |
+| **en — questions generated from the OLD store's own text (control)** | **25.1** | **47.9** |
 
 The first row of each pair favours v11b by construction: the question can only be about text the
 new extractor recovered. The control row removes that advantage by generating the questions from
@@ -67,8 +68,17 @@ and two of those can be priced separately from the same data: the index-type cha
 (`IVF,PQ64` → `IVF,SQ4`) is worth **+7.2** MRR on a 206 k-vector ja pool (`index_e2e.log`; PQ64's
 full loss against exact search is 7.8), and the new store holds 3.21 chunks per gold article
 against the old store's 1.26 in Japanese, 3.08 against 1.30 in Chinese (`fix_verification.log` §F), which helps a metric that scores
-article-level containment. English has no head-to-head because its previous revision came from a
-different (undocumented) cleaning pass.
+article-level containment. English is measured differently, because its previous
+revision came from a cleaning pass whose script no longer exists and cannot be re-run. Its control
+questions are generated from the **old store's own chunk text** — from exactly what the old index
+encoded — over 400 articles sampled by uniform stride from the 5,328,397 titles present in both
+stores (`build_en_control.py`, `final_eval_en_h2h.log`). That is the strongest control available
+for English: every question is answerable from what the old artifact could see, and v11b gets no
+credit for text only it recovered. v11b still wins by **+22.8 MRR** (25.1 → 47.9 at nprobe 128)
+while searching a corpus 2.9 times larger. This set also leaks less than the ja/zh ones: the gold
+title appears verbatim in 3.0 % of questions (12 of 400) and every item carries a question mark.
+Chunk multiplicity still favours v11b — the old English store holds 1.02 chunks per article
+(5,458,524 over 5,351,447 titles) against v11b's 2.03 (15,648,632 over 7,702,559).
 
 Two further caveats on the benchmark, both measured: the gold title appears verbatim inside the
 question in 17.8 % (ja) / 12.3 % (zh) / 10.8 % (en) of the new-extractor set and 7.6 % / 6.8 % of

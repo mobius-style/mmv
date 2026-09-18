@@ -1,0 +1,15 @@
+/home/happy/.pyenv/versions/3.10.14/lib/python3.10/site-packages/transformers/utils/hub.py:110: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+en control set: 400 questions generated from the OLD store's own text
+`torch_dtype` is deprecated! Use `dtype` instead!
+
+old (published 2026-04): 5,458,524 chunks | index IndexIVFPQ ntotal=5,458,524
+    nprobe= 32  recall@1= 19.5 recall@5= 33.0 MRR= 25.0
+    nprobe=128  recall@1= 19.5 recall@5= 33.5 MRR= 25.1
+
+new (v11b): 15,648,632 chunks | index IndexIVFScalarQuantizer ntotal=15,648,632
+    nprobe= 32  recall@1= 39.2 recall@5= 57.8 MRR= 47.1
+    nprobe=128  recall@1= 39.2 recall@5= 59.5 MRR= 47.9
+
+gold title appears verbatim in the question: 12/400 (3.0 %)
+items with no question mark: 0/400

@@ -52,6 +52,38 @@ corpus** (`final_eval_en.log`).
 | nprobe 128 (shipped default) | 53.5 | 71.8 | **60.9** |
 | nprobe 32 | 51.0 | 68.8 | 58.4 |
 
+### Head to head against the previously published artifact
+
+Restricted to gold articles present in **both** stores, `nprobe=128`, full corpus
+(`final_eval_{ja,zh}.log` block [B], and `final_eval_en_h2h.log`). Questions generated from the
+**new** extractor's text favour v11b by construction, so each control row regenerates them from what
+the **old** artifact could see:
+
+| | old MRR | v11b MRR |
+|---|---|---|
+| ja — questions from the new extractor (300 items) | 37.2 | **55.8** |
+| **ja — control, questions from the old extractor (300 items)** | **26.6** | **43.3** |
+| zh — questions from the new extractor (299 items) | 33.1 | **55.2** |
+| **zh — control, questions from the old extractor (296 items)** | **26.2** | **47.5** |
+| **en — control, questions from the old store's own text (400 items)** | **25.1** | **47.9** |
+
+This is an artifact-vs-artifact comparison, not an ablation: the dump date, the extractor, the
+chunker and the index type all changed together, and the dump change favours v11b in all three
+languages: Japanese is a 2026-06 store against a 2026-02 one, Chinese a 2026-05 store against a
+**2025-09** one eight months older, and English a 2026-06 store against a 2026-03 one.
+Two components can be priced separately from the same data: the index-type change is worth
++7.2 MRR on a 206 k-vector Japanese pool (`index_e2e.log`), and v11b holds 3.21 chunks per gold
+article against the old store's 1.26 in Japanese and 3.08 against 1.30 in Chinese
+(`fix_verification.log` §F), which helps a metric that scores
+article-level containment.
+
+English is measured differently. Its previous revision came from a cleaning pass whose script no
+longer exists and cannot be re-run, so its control questions are generated from the **old store's
+own chunk text** — exactly what the old index encoded — over 400 articles sampled by uniform stride
+from the 5,328,397 titles present in both stores. Every question is therefore answerable from what
+the old artifact could see. v11b still wins by **+22.8 MRR** while searching a corpus 2.9 times
+larger, and this set leaks less than the other two: the gold title appears verbatim in 3.0 % of
+questions against 17.8 % (ja) and 12.3 % (zh).
 
 ## What changed, and why
 

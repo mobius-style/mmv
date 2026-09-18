@@ -1,0 +1,9 @@
+pass 1: titles in the new store
+  new store: 7,702,559 distinct titles
+pass 2: old store — collect text per article, keep those present in both
+  old store: 5,351,447 distinct titles, 5,328,397 of them also in v11b
+  sampled 400 articles by uniform stride (every 9692)
+en: 400/400 questions generated from the OLD STORE's own text
+  e.g. What are the various meanings of the double exclamation mark symbol?
+  e.g. In which century and decade did the year 1674 fall?
+  e.g. Who was the Republican incumbent re-elected to a second term during the 1900 Massachusetts gubernatorial elect

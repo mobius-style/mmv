@@ -8,7 +8,8 @@ Every number below names the log it comes from; the logs ship in `eval/` in each
 in `eval/wiki_index_v11/` in this repository. Anything not backed by a log is marked unmeasured.
 
 The working paper behind this release — same measurements, with the three review rounds reported at
-the same level of detail as the results — is **10.5281/zenodo.22782085**.
+the same level of detail as the results — is **10.5281/zenodo.22841107** (version 1.1; the concept
+DOI 10.5281/zenodo.22782084 always resolves to the latest version).
 
 ## The shipped artifacts
 
@@ -71,12 +72,16 @@ against the old store's 1.26 in Japanese, 3.08 against 1.30 in Chinese (`fix_ver
 article-level containment. English is measured differently, because its previous
 revision came from a cleaning pass whose script no longer exists and cannot be re-run. Its control
 questions are generated from the **old store's own chunk text** — from exactly what the old index
-encoded — over 400 articles sampled by uniform stride from the 5,328,397 titles present in both
-stores (`build_en_control.py`, `final_eval_en_h2h.log`). That is the strongest control available
+encoded — over 400 articles sampled by uniform stride from the both-store intersection
+(`build_en_control.py`, `final_eval_en_h2h.log`). 5,328,397 of the old store's 5,351,447 titles are
+present in v11b; the sampler then drops articles whose old-store text is 300 characters or shorter,
+leaving about 3.88 million to stride over. That filter removes the stubs the old store handled
+worst, so it works against the result, not for it. That is the strongest control available
 for English: every question is answerable from what the old artifact could see, and v11b gets no
 credit for text only it recovered. v11b still wins by **+22.8 MRR** (25.1 → 47.9 at nprobe 128)
-while searching a corpus 2.9 times larger. This set also leaks less than the ja/zh ones: the gold
-title appears verbatim in 3.0 % of questions (12 of 400) and every item carries a question mark.
+while searching a corpus 2.9 times larger. This set also leaks less than the ja/zh controls: the gold title
+appears verbatim in 3.0 % of its questions (12 of 400) against 7.6 % (ja) and 6.8 % (zh) in their
+control sets, and every item carries a question mark.
 Chunk multiplicity still favours v11b — the old English store holds 1.02 chunks per article
 (5,458,524 over 5,351,447 titles) against v11b's 2.03 (15,648,632 over 7,702,559).
 

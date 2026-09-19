@@ -94,7 +94,7 @@ and Chinese files on 2026-09-16; both **ACCEPTANCE PASSED** (`verify_ja_final.lo
 | mean pairwise cosine 0.72 / 0.78 / 0.79 over "4,000 random pairs of shipped chunks" | 2,000 pairs drawn from the **first 4,000 vectors** of embedding part 0, with self-pairs admitted | **0.695 / 0.715 / 0.753** over 20,000 disjoint random pairs from the whole shipped vector set (`remeasure_v2.log` §B) |
 | "for Chinese the dump moved *backwards*" | the previous Chinese store is built from `wikipedia_zh_all_mini_2025-09.zim`; 2026-06 was its **build** date | the dump moved **forward** eight months, so the confound favours v11b rather than working against it |
 
-The first two were introduced by round 2 while it was correcting other numbers.
+The first two were introduced by round 2 while it was correcting other numbers; the third predates it.
 
 ### Results still reported only where they were favourable
 
@@ -126,7 +126,8 @@ is **not confirmed** by its own control: adding one title line back to the clean
 
 Round 1 caught defects in the artifact. Round 2 caught defects in the description, in a document
 already checked once. Round 3 caught a defect in the release that rounds 1 and 2 had both looked at
-and passed, and three measurements that round 2 had itself introduced.
+and passed, and two of the three measurements that round 2 had itself introduced (the reversed Chinese dump
+claim predates round 2).
 
 Each round's output was the input to the next round's error. The rate did not fall to zero. We have
 no reason to believe a fourth round would find nothing.

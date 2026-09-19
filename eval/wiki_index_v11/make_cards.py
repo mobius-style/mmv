@@ -59,10 +59,13 @@ article-level containment.
 English is measured differently. Its previous revision came from a cleaning pass whose script no
 longer exists and cannot be re-run, so its control questions are generated from the **old store's
 own chunk text** — exactly what the old index encoded — over 400 articles sampled by uniform stride
-from the 5,328,397 titles present in both stores. Every question is therefore answerable from what
-the old artifact could see. v11b still wins by **+22.8 MRR** while searching a corpus 2.9 times
-larger, and this set leaks less than the other two: the gold title appears verbatim in 3.0 % of
-questions against 17.8 % (ja) and 12.3 % (zh).
+from the both-store intersection. 5,328,397 of the old store's 5,351,447 titles are in v11b; the
+sampler then drops articles whose old-store text is 300 characters or shorter, leaving about
+3.88 million to stride over, which removes the stubs the old store handled worst and so works
+against the result rather than for it. Every question is answerable from what the old artifact could
+see. v11b still wins by **+22.8 MRR** while searching a corpus 2.9 times larger, and this set leaks
+less than the other two controls: the gold title appears verbatim in 3.0 % of its questions against
+7.6 % (ja) and 6.8 % (zh) in theirs.
 """
 
 

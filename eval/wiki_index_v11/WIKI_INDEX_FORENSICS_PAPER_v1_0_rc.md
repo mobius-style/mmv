@@ -3,8 +3,8 @@ title: "What a Retrieval Index Loses Before Anyone Notices"
 subtitle: "Three silent defects in three published Wikipedia embedding indexes, the benchmark that rewarded one of them, and what three rounds of refutation found in the write-up"
 author: "Taiko Toeda (MOBIUS LLC)"
 ai_co_observer: "Claude Opus 5 (Anthropic) — working method only; the forensic measurements, the rebuild and the draft were produced under human direction; three commissioned model-instance reviewers rejected the first rebuild (§8.1), an audit of the draft release note found sixteen unsupported statements (§8.2), and a third round of three refuters returned FAILS on this paper and found one defect in the release itself (§8.3); the registered author is the human author alone"
-version: "1.0 (owner review pending before deposit)"
-date: "2026-09-16"
+version: "1.1 (adds the English head-to-head, which v1.0 said could not be made)"
+date: "2026-09-19"
 license: "CC BY-NC-SA 4.0 (text); build pipeline, evaluation harness and analysis code AGPL-3.0-or-later; the indexes themselves CC BY-SA 4.0 as derivatives of Wikipedia"
 keywords: "retrieval augmented generation, embedding index, FAISS, scalar quantisation, product quantisation, text extraction, chunking, multilingual-e5, CJK tokenisation, benchmark validity, silent failure, dataset forensics, adversarial review"
 zenodo_role: "Empirical failure report — three defects in retrieval indexes the author had published and was using, each measured before and after the fix, together with the benchmark design error that had hidden one of them and a full account of what three rounds of adversarial review found in the artifact and in this document"
@@ -24,7 +24,9 @@ scope_firewall: >
   answerable from its gold article, so they support ordinal comparison
   between the artifacts measured and not absolute quality claims; the
   reconstructed standard error of a single MRR figure on these sets is
-  2.2 to 2.9 points. The index-type and quantiser comparisons were run
+  2.2 to 2.9 points. The English head-to-head added in version 1.1 uses
+  a control generated from the old store's own text; it establishes that
+  v11b retrieves better than the artifact it replaces, not why. The index-type and quantiser comparisons were run
   on pools of 150,000 to 206,000 vectors at three different partition
   settings, not at the shipped scale of 3 to 15.6 million, so they
   establish the direction of a ranking and not its magnitude. The
@@ -38,12 +40,12 @@ scope_firewall: >
 # What a Retrieval Index Loses Before Anyone Notices
 
 **Author:** Taiko Toeda (MOBIUS LLC) — ORCID: 0009-0001-7267-0201 (https://orcid.org/0009-0001-7267-0201).
-**Version:** 1.0 (release candidate; owner review pending before deposit).
+**Version:** 1.1 — version 1.0 said the English rebuild could not be compared against the published English store; it could, and §6.1 now reports that comparison while §8.4 records how the error was made.
 **Date:** September 2026.
 **License:** CC BY-NC-SA 4.0 (text); build pipeline, evaluation harness and analysis code AGPL-3.0-or-later.
-**DOI:** 10.5281/zenodo.22782085 (published 2026-09-16; concept DOI 10.5281/zenodo.22782084).
+**DOI:** 10.5281/zenodo.22841107 (version 1.1, 2026-09-19); version 1.0 is 10.5281/zenodo.22782085, and the concept DOI 10.5281/zenodo.22782084 always resolves to the latest version.
 
-*Release type: Empirical failure report on the author's own published artifacts, with every claim traced to a shipped log, and with three rounds of adversarial review reported at equal prominence with the results — including the round that rejected the first rebuild, the audit that found sixteen unsupported statements in the draft release note, and the round that found a release defect two rounds of review had missed. AI co-observer: Claude Opus 5 (Anthropic), working method only; the registered author is the human author alone.*
+*Release type: Empirical failure report on the author's own published artifacts, with every claim traced to a shipped log, and with the review history reported at equal prominence with the results — the round that rejected the first rebuild, the audit that found sixteen unsupported statements in the draft release note, the round that found a release defect two rounds of review had missed, and, after version 1.0 was published, the discovery that one of its stated limits had never been tested (§8.4). AI co-observer: Claude Opus 5 (Anthropic), working method only; the registered author is the human author alone.*
 
 ---
 
@@ -64,8 +66,9 @@ Rebuilding the whole pipeline — newer dump, render-faithful extractor, sentenc
 against the previously published artifact from 26.6 to 43.3 MRR in Japanese and 26.2 to 47.5 in
 Chinese, on a control question set generated from the *old* extractor's own output so that the
 comparison does not favour the new artifact by construction. The components are not separated.
-English has no such comparison at all, because its published store had already been cleaned by a
-pass we cannot reconstruct. The rebuild is not uniformly better: indexed-article coverage falls in
+English is measured the same way but with a different control, because its published store was
+cleaned by a pass whose script no longer exists: its questions are generated from the **old store's
+own chunk text**, and on that set v11b goes 25.1 to 47.9 MRR. The rebuild is not uniformly better: indexed-article coverage falls in
 two of the three languages, and against the rebuild our own reviewers rejected, English falls 62.7
 to 60.9 MRR while Japanese and Chinese rise.
 
@@ -83,7 +86,9 @@ index substantially worse (59.6 %), because an IVF index encodes residuals.
 Three rounds of adversarial review are reported in §8, in the same detail as the results. The third
 round found that two of the three shipped indexes had never been re-verified after being
 re-encoded — the same defect the first round had raised and this document had already reported as
-fixed.
+fixed. A fourth finding arrived after version 1.0 was published: one of this paper's own stated
+limits, that English could not be compared, had never been tested. It was wrong, and §8.4 is about
+how four passes of review let it through.
 
 ---
 
@@ -114,7 +119,7 @@ the index substantially worse, and the honest statement that its downstream effe
 benchmark is inside the noise.
 
 We also report, in §8 and at the same level of detail as the results, what three rounds of
-adversarial review found in this work — including in the drafts of this document, and including a
+adversarial review, and one finding that arrived after publication, found in this work — including in the drafts of this document, and including a
 defect in the released artifacts that two rounds of review had already passed. That section is the
 one we would keep if we could keep only one. Its claim is not that we are careful. Its claim is
 that a single pass of review over your own work has a measurable failure rate, that we measured
@@ -219,8 +224,9 @@ mean chunk lengths of 635 and 707 characters.
 
 The published English store did not carry it at all (0 of 5,458,524). We cannot say why: no script
 in the repository produces that output, and we have no record of the pass that must have produced
-it. English therefore has no comparable "before" artifact, which is why §6.1 has no English
-head-to-head.
+it. English therefore has no reproducible "before" *pipeline*, but it does still have the "before"
+*artifact* — the published store and its index are on disk — so §6.1 compares against those
+directly, with the control built from the old store's own text.
 
 Three further extraction faults travelled with the footer. The extractor emitted the article title
 two or three times, from `<head>` and from `<h1>`, before the body. It left HTML entities undecoded,
@@ -341,22 +347,39 @@ Against the previously published stores, restricted to gold articles present in 
 | **ja — control, questions from the old extractor's text** | **26.6** | **43.3** |
 | zh — questions from the new extractor's text | 33.1 | 55.2 |
 | **zh — control, questions from the old extractor's text** | **26.2** | **47.5** |
+| **en — control, questions from the old store's own text** | **25.1** | **47.9** |
 
 The first row of each pair favours v11b by construction: a question generated from text only the new
 extractor recovered can only be answered from the new store. The control row generates the questions
 from the old extractor's own output instead. The gap narrows — from +18.6 to +16.7 (ja) and from
 +22.1 to +21.3 (zh) — and survives.
 
+English has no re-runnable old extractor, so its control is built the other way round: the questions
+are generated from the **old store's own chunk text**, over 400 articles sampled by uniform stride from the
+both-store intersection (`build_en_control.py`, `final_eval_en_h2h.log`). 5,328,397 of the old
+store's 5,351,447 titles are present in v11b; the sampler then drops articles whose old-store text
+is 300 characters or shorter, which leaves about 3.88 million to stride over (every 9,692nd). That
+filter removes stubs the old store handled worst, so it works against the result reported here, not
+for it.
+Every question is therefore answerable from exactly what the old index encoded, and v11b gets no
+credit for text only it recovered. Whole corpus, nprobe 128: the old store returns recall@1 19.5,
+recall@5 33.5, MRR 25.1; v11b returns 39.2, 59.5 and **47.9**, a gain of **+22.8 MRR** while
+searching a corpus 2.9 times larger. This set also leaks less than the other two controls — the
+gold title appears verbatim in 3.0 % of its questions (12 of 400) against 7.6 % (ja) and 6.8 % (zh)
+in their control sets, and 17.8 % / 12.3 % in their new-extractor sets — and every item carries a
+question mark.
+
 **This is an artifact-versus-artifact comparison, not an ablation.** Dump date, extractor, chunker
-and index type changed together, and the dump change favours v11b in both languages: the Japanese
-comparison is a 2026-06 store against a 2026-02 one, and the Chinese a 2026-05 store against a
-**2025-09** one, eight months older. One component has a price from a different experiment — the
+and index type changed together, and the dump change favours v11b in all three languages: the
+Japanese comparison is a 2026-06 store against a 2026-02 one, the Chinese a 2026-05 store against a
+**2025-09** one eight months older, and the English a 2026-06 store against a 2026-03 one. One component has a price from a different experiment — the
 index type is worth +7.2 MRR on a 206 k-vector pool (§5), which need not hold at three million. A
 second is counted but never priced: v11b holds 3.21 chunks per gold article against 1.26 in Japanese
-and 3.08 against 1.30 in Chinese, which mechanically helps a metric scoring article-level
-containment. We did not run the ablation that would separate them.
+and 3.08 against 1.30 in Chinese, and 2.03 against 1.02 corpus-wide in English, which mechanically
+helps a metric scoring article-level containment. We did not run the ablation that would separate them.
 
-The control is also imperfect in two ways we can name. Its questions are generated from raw
+The **ja/zh** control is also imperfect in two ways we can name; neither applies to the English one,
+whose questions come from the already-cleaned old store. Its questions are generated from raw
 extractor output, and 73.5 % of raw-extractor samples contain TemplateStyles CSS
 (`forensics.log`), so the text fed to the generator is substantially boilerplate and both arms fall
 by 11–12 MRR. And for Chinese the control questions were generated from the **2026-05** ZIM — v11b's
@@ -367,7 +390,7 @@ set; it does not establish that the gap is correctly sized.
 ### 6.2 What this benchmark can and cannot separate
 
 The gold title appears verbatim inside the question in 17.8 % (ja), 12.3 % (zh) and 10.8 % (en) of
-the new-extractor set and 7.6 % / 6.8 % of the control set, and every v11b chunk begins with the
+the new-extractor set, 7.6 % / 6.8 % of the ja/zh control sets and 3.0 % of the English one, and every v11b chunk begins with the
 title line while the old store's chunks do not — so some of the margin is title matching. 27 of the
 303 Japanese items (8.9 %) contain no question mark: they are declaratives lifted from the passage.
 Nothing checks that a generated question is answerable from its gold article, so an unknown fraction
@@ -448,7 +471,7 @@ per-dimension variance, so we cannot say whether the rotation failed because the
 already near equal-variance or because a random rotation is the wrong rotation — a *learned*
 rotation helps the PQ variants substantially (§5).
 
-## 8. Three rounds of review
+## 8. Three rounds of review, and a fourth finding after publication
 
 ### 8.1 Round one: three commissioned reviewers rejected the first rebuild
 
@@ -527,12 +550,44 @@ at the same 64 bytes, the coverage regression, the English retrieval fall agains
 build, the Chinese control's dump mismatch, the noise floor reconstruction, and the fact that the
 round-one reviewers' reports were not retained.
 
-### 8.4 What the three rounds say about the process
+### 8.4 A fourth finding, after publication: a caveat that was never tested
+
+Version 1.0 of this paper carried a false statement of fact. Its abstract said "English has no such
+comparison at all", and §4 said English "has no comparable *before* artifact". The before artifact
+was on disk the whole time — the published English store and its index, both of which §2 describes
+by name and file size.
+
+What was true is the *reason* underneath: the cleaning pass behind that store no longer exists as a
+script, so the ja/zh method — re-running the old extractor over the ZIM — cannot be reproduced for
+English. We checked that reason, found it sound, and never checked the conclusion we had drawn from
+it. The conclusion was wrong. The questions can be generated from the old store's own text instead
+of from a re-run extractor, which is a *stronger* control, not a weaker one, because every question
+is then answerable from exactly what the old index encoded.
+
+The measurement cost twelve minutes of wall clock, by the timestamps on its own output files
+(2026-09-18, 15:33 to 15:45). It produced +22.8 MRR, nominally the largest of the three gains,
+though the three are not strictly comparable: the ja/zh controls run on a deliberately degraded
+question set that depresses both arms by 11–12 MRR, and the English one does not.
+
+Two of the three review rounds read that sentence: round 2 audited the release note, round 3 audited
+this paper, and round 3's brief named scope and overclaim explicitly. Round 1 predates both, so it
+cannot have seen it. Neither round flagged it, and neither did the author, across four passes of his
+own. The failure mode is worth naming: **a caveat is a claim, and it needs a test like any other**.
+"We cannot measure X" is checkable. A reviewer hunting for inflated claims will not flag a missing
+measurement, because an absence reads as modesty rather than as an error — which makes the omission
+class the one where commissioned adversarial review helps least.
+
+The results are unchanged: the ja/zh figures, the benchmark finding of §6, the quantiser result of
+§7 and the three review rounds in §8.1–§8.3 are as published in version 1.0. The abstract, §4, §6.1,
+§6.2 and this section changed to carry the English result and to record this error.
+
+### 8.5 What these rounds say about the process
 
 The reviewers caught defects in the artifact. The second round caught defects in the description of
 the artifact, in a document the same author had already checked once. The third round caught a
 defect in the release that the first two had both looked at and passed, and three measurements that
-the second round had itself introduced while correcting other numbers.
+the second round had itself introduced while correcting other numbers (two of the three; the
+reversed Chinese dump claim predates round two).
 
 We report this at equal prominence with the results because it is the more generalisable finding,
 and because it is the part a reader can act on without owning our artifacts.
@@ -550,7 +605,9 @@ a measurable magnitude, and reporting the magnitude is the only thing that lets 
 this paper by the right amount.
 
 What we cannot claim is that the process converged. The rate did not fall to zero across three
-rounds, and we have no evidence that a fourth would find nothing. The honest position is that this
+rounds, and the fourth finding (§8.4) arrived *after* publication, on a sentence all three rounds
+had read. Worse, it was an error of omission — a measurement not taken — which is the class review
+is worst at catching, because nothing on the page looks wrong. The honest position is that this
 document is the third draft of something whose first two drafts were wrong in ways we can
 enumerate, and that a reader should treat its remaining claims with whatever confidence that
 history warrants.
@@ -609,7 +666,9 @@ not met here. No claim in this paper has been peer reviewed, certified, or indep
 
 The build pipeline (`build_wiki_index_me5_bplus.py`, `build_offsets.py`, `reindex_sq4.py`) and the
 acceptance script (`verify_wiki_index.py`) are in `scripts/` of
-https://github.com/mobius-style/mmv. Every measurement script, every log cited above, the question
+https://github.com/mobius-style/mmv. The English head-to-head added in version 1.1 is
+`build_en_control.py` (control-set generation) and `final_eval_en_h2h.py` (evaluation), with
+`en_control_build.log`, `final_eval_en_h2h.log` and `questions_en_oldstore.json` beside them. Every measurement script, every log cited above, the question
 sets including the old-extractor controls, and the review record are in `eval/wiki_index_v11/` of
 the same repository and in `eval/` of each of the three dataset repositories:
 

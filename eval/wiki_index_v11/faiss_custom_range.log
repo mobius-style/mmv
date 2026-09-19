@@ -1,0 +1,8 @@
+IVF4096,SQ4 on 205,789 vectors, nprobe 128
+  stock RS_minmax (what we shipped)          top-10 fidelity  81.6%   QA recall@1  62.4  MRR  66.2
+  stock RS_optim                             top-10 fidelity  81.6%   QA recall@1  62.4  MRR  66.2
+/home/happy/.codex/bench/wiki_forensics/faiss_custom_range.py:25: DeprecationWarning: The class faiss.FloatVector is deprecated in favour of faiss.Float32Vector!
+  ix.sq.trained=faiss.FloatVector(); faiss.copy_array_to_vector(tr.astype("float32"), ix.sq.trained)
+  range = 0.1-99.9 percentile                top-10 fidelity  59.6%   QA recall@1  62.4  MRR  65.0
+  range = 0.5-99.5 percentile                top-10 fidelity  52.1%   QA recall@1  62.0  MRR  64.6
+  range = 1-99 percentile                    top-10 fidelity  48.0%   QA recall@1  60.4  MRR  63.6

@@ -1,0 +1,6 @@
+vectors (150000, 1024)
+IVF,SQ8            file    159.0 MB =  1060.1 B/vector -> EN@11.3M =  12.0 GB
+IVF,SQ4            file     82.2 MB =   548.1 B/vector -> EN@11.3M =   6.2 GB
+PCA256,IVF,SQ8     file     45.9 MB =   306.1 B/vector -> EN@11.3M =   3.5 GB
+OPQ256,IVF,PQ256   file     49.0 MB =   327.0 B/vector -> EN@11.3M =   3.7 GB
+IVF,PQ64           file     16.1 MB =   107.0 B/vector -> EN@11.3M =   1.2 GB

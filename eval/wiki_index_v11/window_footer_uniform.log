@@ -1,0 +1,12 @@
+/home/happy/デスクトップ/mobius_ai/venv313/lib/python3.13/site-packages/transformers/utils/hub.py:110: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+Token indices sequence length is longer than the specified maximum sequence length for this model (633 > 512). Running this sequence through the model will result in indexing errors
+EN published (clean, 2026-04)
+  chunks 5,458,524 | footer 0 (0.0%) | mean chunk 626 chars
+  uniform sample 8000 (stride 682): tokens p50=116 p95=426 max=932 | >512: 3.1% | mean tokens lost on those: 14.4% | chars/token 3.95
+JA published (2026-06 build)
+  chunks 1,550,503 | footer 1,505,103 (97.1%) | mean chunk 635 chars
+  uniform sample 8000 (stride 193): tokens p50=281 p95=700 max=1484 | >512: 13.7% | mean tokens lost on those: 21.7% | chars/token 2.01
+ZH published (2026-06 build)
+  chunks 1,638,042 | footer 1,521,419 (92.9%) | mean chunk 707 chars
+  uniform sample 8000 (stride 204): tokens p50=295 p95=863 max=1458 | >512: 18.5% | mean tokens lost on those: 27.0% | chars/token 1.98

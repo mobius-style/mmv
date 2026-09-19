@@ -1,0 +1,26 @@
+/home/happy/デスクトップ/mobius_ai/venv313/lib/python3.13/site-packages/transformers/utils/hub.py:110: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+No stemming for language 'ja'
+ja: pool 6303 articles, 303 questions
+Token indices sequence length is longer than the specified maximum sequence length for this model (605 > 512). Running this sequence through the model will result in indexing errors
+  budget=160  chunks= 15634 (x2.48/article)  tok p50=142 max=203  recall@1= 75.6  recall@5= 85.8  MRR= 79.8
+  budget=256  chunks= 10893 (x1.73/article)  tok p50=188 max=298  recall@1= 78.2  recall@5= 86.5  MRR= 81.5
+  budget=360  chunks=  8518 (x1.35/article)  tok p50=218 max=402  recall@1= 76.2  recall@5= 83.8  MRR= 79.8
+  budget=480  chunks=  7343 (x1.17/article)  tok p50=232 max=508  recall@1= 75.2  recall@5= 83.5  MRR= 78.9
+/home/happy/デスクトップ/mobius_ai/venv313/lib/python3.13/site-packages/transformers/utils/hub.py:110: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+No stemming for language 'zh'
+zh: pool 6316 articles, 310 questions
+Token indices sequence length is longer than the specified maximum sequence length for this model (936 > 512). Running this sequence through the model will result in indexing errors
+  budget=160  chunks= 17655 (x2.80/article)  tok p50=150 max=189  recall@1= 81.3  recall@5= 92.3  MRR= 85.7
+  budget=256  chunks= 12206 (x1.93/article)  tok p50=203 max=281  recall@1= 80.0  recall@5= 90.0  MRR= 84.3
+  budget=360  chunks=  9516 (x1.51/article)  tok p50=231 max=386  recall@1= 78.4  recall@5= 89.7  MRR= 83.0
+  budget=480  chunks=  8102 (x1.28/article)  tok p50=245 max=503  recall@1= 79.0  recall@5= 88.7  MRR= 82.9
+/home/happy/デスクトップ/mobius_ai/venv313/lib/python3.13/site-packages/transformers/utils/hub.py:110: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+en: pool 6400 articles, 400 questions
+Token indices sequence length is longer than the specified maximum sequence length for this model (660 > 512). Running this sequence through the model will result in indexing errors
+  budget=160  chunks= 14104 (x2.20/article)  tok p50=132 max=190  recall@1= 93.5  recall@5= 98.0  MRR= 95.6
+  budget=256  chunks=  9634 (x1.51/article)  tok p50=172 max=284  recall@1= 90.5  recall@5= 96.8  MRR= 92.9
+  budget=360  chunks=  7906 (x1.24/article)  tok p50=187 max=390  recall@1= 90.5  recall@5= 96.2  MRR= 92.8
+  budget=480  chunks=  7150 (x1.12/article)  tok p50=194 max=507  recall@1= 90.0  recall@5= 96.0  MRR= 92.5

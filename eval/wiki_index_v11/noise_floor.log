@@ -1,0 +1,16 @@
+standard error of MRR, reconstructed from the reported rates (per-question ranks not retained)
+  en: n=400  MRR=60.9  recall@1=53.5
+     SD upper bound 0.488 -> SE 2.44 MRR points
+     SD estimate    0.448 -> SE 2.24 MRR points
+  ja: n=303  MRR=56.3  recall@1=50.8
+     SD upper bound 0.496 -> SE 2.85 MRR points
+     SD estimate    0.467 -> SE 2.69 MRR points
+  zh: n=310  MRR=55.5  recall@1=49.4
+     SD upper bound 0.497 -> SE 2.82 MRR points
+     SD estimate    0.465 -> SE 2.64 MRR points
+
+Unpaired 95% interval for the difference of two such means is about 2*sqrt(2)*SE,
+i.e. 6.5-7.8 MRR points. Our comparisons reuse the same questions, so the paired standard error
+is smaller than this, but we did not retain the per-question ranks needed to compute it.
+Conclusion: the '~2.4 points' figure used in the draft is roughly one unpaired standard error
+for English and understates it for Japanese and Chinese. It is a rough noise scale, not a test.

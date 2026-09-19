@@ -1,0 +1,11 @@
+205,789 vectors, 303 queries
+baselines:
+  exact (fp32)                            4096 B/vec  top-10 fidelity 100.0%   QA recall@1  65.3  MRR  69.2
+  SQ8 uniform min/max (reference)         1024 B/vec  top-10 fidelity  98.7%   QA recall@1  65.3  MRR  69.3
+4-bit variants (all 512 B/vector, all LUT-decodable):
+  SQ4 uniform min/max (shipped)            512 B/vec  top-10 fidelity  83.7%   QA recall@1  63.7  MRR  68.1
+  SQ4 uniform, 0.1-99.9 pct clip           512 B/vec  top-10 fidelity  88.1%   QA recall@1  65.3  MRR  69.2
+  SQ4 Lloyd-Max levels                     512 B/vec  top-10 fidelity  87.4%   QA recall@1  65.0  MRR  69.0
+  SQ4 uniform after random rotation        512 B/vec  top-10 fidelity  84.0%   QA recall@1  64.0  MRR  68.3
+  SQ4 Lloyd-Max after random rotation      512 B/vec  top-10 fidelity  87.6%   QA recall@1  65.0  MRR  69.1
+(102s)

@@ -1,0 +1,18 @@
+Verification of the fixes claimed in docs/WIKI_INDEX_V11.md §5, run 2026-09-16 on the two stores.
+A. navigation keyword deletion (ja store, "\n<key>: " occurrences)
+   v11a: 編集:106      撮影:22,836  監督:45,221  脚本:35,911  解説:7
+   v11b: 編集:21,059   撮影:22,840  監督:45,262  脚本:35,937  解説:63
+B. english chunks ending on a known abbreviation (U.S./No./St./Inc./Jr./etc./Co./Ltd./vs./Mr./Mrs./Sr./e.g./i.e.)
+   v11a: 136,149 of 15,696,612 (0.867%)
+   v11b:  10,709 of 15,648,632 (0.068%)
+C. ja chunk bodies (title line excluded)
+   v11a: 3,008,848 chunks | no letters at all 994 (0.033%) | starts mid-token 12,670
+   v11b: 3,009,820 chunks | no letters at all 1,012 (0.034%) | starts mid-token 2,852
+D. question sets: items containing no question mark
+   ja 27/303 (8.9%)   zh 0/310   en 0/400
+E. gold title appearing verbatim inside its own question
+   ja new-extractor 54/303 (17.8%)  control 23/303 (7.6%)
+   zh new-extractor 38/310 (12.3%)  control 21/307 (6.8%)
+   en new-extractor 43/400 (10.8%)
+F. chunks per gold article
+   ja old published 1.26   v11b 3.21      zh old published 1.30   v11b 3.08
